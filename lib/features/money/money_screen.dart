@@ -272,6 +272,7 @@ class _MoneyScreenState extends ConsumerState<MoneyScreen> {
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.w800)),
               const SizedBox(height: 16),
               DropdownButtonFormField<SpendCategory>(
+                isExpanded: true,
                 initialValue: picked,
                 decoration: const InputDecoration(labelText: 'Category'),
                 items: [

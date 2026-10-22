@@ -17,6 +17,7 @@ import '../../ui/card_face.dart';
 import '../../ui/widgets.dart';
 import '../add_card/card_form.dart';
 import 'card_extras.dart';
+import 'compare_and_close.dart';
 
 class CardDetailScreen extends ConsumerWidget {
   const CardDetailScreen({super.key, required this.cardId});
@@ -57,6 +58,10 @@ class CardDetailScreen extends ConsumerWidget {
                 case 'styled':
                   await ref.read(photoStoreProvider)?.delete(card.id);
                   ref.invalidate(facePhotoProvider(card.id));
+                case 'compare':
+                  context.push('/card/${card.id}/compare');
+                case 'close':
+                  showCloseChecklist(context, ref, card);
                 case 'delete':
                   _confirmDelete(context, ref, card);
               }
@@ -67,6 +72,10 @@ class CardDetailScreen extends ConsumerWidget {
               if (ref.read(facePhotoProvider(card.id)).value != null)
                 const PopupMenuItem(
                     value: 'styled', child: Text('Back to styled face')),
+              const PopupMenuItem(
+                  value: 'compare', child: Text('Compare with another card')),
+              const PopupMenuItem(
+                  value: 'close', child: Text('Closing this card?')),
               const PopupMenuItem(value: 'delete', child: Text('Remove card')),
             ],
           ),
@@ -289,6 +298,7 @@ class CardDetailScreen extends ConsumerWidget {
                 ),
                 const SizedBox(height: 12),
                 DropdownButtonFormField<SpendCategory>(
+                  isExpanded: true,
                   initialValue: forex ? SpendCategory.foreign : category,
                   decoration: const InputDecoration(labelText: 'Category'),
                   items: [

@@ -106,6 +106,7 @@ Future<void> editOffer(
             ),
             const SizedBox(height: 12),
             DropdownButtonFormField<SpendCategory>(
+              isExpanded: true,
               initialValue: category,
               decoration: const InputDecoration(labelText: 'Category'),
               items: [
@@ -116,6 +117,7 @@ Future<void> editOffer(
             ),
             const SizedBox(height: 12),
             DropdownButtonFormField<String?>(
+              isExpanded: true,
               initialValue: cardId,
               decoration: const InputDecoration(labelText: 'Card (optional)'),
               items: [

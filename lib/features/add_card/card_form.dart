@@ -132,6 +132,7 @@ class _CardFormState extends State<CardForm> {
       Padding(
         padding: const EdgeInsets.only(bottom: 12),
         child: DropdownButtonFormField<int>(
+          isExpanded: true,
           initialValue: v.anniversaryMonth,
           decoration:
               const InputDecoration(labelText: 'Card anniversary month'),

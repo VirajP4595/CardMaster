@@ -151,6 +151,7 @@ Future<void> editRecurring(
               ]),
               const SizedBox(height: 12),
               DropdownButtonFormField<SpendCategory>(
+                isExpanded: true,
                 initialValue: category,
                 decoration: const InputDecoration(labelText: 'Category'),
                 items: [
@@ -161,6 +162,7 @@ Future<void> editRecurring(
               ),
               const SizedBox(height: 12),
               DropdownButtonFormField<String>(
+                isExpanded: true,
                 initialValue: method,
                 decoration: const InputDecoration(labelText: 'Paid with'),
                 items: [

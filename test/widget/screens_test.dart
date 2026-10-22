@@ -11,6 +11,7 @@ import 'package:card_master/domain/recurring.dart';
 import 'package:card_master/domain/trackers.dart';
 import 'package:card_master/features/best_card/best_card_screen.dart';
 import 'package:card_master/features/card_detail/card_detail_screen.dart';
+import 'package:card_master/features/card_detail/compare_and_close.dart';
 import 'package:card_master/features/card_detail/worth_screen.dart';
 import 'package:card_master/features/money/import_review_screen.dart';
 import 'package:card_master/features/money/money_screen.dart';
@@ -404,6 +405,16 @@ Rs.900 spent on card XX5566 at UNKNOWN SHOP on 20-10-26.
     await t.tap(find.byTooltip('Bigger tip'));
     await t.pump();
     expect(find.text('₹499'), findsOneWidget);
+    await _close(t, db);
+  });
+
+  testWidgets('compare shows both cards per category', (t) async {
+    final db = await t.runAsync(_seed);
+    await _pump(t, db!, const CompareScreen(firstId: 'airtel'));
+    expect(find.text('Utilities'), findsOneWidget);
+    // Airtel Axis 10% vs Scapia 0% on utilities (sample rates).
+    expect(find.text('10%'), findsWidgets);
+    expect(find.text('Works on UPI'), findsOneWidget);
     await _close(t, db);
   });
 
