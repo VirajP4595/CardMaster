@@ -9,7 +9,7 @@ A private-by-design Android app (Flutter) that works offline to track your credi
 | R1 | **Download-only.** User data never leaves the phone. The only network use is downloading the public, signed benefits catalog (and Play Billing via the Play Store app). Nothing is ever uploaded. | INTERNET permission allowed, but all network code lives in one module (`core/net`) doing GET requests to one allow-listed host; no analytics/ads/crash SDKs; no Google sign-in; requests carry no user or device identifiers. See 07-PRO-AND-ONLINE.md. |
 | R2 | No cloud backup of any kind | `android:allowBackup="false"` and `android:fullBackupContent="false"` + `dataExtractionRules` excluding everything. Otherwise Android silently copies app data to Google Drive. |
 | R3 | Never store full card number or CVV | Model only has `last4`. CVV field does not exist in the schema. (Storing CVV is forbidden by PCI-DSS even for banks.) |
-| R4 | Encrypted at rest | SQLite via SQLCipher; key held in Android Keystore via `flutter_secure_storage`. |
+| R4 | Encrypted at rest | SQLite3MultipleCiphers (via `package:sqlite3` hooks); key held in Android Keystore via `flutter_secure_storage`. |
 | R5 | Lock screen | Biometric/device-PIN unlock on open and after N seconds in background; `FLAG_SECURE` blocks screenshots and recents thumbnail. |
 | R6 | No analytics / crash SDKs | No Firebase, no Sentry. Dependency allow-list reviewed per release. |
 | R7 | Safe path only: no restricted or sensitive permissions (SMS, call log, notification access, accessibility, contacts), no referral links, nothing that triggers extra Play review or audits | Permission list reviewed per release (see 04 §6) |

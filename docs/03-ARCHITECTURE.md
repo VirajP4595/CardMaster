@@ -7,7 +7,7 @@
 | UI | Flutter 3.x, Material 3 | Already installed on your machine; single codebase |
 | State | `flutter_riverpod` (+ `riverpod_generator`) | Testable, no BuildContext coupling |
 | Navigation | `go_router` | Declarative, deep-linkable (widgets) |
-| DB | `drift` + `sqlcipher_flutter_libs` | Typed SQL, migrations, encrypted file |
+| DB | `drift` + `sqlite3` built with SQLite3MultipleCiphers (`hooks: user_defines: sqlite3: source: sqlite3mc`) | Typed SQL, migrations, encrypted file |
 | Key storage | `flutter_secure_storage` (Android Keystore) | DB key never in plain prefs |
 | App lock | `local_auth` | Biometric / device credential |
 | Screenshot block | `MainActivity` sets `FLAG_SECURE` (5 lines of Kotlin) | Avoid an extra plugin |
