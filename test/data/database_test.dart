@@ -99,7 +99,7 @@ void main() {
     final raw = s3.sqlite3.open(file.path);
     expect(() => raw.select('SELECT count(*) FROM sqlite_master'),
         throwsA(isA<s3.SqliteException>()));
-    raw.dispose();
+    raw.close();
     await dir.delete(recursive: true);
   });
 

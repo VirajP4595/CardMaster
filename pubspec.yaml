@@ -48,7 +48,7 @@ dependencies:
   intl: ^0.20.3
   shared_preferences: ^2.5.6
   receive_sharing_intent: ^1.9.0
-
+  file_picker: ^13.1.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -70,6 +70,31 @@ flutter:
   uses-material-design: true
   assets:
     - assets/catalog/
+  # Bundled so nothing is downloaded at runtime (no google_fonts package).
+  # Static weights cut from the OFL variable fonts; licences in assets/fonts.
+  fonts:
+    - family: Manrope
+      fonts:
+        - asset: assets/fonts/Manrope-400.ttf
+          weight: 400
+        - asset: assets/fonts/Manrope-500.ttf
+          weight: 500
+        - asset: assets/fonts/Manrope-600.ttf
+          weight: 600
+        - asset: assets/fonts/Manrope-700.ttf
+          weight: 700
+        - asset: assets/fonts/Manrope-800.ttf
+          weight: 800
+    - family: Unbounded
+      fonts:
+        - asset: assets/fonts/Unbounded-300.ttf
+          weight: 300
+        - asset: assets/fonts/Unbounded-500.ttf
+          weight: 500
+        - asset: assets/fonts/Unbounded-700.ttf
+          weight: 700
+        - asset: assets/fonts/Unbounded-800.ttf
+          weight: 800
 
   # To add assets to your application, add an assets section, like this:
   # assets:
