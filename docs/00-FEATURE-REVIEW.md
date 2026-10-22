@@ -67,3 +67,24 @@ Canvas: https://claude.ai/artifact/BvkVB6EfYGENbxdeNK5wpX (board numbers in brac
 §1 is roughly 3–4 months of evenings for one developer [Guessing]. Ship a smaller **1.0** first:
 cards + styled faces · fee-waiver progress · benefits + signed sync · best card · interest-free days · quick add (cards/UPI/cash) · share-SMS + clipboard · Money tab without budgets · due reminders · backup (manual + weekly) · lock/encryption · onboarding + Trust Center.
 Move to 1.0.x: budgets, multi-copy import, lost-card button, merchant memory.
+
+## 7. Build status (branch `build/v1.0`)
+
+**Built and tested** (92 automated tests; analysis clean; APK built by CI with the permission allow-list check):
+- Everything in §1 (1.0) plus, ahead of schedule: monthly budgets, lost-card button, merchant memory.
+- From 1.1: worth-it report, caps, reward points wallet (+ expiry reminders), photo card faces (blur burned in, encrypted), recurring expenses, full history, CSV export, SMS backup (XML) import, your own benefits on any card, Pro plumbing (Play Billing, 14-day trial, upgrade screen, coffee tips with custom tiers). **Pro gating is switched off** (`proGatingEnabled` in `lib/app/billing.dart`) until the products exist on Play.
+- From 1.2: statement PDF import (beta, generic parser), Quick Settings tile, home-screen widget, lounge tracker, travel mode.
+- From 1.3: card suggestions (no links), saved offers, EMI tracker.
+- Later list: card comparison, closing checklist.
+- Infrastructure: weekly automatic backup to Downloads, local reminders, signed benefits publishing (off until the key is created), release APKs on GitHub.
+
+**Not built**
+- Utilisation coach: needs card balances, which the app doesn't track (only spends you log).
+- Hindi / other languages, light theme, add-on/family cards.
+
+**Needs you**
+- Verify the sample benefit rates against each bank's MITC (`catalog/catalog.json`, then bump `version`).
+- Create the signing keys (APK: `ANDROID_KEYSTORE_*` secrets; benefits: `CATALOG_SIGNING_KEY` + public key in the app) — see README.
+- Re-enable "Read and write permissions" for GitHub Actions so releases publish again (Settings → Actions → General → Workflow permissions).
+- Play Console: create `pro_lifetime`, `coffee_*` and `tip_*` products, then set `proGatingEnabled = true`.
+- Test on a real phone: share-to-app, notifications, camera, tile and widget can only be checked on a device.

@@ -21,10 +21,14 @@ Built and covered by tests (`flutter test`, 45 tests):
 - Travel mode, card suggestions (no links), Quick Settings tile, home-screen widget, photo card faces (number blurred, encrypted)
 - Screens: onboarding, lock, Wallet, Card detail, Add card, Best card, Money, Quick add, Import review, Settings, Trust Center
 
-Not done yet (honest list):
-- **Not run on a real phone yet.** It's tested in Flutter's test environment and built by GitHub Actions; install the APK and report anything off.
-- Benefits data is **sample data** (`assets/catalog/catalog_v1.json`): every rate shows a "Verify" badge until checked against the bank's MITC.
-- Benefit updates are built (signed, published from `catalog/` by GitHub Actions) but **switched off until you create the signing key** (see below).
+Not done yet (honest list): see [`docs/00-FEATURE-REVIEW.md` §7](docs/00-FEATURE-REVIEW.md). In short:
+- **Not run on a real phone yet.** Tested in Flutter's test environment and built by GitHub Actions.
+- Benefits data is **sample data** (every rate shows "Verify" until checked).
+- Benefit updates and stable APK signing wait on keys only you should create (below).
+- Pro is built but **switched off** (everything free) until products exist on Google Play.
+- Not built: utilisation coach, Hindi, light theme, add-on cards.
+
+Third-party note: PDF text extraction uses PDFium via `pdfrx` (MIT); only local bytes are opened, never URLs.
 
 ## Build
 
