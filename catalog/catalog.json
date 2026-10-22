@@ -1,0 +1,77 @@
+{
+  "version": 1,
+  "generatedOn": "2026-10-22",
+  "note": "SAMPLE DATA. Every rate, cap and fee here must be verified against the bank's current MITC before release. lastVerified is null on purpose so the app shows 'Verify' badges.",
+  "banks": [
+    {"id": "axis", "name": "Axis Bank", "helpline": null},
+    {"id": "federal", "name": "Federal Bank", "helpline": null},
+    {"id": "hdfc", "name": "HDFC Bank", "helpline": null},
+    {"id": "sbi", "name": "SBI Card", "helpline": null},
+    {"id": "icici", "name": "ICICI Bank", "helpline": null}
+  ],
+  "products": [
+    {
+      "id": "axis_airtel", "bankId": "axis", "name": "Airtel Axis Bank",
+      "tagline": "Cashback on Airtel, bills, food delivery",
+      "network": "MASTERCARD", "annualFeePaise": 50000, "waiverSpendPaise": 20000000,
+      "face": {"finish": "matte", "base": "#9E1233", "ink": "#FFFFFF", "chip": "gold"},
+      "benefits": [
+        {"id": "axis_airtel_telecom", "category": "TELECOM", "kind": "REWARD", "title": "Airtel bills", "rateBps": 2500, "monthlyCapPaise": 25000, "channel": "Airtel Thanks app"},
+        {"id": "axis_airtel_util", "category": "UTILITIES", "kind": "REWARD", "title": "Electricity, gas, water", "rateBps": 1000, "monthlyCapPaise": 25000, "channel": "Airtel Thanks app"},
+        {"id": "axis_airtel_food", "category": "FOOD_DELIVERY", "kind": "REWARD", "title": "Food delivery", "rateBps": 1000, "monthlyCapPaise": 50000},
+        {"id": "axis_airtel_fuel", "category": "FUEL", "kind": "REWARD", "title": "Fuel", "rateBps": 0, "conditions": "Excluded from rewards"},
+        {"id": "axis_airtel_rent", "category": "RENT", "kind": "REWARD", "title": "Rent", "rateBps": 0, "conditions": "Excluded from rewards"},
+        {"id": "axis_airtel_other", "category": "OTHER", "kind": "REWARD", "title": "Everything else", "rateBps": 100}
+      ]
+    },
+    {
+      "id": "federal_scapia", "bankId": "federal", "name": "Scapia Federal Bank",
+      "tagline": "Zero forex markup, travel rewards",
+      "network": "VISA", "annualFeePaise": 0,
+      "face": {"finish": "gloss", "base": "#0F4A4B", "ink": "#FFFFFF", "chip": "gold"},
+      "benefits": [
+        {"id": "scapia_forex", "category": "FOREIGN", "kind": "FOREX_MARKUP", "title": "Zero forex markup", "rateBps": 0},
+        {"id": "scapia_foreign", "category": "FOREIGN", "kind": "REWARD", "title": "International spends", "rateBps": 200},
+        {"id": "scapia_util", "category": "UTILITIES", "kind": "REWARD", "title": "Utilities", "rateBps": 0, "conditions": "Excluded from rewards"},
+        {"id": "scapia_fuel", "category": "FUEL", "kind": "REWARD", "title": "Fuel", "rateBps": 0, "conditions": "Excluded from rewards"},
+        {"id": "scapia_rent", "category": "RENT", "kind": "REWARD", "title": "Rent", "rateBps": 0, "conditions": "Excluded from rewards"},
+        {"id": "scapia_other", "category": "OTHER", "kind": "REWARD", "title": "Everything else", "rateBps": 200}
+      ]
+    },
+    {
+      "id": "hdfc_tataneu_infinity", "bankId": "hdfc", "name": "Tata Neu Infinity HDFC",
+      "tagline": "NeuCoins, works on UPI (RuPay)",
+      "network": "RUPAY", "annualFeePaise": 149900, "waiverSpendPaise": 30000000,
+      "face": {"finish": "pattern", "base": "#141418", "ink": "#E8E2D0", "chip": "silver"},
+      "benefits": [
+        {"id": "neu_inf_other", "category": "OTHER", "kind": "REWARD", "title": "Everything else", "rateBps": 150},
+        {"id": "neu_inf_fuel", "category": "FUEL", "kind": "REWARD", "title": "Fuel", "rateBps": 0, "conditions": "Excluded from rewards"},
+        {"id": "neu_inf_forex", "category": "FOREIGN", "kind": "FOREX_MARKUP", "title": "Forex markup", "rateBps": 200}
+      ]
+    },
+    {
+      "id": "sbi_cashback", "bankId": "sbi", "name": "SBI Cashback",
+      "tagline": "Cashback on online spends",
+      "network": "VISA", "annualFeePaise": 99900, "waiverSpendPaise": 200000000,
+      "face": {"finish": "metal", "base": "#8E939C", "ink": "#1A1C22", "chip": "gold"},
+      "benefits": [
+        {"id": "sbi_cb_shopping", "category": "SHOPPING", "kind": "REWARD", "title": "Online shopping", "rateBps": 500, "conditions": "Online only"},
+        {"id": "sbi_cb_food", "category": "FOOD_DELIVERY", "kind": "REWARD", "title": "Food delivery (online)", "rateBps": 500},
+        {"id": "sbi_cb_fuel", "category": "FUEL", "kind": "REWARD", "title": "Fuel", "rateBps": 0, "conditions": "Excluded from rewards"},
+        {"id": "sbi_cb_rent", "category": "RENT", "kind": "REWARD", "title": "Rent", "rateBps": 0, "conditions": "Excluded from rewards"},
+        {"id": "sbi_cb_other", "category": "OTHER", "kind": "REWARD", "title": "Offline spends", "rateBps": 100}
+      ]
+    },
+    {
+      "id": "icici_amazonpay", "bankId": "icici", "name": "Amazon Pay ICICI",
+      "tagline": "Lifetime free, Amazon cashback",
+      "network": "VISA", "annualFeePaise": 0,
+      "face": {"finish": "matte", "base": "#1B2A3A", "ink": "#FFFFFF", "chip": "gold"},
+      "benefits": [
+        {"id": "apay_shopping", "category": "SHOPPING", "kind": "REWARD", "title": "Amazon (Prime members)", "rateBps": 500, "channel": "Amazon"},
+        {"id": "apay_fuel", "category": "FUEL", "kind": "REWARD", "title": "Fuel", "rateBps": 0, "conditions": "Excluded from rewards"},
+        {"id": "apay_other", "category": "OTHER", "kind": "REWARD", "title": "Everything else", "rateBps": 100}
+      ]
+    }
+  ]
+}

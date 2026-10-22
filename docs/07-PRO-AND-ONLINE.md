@@ -18,6 +18,8 @@ Why not full online (accounts + server DB)? [Likely]
 
 ## 2. Catalog sync (the main reason to go online)
 
+**As built:** source `catalog/catalog.json` in the repo → `.github/workflows/catalog.yml` validates and signs it (`tool/sign_catalog.dart`, key in secret `CATALOG_SIGNING_KEY`) → force-pushes `manifest.json` + `vN.json` to the `catalog-dist` branch → app downloads from `raw.githubusercontent.com/VirajP4595/CardMaster/catalog-dist/catalog/`. Generate the key pair with `dart run tool/catalog_keygen.dart`; the public half goes in `CatalogConfig.current`. Until then sync is off.
+
 ```
 CDN (GitHub Pages / Cloudflare Pages, free)
  ├── catalog/manifest.json      {"latest": 14, "minApp": "1.2.0", "sha256": "...", "sig": "..."}

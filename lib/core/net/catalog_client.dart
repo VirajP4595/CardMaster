@@ -18,9 +18,14 @@ class CatalogConfig {
 
   bool get enabled => baseUrl != null && publicKeyBase64.isNotEmpty;
 
-  /// Not configured yet: no catalog host has been set up. Sync is skipped and
-  /// the bundled catalog is used. Fill these in when the host exists.
-  static const current = CatalogConfig(baseUrl: null, publicKeyBase64: '');
+  /// Published by .github/workflows/catalog.yml. Sync stays off (the
+  /// bundled catalog is used) until the public key from
+  /// tool/catalog_keygen.dart is pasted here.
+  static final current = CatalogConfig(
+    baseUrl: Uri.parse(
+        'https://raw.githubusercontent.com/VirajP4595/CardMaster/catalog-dist/catalog/'),
+    publicKeyBase64: '',
+  );
 }
 
 /// One row of the in-app network log shown in the Trust Center.

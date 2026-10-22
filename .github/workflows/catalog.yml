@@ -1,0 +1,45 @@
+name: Publish benefits catalog
+
+# Signs catalog/catalog.json and publishes it to the `catalog-dist` branch,
+# served from raw.githubusercontent.com. The app only downloads it and
+# rejects anything not signed with CATALOG_SIGNING_KEY. Bump "version" in
+# catalog.json for each update.
+
+on:
+  push:
+    branches: [main, build/v1.0]
+    paths: [catalog/**]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          flutter-version: '3.47.7'
+          cache: true
+      - run: flutter --disable-analytics && flutter pub get
+      - name: Sign
+        env:
+          CATALOG_SIGNING_KEY: ${{ secrets.CATALOG_SIGNING_KEY }}
+        run: |
+          if [ -z "$CATALOG_SIGNING_KEY" ]; then
+            echo "::warning::CATALOG_SIGNING_KEY secret not set; catalog not published"
+            exit 0
+          fi
+          dart run tool/sign_catalog.dart dist/catalog
+      - name: Publish to catalog-dist
+        if: hashFiles('dist/catalog/manifest.json') != ''
+        run: |
+          cd dist
+          git init -q -b catalog-dist
+          git add catalog
+          git -c user.name="github-actions" -c user.email="actions@github.com" \
+            commit -q -m "Catalog $(jq .latest catalog/manifest.json)"
+          git push -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" catalog-dist

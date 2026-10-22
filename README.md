@@ -21,7 +21,7 @@ Built and covered by tests (`flutter test`, 45 tests):
 Not done yet (honest list):
 - **Not run on a real phone yet.** It's tested in Flutter's test environment and built by GitHub Actions; install the APK and report anything off.
 - Benefits data is **sample data** (`assets/catalog/catalog_v1.json`): every rate shows a "Verify" badge until checked against the bank's MITC.
-- No benefits server yet, so updates are switched off (`CatalogConfig.current` in `lib/core/net/catalog_client.dart`).
+- Benefit updates are built (signed, published from `catalog/` by GitHub Actions) but **switched off until you create the signing key** (see below).
 
 ## Build
 
@@ -42,3 +42,9 @@ base64 -w0 cardmaster.jks   # paste as ANDROID_KEYSTORE_BASE64
 # the password you chose      -> ANDROID_KEYSTORE_PASSWORD
 ```
 Keep `cardmaster.jks` and the password safe and offline. Without these secrets, builds are signed with a throwaway key and each new build must be installed fresh (uninstalling deletes app data).
+
+### Turning on benefit updates
+```bash
+dart run tool/catalog_keygen.dart
+```
+Put the PRIVATE line in repo secret `CATALOG_SIGNING_KEY`; paste the PUBLIC line into `publicKeyBase64` in `CatalogConfig.current` (`lib/core/net/catalog_client.dart`). Then edit `catalog/catalog.json`, bump `"version"`, and push: the workflow signs and publishes it, and phones pick it up within a day.
