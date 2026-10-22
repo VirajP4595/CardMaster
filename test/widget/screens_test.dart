@@ -302,6 +302,27 @@ Rs.900 spent on card XX5566 at UNKNOWN SHOP on 20-10-26.
     await _close(t, db2);
   });
 
+  testWidgets('best card suggests a better card and has travel mode', (t) async {
+    final db = await t.runAsync(_seed);
+    // ₹40,000 on online shopping by cash in the last 90 days: SBI Cashback
+    // (5% on shopping, sample rate) would beat the cards owned.
+    await t.runAsync(() => db!.addSpend(Spend(
+          id: 'shop',
+          amountPaise: 4000000,
+          category: SpendCategory.shopping,
+          paymentKind: PaymentKind.cash,
+          spentOn: DateTime.now().subtract(const Duration(days: 5)),
+        )));
+    await _pump(t, db!, const BestCardScreen());
+    expect(find.text('A card that fits your spending'), findsOneWidget);
+    expect(find.text('SBI Cashback'), findsOneWidget);
+
+    await t.tap(find.text('Travel mode'));
+    await _settle(t);
+    expect(find.textContaining('forex markup'), findsWidgets);
+    await _close(t, db);
+  });
+
   testWidgets('trust center lists costs and an empty network log', (t) async {
     final db = await t.runAsync(_seed);
     await _pump(t, db!, const TrustScreen());

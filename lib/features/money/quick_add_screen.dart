@@ -71,6 +71,9 @@ class _QuickAddScreenState extends ConsumerState<QuickAddScreen> {
   @override
   void initState() {
     super.initState();
+    if (ref.read(settingProvider(SettingKeys.travelMode)).value == 'true') {
+      _category = SpendCategory.foreign;
+    }
     final p = widget.prefill;
     if (p != null) {
       if (p.amountPaise != null) _digits = '${p.amountPaise! ~/ 100}';

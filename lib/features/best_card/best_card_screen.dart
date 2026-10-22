@@ -20,7 +20,7 @@ class BestCardScreen extends ConsumerStatefulWidget {
 }
 
 class _BestCardScreenState extends ConsumerState<BestCardScreen> {
-  SpendCategory _category = SpendCategory.utilities;
+  SpendCategory? _picked;
   int _amountPaise = 240000;
   bool _upi = false;
 
@@ -41,9 +41,13 @@ class _BestCardScreenState extends ConsumerState<BestCardScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final travel = settingOn(ref, SettingKeys.travelMode, fallback: false);
+    final category = _picked ??
+        (travel ? SpendCategory.foreign : SpendCategory.utilities);
     final cards = ref.watch(cardsWithBenefitsProvider);
+    final suggestions = ref.watch(suggestionsProvider);
     final results = recommend(
-      Purchase(category: _category, amountPaise: _amountPaise, viaUpi: _upi),
+      Purchase(category: category, amountPaise: _amountPaise, viaUpi: _upi),
       cards,
     );
     final today = DateTime.now();
@@ -57,13 +61,29 @@ class _BestCardScreenState extends ConsumerState<BestCardScreen> {
             const Caption('Before you pay'),
             const Text('Which card should I use?',
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.w800)),
-            const SizedBox(height: 16),
+            const SizedBox(height: 8),
+            SwitchListTile(
+              contentPadding: EdgeInsets.zero,
+              secondary: const Icon(Icons.flight_takeoff_outlined),
+              title: const Text('Travel mode',
+                  style: TextStyle(fontWeight: FontWeight.w700)),
+              subtitle: const Text(
+                  'Abroad? Rank cards by their true cost: rewards minus forex markup.'),
+              value: travel,
+              onChanged: (v) async {
+                await ref
+                    .read(databaseProvider)
+                    .setValue(SettingKeys.travelMode, '$v');
+                setState(() => _picked = null);
+              },
+            ),
+            const SizedBox(height: 8),
             Wrap(spacing: 8, runSpacing: 8, children: [
               for (final c in _categories)
                 ChoiceChip(
                   label: Text(c.label),
-                  selected: c == _category,
-                  onSelected: (_) => setState(() => _category = c),
+                  selected: c == category,
+                  onSelected: (_) => setState(() => _picked = c),
                 ),
             ]),
             const SizedBox(height: 14),
@@ -110,6 +130,49 @@ class _BestCardScreenState extends ConsumerState<BestCardScreen> {
                 ),
               const Caption(
                   'Uses your cards\' benefits (some are sample rates until verified) and what you\'ve logged this month for caps.'),
+              if (suggestions.isNotEmpty) ...[
+                const SizedBox(height: 24),
+                const SectionTitle('A card that fits your spending'),
+                for (final sg in suggestions.take(2))
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 8),
+                    child: Tile(
+                      border: const Color(0xFF3A3E52),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(children: [
+                            Expanded(
+                              child: Text(sg.name,
+                                  style: const TextStyle(
+                                      fontWeight: FontWeight.w700)),
+                            ),
+                            Pill.accent('Suggestion'),
+                          ]),
+                          const SizedBox(height: 6),
+                          Text.rich(TextSpan(children: [
+                            const TextSpan(
+                                text:
+                                    'Based on your last 90 days (worked out on this phone), it would earn about '),
+                            TextSpan(
+                                text:
+                                    '${formatInr(sg.extraPerYearPaise)} more a year',
+                                style: const TextStyle(
+                                    color: AppColors.earned,
+                                    fontWeight: FontWeight.w800)),
+                            TextSpan(
+                                text: sg.annualFeePaise == 0
+                                    ? '.'
+                                    : ' after its ${formatInr(sg.annualFeePaise)} fee.'),
+                          ])),
+                          const SizedBox(height: 4),
+                          const Caption(
+                              'Ranked only by what you\'d earn, using sample rates. No ads, no paid placements, no links.'),
+                        ],
+                      ),
+                    ),
+                  ),
+              ],
               const SizedBox(height: 24),
               const SectionTitle('Pay today with…'),
               const Caption('Most interest-free days for a purchase today'),

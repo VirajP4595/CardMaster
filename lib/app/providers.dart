@@ -6,6 +6,7 @@ import '../domain/fee_waiver.dart';
 import '../domain/models.dart';
 import '../domain/recommender.dart';
 import '../domain/recurring.dart';
+import '../domain/suggestions.dart';
 
 /// Overridden in main() with the opened encrypted database.
 final databaseProvider = Provider<AppDatabase>(
@@ -201,6 +202,7 @@ abstract final class SettingKeys {
   static const lastClipboardHash = 'last_clipboard_hash';
   static const remindersEnabled = 'reminders_enabled';
   static const autoBackup = 'auto_backup';
+  static const travelMode = 'travel_mode';
 }
 
 final settingProvider = StreamProvider.family<String?, String>(
@@ -211,3 +213,38 @@ bool settingOn(WidgetRef ref, String key, {bool fallback = true}) {
   final v = ref.watch(settingProvider(key)).value;
   return v == null ? fallback : v == 'true';
 }
+
+/// "A card that fits your spending" (docs/06 §1.2): catalog cards the user
+/// doesn't have, ranked only by what they'd gain. No referral links.
+final suggestionsProvider = Provider<List<CardSuggestion>>((ref) {
+  final mine = ref.watch(cardsWithBenefitsProvider);
+  if (mine.isEmpty) return const [];
+  final catalog = ref.watch(catalogProvider);
+  final spends = ref.watch(spendsProvider).value ?? const <Spend>[];
+  return suggestCards(
+    mine: mine,
+    candidates: [
+      for (final p in catalog.products)
+        (
+          id: p.id,
+          name: p.name,
+          fee: p.annualFeePaise,
+          card: CardWithBenefits(
+            card: UserCard(
+              id: 'suggest:${p.id}',
+              productId: p.id,
+              bankName: catalog.bank(p.bankId)?.name ?? '',
+              name: p.name,
+              network: p.network,
+              creditLimitPaise: 0,
+              statementDay: 1,
+              dueDay: 20,
+            ),
+            benefits: p.benefits,
+          ),
+        ),
+    ],
+    spends: spends,
+    now: DateTime.now(),
+  );
+});
