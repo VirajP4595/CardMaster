@@ -57,7 +57,7 @@ class TrustScreen extends ConsumerWidget {
       body: ListView(
         padding: const EdgeInsets.fromLTRB(24, 8, 24, 32),
         children: [
-          const Tile(
+          Tile(
             color: AppColors.earnedContainer,
             border: AppColors.earnedBorder,
             child: Column(
@@ -117,7 +117,7 @@ class TrustScreen extends ConsumerWidget {
                       style: const TextStyle(fontWeight: FontWeight.w700)),
                   subtitle: Text(p.$2),
                   trailing: Text(p.$3,
-                      style: const TextStyle(
+                      style: TextStyle(
                           fontSize: 11, color: AppColors.textSecondary)),
                 ),
             ]),
@@ -147,7 +147,7 @@ class TrustScreen extends ConsumerWidget {
                 for (final e in log)
                   ListTile(
                     dense: true,
-                    leading: const Icon(Icons.download_outlined,
+                    leading: Icon(Icons.download_outlined,
                         color: AppColors.earned, size: 18),
                     title: Text('${e.method} ${Uri.parse(e.url).host}${Uri.parse(e.url).path}',
                         style: const TextStyle(
@@ -161,7 +161,7 @@ class TrustScreen extends ConsumerWidget {
           const Caption(
               'Only downloads. Nothing is uploaded. Purchases (when available) are handled by the Google Play app, not us.'),
           const SizedBox(height: 22),
-          const Tile(
+          Tile(
             color: AppColors.primaryContainerLow,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -187,7 +187,7 @@ class TrustScreen extends ConsumerWidget {
           const SizedBox(width: 8),
           Expanded(
             child: Text(text,
-                style: const TextStyle(
+                style: TextStyle(
                     fontSize: 12, color: AppColors.textTertiary, height: 1.45)),
           ),
         ],

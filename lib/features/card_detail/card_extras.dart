@@ -29,7 +29,7 @@ class LoungeTile extends ConsumerWidget {
       child: Tile(
         onTap: () => _editRule(context, ref, rule),
         child: Row(children: [
-          const Icon(Icons.weekend_outlined,
+          Icon(Icons.weekend_outlined,
               color: AppColors.onPrimaryContainer),
           const SizedBox(width: 12),
           Expanded(

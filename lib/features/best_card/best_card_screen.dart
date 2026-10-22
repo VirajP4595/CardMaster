@@ -126,7 +126,7 @@ class _BestCardScreenState extends ConsumerState<BestCardScreen> {
                   padding: const EdgeInsets.only(bottom: 8),
                   child: OfferTile(offer: o),
                 ),
-              const Text('RANKED FOR YOU',
+              Text('RANKED FOR YOU',
                   style: TextStyle(
                       fontSize: 12,
                       color: AppColors.textSecondary,
@@ -167,7 +167,7 @@ class _BestCardScreenState extends ConsumerState<BestCardScreen> {
                             TextSpan(
                                 text:
                                     '${formatInr(sg.extraPerYearPaise)} more a year',
-                                style: const TextStyle(
+                                style: TextStyle(
                                     color: AppColors.earned,
                                     fontWeight: FontWeight.w800)),
                             TextSpan(
@@ -268,7 +268,7 @@ class _ResultRow extends StatelessWidget {
           SizedBox(
             width: 24,
             child: Text(r.eligible ? '$rank' : '–',
-                style: const TextStyle(
+                style: TextStyle(
                     fontWeight: FontWeight.w800,
                     color: AppColors.textSecondary)),
           ),
@@ -288,11 +288,11 @@ class _ResultRow extends StatelessWidget {
                 Text(r.card.displayName,
                     style: const TextStyle(fontWeight: FontWeight.w700)),
                 Text(r.reason,
-                    style: const TextStyle(
+                    style: TextStyle(
                         fontSize: 12, color: AppColors.textTertiary)),
                 if (r.warning != null)
                   Text(r.warning!,
-                      style: const TextStyle(
+                      style: TextStyle(
                           fontSize: 12, color: AppColors.attention)),
               ],
             ),
@@ -307,7 +307,7 @@ class _ResultRow extends StatelessWidget {
                 r.eligible && amount > 0
                     ? '${(r.netPaise / amount * 100).toStringAsFixed(1)}%'
                     : 'ineligible',
-                style: const TextStyle(
+                style: TextStyle(
                     fontSize: 11, color: AppColors.textSecondary)),
           ]),
         ]),

@@ -34,7 +34,7 @@ class SettingsScreen extends ConsumerWidget {
         SwitchListTile(
           title: Text(title, style: const TextStyle(fontWeight: FontWeight.w600)),
           subtitle: Text(subtitle,
-              style: const TextStyle(color: AppColors.textSecondary)),
+              style: TextStyle(color: AppColors.textSecondary)),
           value: settingOn(ref, key, fallback: fallback),
           onChanged: (v) async {
             await db.setValue(key, '$v');
@@ -54,7 +54,7 @@ class SettingsScreen extends ConsumerWidget {
               color: AppColors.earnedContainer,
               border: AppColors.earnedBorder,
               onTap: () => context.push('/trust'),
-              child: const Row(
+              child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Icon(Icons.verified_user_outlined, color: AppColors.earned),
@@ -84,7 +84,7 @@ class SettingsScreen extends ConsumerWidget {
             Tile(
               onTap: () => context.push('/pro'),
               child: Row(children: [
-                const Icon(Icons.workspace_premium_outlined,
+                Icon(Icons.workspace_premium_outlined,
                     color: AppColors.attention),
                 const SizedBox(width: 12),
                 const Expanded(
@@ -92,13 +92,30 @@ class SettingsScreen extends ConsumerWidget {
                       style: TextStyle(fontWeight: FontWeight.w700)),
                 ),
                 if (settingOn(ref, SettingKeys.supporter, fallback: false))
-                  const Padding(
+                  Padding(
                     padding: EdgeInsets.only(right: 6),
                     child: Text('☆',
                         style: TextStyle(color: AppColors.attention)),
                   ),
                 const Icon(Icons.chevron_right),
               ]),
+            ),
+            const _Header('Appearance'),
+            Tile(
+              child: SegmentedButton<String>(
+                showSelectedIcon: false,
+                segments: const [
+                  ButtonSegment(value: 'dark', label: Text('Dark')),
+                  ButtonSegment(value: 'light', label: Text('Light')),
+                  ButtonSegment(value: 'system', label: Text('Phone setting')),
+                ],
+                selected: {
+                  ref.watch(settingProvider(SettingKeys.themeMode)).value ??
+                      'dark'
+                },
+                onSelectionChanged: (v) =>
+                    db.setValue(SettingKeys.themeMode, v.single),
+              ),
             ),
             const _Header('Security'),
             Tile(
@@ -117,7 +134,7 @@ class SettingsScreen extends ConsumerWidget {
               child: SwitchListTile(
                 title: const Text('Bill, fee-waiver and backup reminders',
                     style: TextStyle(fontWeight: FontWeight.w600)),
-                subtitle: const Text(
+                subtitle: Text(
                     '3 days and 1 day before each bill is due. Scheduled on this phone.',
                     style: TextStyle(color: AppColors.textSecondary)),
                 value: settingOn(ref, SettingKeys.remindersEnabled,
@@ -176,7 +193,7 @@ class SettingsScreen extends ConsumerWidget {
                     style: const TextStyle(fontWeight: FontWeight.w600),
                   ),
                   const SizedBox(height: 4),
-                  const Caption(
+                  Caption(
                       'A passphrase-protected file you save wherever you like. It\'s the only way to move to a new phone or recover a lost one. We can\'t recover it for you.',
                       color: AppColors.textTertiary),
                   const SizedBox(height: 4),
@@ -184,7 +201,7 @@ class SettingsScreen extends ConsumerWidget {
                     contentPadding: EdgeInsets.zero,
                     title: const Text('Weekly automatic backup',
                         style: TextStyle(fontWeight: FontWeight.w600)),
-                    subtitle: const Text(
+                    subtitle: Text(
                         'When you open the app, at most once a week. Saved to Downloads/Card Master on this phone (Android 10+); keeps the last 4.',
                         style: TextStyle(color: AppColors.textSecondary)),
                     value: settingOn(ref, SettingKeys.autoBackup,
@@ -371,7 +388,7 @@ class _Header extends StatelessWidget {
   Widget build(BuildContext context) => Padding(
         padding: const EdgeInsets.only(top: 22, bottom: 8),
         child: Text(text.toUpperCase(),
-            style: const TextStyle(
+            style: TextStyle(
                 fontSize: 12,
                 fontWeight: FontWeight.w700,
                 color: AppColors.textSecondary,

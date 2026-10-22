@@ -242,6 +242,7 @@ abstract final class SettingKeys {
   static const proPurchased = 'pro_purchased';
   static const supporter = 'supporter';
   static const trialStart = 'trial_start';
+  static const themeMode = 'theme_mode';
 }
 
 final settingProvider = StreamProvider.family<String?, String>(

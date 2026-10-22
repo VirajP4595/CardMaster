@@ -111,7 +111,7 @@ class _PhotoFaceScreenState extends ConsumerState<PhotoFaceScreen> {
     if (_error != null) {
       return Padding(
         padding: const EdgeInsets.all(24),
-        child: Text(_error!, style: const TextStyle(color: AppColors.dangerText)),
+        child: Text(_error!, style: TextStyle(color: AppColors.dangerText)),
       );
     }
     final c = _camera;
@@ -161,7 +161,7 @@ class _PhotoFaceScreenState extends ConsumerState<PhotoFaceScreen> {
     return ListView(
       padding: const EdgeInsets.all(20),
       children: [
-        const Text(
+        Text(
             'Drag the box over the card number. Add boxes for your name or expiry if you like. The blur is permanent.',
             style: TextStyle(color: AppColors.textTertiary)),
         const SizedBox(height: 16),
@@ -227,7 +227,7 @@ class _PhotoFaceScreenState extends ConsumerState<PhotoFaceScreen> {
           ),
           alignment: Alignment.center,
           child: Stack(children: [
-            const Center(
+            Center(
               child: Text('BLURRED',
                   style: TextStyle(
                       fontSize: 11,
@@ -249,7 +249,7 @@ class _PhotoFaceScreenState extends ConsumerState<PhotoFaceScreen> {
                   width: 22,
                   height: 22,
                   color: AppColors.attention,
-                  child: const Icon(Icons.open_in_full,
+                  child: Icon(Icons.open_in_full,
                       size: 14, color: AppColors.background),
                 ),
               ),

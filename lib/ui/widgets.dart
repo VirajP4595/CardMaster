@@ -9,14 +9,14 @@ class Tile extends StatelessWidget {
   const Tile({
     super.key,
     required this.child,
-    this.color = AppColors.surface,
+    this.color,
     this.padding = const EdgeInsets.all(16),
     this.border,
     this.onTap,
   });
 
   final Widget child;
-  final Color color;
+  final Color? color;
   final EdgeInsets padding;
   final Color? border;
   final VoidCallback? onTap;
@@ -25,7 +25,7 @@ class Tile extends StatelessWidget {
   Widget build(BuildContext context) {
     final box = Ink(
       decoration: BoxDecoration(
-        color: color,
+        color: color ?? AppColors.surface,
         borderRadius: BorderRadius.circular(18),
         border: border == null ? null : Border.all(color: border!),
       ),
@@ -64,13 +64,14 @@ class SectionTitle extends StatelessWidget {
 }
 
 class Caption extends StatelessWidget {
-  const Caption(this.text, {super.key, this.color = AppColors.textSecondary});
+  const Caption(this.text, {super.key, this.color});
   final String text;
-  final Color color;
+  final Color? color;
 
   @override
   Widget build(BuildContext context) =>
-      Text(text, style: TextStyle(fontSize: 12, color: color, height: 1.4));
+      Text(text, style: TextStyle(
+          fontSize: 12, color: color ?? AppColors.textSecondary, height: 1.4));
 }
 
 /// Coloured status pill: "Verify · 7 mo old", "Cap full", …
@@ -102,9 +103,9 @@ class Pill extends StatelessWidget {
 
 /// Horizontal progress bar with a track.
 class Bar extends StatelessWidget {
-  const Bar({super.key, required this.value, this.color = AppColors.primary});
+  const Bar({super.key, required this.value, this.color});
   final double value;
-  final Color color;
+  final Color? color;
 
   @override
   Widget build(BuildContext context) => ClipRRect(
@@ -113,7 +114,7 @@ class Bar extends StatelessWidget {
           value: value.clamp(0, 1),
           minHeight: 8,
           backgroundColor: AppColors.track,
-          color: color,
+          color: color ?? AppColors.primary,
         ),
       );
 }
@@ -125,13 +126,13 @@ class ProgressRing extends StatelessWidget {
     required this.value,
     this.size = 56,
     this.stroke = 6,
-    this.color = AppColors.attention,
+    this.color,
   });
 
   final double value;
   final double size;
   final double stroke;
-  final Color color;
+  final Color? color;
 
   @override
   Widget build(BuildContext context) => Semantics(
@@ -140,7 +141,8 @@ class ProgressRing extends StatelessWidget {
           width: size,
           height: size,
           child: CustomPaint(
-            painter: _RingPainter(value.clamp(0, 1), stroke, color),
+            painter: _RingPainter(value.clamp(0, 1), stroke,
+                color ?? AppColors.attention, AppColors.track),
             child: Center(
               child: Text('${(value * 100).round()}%',
                   style: TextStyle(
@@ -152,17 +154,18 @@ class ProgressRing extends StatelessWidget {
 }
 
 class _RingPainter extends CustomPainter {
-  _RingPainter(this.value, this.stroke, this.color);
+  _RingPainter(this.value, this.stroke, this.color, this.track);
   final double value;
   final double stroke;
   final Color color;
+  final Color track;
 
   @override
   void paint(Canvas canvas, Size size) {
     final rect = Offset.zero & size;
     final r = rect.deflate(stroke / 2);
-    final track = Paint()
-      ..color = AppColors.track
+    final trackPaint = Paint()
+      ..color = track
       ..style = PaintingStyle.stroke
       ..strokeWidth = stroke;
     final arc = Paint()
@@ -171,26 +174,26 @@ class _RingPainter extends CustomPainter {
       ..strokeCap = StrokeCap.round
       ..strokeWidth = stroke;
     canvas
-      ..drawArc(r, 0, math.pi * 2, false, track)
+      ..drawArc(r, 0, math.pi * 2, false, trackPaint)
       ..drawArc(r, -math.pi / 2, math.pi * 2 * value, false, arc);
   }
 
   @override
   bool shouldRepaint(_RingPainter old) =>
-      old.value != value || old.color != color;
+      old.value != value || old.color != color || old.track != track;
 }
 
 /// The Card Master mark: two fanned cards and a gold spark (Brand board).
 class BrandMark extends StatelessWidget {
-  const BrandMark({super.key, this.size = 72, this.cutout = AppColors.background});
+  const BrandMark({super.key, this.size = 72, this.cutout});
   final double size;
-  final Color cutout;
+  final Color? cutout;
 
   @override
   Widget build(BuildContext context) => SizedBox(
         width: size,
         height: size,
-        child: CustomPaint(painter: _MarkPainter(cutout)),
+        child: CustomPaint(painter: _MarkPainter(cutout ?? AppColors.background)),
       );
 }
 

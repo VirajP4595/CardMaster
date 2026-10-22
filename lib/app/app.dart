@@ -14,21 +14,22 @@ final reminderSyncProvider = Provider<void>((ref) {
       ref.watch(settingProvider(SettingKeys.remindersEnabled)).value == 'true';
   final cards = ref.watch(cardsProvider).value;
   final spends = ref.watch(spendsProvider).value;
-  final lastBackup =
-      ref.watch(settingProvider(SettingKeys.lastBackupAt)).value;
+  final lastBackup = ref.watch(settingProvider(SettingKeys.lastBackupAt)).value;
   final points = ref.watch(pointsProvider).value ?? const [];
   if (cards == null || spends == null) return;
   if (!enabled) {
     RemindersService.instance.cancelAll();
     return;
   }
-  RemindersService.instance.reschedule(planReminders(
-    cards: cards,
-    spends: spends,
-    now: DateTime.now(),
-    lastBackup: lastBackup == null ? null : DateTime.parse(lastBackup),
-    points: points,
-  ));
+  RemindersService.instance.reschedule(
+    planReminders(
+      cards: cards,
+      spends: spends,
+      now: DateTime.now(),
+      lastBackup: lastBackup == null ? null : DateTime.parse(lastBackup),
+      points: points,
+    ),
+  );
 });
 
 class CardMasterApp extends ConsumerWidget {
@@ -37,14 +38,26 @@ class CardMasterApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     ref.watch(reminderSyncProvider);
+    final mode = switch (ref
+        .watch(settingProvider(SettingKeys.themeMode))
+        .value) {
+      'light' => ThemeMode.light,
+      'system' => ThemeMode.system,
+      _ => ThemeMode.dark,
+    };
     return MaterialApp.router(
       title: 'Card Master',
       debugShowCheckedModeBanner: false,
-      theme: buildTheme(),
-      darkTheme: buildTheme(),
-      themeMode: ThemeMode.dark,
+      theme: buildTheme(Brightness.light),
+      darkTheme: buildTheme(Brightness.dark),
+      themeMode: mode,
+      // Screens read AppColors directly, so the switch has to be instant.
+      themeAnimationDuration: Duration.zero,
       routerConfig: ref.watch(routerProvider),
-      builder: (context, child) => LockGate(child: child ?? const SizedBox()),
+      builder: (context, child) {
+        syncPalette(context);
+        return LockGate(child: child ?? const SizedBox());
+      },
     );
   }
 }

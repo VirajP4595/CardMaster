@@ -53,7 +53,7 @@ class WorthScreen extends ConsumerWidget {
                 if (note != null)
                   TextSpan(
                       text: '  $note',
-                      style: const TextStyle(
+                      style: TextStyle(
                           color: AppColors.textSecondary, fontSize: 12)),
               ])),
             ),
@@ -92,14 +92,14 @@ class WorthScreen extends ConsumerWidget {
                 decoration: BoxDecoration(
                     color: fg, borderRadius: BorderRadius.circular(14)),
                 child: Text(label,
-                    style: const TextStyle(
+                    style: TextStyle(
                         fontWeight: FontWeight.w800,
                         color: AppColors.background)),
               ),
             ]),
           ),
           const SizedBox(height: 8),
-          Text(line, style: const TextStyle(color: AppColors.textTertiary)),
+          Text(line, style: TextStyle(color: AppColors.textTertiary)),
           const SizedBox(height: 14),
           Tile(
             child: Column(children: [

@@ -103,7 +103,7 @@ class _LockGateState extends ConsumerState<LockGate> {
                   const SizedBox(height: 18),
                   const StackedWordmark(),
                   const SizedBox(height: 10),
-                  const Text(
+                  Text(
                     'Your cards, their perks, and the best card for every spend.',
                     textAlign: TextAlign.center,
                     style: TextStyle(color: AppColors.textSecondary),
@@ -124,7 +124,7 @@ class _LockGateState extends ConsumerState<LockGate> {
                               ? AppColors.textPrimary
                               : AppColors.dangerText)),
                   const SizedBox(height: 28),
-                  const Row(
+                  Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Icon(Icons.verified_user_outlined,

@@ -69,14 +69,14 @@ class _ProScreenState extends ConsumerState<ProScreen> {
       color: AppColors.earnedContainer,
       border: AppColors.earnedBorder,
       child: Column(children: [
-        const Text('Since you started, Card Master found you',
+        Text('Since you started, Card Master found you',
             style: TextStyle(color: AppColors.textTertiary)),
         Text(formatInr(found),
-            style: const TextStyle(
+            style: TextStyle(
                 fontSize: 34,
                 fontWeight: FontWeight.w800,
                 color: AppColors.earned)),
-        const Caption('in rewards from better card picks you logged.',
+        Caption('in rewards from better card picks you logged.',
             color: AppColors.textSecondary),
       ]),
     );
@@ -86,7 +86,7 @@ class _ProScreenState extends ConsumerState<ProScreen> {
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 6),
             child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              const Icon(Icons.check, color: AppColors.earned, size: 20),
+              Icon(Icons.check, color: AppColors.earned, size: 20),
               const SizedBox(width: 12),
               Expanded(
                 child: Column(
@@ -118,7 +118,7 @@ class _ProScreenState extends ConsumerState<ProScreen> {
           const Center(child: BrandMark(size: 72)),
           const SizedBox(height: 8),
           Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-            const Wordmark(fontSize: 22, color: AppColors.textPrimary),
+            Wordmark(fontSize: 22, color: AppColors.textPrimary),
             const SizedBox(width: 8),
             Pill('PRO', fg: AppColors.background, bg: AppColors.attention),
           ]),
@@ -130,7 +130,7 @@ class _ProScreenState extends ConsumerState<ProScreen> {
           if (e.purchased)
             Pill.earned('Pro is yours. Thank you!')
           else if (!e.gatingEnabled)
-            const Tile(
+            Tile(
               child: Text(
                   "Every feature is unlocked while Card Master is in testing. Pro goes on sale when the app is on Google Play.",
                   style: TextStyle(color: AppColors.textTertiary)),
@@ -151,7 +151,7 @@ class _ProScreenState extends ConsumerState<ProScreen> {
           const Text('Made by one person',
               style: TextStyle(fontSize: 16, fontWeight: FontWeight.w800)),
           const SizedBox(height: 6),
-          const Text(
+          Text(
               "Card Master has no investors, no ads and never sees your data, so there's nothing to sell. Keeping card benefits up to date every month is real work, and your support is the only thing that pays for it.",
               style: TextStyle(color: AppColors.textTertiary, height: 1.5)),
           const SizedBox(height: 16),

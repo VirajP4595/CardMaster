@@ -120,7 +120,7 @@ class CardDetailScreen extends ConsumerWidget {
           const SizedBox(height: 12),
           Tile(
             child: Row(children: [
-              const Icon(Icons.event_available_outlined,
+              Icon(Icons.event_available_outlined,
                   color: AppColors.onPrimaryContainer),
               const SizedBox(width: 12),
               Expanded(
@@ -154,7 +154,7 @@ class CardDetailScreen extends ConsumerWidget {
                       const SizedBox(height: 4),
                       Text(
                           '${formatInr(waiver.spentPaise)} of ${formatInr(waiver.targetPaise)}',
-                          style: const TextStyle(color: AppColors.textTertiary)),
+                          style: TextStyle(color: AppColors.textTertiary)),
                       const SizedBox(height: 2),
                       Text(
                         waiver.achieved
@@ -177,7 +177,7 @@ class CardDetailScreen extends ConsumerWidget {
           const SizedBox(height: 12),
           Tile(
             onTap: () => context.push('/card/${card.id}/worth'),
-            child: const Row(children: [
+            child: Row(children: [
               Icon(Icons.insights_outlined, color: AppColors.onPrimaryContainer),
               SizedBox(width: 12),
               Expanded(
@@ -233,7 +233,7 @@ class CardDetailScreen extends ConsumerWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(label,
-                style: const TextStyle(
+                style: TextStyle(
                     fontSize: 11, color: AppColors.textSecondary)),
             const SizedBox(height: 4),
             FittedBox(
@@ -617,7 +617,7 @@ class _LostCard extends ConsumerWidget {
           ? _edit(context, ref, null)
           : launchUrl(Uri(scheme: 'tel', path: number)),
       child: Row(children: [
-        const Icon(Icons.phone_in_talk_outlined, color: AppColors.dangerText),
+        Icon(Icons.phone_in_talk_outlined, color: AppColors.dangerText),
         const SizedBox(width: 12),
         Expanded(
           child: Column(
@@ -704,7 +704,7 @@ class _Caps extends ConsumerWidget {
                       Text(
                         '${formatInr(used[b.id] ?? 0)} / ${formatInr(b.monthlyCapPaise!)}'
                         '${(used[b.id] ?? 0) >= b.monthlyCapPaise! ? ' · full' : ''}',
-                        style: const TextStyle(color: AppColors.textSecondary),
+                        style: TextStyle(color: AppColors.textSecondary),
                       ),
                     ]),
                     const SizedBox(height: 5),
@@ -740,7 +740,7 @@ class _Points extends ConsumerWidget {
       child: Tile(
         onTap: () => _edit(context, ref, p),
         child: Row(children: [
-          const Icon(Icons.stars_outlined, color: AppColors.attention),
+          Icon(Icons.stars_outlined, color: AppColors.attention),
           const SizedBox(width: 12),
           Expanded(
             child: p == null

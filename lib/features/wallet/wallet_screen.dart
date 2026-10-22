@@ -66,7 +66,7 @@ class WalletScreen extends ConsumerWidget {
                 child: Tile(
                   color: AppColors.primaryContainerLow,
                   onTap: () => context.go('/best'),
-                  child: const Row(children: [
+                  child: Row(children: [
                     Icon(Icons.star_outline,
                         color: AppColors.onPrimaryContainer),
                     SizedBox(width: 12),
@@ -129,12 +129,12 @@ class _EmptyWallet extends StatelessWidget {
         child: Tile(
           padding: const EdgeInsets.all(24),
           child: Column(children: [
-            const BrandMark(size: 96, cutout: AppColors.surface),
+            BrandMark(size: 96, cutout: AppColors.surface),
             const SizedBox(height: 12),
             const Text('Add your first card',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.w800)),
             const SizedBox(height: 6),
-            const Text(
+            Text(
               'See what it\'s good for, and which card to use for every spend.',
               textAlign: TextAlign.center,
               style: TextStyle(color: AppColors.textSecondary),
@@ -165,7 +165,7 @@ class _Summary extends ConsumerWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text('TOTAL CREDIT LIMIT',
+            Text('TOTAL CREDIT LIMIT',
                 style: TextStyle(
                     fontSize: 12,
                     color: AppColors.textSecondary,
@@ -178,12 +178,12 @@ class _Summary extends ConsumerWidget {
                         fontSize: 28, fontWeight: FontWeight.w800)),
               ),
               Text('${cards.length} card${cards.length == 1 ? '' : 's'}',
-                  style: const TextStyle(color: AppColors.textSecondary)),
+                  style: TextStyle(color: AppColors.textSecondary)),
             ]),
             if (pointsValue > 0) ...[
               const SizedBox(height: 6),
               Text('Reward points worth about ${formatInr(pointsValue)}',
-                  style: const TextStyle(
+                  style: TextStyle(
                       fontSize: 12, color: AppColors.attention)),
             ],
           ],
@@ -277,7 +277,7 @@ class _NeedsAttention extends ConsumerWidget {
     if (backupAge == null || backupAge >= 30) {
       items.add(_item(
         context,
-        lead: const Icon(Icons.download_outlined, color: AppColors.attention),
+        lead: Icon(Icons.download_outlined, color: AppColors.attention),
         title: 'Back up now',
         subtitle: backupAge == null
             ? 'You haven\'t made a backup yet'
@@ -343,12 +343,12 @@ class _DaysBadge extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text('$days',
-                style: const TextStyle(
+                style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w800,
                     color: AppColors.dangerText)),
             Text(days == 1 ? 'DAY' : 'DAYS',
-                style: const TextStyle(
+                style: TextStyle(
                     fontSize: 10,
                     fontWeight: FontWeight.w600,
                     color: AppColors.dangerText)),
@@ -375,7 +375,7 @@ class _ReminderPrompt extends ConsumerWidget {
             const Text('Get a reminder before bills are due?',
                 style: TextStyle(fontWeight: FontWeight.w700)),
             const SizedBox(height: 4),
-            const Caption(
+            Caption(
                 '3 days and 1 day before each due date, plus fee-waiver and backup reminders. Scheduled on this phone. Nothing else.',
                 color: AppColors.textTertiary),
             const SizedBox(height: 10),

@@ -23,7 +23,7 @@ class _Step {
   final List<String> points;
 }
 
-const _steps = [
+final _steps = [
   _Step(
     'Your data stays on this phone.',
     Icons.verified_user_outlined,
@@ -87,7 +87,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                 const StackedWordmark(scale: 0.5),
                 const Spacer(),
                 Text('${_i + 1} of 3',
-                    style: const TextStyle(
+                    style: TextStyle(
                         color: AppColors.textSecondary,
                         fontWeight: FontWeight.w700)),
               ]),
@@ -118,7 +118,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
                       ),
                       Expanded(
                         child: Text(p,
-                            style: const TextStyle(
+                            style: TextStyle(
                                 fontSize: 15,
                                 color: AppColors.textTertiary,
                                 height: 1.5)),

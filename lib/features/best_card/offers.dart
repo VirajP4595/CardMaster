@@ -22,7 +22,7 @@ class OfferTile extends ConsumerWidget {
       color: AppColors.attentionContainer,
       onTap: () => editOffer(context, ref, offer),
       child: Row(children: [
-        const Icon(Icons.local_offer_outlined, color: AppColors.attention),
+        Icon(Icons.local_offer_outlined, color: AppColors.attention),
         const SizedBox(width: 12),
         Expanded(
           child: Column(
@@ -32,7 +32,7 @@ class OfferTile extends ConsumerWidget {
                   style: const TextStyle(fontWeight: FontWeight.w700)),
               Text(
                   '${card == null ? '' : '${card.displayName} · '}until ${DateFormat('d MMM').format(offer.validUntil)}',
-                  style: const TextStyle(
+                  style: TextStyle(
                       fontSize: 12, color: AppColors.textTertiary)),
             ],
           ),

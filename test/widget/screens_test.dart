@@ -19,6 +19,7 @@ import 'package:card_master/features/money/quick_add_screen.dart';
 import 'package:card_master/features/settings/pro_screen.dart';
 import 'package:card_master/features/settings/trust_screen.dart';
 import 'package:card_master/features/wallet/wallet_screen.dart';
+import 'package:card_master/ui/widgets.dart';
 import 'package:drift/native.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -69,7 +70,7 @@ Future<void> _pump(WidgetTester t, AppDatabase db, Widget screen,
       catalogProvider.overrideWith(() => CatalogNotifier(_catalog)),
       if (photos != null) photoStoreProvider.overrideWithValue(photos),
     ],
-    child: MaterialApp(theme: buildTheme(), home: screen),
+    child: MaterialApp(theme: buildTheme(Brightness.dark), home: screen),
   ));
   await _settle(t);
 }
@@ -441,5 +442,37 @@ Rs.900 spent on card XX5566 at UNKNOWN SHOP on 20-10-26.
     expect(find.text('COST'), findsNWidgets(5));
     expect(find.textContaining("hasn't connected anywhere"), findsOneWidget);
     await _close(t, db);
+  });
+
+  testWidgets('switching to light repaints const widgets', (t) async {
+    final mode = ValueNotifier(ThemeMode.dark);
+    await t.pumpWidget(ValueListenableBuilder(
+      valueListenable: mode,
+      builder: (_, m, _) => MaterialApp(
+        theme: buildTheme(Brightness.light),
+        darkTheme: buildTheme(Brightness.dark),
+        themeMode: m,
+        themeAnimationDuration: Duration.zero,
+        builder: (context, child) {
+          syncPalette(context);
+          return child!;
+        },
+        home: const Scaffold(body: Tile(child: Text('x'))),
+      ),
+    ));
+    Color tileColor() => (t
+            .widget<Ink>(find.descendant(
+                of: find.byType(Tile), matching: find.byType(Ink)))
+            .decoration! as BoxDecoration)
+        .color!;
+    expect(tileColor(), darkPalette.surface);
+    mode.value = ThemeMode.light;
+    await t.pump();
+    await t.pump();
+    expect(tileColor(), lightPalette.surface);
+    mode.value = ThemeMode.dark;
+    await t.pump();
+    await t.pump();
+    expect(tileColor(), darkPalette.surface);
   });
 }

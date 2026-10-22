@@ -97,7 +97,7 @@ class _AddCardScreenState extends ConsumerState<AddCardScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text('Step ${_step + 1} of 3',
-                style: const TextStyle(
+                style: TextStyle(
                     fontSize: 12, color: AppColors.textSecondary)),
             Text(titles[_step],
                 style:
@@ -164,7 +164,7 @@ class _AddCardScreenState extends ConsumerState<AddCardScreen> {
                     CircleAvatar(
                       backgroundColor: AppColors.primaryContainer,
                       child: Text(b.name[0],
-                          style: const TextStyle(
+                          style: TextStyle(
                               fontWeight: FontWeight.w800,
                               color: AppColors.onPrimaryContainer)),
                     ),
@@ -174,7 +174,7 @@ class _AddCardScreenState extends ConsumerState<AddCardScreen> {
                           style: const TextStyle(fontWeight: FontWeight.w700)),
                     ),
                     Text('${catalog.productsOf(b.id).length} cards',
-                        style: const TextStyle(color: AppColors.textSecondary)),
+                        style: TextStyle(color: AppColors.textSecondary)),
                   ]),
                 ),
               ),
@@ -223,7 +223,7 @@ class _AddCardScreenState extends ConsumerState<AddCardScreen> {
                       ),
                     ),
                     Text(p.network.label,
-                        style: const TextStyle(
+                        style: TextStyle(
                             fontSize: 11, color: AppColors.textSecondary)),
                   ]),
                 ),

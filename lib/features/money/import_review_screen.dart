@@ -188,7 +188,7 @@ class _ImportReviewScreenState extends ConsumerState<ImportReviewScreen> {
                   style: TextStyle(
                       fontSize: 18, fontWeight: FontWeight.w800, color: fg)),
               Text(label,
-                  style: const TextStyle(
+                  style: TextStyle(
                       fontSize: 11, color: AppColors.textTertiary)),
             ],
           ),

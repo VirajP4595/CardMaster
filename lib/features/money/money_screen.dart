@@ -133,7 +133,7 @@ class _MoneyScreenState extends ConsumerState<MoneyScreen> {
                     children: [
                       const Caption('Rewards earned'),
                       Text(formatInr(rewards),
-                          style: const TextStyle(
+                          style: TextStyle(
                               fontSize: 22,
                               fontWeight: FontWeight.w800,
                               color: AppColors.earned)),
@@ -150,7 +150,7 @@ class _MoneyScreenState extends ConsumerState<MoneyScreen> {
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Icon(Icons.lightbulb_outline,
+                    Icon(Icons.lightbulb_outline,
                         color: AppColors.onPrimaryContainer),
                     const SizedBox(width: 12),
                     Expanded(
@@ -190,7 +190,7 @@ class _MoneyScreenState extends ConsumerState<MoneyScreen> {
                             if (r.$3 != null)
                               Text(
                                   ' / ${formatInr(r.$3!)}${r.$2 > r.$3! ? ' · over' : ''}',
-                                  style: const TextStyle(
+                                  style: TextStyle(
                                       color: AppColors.textSecondary)),
                           ]),
                           const SizedBox(height: 5),
@@ -520,7 +520,7 @@ class _SpendRow extends ConsumerWidget {
         alignment: Alignment.centerRight,
         padding: const EdgeInsets.only(right: 16),
         color: AppColors.dangerContainer,
-        child: const Icon(Icons.delete_outline, color: AppColors.dangerText),
+        child: Icon(Icons.delete_outline, color: AppColors.dangerText),
       ),
       onDismissed: (_) => ref.read(databaseProvider).deleteSpend(s.id),
       child: Padding(
@@ -550,10 +550,10 @@ class _SpendRow extends ConsumerWidget {
             if (earned != null && earned! > 0)
               Text('+${formatInr(earned!)}',
                   style:
-                      const TextStyle(fontSize: 12, color: AppColors.earned))
+                      TextStyle(fontSize: 12, color: AppColors.earned))
             else if (missed != null)
               Text('card: +${formatInr(missed!)}',
-                  style: const TextStyle(
+                  style: TextStyle(
                       fontSize: 12, color: AppColors.attention)),
           ]),
         ]),
