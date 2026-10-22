@@ -8,6 +8,7 @@ import '../../app/theme.dart';
 import '../../domain/models.dart';
 import '../../domain/money.dart';
 import '../../domain/recurring.dart';
+import '../../ui/amount_input.dart';
 import '../../ui/widgets.dart';
 
 /// Recurring expenses on the Money tab (docs/09 §4): rent, subscriptions,
@@ -86,7 +87,7 @@ Future<void> editRecurring(
     BuildContext context, WidgetRef ref, RecurringRule? existing) async {
   final title = TextEditingController(text: existing?.title ?? '');
   final amount = TextEditingController(
-      text: existing == null ? '' : '${existing.amountPaise ~/ 100}');
+      text: amountFieldText(existing?.amountPaise));
   final day = TextEditingController(text: '${existing?.dayOfMonth ?? 1}');
   var category = existing?.category ?? SpendCategory.rent;
   var auto = existing?.autoAdd ?? true;
@@ -128,6 +129,7 @@ Future<void> editRecurring(
                   child: TextField(
                     controller: amount,
                     keyboardType: TextInputType.number,
+                    inputFormatters: const [IndianAmountFormatter()],
                     decoration: const InputDecoration(
                         labelText: 'Amount', prefixText: '₹ '),
                     onChanged: (_) => set(() {}),

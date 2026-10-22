@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../../domain/money.dart';
+import '../../ui/amount_input.dart';
 
 /// Editable card details (Add card step 3, and Edit card).
 class CardFormValues {
@@ -69,6 +70,7 @@ class _CardFormState extends State<CardForm> {
       String? hint,
       String? helper,
       bool digits = false,
+      bool amount = false,
       int? maxLength,
       String? prefix,
     }) =>
@@ -76,9 +78,12 @@ class _CardFormState extends State<CardForm> {
           padding: const EdgeInsets.only(bottom: 12),
           child: TextFormField(
             initialValue: initial,
-            keyboardType: digits ? TextInputType.number : TextInputType.text,
+            keyboardType: digits || amount ? TextInputType.number : TextInputType.text,
             inputFormatters: [
-              if (digits) FilteringTextInputFormatter.allow(RegExp(r'[\d.,]')),
+              if (amount)
+                const IndianAmountFormatter()
+              else if (digits)
+                FilteringTextInputFormatter.digitsOnly,
               if (maxLength != null)
                 LengthLimitingTextInputFormatter(maxLength),
             ],
@@ -103,7 +108,7 @@ class _CardFormState extends State<CardForm> {
           maxLength: 4,
           helper: 'Used to match bank SMS. Never the full number.'),
       field('Credit limit', v.limitRupees, (s) => v.limitRupees = s,
-          digits: true, prefix: '₹ '),
+          amount: true, prefix: '₹ '),
       Row(children: [
         Expanded(
           child: field('Statement day', v.statementDay,
@@ -120,13 +125,13 @@ class _CardFormState extends State<CardForm> {
         Expanded(
           child: field('Annual fee', v.annualFeeRupees,
               (s) => v.annualFeeRupees = s,
-              digits: true, prefix: '₹ '),
+              amount: true, prefix: '₹ '),
         ),
         const SizedBox(width: 12),
         Expanded(
           child: field('Fee waived at', v.waiverRupees,
               (s) => v.waiverRupees = s,
-              digits: true, prefix: '₹ ', hint: 'yearly spend'),
+              amount: true, prefix: '₹ ', hint: 'yearly spend'),
         ),
       ]),
       Padding(

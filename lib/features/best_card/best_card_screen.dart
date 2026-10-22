@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
@@ -11,6 +10,7 @@ import '../../domain/money.dart';
 import '../../domain/recommender.dart';
 import '../../domain/trackers.dart';
 import 'offers.dart';
+import '../../ui/amount_input.dart';
 import '../../ui/widgets.dart';
 
 /// Which card should I use? (design board 5) plus "Pay today with…".
@@ -92,9 +92,11 @@ class _BestCardScreenState extends ConsumerState<BestCardScreen> {
             Row(children: [
               Expanded(
                 child: TextFormField(
-                  initialValue: '${_amountPaise ~/ 100}',
+                  initialValue: amountFieldText(_amountPaise),
                   keyboardType: TextInputType.number,
-                  inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                  inputFormatters: const [
+                    IndianAmountFormatter(decimals: false)
+                  ],
                   decoration: const InputDecoration(
                       labelText: 'Amount', prefixText: '₹ '),
                   onChanged: (s) => setState(

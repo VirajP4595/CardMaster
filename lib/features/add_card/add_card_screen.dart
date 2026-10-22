@@ -8,6 +8,7 @@ import '../../app/theme.dart';
 import '../../data/catalog/catalog.dart';
 import '../../domain/models.dart';
 import '../../domain/money.dart';
+import '../../ui/amount_input.dart';
 import '../../ui/widgets.dart';
 import 'card_form.dart';
 
@@ -40,10 +41,8 @@ class _AddCardScreenState extends ConsumerState<AddCardScreen> {
   void _pickProduct(CatalogProduct p) => setState(() {
         _product = p;
         _form.annualFeeRupees =
-            p.annualFeePaise == 0 ? '0' : '${p.annualFeePaise ~/ 100}';
-        _form.waiverRupees = p.waiverSpendPaise == null
-            ? ''
-            : '${p.waiverSpendPaise! ~/ 100}';
+            p.annualFeePaise == 0 ? '0' : amountFieldText(p.annualFeePaise);
+        _form.waiverRupees = amountFieldText(p.waiverSpendPaise);
         _step = 2;
       });
 

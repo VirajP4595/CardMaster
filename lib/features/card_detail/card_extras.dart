@@ -9,6 +9,7 @@ import '../../app/theme.dart';
 import '../../domain/models.dart';
 import '../../domain/money.dart';
 import '../../domain/trackers.dart';
+import '../../ui/amount_input.dart';
 import '../../ui/widgets.dart';
 
 /// Lounge tracker for a card: visits used this quarter and the spend that
@@ -72,9 +73,7 @@ class LoungeTile extends ConsumerWidget {
     final visits =
         TextEditingController(text: '${rule?.visitsPerQuarter ?? 2}');
     final gate = TextEditingController(
-        text: rule?.spendGatePaise == null
-            ? ''
-            : '${rule!.spendGatePaise! ~/ 100}');
+        text: amountFieldText(rule?.spendGatePaise));
     final result = await showModalBottomSheet<String>(
       context: context,
       isScrollControlled: true,
@@ -103,6 +102,7 @@ class LoungeTile extends ConsumerWidget {
             TextField(
               controller: gate,
               keyboardType: TextInputType.number,
+              inputFormatters: const [IndianAmountFormatter()],
               decoration: const InputDecoration(
                   labelText: 'Spend needed per quarter (optional)',
                   prefixText: '₹ '),
@@ -193,7 +193,7 @@ Future<void> editEmi(
     BuildContext context, WidgetRef ref, UserCard card, Emi? existing) async {
   final title = TextEditingController(text: existing?.title ?? '');
   final monthly = TextEditingController(
-      text: existing == null ? '' : '${existing.monthlyPaise ~/ 100}');
+      text: amountFieldText(existing?.monthlyPaise));
   final months =
       TextEditingController(text: '${existing?.totalMonths ?? 12}');
   var first = existing?.firstMonth ??
@@ -224,6 +224,7 @@ Future<void> editEmi(
                 child: TextField(
                   controller: monthly,
                   keyboardType: TextInputType.number,
+                  inputFormatters: const [IndianAmountFormatter()],
                   decoration: const InputDecoration(
                       labelText: 'Monthly', prefixText: '₹ '),
                 ),

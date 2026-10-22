@@ -13,6 +13,7 @@ import '../../data/db/database.dart';
 import '../../domain/billing_cycle.dart';
 import '../../domain/models.dart';
 import '../../domain/money.dart';
+import '../../ui/amount_input.dart';
 import '../../ui/card_face.dart';
 import '../../ui/widgets.dart';
 import '../add_card/card_form.dart';
@@ -261,9 +262,7 @@ class CardDetailScreen extends ConsumerWidget {
     final rate = TextEditingController(
         text: existing?.rateBps == null ? '' : '${existing!.rateBps! / 100}');
     final cap = TextEditingController(
-        text: existing?.monthlyCapPaise == null
-            ? ''
-            : '${existing!.monthlyCapPaise! ~/ 100}');
+        text: amountFieldText(existing?.monthlyCapPaise));
     final channel = TextEditingController(text: existing?.channel ?? '');
     var category = existing?.category ?? SpendCategory.other;
     var forex = existing?.kind == BenefitKind.forexMarkup;
@@ -327,6 +326,7 @@ class CardDetailScreen extends ConsumerWidget {
                   TextField(
                     controller: cap,
                     keyboardType: TextInputType.number,
+                    inputFormatters: const [IndianAmountFormatter()],
                     decoration: const InputDecoration(
                         labelText: 'Monthly cap (optional)', prefixText: '₹ '),
                   ),
@@ -389,7 +389,7 @@ class CardDetailScreen extends ConsumerWidget {
     final rate = TextEditingController(
         text: b.rateBps == null ? '' : (b.rateBps! / 100).toString());
     final cap = TextEditingController(
-        text: b.monthlyCapPaise == null ? '' : '${b.monthlyCapPaise! ~/ 100}');
+        text: amountFieldText(b.monthlyCapPaise));
     final save = await showModalBottomSheet<bool>(
       context: context,
       isScrollControlled: true,
@@ -424,6 +424,7 @@ class CardDetailScreen extends ConsumerWidget {
               TextField(
                 controller: cap,
                 keyboardType: TextInputType.number,
+                inputFormatters: const [IndianAmountFormatter()],
                 decoration: const InputDecoration(
                     labelText: 'Monthly cap (optional)', prefixText: '₹ '),
               ),
@@ -453,13 +454,11 @@ class CardDetailScreen extends ConsumerWidget {
     final v = CardFormValues(
       nickname: card.nickname ?? '',
       last4: card.last4 ?? '',
-      limitRupees: '${card.creditLimitPaise ~/ 100}',
+      limitRupees: amountFieldText(card.creditLimitPaise),
       statementDay: '${card.statementDay}',
       dueDay: '${card.dueDay}',
-      annualFeeRupees: '${card.annualFeePaise ~/ 100}',
-      waiverRupees: card.waiverSpendPaise == null
-          ? ''
-          : '${card.waiverSpendPaise! ~/ 100}',
+      annualFeeRupees: amountFieldText(card.annualFeePaise),
+      waiverRupees: amountFieldText(card.waiverSpendPaise),
       anniversaryMonth: card.anniversaryMonth,
     );
     final db = ref.read(databaseProvider);
@@ -771,7 +770,8 @@ class _Points extends ConsumerWidget {
 
   Future<void> _edit(
       BuildContext context, WidgetRef ref, PointsBalance? p) async {
-    final points = TextEditingController(text: p == null ? '' : '${p.points}');
+    final points = TextEditingController(
+        text: p == null ? '' : groupIndian(p.points));
     final value = TextEditingController(
         text: p == null ? '0.25' : '${p.paisePerPoint / 100}');
     DateTime? expires = p?.expiresOn;
@@ -796,6 +796,7 @@ class _Points extends ConsumerWidget {
               TextField(
                 controller: points,
                 keyboardType: TextInputType.number,
+                inputFormatters: const [IndianAmountFormatter(decimals: false)],
                 decoration: const InputDecoration(labelText: 'Points balance'),
               ),
               const SizedBox(height: 12),

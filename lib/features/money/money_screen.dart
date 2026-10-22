@@ -14,6 +14,7 @@ import '../../domain/money.dart';
 import '../../domain/sms_backup.dart';
 import '../../domain/statement_parser.dart';
 import '../../data/pdf_text.dart';
+import '../../ui/amount_input.dart';
 import '../../ui/widgets.dart';
 import 'import_review_screen.dart';
 import 'recurring_section.dart';
@@ -255,7 +256,7 @@ class _MoneyScreenState extends ConsumerState<MoneyScreen> {
       Map<SpendCategory, int> budgets) async {
     var picked = category ?? SpendCategory.foodDelivery;
     final amount = TextEditingController(
-        text: budgets[picked] == null ? '' : '${budgets[picked]! ~/ 100}');
+        text: amountFieldText(budgets[picked]));
     final result = await showModalBottomSheet<String>(
       context: context,
       isScrollControlled: true,
@@ -292,6 +293,7 @@ class _MoneyScreenState extends ConsumerState<MoneyScreen> {
               TextField(
                 controller: amount,
                 keyboardType: TextInputType.number,
+                inputFormatters: const [IndianAmountFormatter()],
                 decoration: const InputDecoration(
                     labelText: 'Budget per month', prefixText: '₹ '),
               ),
