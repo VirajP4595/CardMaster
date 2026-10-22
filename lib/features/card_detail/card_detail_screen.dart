@@ -2,6 +2,7 @@ import 'package:drift/drift.dart' show Value;
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../app/providers.dart';
@@ -168,6 +169,8 @@ class CardDetailScreen extends ConsumerWidget {
           const SizedBox(height: 10),
           const Caption(
               'Rates come from the benefits list and may be out of date. Tap a benefit to correct it or mark it verified. Benefits you add take priority.'),
+          const SizedBox(height: 22),
+          _LostCard(card: card),
         ],
       ),
     );
@@ -544,5 +547,76 @@ class _BenefitRow extends StatelessWidget {
         ]),
       ),
     );
+  }
+}
+
+/// "Lost this card?": opens the dialer with the bank's helpline. Uses the
+/// dialer app, so no call permission is needed.
+class _LostCard extends ConsumerWidget {
+  const _LostCard({required this.card});
+  final UserCard card;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final number = ref.watch(helplineProvider(card.id)).value;
+    return Tile(
+      color: AppColors.dangerContainer,
+      onTap: () => number == null
+          ? _edit(context, ref, null)
+          : launchUrl(Uri(scheme: 'tel', path: number)),
+      child: Row(children: [
+        const Icon(Icons.phone_in_talk_outlined, color: AppColors.dangerText),
+        const SizedBox(width: 12),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text('Lost this card?',
+                  style: TextStyle(fontWeight: FontWeight.w700)),
+              Text(
+                number == null
+                    ? "Add your bank's helpline now (it's on the back of the card), so it's one tap away if you lose it."
+                    : 'Call ${card.bankName} to block it: $number',
+                style: const TextStyle(fontSize: 12, color: Color(0xFFFFC2C2)),
+              ),
+            ],
+          ),
+        ),
+        if (number != null)
+          IconButton(
+            tooltip: 'Change number',
+            onPressed: () => _edit(context, ref, number),
+            icon: const Icon(Icons.edit_outlined, size: 18),
+          ),
+      ]),
+    );
+  }
+
+  Future<void> _edit(BuildContext context, WidgetRef ref, String? current) async {
+    final c = TextEditingController(text: current ?? '');
+    final value = await showDialog<String>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: Text('${card.bankName} helpline'),
+        content: TextField(
+          controller: c,
+          keyboardType: TextInputType.phone,
+          decoration: const InputDecoration(
+              hintText: 'Number on the back of your card'),
+        ),
+        actions: [
+          TextButton(
+              onPressed: () => Navigator.pop(ctx),
+              child: const Text('Cancel')),
+          TextButton(
+              onPressed: () => Navigator.pop(ctx, c.text.trim()),
+              child: const Text('Save')),
+        ],
+      ),
+    );
+    if (value == null) return;
+    await ref
+        .read(databaseProvider)
+        .setHelpline(card.id, value.isEmpty ? null : value);
   }
 }

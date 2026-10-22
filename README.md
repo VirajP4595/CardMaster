@@ -14,15 +14,14 @@ Built and covered by tests (`flutter test`, 45 tests):
 - Download-only benefits client with Ed25519 signature check and a network log; a test fails if any other code uses the network
 - Passphrase-encrypted backup export/restore (Argon2id + AES-GCM)
 - Local reminders: bills (3 days and 1 day before), fee waiver, backup; inexact alarms only, asked in context
+- Weekly automatic encrypted backup to Downloads/Card Master (Android 10+), on app open
+- Your own benefits on any card; monthly budgets; lost-card button that dials the helpline you saved
 - Screens: onboarding, lock, Wallet, Card detail, Add card, Best card, Money, Quick add, Import review, Settings, Trust Center
 
 Not done yet (honest list):
 - **Not run on a real phone yet.** It's tested in Flutter's test environment and built by GitHub Actions; install the APK and report anything off.
 - Benefits data is **sample data** (`assets/catalog/catalog_v1.json`): every rate shows a "Verify" badge until checked against the bank's MITC.
 - No benefits server yet, so updates are switched off (`CatalogConfig.current` in `lib/core/net/catalog_client.dart`).
-- The **weekly automatic backup** (manual export works).
-- Adding your own benefits to a custom card.
-- Moved to 1.0.x as decided: budgets, lost-card button.
 
 ## Build
 

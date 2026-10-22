@@ -39,6 +39,14 @@ final overridesProvider = StreamProvider<List<BenefitOverride>>(
   (ref) => ref.watch(databaseProvider).watchOverrides(),
 );
 
+final budgetsProvider = StreamProvider<Map<SpendCategory, int>>(
+  (ref) => ref.watch(databaseProvider).watchBudgets(),
+);
+
+final helplineProvider = StreamProvider.family<String?, String>(
+  (ref, cardId) => ref.watch(databaseProvider).watchHelpline(cardId),
+);
+
 final customBenefitsProvider = StreamProvider<List<CustomBenefit>>(
   (ref) => ref.watch(databaseProvider).watchCustomBenefits(),
 );

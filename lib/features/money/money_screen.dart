@@ -11,7 +11,7 @@ import '../../ui/widgets.dart';
 import 'money_logic.dart';
 
 /// Money tab (was Activity), card-first: every expense, plus what a card
-/// would have earned (docs/09). Budgets come in 1.0.x.
+/// would have earned, and monthly budgets (docs/09).
 class MoneyScreen extends ConsumerStatefulWidget {
   const MoneyScreen({super.key});
 
@@ -50,10 +50,19 @@ class _MoneyScreenState extends ConsumerState<MoneyScreen> {
     for (final s in spends) {
       byCategory[s.category] = (byCategory[s.category] ?? 0) + s.amountPaise;
     }
-    final topCategories = byCategory.entries.toList()
-      ..sort((a, b) => b.value.compareTo(a.value));
-    final maxCategory =
-        topCategories.isEmpty ? 1 : topCategories.first.value;
+    final budgets = ref.watch(budgetsProvider).value ?? const {};
+    // (category, spent, budget): budgeted categories first, then the
+    // biggest other categories.
+    final rows = <(SpendCategory, int, int?)>[
+      for (final e in budgets.entries) (e.key, byCategory[e.key] ?? 0, e.value),
+      ...(byCategory.entries
+              .where((e) => !budgets.containsKey(e.key))
+              .toList()
+            ..sort((a, b) => b.value.compareTo(a.value)))
+          .take(6)
+          .map((e) => (e.key, e.value, null)),
+    ];
+    final maxCategory = byCategory.values.fold<int>(1, (a, v) => v > a ? v : a);
 
     return Scaffold(
       floatingActionButton: FloatingActionButton.extended(
@@ -145,26 +154,54 @@ class _MoneyScreenState extends ConsumerState<MoneyScreen> {
                 ),
               ),
             ],
-            if (topCategories.isNotEmpty) ...[
-              const SizedBox(height: 18),
-              const SectionTitle('By category'),
+            const SizedBox(height: 18),
+            SectionTitle('Budgets this month',
+                trailing: TextButton(
+                  onPressed: () => _editBudget(context, null, budgets),
+                  child: const Text('Set a budget'),
+                )),
+            if (rows.isEmpty)
+              const Caption('Set a monthly budget for a category, or add expenses to see where money goes.')
+            else
               Tile(
                 child: Column(children: [
-                  for (final e in topCategories.take(6))
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 6),
-                      child: Column(children: [
-                        Row(children: [
-                          Expanded(child: Text(e.key.label)),
-                          Text(formatInr(e.value)),
+                  for (final r in rows)
+                    InkWell(
+                      onTap: () => _editBudget(context, r.$1, budgets),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 6),
+                        child: Column(children: [
+                          Row(children: [
+                            Expanded(child: Text(r.$1.label)),
+                            Text(formatInr(r.$2),
+                                style: TextStyle(
+                                    color: r.$3 != null && r.$2 > r.$3!
+                                        ? AppColors.dangerText
+                                        : null)),
+                            if (r.$3 != null)
+                              Text(
+                                  ' / ${formatInr(r.$3!)}${r.$2 > r.$3! ? ' · over' : ''}',
+                                  style: const TextStyle(
+                                      color: AppColors.textSecondary)),
+                          ]),
+                          const SizedBox(height: 5),
+                          Bar(
+                            value: r.$3 == null
+                                ? r.$2 / maxCategory
+                                : r.$2 / r.$3!,
+                            color: r.$3 == null
+                                ? AppColors.primary
+                                : r.$2 > r.$3!
+                                    ? AppColors.danger
+                                    : r.$2 >= r.$3! * 0.85
+                                        ? AppColors.attention
+                                        : AppColors.earned,
+                          ),
                         ]),
-                        const SizedBox(height: 5),
-                        Bar(value: e.value / maxCategory),
-                      ]),
+                      ),
                     ),
                 ]),
               ),
-            ],
             const SizedBox(height: 18),
             SectionTitle('Expenses',
                 trailing: TextButton(
@@ -185,6 +222,69 @@ class _MoneyScreenState extends ConsumerState<MoneyScreen> {
         ),
       ),
     );
+  }
+
+  Future<void> _editBudget(BuildContext context, SpendCategory? category,
+      Map<SpendCategory, int> budgets) async {
+    var picked = category ?? SpendCategory.foodDelivery;
+    final amount = TextEditingController(
+        text: budgets[picked] == null ? '' : '${budgets[picked]! ~/ 100}');
+    final result = await showModalBottomSheet<String>(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: AppColors.surfaceHigh,
+      builder: (ctx) => StatefulBuilder(
+        builder: (ctx, set) => Padding(
+          padding: EdgeInsets.fromLTRB(
+              24, 20, 24, MediaQuery.of(ctx).viewInsets.bottom + 24),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              const Text('Monthly budget',
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w800)),
+              const SizedBox(height: 16),
+              DropdownButtonFormField<SpendCategory>(
+                initialValue: picked,
+                decoration: const InputDecoration(labelText: 'Category'),
+                items: [
+                  for (final c in SpendCategory.values)
+                    DropdownMenuItem(value: c, child: Text(c.label)),
+                ],
+                onChanged: category != null
+                    ? null
+                    : (c) => set(() {
+                          picked = c!;
+                          amount.text = budgets[picked] == null
+                              ? ''
+                              : '${budgets[picked]! ~/ 100}';
+                        }),
+              ),
+              const SizedBox(height: 12),
+              TextField(
+                controller: amount,
+                keyboardType: TextInputType.number,
+                decoration: const InputDecoration(
+                    labelText: 'Budget per month', prefixText: '₹ '),
+              ),
+              const SizedBox(height: 16),
+              FilledButton(
+                onPressed: () => Navigator.pop(ctx, 'save'),
+                child: const Text('Save'),
+              ),
+              if (budgets.containsKey(picked))
+                TextButton(
+                  onPressed: () => Navigator.pop(ctx, 'remove'),
+                  child: const Text('Remove budget'),
+                ),
+            ],
+          ),
+        ),
+      ),
+    );
+    if (result == null) return;
+    await ref.read(databaseProvider).setBudget(
+        picked, result == 'remove' ? null : parseRupeesToPaise(amount.text));
   }
 
   Future<void> _pasteMessages(BuildContext context) async {

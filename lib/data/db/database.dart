@@ -25,10 +25,22 @@ class UserCards extends Table {
   IntColumn get faceColor => integer()();
   TextColumn get faceFinish => text().withDefault(const Constant('matte'))();
   IntColumn get sortOrder => integer().withDefault(const Constant(0))();
+
+  /// Bank's card-blocking number for the lost-card button (added in v3).
+  TextColumn get helpline => text().nullable()();
   DateTimeColumn get createdAt => dateTime()();
 
   @override
   Set<Column> get primaryKey => {id};
+}
+
+/// Monthly budget per spend category (added in v3).
+class Budgets extends Table {
+  TextColumn get category => text()();
+  IntColumn get amountPaise => integer()();
+
+  @override
+  Set<Column> get primaryKey => {category};
 }
 
 @DataClassName('SpendRow')
@@ -118,6 +130,7 @@ class KeyValues extends Table {
   Spends,
   BenefitOverrides,
   CustomBenefits,
+  Budgets,
   MerchantRules,
   NetworkLogs,
   KeyValues,
@@ -126,13 +139,17 @@ class AppDatabase extends _$AppDatabase {
   AppDatabase(super.e);
 
   @override
-  int get schemaVersion => 2;
+  int get schemaVersion => 3;
 
   @override
   MigrationStrategy get migration => MigrationStrategy(
         onCreate: (m) => m.createAll(),
         onUpgrade: (m, from, to) async {
           if (from < 2) await m.createTable(customBenefits);
+          if (from < 3) {
+            await m.addColumn(userCards, userCards.helpline);
+            await m.createTable(budgets);
+          }
         },
       );
 
@@ -258,6 +275,29 @@ class AppDatabase extends _$AppDatabase {
 
   Future<void> saveOverride(BenefitOverridesCompanion o) =>
       into(benefitOverrides).insertOnConflictUpdate(o);
+
+  // ---- Helpline & budgets ----
+
+  Stream<String?> watchHelpline(String cardId) =>
+      (select(userCards)..where((t) => t.id.equals(cardId)))
+          .watchSingleOrNull()
+          .map((r) => r?.helpline);
+
+  Future<void> setHelpline(String cardId, String? number) =>
+      (update(userCards)..where((t) => t.id.equals(cardId)))
+          .write(UserCardsCompanion(helpline: Value(number)));
+
+  Stream<Map<m.SpendCategory, int>> watchBudgets() =>
+      select(budgets).watch().map((rows) => {
+            for (final r in rows)
+              m.SpendCategory.fromCode(r.category): r.amountPaise,
+          });
+
+  Future<void> setBudget(m.SpendCategory c, int? amountPaise) =>
+      amountPaise == null || amountPaise <= 0
+          ? (delete(budgets)..where((t) => t.category.equals(c.code))).go()
+          : into(budgets).insertOnConflictUpdate(BudgetsCompanion.insert(
+              category: c.code, amountPaise: amountPaise));
 
   // ---- Custom benefits ----
 

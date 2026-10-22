@@ -79,7 +79,7 @@ void main() {
     await other.close();
   });
 
-  test('upgrading a version 1 database adds the custom benefits table', () async {
+  test('upgrading a version 1 database adds custom benefits, budgets and helpline', () async {
     final dir = await Directory.systemTemp.createTemp('cm_mig');
     final file = File('${dir.path}/v1.db');
 
@@ -87,6 +87,8 @@ void main() {
     final v2 = AppDatabase(NativeDatabase(file));
     await v2.upsertCard(_custom);
     await v2.customStatement('DROP TABLE custom_benefits');
+    await v2.customStatement('DROP TABLE budgets');
+    await v2.customStatement('ALTER TABLE user_cards DROP COLUMN helpline');
     await v2.customStatement('PRAGMA user_version = 1');
     await v2.close();
 
@@ -94,6 +96,10 @@ void main() {
     await _addFoodBenefit(upgraded);
     expect(await upgraded.select(upgraded.customBenefits).get(), hasLength(1));
     expect((await upgraded.allCards()).single.id, 'c1');
+    await upgraded.setHelpline('c1', '1860 000 0000');
+    expect(await upgraded.watchHelpline('c1').first, '1860 000 0000');
+    await upgraded.setBudget(SpendCategory.dining, 500000);
+    expect(await upgraded.watchBudgets().first, {SpendCategory.dining: 500000});
     await upgraded.close();
     await dir.delete(recursive: true);
   });

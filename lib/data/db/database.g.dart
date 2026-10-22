@@ -184,6 +184,17 @@ class $UserCardsTable extends UserCards
     requiredDuringInsert: false,
     defaultValue: const Constant(0),
   );
+  static const VerificationMeta _helplineMeta = const VerificationMeta(
+    'helpline',
+  );
+  @override
+  late final GeneratedColumn<String> helpline = GeneratedColumn<String>(
+    'helpline',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
   static const VerificationMeta _createdAtMeta = const VerificationMeta(
     'createdAt',
   );
@@ -213,6 +224,7 @@ class $UserCardsTable extends UserCards
     faceColor,
     faceFinish,
     sortOrder,
+    helpline,
     createdAt,
   ];
   @override
@@ -353,6 +365,12 @@ class $UserCardsTable extends UserCards
         sortOrder.isAcceptableOrUnknown(data['sort_order']!, _sortOrderMeta),
       );
     }
+    if (data.containsKey('helpline')) {
+      context.handle(
+        _helplineMeta,
+        helpline.isAcceptableOrUnknown(data['helpline']!, _helplineMeta),
+      );
+    }
     if (data.containsKey('created_at')) {
       context.handle(
         _createdAtMeta,
@@ -434,6 +452,10 @@ class $UserCardsTable extends UserCards
         DriftSqlType.int,
         data['${effectivePrefix}sort_order'],
       )!,
+      helpline: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}helpline'],
+      ),
       createdAt: attachedDatabase.typeMapping.read(
         DriftSqlType.dateTime,
         data['${effectivePrefix}created_at'],
@@ -467,6 +489,9 @@ class UserCardRow extends DataClass implements Insertable<UserCardRow> {
   final int faceColor;
   final String faceFinish;
   final int sortOrder;
+
+  /// Bank's card-blocking number for the lost-card button (added in v3).
+  final String? helpline;
   final DateTime createdAt;
   const UserCardRow({
     required this.id,
@@ -485,6 +510,7 @@ class UserCardRow extends DataClass implements Insertable<UserCardRow> {
     required this.faceColor,
     required this.faceFinish,
     required this.sortOrder,
+    this.helpline,
     required this.createdAt,
   });
   @override
@@ -514,6 +540,9 @@ class UserCardRow extends DataClass implements Insertable<UserCardRow> {
     map['face_color'] = Variable<int>(faceColor);
     map['face_finish'] = Variable<String>(faceFinish);
     map['sort_order'] = Variable<int>(sortOrder);
+    if (!nullToAbsent || helpline != null) {
+      map['helpline'] = Variable<String>(helpline);
+    }
     map['created_at'] = Variable<DateTime>(createdAt);
     return map;
   }
@@ -544,6 +573,9 @@ class UserCardRow extends DataClass implements Insertable<UserCardRow> {
       faceColor: Value(faceColor),
       faceFinish: Value(faceFinish),
       sortOrder: Value(sortOrder),
+      helpline: helpline == null && nullToAbsent
+          ? const Value.absent()
+          : Value(helpline),
       createdAt: Value(createdAt),
     );
   }
@@ -570,6 +602,7 @@ class UserCardRow extends DataClass implements Insertable<UserCardRow> {
       faceColor: serializer.fromJson<int>(json['faceColor']),
       faceFinish: serializer.fromJson<String>(json['faceFinish']),
       sortOrder: serializer.fromJson<int>(json['sortOrder']),
+      helpline: serializer.fromJson<String?>(json['helpline']),
       createdAt: serializer.fromJson<DateTime>(json['createdAt']),
     );
   }
@@ -593,6 +626,7 @@ class UserCardRow extends DataClass implements Insertable<UserCardRow> {
       'faceColor': serializer.toJson<int>(faceColor),
       'faceFinish': serializer.toJson<String>(faceFinish),
       'sortOrder': serializer.toJson<int>(sortOrder),
+      'helpline': serializer.toJson<String?>(helpline),
       'createdAt': serializer.toJson<DateTime>(createdAt),
     };
   }
@@ -614,6 +648,7 @@ class UserCardRow extends DataClass implements Insertable<UserCardRow> {
     int? faceColor,
     String? faceFinish,
     int? sortOrder,
+    Value<String?> helpline = const Value.absent(),
     DateTime? createdAt,
   }) => UserCardRow(
     id: id ?? this.id,
@@ -636,6 +671,7 @@ class UserCardRow extends DataClass implements Insertable<UserCardRow> {
     faceColor: faceColor ?? this.faceColor,
     faceFinish: faceFinish ?? this.faceFinish,
     sortOrder: sortOrder ?? this.sortOrder,
+    helpline: helpline.present ? helpline.value : this.helpline,
     createdAt: createdAt ?? this.createdAt,
   );
   UserCardRow copyWithCompanion(UserCardsCompanion data) {
@@ -668,6 +704,7 @@ class UserCardRow extends DataClass implements Insertable<UserCardRow> {
           ? data.faceFinish.value
           : this.faceFinish,
       sortOrder: data.sortOrder.present ? data.sortOrder.value : this.sortOrder,
+      helpline: data.helpline.present ? data.helpline.value : this.helpline,
       createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
     );
   }
@@ -691,6 +728,7 @@ class UserCardRow extends DataClass implements Insertable<UserCardRow> {
           ..write('faceColor: $faceColor, ')
           ..write('faceFinish: $faceFinish, ')
           ..write('sortOrder: $sortOrder, ')
+          ..write('helpline: $helpline, ')
           ..write('createdAt: $createdAt')
           ..write(')'))
         .toString();
@@ -714,6 +752,7 @@ class UserCardRow extends DataClass implements Insertable<UserCardRow> {
     faceColor,
     faceFinish,
     sortOrder,
+    helpline,
     createdAt,
   );
   @override
@@ -736,6 +775,7 @@ class UserCardRow extends DataClass implements Insertable<UserCardRow> {
           other.faceColor == this.faceColor &&
           other.faceFinish == this.faceFinish &&
           other.sortOrder == this.sortOrder &&
+          other.helpline == this.helpline &&
           other.createdAt == this.createdAt);
 }
 
@@ -756,6 +796,7 @@ class UserCardsCompanion extends UpdateCompanion<UserCardRow> {
   final Value<int> faceColor;
   final Value<String> faceFinish;
   final Value<int> sortOrder;
+  final Value<String?> helpline;
   final Value<DateTime> createdAt;
   final Value<int> rowid;
   const UserCardsCompanion({
@@ -775,6 +816,7 @@ class UserCardsCompanion extends UpdateCompanion<UserCardRow> {
     this.faceColor = const Value.absent(),
     this.faceFinish = const Value.absent(),
     this.sortOrder = const Value.absent(),
+    this.helpline = const Value.absent(),
     this.createdAt = const Value.absent(),
     this.rowid = const Value.absent(),
   });
@@ -795,6 +837,7 @@ class UserCardsCompanion extends UpdateCompanion<UserCardRow> {
     required int faceColor,
     this.faceFinish = const Value.absent(),
     this.sortOrder = const Value.absent(),
+    this.helpline = const Value.absent(),
     required DateTime createdAt,
     this.rowid = const Value.absent(),
   }) : id = Value(id),
@@ -824,6 +867,7 @@ class UserCardsCompanion extends UpdateCompanion<UserCardRow> {
     Expression<int>? faceColor,
     Expression<String>? faceFinish,
     Expression<int>? sortOrder,
+    Expression<String>? helpline,
     Expression<DateTime>? createdAt,
     Expression<int>? rowid,
   }) {
@@ -844,6 +888,7 @@ class UserCardsCompanion extends UpdateCompanion<UserCardRow> {
       if (faceColor != null) 'face_color': faceColor,
       if (faceFinish != null) 'face_finish': faceFinish,
       if (sortOrder != null) 'sort_order': sortOrder,
+      if (helpline != null) 'helpline': helpline,
       if (createdAt != null) 'created_at': createdAt,
       if (rowid != null) 'rowid': rowid,
     });
@@ -866,6 +911,7 @@ class UserCardsCompanion extends UpdateCompanion<UserCardRow> {
     Value<int>? faceColor,
     Value<String>? faceFinish,
     Value<int>? sortOrder,
+    Value<String?>? helpline,
     Value<DateTime>? createdAt,
     Value<int>? rowid,
   }) {
@@ -886,6 +932,7 @@ class UserCardsCompanion extends UpdateCompanion<UserCardRow> {
       faceColor: faceColor ?? this.faceColor,
       faceFinish: faceFinish ?? this.faceFinish,
       sortOrder: sortOrder ?? this.sortOrder,
+      helpline: helpline ?? this.helpline,
       createdAt: createdAt ?? this.createdAt,
       rowid: rowid ?? this.rowid,
     );
@@ -942,6 +989,9 @@ class UserCardsCompanion extends UpdateCompanion<UserCardRow> {
     if (sortOrder.present) {
       map['sort_order'] = Variable<int>(sortOrder.value);
     }
+    if (helpline.present) {
+      map['helpline'] = Variable<String>(helpline.value);
+    }
     if (createdAt.present) {
       map['created_at'] = Variable<DateTime>(createdAt.value);
     }
@@ -970,6 +1020,7 @@ class UserCardsCompanion extends UpdateCompanion<UserCardRow> {
           ..write('faceColor: $faceColor, ')
           ..write('faceFinish: $faceFinish, ')
           ..write('sortOrder: $sortOrder, ')
+          ..write('helpline: $helpline, ')
           ..write('createdAt: $createdAt, ')
           ..write('rowid: $rowid')
           ..write(')'))
@@ -2695,6 +2746,227 @@ class CustomBenefitsCompanion extends UpdateCompanion<CustomBenefit> {
   }
 }
 
+class $BudgetsTable extends Budgets with TableInfo<$BudgetsTable, Budget> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $BudgetsTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _categoryMeta = const VerificationMeta(
+    'category',
+  );
+  @override
+  late final GeneratedColumn<String> category = GeneratedColumn<String>(
+    'category',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _amountPaiseMeta = const VerificationMeta(
+    'amountPaise',
+  );
+  @override
+  late final GeneratedColumn<int> amountPaise = GeneratedColumn<int>(
+    'amount_paise',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [category, amountPaise];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'budgets';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<Budget> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('category')) {
+      context.handle(
+        _categoryMeta,
+        category.isAcceptableOrUnknown(data['category']!, _categoryMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_categoryMeta);
+    }
+    if (data.containsKey('amount_paise')) {
+      context.handle(
+        _amountPaiseMeta,
+        amountPaise.isAcceptableOrUnknown(
+          data['amount_paise']!,
+          _amountPaiseMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_amountPaiseMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {category};
+  @override
+  Budget map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return Budget(
+      category: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}category'],
+      )!,
+      amountPaise: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}amount_paise'],
+      )!,
+    );
+  }
+
+  @override
+  $BudgetsTable createAlias(String alias) {
+    return $BudgetsTable(attachedDatabase, alias);
+  }
+}
+
+class Budget extends DataClass implements Insertable<Budget> {
+  final String category;
+  final int amountPaise;
+  const Budget({required this.category, required this.amountPaise});
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['category'] = Variable<String>(category);
+    map['amount_paise'] = Variable<int>(amountPaise);
+    return map;
+  }
+
+  BudgetsCompanion toCompanion(bool nullToAbsent) {
+    return BudgetsCompanion(
+      category: Value(category),
+      amountPaise: Value(amountPaise),
+    );
+  }
+
+  factory Budget.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return Budget(
+      category: serializer.fromJson<String>(json['category']),
+      amountPaise: serializer.fromJson<int>(json['amountPaise']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'category': serializer.toJson<String>(category),
+      'amountPaise': serializer.toJson<int>(amountPaise),
+    };
+  }
+
+  Budget copyWith({String? category, int? amountPaise}) => Budget(
+    category: category ?? this.category,
+    amountPaise: amountPaise ?? this.amountPaise,
+  );
+  Budget copyWithCompanion(BudgetsCompanion data) {
+    return Budget(
+      category: data.category.present ? data.category.value : this.category,
+      amountPaise: data.amountPaise.present
+          ? data.amountPaise.value
+          : this.amountPaise,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('Budget(')
+          ..write('category: $category, ')
+          ..write('amountPaise: $amountPaise')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(category, amountPaise);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is Budget &&
+          other.category == this.category &&
+          other.amountPaise == this.amountPaise);
+}
+
+class BudgetsCompanion extends UpdateCompanion<Budget> {
+  final Value<String> category;
+  final Value<int> amountPaise;
+  final Value<int> rowid;
+  const BudgetsCompanion({
+    this.category = const Value.absent(),
+    this.amountPaise = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  BudgetsCompanion.insert({
+    required String category,
+    required int amountPaise,
+    this.rowid = const Value.absent(),
+  }) : category = Value(category),
+       amountPaise = Value(amountPaise);
+  static Insertable<Budget> custom({
+    Expression<String>? category,
+    Expression<int>? amountPaise,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (category != null) 'category': category,
+      if (amountPaise != null) 'amount_paise': amountPaise,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  BudgetsCompanion copyWith({
+    Value<String>? category,
+    Value<int>? amountPaise,
+    Value<int>? rowid,
+  }) {
+    return BudgetsCompanion(
+      category: category ?? this.category,
+      amountPaise: amountPaise ?? this.amountPaise,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (category.present) {
+      map['category'] = Variable<String>(category.value);
+    }
+    if (amountPaise.present) {
+      map['amount_paise'] = Variable<int>(amountPaise.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('BudgetsCompanion(')
+          ..write('category: $category, ')
+          ..write('amountPaise: $amountPaise, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
 class $MerchantRulesTable extends MerchantRules
     with TableInfo<$MerchantRulesTable, MerchantRule> {
   @override
@@ -3551,6 +3823,7 @@ abstract class _$AppDatabase extends GeneratedDatabase {
     this,
   );
   late final $CustomBenefitsTable customBenefits = $CustomBenefitsTable(this);
+  late final $BudgetsTable budgets = $BudgetsTable(this);
   late final $MerchantRulesTable merchantRules = $MerchantRulesTable(this);
   late final $NetworkLogsTable networkLogs = $NetworkLogsTable(this);
   late final $KeyValuesTable keyValues = $KeyValuesTable(this);
@@ -3563,6 +3836,7 @@ abstract class _$AppDatabase extends GeneratedDatabase {
     spends,
     benefitOverrides,
     customBenefits,
+    budgets,
     merchantRules,
     networkLogs,
     keyValues,
@@ -3586,6 +3860,7 @@ typedef $$UserCardsTableCreateCompanionBuilder = UserCardsCompanion Function({
   required int faceColor,
   Value<String> faceFinish,
   Value<int> sortOrder,
+  Value<String?> helpline,
   required DateTime createdAt,
   Value<int> rowid,
 });
@@ -3606,6 +3881,7 @@ typedef $$UserCardsTableUpdateCompanionBuilder = UserCardsCompanion Function({
   Value<int> faceColor,
   Value<String> faceFinish,
   Value<int> sortOrder,
+  Value<String?> helpline,
   Value<DateTime> createdAt,
   Value<int> rowid,
 });
@@ -3696,6 +3972,11 @@ class $$UserCardsTableFilterComposer
 
   ColumnFilters<int> get sortOrder => $composableBuilder(
     column: $table.sortOrder,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get helpline => $composableBuilder(
+    column: $table.helpline,
     builder: (column) => ColumnFilters(column),
   );
 
@@ -3794,6 +4075,11 @@ class $$UserCardsTableOrderingComposer
     builder: (column) => ColumnOrderings(column),
   );
 
+  ColumnOrderings<String> get helpline => $composableBuilder(
+    column: $table.helpline,
+    builder: (column) => ColumnOrderings(column),
+  );
+
   ColumnOrderings<DateTime> get createdAt => $composableBuilder(
     column: $table.createdAt,
     builder: (column) => ColumnOrderings(column),
@@ -3869,6 +4155,9 @@ class $$UserCardsTableAnnotationComposer
   GeneratedColumn<int> get sortOrder =>
       $composableBuilder(column: $table.sortOrder, builder: (column) => column);
 
+  GeneratedColumn<String> get helpline =>
+      $composableBuilder(column: $table.helpline, builder: (column) => column);
+
   GeneratedColumn<DateTime> get createdAt =>
       $composableBuilder(column: $table.createdAt, builder: (column) => column);
 }
@@ -3920,6 +4209,7 @@ class $$UserCardsTableTableManager
                 Value<int> faceColor = const Value.absent(),
                 Value<String> faceFinish = const Value.absent(),
                 Value<int> sortOrder = const Value.absent(),
+                Value<String?> helpline = const Value.absent(),
                 Value<DateTime> createdAt = const Value.absent(),
                 Value<int> rowid = const Value.absent(),
               }) => UserCardsCompanion(
@@ -3939,6 +4229,7 @@ class $$UserCardsTableTableManager
                 faceColor: faceColor,
                 faceFinish: faceFinish,
                 sortOrder: sortOrder,
+                helpline: helpline,
                 createdAt: createdAt,
                 rowid: rowid,
               ),
@@ -3960,6 +4251,7 @@ class $$UserCardsTableTableManager
                 required int faceColor,
                 Value<String> faceFinish = const Value.absent(),
                 Value<int> sortOrder = const Value.absent(),
+                Value<String?> helpline = const Value.absent(),
                 required DateTime createdAt,
                 Value<int> rowid = const Value.absent(),
               }) => UserCardsCompanion.insert(
@@ -3979,6 +4271,7 @@ class $$UserCardsTableTableManager
                 faceColor: faceColor,
                 faceFinish: faceFinish,
                 sortOrder: sortOrder,
+                helpline: helpline,
                 createdAt: createdAt,
                 rowid: rowid,
               ),
@@ -4889,6 +5182,152 @@ typedef $$CustomBenefitsTableProcessedTableManager =
       CustomBenefit,
       PrefetchHooks Function()
     >;
+typedef $$BudgetsTableCreateCompanionBuilder = BudgetsCompanion Function({
+  required String category,
+  required int amountPaise,
+  Value<int> rowid,
+});
+typedef $$BudgetsTableUpdateCompanionBuilder = BudgetsCompanion Function({
+  Value<String> category,
+  Value<int> amountPaise,
+  Value<int> rowid,
+});
+
+class $$BudgetsTableFilterComposer
+    extends Composer<_$AppDatabase, $BudgetsTable> {
+  $$BudgetsTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get category => $composableBuilder(
+    column: $table.category,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get amountPaise => $composableBuilder(
+    column: $table.amountPaise,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$BudgetsTableOrderingComposer
+    extends Composer<_$AppDatabase, $BudgetsTable> {
+  $$BudgetsTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get category => $composableBuilder(
+    column: $table.category,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get amountPaise => $composableBuilder(
+    column: $table.amountPaise,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$BudgetsTableAnnotationComposer
+    extends Composer<_$AppDatabase, $BudgetsTable> {
+  $$BudgetsTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get category =>
+      $composableBuilder(column: $table.category, builder: (column) => column);
+
+  GeneratedColumn<int> get amountPaise => $composableBuilder(
+    column: $table.amountPaise,
+    builder: (column) => column,
+  );
+}
+
+class $$BudgetsTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $BudgetsTable,
+          Budget,
+          $$BudgetsTableFilterComposer,
+          $$BudgetsTableOrderingComposer,
+          $$BudgetsTableAnnotationComposer,
+          $$BudgetsTableCreateCompanionBuilder,
+          $$BudgetsTableUpdateCompanionBuilder,
+          (Budget, BaseReferences<_$AppDatabase, $BudgetsTable, Budget>),
+          Budget,
+          PrefetchHooks Function()
+        > {
+  $$BudgetsTableTableManager(_$AppDatabase db, $BudgetsTable table)
+    : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$BudgetsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$BudgetsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$BudgetsTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<String> category = const Value.absent(),
+                Value<int> amountPaise = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => BudgetsCompanion(
+                category: category,
+                amountPaise: amountPaise,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String category,
+                required int amountPaise,
+                Value<int> rowid = const Value.absent(),
+              }) => BudgetsCompanion.insert(
+                category: category,
+                amountPaise: amountPaise,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$BudgetsTable, Budget>(table),
+                  BaseReferences<_$AppDatabase, $BudgetsTable, Budget>(
+                    db,
+                    table,
+                    e,
+                  ),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$BudgetsTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $BudgetsTable,
+      Budget,
+      $$BudgetsTableFilterComposer,
+      $$BudgetsTableOrderingComposer,
+      $$BudgetsTableAnnotationComposer,
+      $$BudgetsTableCreateCompanionBuilder,
+      $$BudgetsTableUpdateCompanionBuilder,
+      (Budget, BaseReferences<_$AppDatabase, $BudgetsTable, Budget>),
+      Budget,
+      PrefetchHooks Function()
+    >;
 typedef $$MerchantRulesTableCreateCompanionBuilder =
     MerchantRulesCompanion Function({
       required String merchant,
@@ -5428,6 +5867,8 @@ class $AppDatabaseManager {
       $$BenefitOverridesTableTableManager(_db, _db.benefitOverrides);
   $$CustomBenefitsTableTableManager get customBenefits =>
       $$CustomBenefitsTableTableManager(_db, _db.customBenefits);
+  $$BudgetsTableTableManager get budgets =>
+      $$BudgetsTableTableManager(_db, _db.budgets);
   $$MerchantRulesTableTableManager get merchantRules =>
       $$MerchantRulesTableTableManager(_db, _db.merchantRules);
   $$NetworkLogsTableTableManager get networkLogs =>

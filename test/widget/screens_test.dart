@@ -158,6 +158,39 @@ void main() {
     await _close(t, db);
   });
 
+  testWidgets('money tab shows budgets, flagging overspend', (t) async {
+    final db = await t.runAsync(_seed);
+    await t.runAsync(() async {
+      await db!.setBudget(SpendCategory.dining, 100000);
+      await db.addSpend(Spend(
+        id: 's2',
+        amountPaise: 150000,
+        category: SpendCategory.dining,
+        paymentKind: PaymentKind.card,
+        userCardId: 'scapia',
+        spentOn: DateTime.now(),
+      ));
+    });
+    await _pump(t, db!, const MoneyScreen());
+    expect(find.text('Budgets this month'), findsOneWidget);
+    expect(find.text(' / ₹1,000 · over'), findsOneWidget);
+    await _close(t, db);
+  });
+
+  testWidgets('card detail offers the lost-card helpline', (t) async {
+    final db = await t.runAsync(_seed);
+    await _pump(t, db!, const CardDetailScreen(cardId: 'airtel'));
+    expect(find.text('Lost this card?'), findsOneWidget);
+    expect(find.textContaining("Add your bank's helpline"), findsOneWidget);
+    await t.runAsync(() => db.setHelpline('airtel', '1860 419 5555'));
+    for (var i = 0; i < 5; i++) {
+      await t.runAsync(() => Future<void>.delayed(const Duration(milliseconds: 20)));
+      await t.pump();
+    }
+    expect(find.textContaining('Call Axis Bank to block it'), findsOneWidget);
+    await _close(t, db);
+  });
+
   testWidgets('trust center lists costs and an empty network log', (t) async {
     final db = await t.runAsync(_seed);
     await _pump(t, db!, const TrustScreen());
