@@ -1,0 +1,998 @@
+{
+  "bank": {
+    "id": "sbi",
+    "name": "SBI Card",
+    "helpline": "18601801290",
+    "helplineSource": "https://www.sbicard.com/en/faq/lost-stolen-reissue-replace-cards.page"
+  },
+  "products": [
+    {
+      "id": "sbi_cashback",
+      "bankId": "sbi",
+      "name": "SBI Cashback",
+      "tagline": "5% cashback on online spends, 1% offline",
+      "network": "VISA",
+      "annualFeePaise": 99900,
+      "joiningFeePaise": 99900,
+      "waiverSpendPaise": 20000000,
+      "face": {
+        "finish": "pattern",
+        "base": "#1C1C2E",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.sbicard.com/en/personal/credit-cards/cashback-sbi-card.html",
+      "benefits": [
+        {
+          "id": "sbi_cashback_online",
+          "category": "SHOPPING",
+          "kind": "REWARD",
+          "title": "5% cashback on online spends",
+          "rateBps": 500,
+          "channel": "Online",
+          "conditions": "Direct cashback. Online cashback capped at Rs 2,000 per statement cycle (combined online+offline cap Rs 4,000 per cycle) from 1 Apr 2026. Excludes merchant/Flexipay EMI, gaming, tolls, govt, education, jewellery, railways.",
+          "sourceUrl": "https://www.sbicard.com/en/faq/cashback-sbi-card-faq.page",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sbi_cashback_food_online",
+          "category": "FOOD_DELIVERY",
+          "kind": "REWARD",
+          "title": "5% cashback on online food orders",
+          "rateBps": 500,
+          "channel": "Online",
+          "conditions": "Counts as online spend; shares the Rs 2,000 per statement cycle online cap.",
+          "sourceUrl": "https://www.sbicard.com/en/faq/cashback-sbi-card-faq.page",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sbi_cashback_base",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "1% cashback on offline spends",
+          "rateBps": 100,
+          "conditions": "Offline cashback capped at Rs 2,000 per statement cycle.",
+          "sourceUrl": "https://www.sbicard.com/en/faq/cashback-sbi-card-faq.page",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sbi_cashback_fuel",
+          "category": "FUEL",
+          "kind": "REWARD",
+          "title": "No cashback on fuel",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards",
+          "sourceUrl": "https://www.sbicard.com/sbi-card-en/assets/docs/pdf/cashback-revised.pdf",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sbi_cashback_rent",
+          "category": "RENT",
+          "kind": "REWARD",
+          "title": "No cashback on rent",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards",
+          "sourceUrl": "https://www.sbicard.com/sbi-card-en/assets/docs/pdf/cashback-revised.pdf",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sbi_cashback_utilities",
+          "category": "UTILITIES",
+          "kind": "REWARD",
+          "title": "No cashback on utilities",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards",
+          "sourceUrl": "https://www.sbicard.com/sbi-card-en/assets/docs/pdf/cashback-revised.pdf",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sbi_cashback_insurance",
+          "category": "INSURANCE",
+          "kind": "REWARD",
+          "title": "No cashback on insurance",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards",
+          "sourceUrl": "https://www.sbicard.com/sbi-card-en/assets/docs/pdf/cashback-revised.pdf",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sbi_cashback_forex",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "3.5% forex markup",
+          "rateBps": 350,
+          "conditions": "Foreign currency transaction fee 3.5% (all SBI cards except ELITE/AURUM tier).",
+          "sourceUrl": "https://www.sbicard.com/sbi-card-en/assets/docs/pdf/key-fact-statement.pdf",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "sbi_simplyclick",
+      "bankId": "sbi",
+      "name": "SimplyCLICK SBI Card",
+      "tagline": "10X points at online partners, 5X on other online",
+      "network": "VISA",
+      "otherNetworks": [
+        "MASTERCARD",
+        "RUPAY"
+      ],
+      "annualFeePaise": 49900,
+      "joiningFeePaise": 49900,
+      "waiverSpendPaise": 10000000,
+      "face": {
+        "finish": "gloss",
+        "base": "#23356B",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.sbicard.com/en/personal/credit-cards/shopping/simplyclick-sbi-card.page",
+      "benefits": [
+        {
+          "id": "sbi_simplyclick_partners",
+          "category": "SHOPPING",
+          "kind": "REWARD",
+          "title": "10X points at online partners",
+          "rateBps": 250,
+          "monthlyCapPaise": 250000,
+          "channel": "Partners: Apollo 24/7, BookMyShow, Cleartrip, Dominos, Myntra, Netmeds, Swiggy, Yatra",
+          "conditions": "10 RP per Rs 100; 1 RP = Rs 0.25 (4 RP = Rs 1). Capped at 10,000 RP per calendar month, then base rate. Partner list changes; Amazon gift cards/utility payments excluded.",
+          "sourceUrl": "https://www.sbicard.com/sbi-card-en/assets/docs/pdf/simply-click-tnc-MITC-booklet.pdf",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sbi_simplyclick_online",
+          "category": "OTHER",
+          "kind": "INFO",
+          "title": "5X points on other online spends",
+          "conditions": "5 RP per Rs 100 (about 1.25% at Rs 0.25/RP) on online spends at non-partner merchants, capped at 10,000 RP per calendar month.",
+          "sourceUrl": "https://www.sbicard.com/sbi-card-en/assets/docs/pdf/simply-click-tnc-MITC-booklet.pdf",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sbi_simplyclick_food",
+          "category": "FOOD_DELIVERY",
+          "kind": "REWARD",
+          "title": "10X points on Swiggy",
+          "rateBps": 250,
+          "monthlyCapPaise": 250000,
+          "channel": "Swiggy",
+          "conditions": "10 RP per Rs 100; 1 RP = Rs 0.25. Shares 10,000 RP monthly cap. Other online food apps earn 5X (1.25%).",
+          "sourceUrl": "https://www.sbicard.com/sbi-card-en/assets/docs/pdf/simply-click-tnc-MITC-booklet.pdf",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sbi_simplyclick_base",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "1 point per Rs 100 on other spends",
+          "rateBps": 25,
+          "conditions": "1 RP per Rs 100; 1 RP = Rs 0.25.",
+          "sourceUrl": "https://www.sbicard.com/en/personal/credit-cards/shopping/simplyclick-sbi-card.page",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sbi_simplyclick_milestone",
+          "category": "OTHER",
+          "kind": "INFO",
+          "title": "Online spend milestones",
+          "conditions": "Rs 2,000 Cleartrip/Yatra e-voucher each at Rs 1 lakh and Rs 2 lakh annual online spends.",
+          "sourceUrl": "https://www.sbicard.com/sbi-card-en/assets/docs/pdf/simply-click-tnc-MITC-booklet.pdf",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sbi_simplyclick_fuel",
+          "category": "FUEL",
+          "kind": "INFO",
+          "title": "1% fuel surcharge waiver",
+          "conditions": "On transactions Rs 500-3,000; max Rs 100 per statement cycle.",
+          "sourceUrl": "https://www.sbicard.com/en/personal/credit-cards/shopping/simplyclick-sbi-card.page",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sbi_simplyclick_forex",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "3.5% forex markup",
+          "rateBps": 350,
+          "conditions": "Foreign currency transaction fee 3.5%.",
+          "sourceUrl": "https://www.sbicard.com/sbi-card-en/assets/docs/pdf/key-fact-statement.pdf",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "sbi_simplysave",
+      "bankId": "sbi",
+      "name": "SimplySAVE SBI Card",
+      "tagline": "10X points on dining, movies, groceries",
+      "network": "VISA",
+      "otherNetworks": [
+        "MASTERCARD",
+        "RUPAY"
+      ],
+      "annualFeePaise": 49900,
+      "joiningFeePaise": 49900,
+      "waiverSpendPaise": 10000000,
+      "face": {
+        "finish": "gloss",
+        "base": "#1F6F8B",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.sbicard.com/en/personal/credit-cards/simplysave-sbi-card.html",
+      "benefits": [
+        {
+          "id": "sbi_simplysave_dining",
+          "category": "DINING",
+          "kind": "REWARD",
+          "title": "10X points on dining",
+          "rateBps": 167,
+          "monthlyCapPaise": 125000,
+          "conditions": "10 RP per Rs 150; 1 RP = Rs 0.25. Accelerated points across dining, movies, groceries, departmental stores capped at 5,000 RP per month (shared cap).",
+          "sourceUrl": "https://www.sbicard.com/sbi-card-en/assets/docs/pdf/SimplySAVE-TnC.pdf",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sbi_simplysave_groceries",
+          "category": "GROCERIES",
+          "kind": "REWARD",
+          "title": "10X points on groceries & departmental stores",
+          "rateBps": 167,
+          "monthlyCapPaise": 125000,
+          "conditions": "10 RP per Rs 150; 1 RP = Rs 0.25. Shared 5,000 RP monthly cap with dining/movies.",
+          "sourceUrl": "https://www.sbicard.com/sbi-card-en/assets/docs/pdf/SimplySAVE-TnC.pdf",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sbi_simplysave_base",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "1 point per Rs 150 on other spends",
+          "rateBps": 17,
+          "conditions": "1 RP per Rs 150; 1 RP = Rs 0.25. Movies also earn 10X (1.67%) within the shared cap.",
+          "sourceUrl": "https://www.sbicard.com/sbi-card-en/assets/docs/pdf/SimplySAVE-TnC.pdf",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sbi_simplysave_fuel",
+          "category": "FUEL",
+          "kind": "REWARD",
+          "title": "No points on fuel",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards. 1% fuel surcharge waiver on Rs 500-3,000 transactions, max Rs 100 per month.",
+          "sourceUrl": "https://www.sbicard.com/sbi-card-en/assets/docs/pdf/SimplySAVE-TnC.pdf",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sbi_simplysave_forex",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "3.5% forex markup",
+          "rateBps": 350,
+          "conditions": "Foreign currency transaction fee 3.5%.",
+          "sourceUrl": "https://www.sbicard.com/sbi-card-en/assets/docs/pdf/key-fact-statement.pdf",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "sbi_prime",
+      "bankId": "sbi",
+      "name": "SBI Card PRIME",
+      "tagline": "10 points per Rs 100 on dining, groceries, movies",
+      "network": "VISA",
+      "otherNetworks": [
+        "MASTERCARD"
+      ],
+      "annualFeePaise": 299900,
+      "joiningFeePaise": 299900,
+      "waiverSpendPaise": 30000000,
+      "face": {
+        "finish": "gloss",
+        "base": "#1A2B4C",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.sbicard.com/sbi-card-en/assets/docs/pdf/personal/credit-cards/rewards/sbi-card-prime/prime-web-brochure.pdf",
+      "benefits": [
+        {
+          "id": "sbi_prime_dining",
+          "category": "DINING",
+          "kind": "REWARD",
+          "title": "10 points per Rs 100 on dining",
+          "rateBps": 250,
+          "monthlyCapPaise": 187500,
+          "conditions": "10 RP per Rs 100; 1 RP = Rs 0.25. Accelerated categories (dining, groceries, departmental stores, movies) share a 7,500 RP per calendar month cap, then 2 RP per Rs 100.",
+          "sourceUrl": "https://www.sbicard.com/sbi-card-en/assets/docs/pdf/personal/credit-cards/rewards/sbi-card-prime/prime-tnc-booklet-combined.pdf",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sbi_prime_groceries",
+          "category": "GROCERIES",
+          "kind": "REWARD",
+          "title": "10 points per Rs 100 on groceries & departmental stores",
+          "rateBps": 250,
+          "monthlyCapPaise": 187500,
+          "conditions": "10 RP per Rs 100; 1 RP = Rs 0.25. Shared 7,500 RP monthly cap.",
+          "sourceUrl": "https://www.sbicard.com/sbi-card-en/assets/docs/pdf/personal/credit-cards/rewards/sbi-card-prime/prime-tnc-booklet-combined.pdf",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sbi_prime_base",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "2 points per Rs 100 on other spends",
+          "rateBps": 50,
+          "conditions": "2 RP per Rs 100; 1 RP = Rs 0.25. Movies earn 10 RP/Rs 100 within shared cap.",
+          "sourceUrl": "https://www.sbicard.com/sbi-card-en/assets/docs/pdf/personal/credit-cards/rewards/sbi-card-prime/prime-tnc-booklet-combined.pdf",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sbi_prime_fuel",
+          "category": "FUEL",
+          "kind": "REWARD",
+          "title": "No points on fuel",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards",
+          "sourceUrl": "https://www.sbicard.com/sbi-card-en/assets/docs/pdf/personal/credit-cards/rewards/sbi-card-prime/prime-web-brochure.pdf",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sbi_prime_lounge",
+          "category": "TRAVEL",
+          "kind": "INFO",
+          "title": "Airport lounge access",
+          "conditions": "8 complimentary domestic lounge visits per year (max 2 per quarter); 4 international visits per year via Priority Pass.",
+          "sourceUrl": "https://cardadvisor.in/cards/sbi-prime",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sbi_prime_forex",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "3.5% forex markup",
+          "rateBps": 350,
+          "conditions": "Foreign currency transaction fee 3.5%.",
+          "sourceUrl": "https://www.sbicard.com/sbi-card-en/assets/docs/pdf/key-fact-statement.pdf",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "sbi_elite",
+      "bankId": "sbi",
+      "name": "SBI Card ELITE",
+      "tagline": "5X points on dining, grocery, departmental stores; 1.99% forex",
+      "network": "VISA",
+      "otherNetworks": [
+        "MASTERCARD"
+      ],
+      "annualFeePaise": 499900,
+      "joiningFeePaise": 499900,
+      "waiverSpendPaise": 100000000,
+      "face": {
+        "finish": "matte",
+        "base": "#1A1A1A",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.sbicard.com/sbi-card-en/assets/docs/pdf/personal/credit-cards/lifestyle/sbi-card-elite/ELITE-Terms-and-Conditions.pdf",
+      "benefits": [
+        {
+          "id": "sbi_elite_dining",
+          "category": "DINING",
+          "kind": "REWARD",
+          "title": "5X points on dining",
+          "rateBps": 250,
+          "monthlyCapPaise": 250000,
+          "conditions": "10 RP per Rs 100 (5X); 1 RP = Rs 0.25. 5X categories (dining, grocery, departmental stores) share a 10,000 RP monthly cap per SBI partner-terms table (not confirmed from ELITE page).",
+          "sourceUrl": "https://www.sbicard.com/sbi-card-en/assets/docs/pdf/personal/credit-cards/lifestyle/sbi-card-elite/E-Brochure_FINAL.pdf",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sbi_elite_groceries",
+          "category": "GROCERIES",
+          "kind": "REWARD",
+          "title": "5X points on grocery & departmental stores",
+          "rateBps": 250,
+          "monthlyCapPaise": 250000,
+          "conditions": "10 RP per Rs 100; 1 RP = Rs 0.25. Shared 10,000 RP monthly cap.",
+          "sourceUrl": "https://www.sbicard.com/sbi-card-en/assets/docs/pdf/personal/credit-cards/lifestyle/sbi-card-elite/E-Brochure_FINAL.pdf",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sbi_elite_base",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "2 points per Rs 100 on other spends",
+          "rateBps": 50,
+          "conditions": "2 RP per Rs 100; 1 RP = Rs 0.25.",
+          "sourceUrl": "https://www.sbicard.com/sbi-card-en/assets/docs/pdf/personal/credit-cards/lifestyle/sbi-card-elite/E-Brochure_FINAL.pdf",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sbi_elite_fuel",
+          "category": "FUEL",
+          "kind": "REWARD",
+          "title": "No points on fuel",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards",
+          "sourceUrl": "https://www.bankbazaar.com/credit-card/sbi-card-elite.html",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sbi_elite_milestone",
+          "category": "OTHER",
+          "kind": "INFO",
+          "title": "Up to 50,000 bonus points a year",
+          "conditions": "10,000 RP each at Rs 3L and Rs 4L annual spend; 15,000 RP each at Rs 5L and Rs 8L (worth up to Rs 12,500 total).",
+          "sourceUrl": "https://www.sbicard.com/sbi-card-en/assets/docs/pdf/personal/credit-cards/lifestyle/sbi-card-elite/E-Brochure_FINAL.pdf",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sbi_elite_lounge",
+          "category": "TRAVEL",
+          "kind": "INFO",
+          "title": "Domestic and international lounges",
+          "conditions": "2 domestic visits per quarter; Priority Pass with 6 international visits per year (max 2 per quarter).",
+          "sourceUrl": "https://www.bankbazaar.com/credit-card/sbi-card-elite.html",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sbi_elite_forex",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "1.99% forex markup",
+          "rateBps": 199,
+          "conditions": "ELITE tier forex markup 1.99%.",
+          "sourceUrl": "https://www.sbicard.com/sbi-card-en/assets/docs/pdf/key-fact-statement.pdf",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "sbi_flipkart",
+      "bankId": "sbi",
+      "name": "Flipkart SBI Card",
+      "tagline": "7.5% on Myntra, 5% on Flipkart and Cleartrip",
+      "network": "VISA",
+      "annualFeePaise": 50000,
+      "joiningFeePaise": 50000,
+      "waiverSpendPaise": 35000000,
+      "face": {
+        "finish": "gloss",
+        "base": "#2A4FD8",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.sbicard.com/en/personal/credit-cards/flipkart-sbi-card.html",
+      "benefits": [
+        {
+          "id": "sbi_flipkart_myntra",
+          "category": "SHOPPING",
+          "kind": "REWARD",
+          "title": "7.5% cashback on Myntra",
+          "rateBps": 750,
+          "channel": "Myntra",
+          "conditions": "Direct cashback; capped at about Rs 4,000 per quarter.",
+          "sourceUrl": "https://www.sbicard.com/sbi-card-en/assets/docs/pdf/who-we-are/notices/SEFilingPressReleaseAugust2025.pdf",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sbi_flipkart_flipkart",
+          "category": "SHOPPING",
+          "kind": "REWARD",
+          "title": "5% cashback on Flipkart & Shopsy",
+          "rateBps": 500,
+          "channel": "Flipkart",
+          "conditions": "Direct cashback; capped at about Rs 4,000 per quarter.",
+          "sourceUrl": "https://www.sbicard.com/sbi-card-en/assets/docs/pdf/who-we-are/notices/SEFilingPressReleaseAugust2025.pdf",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sbi_flipkart_cleartrip",
+          "category": "TRAVEL",
+          "kind": "REWARD",
+          "title": "5% cashback on Cleartrip",
+          "rateBps": 500,
+          "channel": "Cleartrip",
+          "conditions": "Direct cashback; capped at about Rs 4,000 per quarter.",
+          "sourceUrl": "https://www.sbicard.com/sbi-card-en/assets/docs/pdf/who-we-are/notices/SEFilingPressReleaseAugust2025.pdf",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sbi_flipkart_zomato",
+          "category": "FOOD_DELIVERY",
+          "kind": "REWARD",
+          "title": "4% cashback on Zomato",
+          "rateBps": 400,
+          "channel": "Zomato",
+          "conditions": "4% on select merchants (Zomato, Uber, Netmeds, PVR). Cap not confirmed.",
+          "sourceUrl": "https://www.sbicard.com/sbi-card-en/assets/docs/pdf/personal/cards/Flipkart-SBI-CreditCard-TandC-Booklet.pdf",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sbi_flipkart_base",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "1% cashback on other spends",
+          "rateBps": 100,
+          "conditions": "Direct cashback on other eligible spends. Uber, Netmeds, PVR earn 4%.",
+          "sourceUrl": "https://www.sbicard.com/sbi-card-en/assets/docs/pdf/personal/cards/Flipkart-SBI-CreditCard-TandC-Booklet.pdf",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sbi_flipkart_fuel",
+          "category": "FUEL",
+          "kind": "REWARD",
+          "title": "No cashback on fuel",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards. 1% fuel surcharge waiver, max Rs 400 per statement cycle.",
+          "sourceUrl": "https://www.sbicard.com/sbi-card-en/assets/docs/pdf/personal/cards/Flipkart-SBI-CreditCard-TandC-Booklet.pdf",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sbi_flipkart_rent",
+          "category": "RENT",
+          "kind": "REWARD",
+          "title": "No cashback on rent",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards",
+          "sourceUrl": "https://www.sbicard.com/sbi-card-en/assets/docs/pdf/personal/cards/Flipkart-SBI-CreditCard-TandC-Booklet.pdf",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sbi_flipkart_insurance",
+          "category": "INSURANCE",
+          "kind": "REWARD",
+          "title": "No cashback on insurance",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards",
+          "sourceUrl": "https://www.sbicard.com/sbi-card-en/assets/docs/pdf/personal/cards/Flipkart-SBI-CreditCard-TandC-Booklet.pdf",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sbi_flipkart_forex",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "3.5% forex markup",
+          "rateBps": 350,
+          "conditions": "Standard SBI Card foreign currency fee 3.5% (all cards except ELITE/AURUM tier).",
+          "sourceUrl": "https://www.sbicard.com/sbi-card-en/assets/docs/pdf/key-fact-statement.pdf",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "sbi_bpcl",
+      "bankId": "sbi",
+      "name": "BPCL SBI Card",
+      "tagline": "13X points on BPCL fuel",
+      "network": "VISA",
+      "otherNetworks": [
+        "RUPAY"
+      ],
+      "annualFeePaise": 49900,
+      "joiningFeePaise": 49900,
+      "waiverSpendPaise": 10000000,
+      "face": {
+        "finish": "gloss",
+        "base": "#1E4FA0",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.sbicard.com/en/personal/credit-cards/bpcl-sbi-card.html",
+      "benefits": [
+        {
+          "id": "sbi_bpcl_fuel",
+          "category": "FUEL",
+          "kind": "REWARD",
+          "title": "13X points on BPCL fuel",
+          "rateBps": 325,
+          "channel": "BPCL",
+          "conditions": "13 RP per Rs 100 at BPCL; 4 RP = Rs 1 of fuel. Max 1,300 RP per statement cycle; earns on max Rs 10,000 fuel spend per month. Plus 1% fuel surcharge waiver at BPCL (SBI markets 4.25% total).",
+          "sourceUrl": "https://www.sbicard.com/sbi-card-en/assets/docs/pdf/personal/credit-cards/travel/bpcl-tnc.pdf",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sbi_bpcl_dining",
+          "category": "DINING",
+          "kind": "REWARD",
+          "title": "5X points on dining",
+          "rateBps": 125,
+          "monthlyCapPaise": 125000,
+          "conditions": "5 RP per Rs 100; 1 RP = Rs 0.25. 5X categories (groceries, departmental stores, dining, movies) share 5,000 RP monthly cap.",
+          "sourceUrl": "https://www.sbicard.com/sbi-card-en/assets/docs/pdf/bpcl-tnc-mitc-booklet-combined.pdf",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sbi_bpcl_groceries",
+          "category": "GROCERIES",
+          "kind": "REWARD",
+          "title": "5X points on groceries & departmental stores",
+          "rateBps": 125,
+          "monthlyCapPaise": 125000,
+          "conditions": "5 RP per Rs 100; 1 RP = Rs 0.25. Shared 5,000 RP monthly cap.",
+          "sourceUrl": "https://www.sbicard.com/sbi-card-en/assets/docs/pdf/bpcl-tnc-mitc-booklet-combined.pdf",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sbi_bpcl_base",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "1 point per Rs 100 on other spends",
+          "rateBps": 25,
+          "conditions": "1 RP per Rs 100; 1 RP = Rs 0.25.",
+          "sourceUrl": "https://www.sbicard.com/sbi-card-en/assets/docs/pdf/bpcl-tnc-mitc-booklet-combined.pdf",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sbi_bpcl_forex",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "3.5% forex markup",
+          "rateBps": 350,
+          "conditions": "Foreign currency transaction fee 3.5%.",
+          "sourceUrl": "https://www.sbicard.com/sbi-card-en/assets/docs/pdf/key-fact-statement.pdf",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "sbi_bpcl_octane",
+      "bankId": "sbi",
+      "name": "BPCL SBI Card OCTANE",
+      "tagline": "25X points on BPCL fuel, 10X on dining and groceries",
+      "network": "VISA",
+      "otherNetworks": [
+        "RUPAY"
+      ],
+      "annualFeePaise": 149900,
+      "joiningFeePaise": 149900,
+      "waiverSpendPaise": 20000000,
+      "face": {
+        "finish": "matte",
+        "base": "#151515",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.sbicard.com/en/personal/credit-cards/travel/bpcl-sbi-card-octane.page",
+      "benefits": [
+        {
+          "id": "sbi_bpcl_octane_fuel",
+          "category": "FUEL",
+          "kind": "REWARD",
+          "title": "25X points on BPCL fuel",
+          "rateBps": 625,
+          "channel": "BPCL",
+          "conditions": "25 RP per Rs 100 at BPCL; 1 RP = Rs 0.25. Max 2,500 RP per statement cycle. Plus 1% fuel surcharge waiver at BPCL.",
+          "sourceUrl": "https://www.sbicard.com/sbi-card-en/assets/docs/pdf/ekit-tncs/BPCLOctanetnc.pdf",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sbi_bpcl_octane_lpg",
+          "category": "UTILITIES",
+          "kind": "REWARD",
+          "title": "25X points on Bharat Gas LPG",
+          "rateBps": 625,
+          "channel": "Bharat Gas website/app",
+          "conditions": "25 RP per Rs 100; 1 RP = Rs 0.25. Max 500 RP per billing cycle.",
+          "sourceUrl": "https://www.sbicard.com/sbi-card-en/assets/docs/pdf/ekit-tncs/BPCLOctanetnc.pdf",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sbi_bpcl_octane_dining",
+          "category": "DINING",
+          "kind": "REWARD",
+          "title": "10X points on dining",
+          "rateBps": 250,
+          "monthlyCapPaise": 187500,
+          "conditions": "10 RP per Rs 100; 1 RP = Rs 0.25. Dining, movies, groceries, departmental stores share 7,500 RP monthly cap.",
+          "sourceUrl": "https://www.sbicard.com/sbi-card-en/assets/docs/pdf/ekit-tncs/BPCLOctanetnc.pdf",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sbi_bpcl_octane_groceries",
+          "category": "GROCERIES",
+          "kind": "REWARD",
+          "title": "10X points on groceries & departmental stores",
+          "rateBps": 250,
+          "monthlyCapPaise": 187500,
+          "conditions": "10 RP per Rs 100; 1 RP = Rs 0.25. Shared 7,500 RP monthly cap.",
+          "sourceUrl": "https://www.sbicard.com/sbi-card-en/assets/docs/pdf/ekit-tncs/BPCLOctanetnc.pdf",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sbi_bpcl_octane_base",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "1 point per Rs 100 on other spends",
+          "rateBps": 25,
+          "conditions": "1 RP per Rs 100; 1 RP = Rs 0.25. Non-BPCL fuel and wallet loads excluded.",
+          "sourceUrl": "https://www.sbicard.com/sbi-card-en/assets/docs/pdf/ekit-tncs/BPCLOctanetnc.pdf",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sbi_bpcl_octane_lounge",
+          "category": "TRAVEL",
+          "kind": "INFO",
+          "title": "Domestic lounge access",
+          "conditions": "Complimentary domestic airport lounge access (historically 1 per quarter); programme revised from 10 Jan 2026, check current terms.",
+          "sourceUrl": "https://www.sbicard.com/sbi-card-en/assets/docs/pdf/loungebenefits.pdf",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sbi_bpcl_octane_forex",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "3.5% forex markup",
+          "rateBps": 350,
+          "conditions": "Foreign currency transaction fee 3.5%.",
+          "sourceUrl": "https://www.sbicard.com/sbi-card-en/assets/docs/pdf/key-fact-statement.pdf",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "sbi_irctc_premier",
+      "bankId": "sbi",
+      "name": "IRCTC SBI Card Premier",
+      "tagline": "Up to 10% value back on IRCTC AC tickets",
+      "network": "VISA",
+      "annualFeePaise": 149900,
+      "joiningFeePaise": 149900,
+      "waiverSpendPaise": 20000000,
+      "face": {
+        "finish": "gloss",
+        "base": "#1C2A5A",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.sbicard.com/en/personal/credit-cards/travel/irctc-premier-card.page",
+      "benefits": [
+        {
+          "id": "sbi_irctc_premier_rail",
+          "category": "TRAVEL",
+          "kind": "REWARD",
+          "title": "Up to 10% back on AC rail tickets",
+          "rateBps": 1000,
+          "channel": "IRCTC",
+          "conditions": "Reward points on base fare of 1AC/2AC/3AC/CC/EC tickets via irctc.co.in or IRCTC app; 1 RP = Rs 1 against IRCTC tickets. No cap. Credited 5 days after journey.",
+          "sourceUrl": "https://www.sbicard.com/sbi-card-en/assets/docs/pdf/ekit-tncs/IRCTCPremiertnc.pdf",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sbi_irctc_premier_dining",
+          "category": "DINING",
+          "kind": "REWARD",
+          "title": "3 points per Rs 125 on dining",
+          "rateBps": 240,
+          "conditions": "3 RP per Rs 125; 1 RP = Rs 1 against IRCTC tickets.",
+          "sourceUrl": "https://www.sbicard.com/sbi-card-en/assets/docs/pdf/ekit-tncs/IRCTCPremiertnc.pdf",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sbi_irctc_premier_utilities",
+          "category": "UTILITIES",
+          "kind": "REWARD",
+          "title": "3 points per Rs 125 on utility standing instructions",
+          "rateBps": 240,
+          "channel": "Standing instruction",
+          "conditions": "3 RP per Rs 125 only on utility standing instructions; 1 RP = Rs 1 against IRCTC tickets.",
+          "sourceUrl": "https://www.sbicard.com/sbi-card-en/assets/docs/pdf/ekit-tncs/IRCTCPremiertnc.pdf",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sbi_irctc_premier_air",
+          "category": "OTHER",
+          "kind": "INFO",
+          "title": "5 points per Rs 125 on IRCTC air & e-catering",
+          "conditions": "5 RP per Rs 125 (4%) via air.irctc.co.in and ecatering.irctc.in, max 750 RP per statement cycle.",
+          "sourceUrl": "https://www.sbicard.com/sbi-card-en/assets/docs/pdf/ekit-tncs/IRCTCPremiertnc.pdf",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sbi_irctc_premier_base",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "1 point per Rs 125 on other spends",
+          "rateBps": 80,
+          "conditions": "1 RP per Rs 125; 1 RP = Rs 1 only when redeemed for IRCTC tickets. No points on govt transactions since 15 Jul 2024.",
+          "sourceUrl": "https://www.sbicard.com/sbi-card-en/assets/docs/pdf/ekit-tncs/IRCTCPremiertnc.pdf",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sbi_irctc_premier_forex",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "3.5% forex markup",
+          "rateBps": 350,
+          "conditions": "Standard SBI Card foreign currency fee 3.5% (all cards except ELITE/AURUM tier).",
+          "sourceUrl": "https://www.sbicard.com/sbi-card-en/assets/docs/pdf/key-fact-statement.pdf",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "sbi_phonepe_select_black",
+      "bankId": "sbi",
+      "name": "PhonePe SBI Card SELECT BLACK",
+      "tagline": "10% back on PhonePe bills and recharges",
+      "network": "VISA",
+      "otherNetworks": [
+        "RUPAY"
+      ],
+      "annualFeePaise": 149900,
+      "joiningFeePaise": 149900,
+      "waiverSpendPaise": 30000000,
+      "face": {
+        "finish": "matte",
+        "base": "#111111",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.sbicard.com/sbi-card-en/assets/media/images/personal/credit-cards/rewards/phonepe/tnc/RP-tnc.pdf",
+      "benefits": [
+        {
+          "id": "sbi_phonepe_select_black_utilities",
+          "category": "UTILITIES",
+          "kind": "REWARD",
+          "title": "10% back on PhonePe bill payments",
+          "rateBps": 1000,
+          "monthlyCapPaise": 150000,
+          "channel": "PhonePe",
+          "conditions": "10 RP per Rs 100; 1 RP = Rs 1. PhonePe recharges/utilities/bills/travel share cap of 1,500 RP per month (from 1 Jul 2026).",
+          "sourceUrl": "https://www.sbicard.com/sbi-card-en/assets/media/images/personal/credit-cards/rewards/phonepe/tnc/RP-tnc.pdf",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sbi_phonepe_select_black_telecom",
+          "category": "TELECOM",
+          "kind": "REWARD",
+          "title": "10% back on PhonePe recharges",
+          "rateBps": 1000,
+          "monthlyCapPaise": 150000,
+          "channel": "PhonePe",
+          "conditions": "10 RP per Rs 100; 1 RP = Rs 1. Shared 1,500 RP monthly cap.",
+          "sourceUrl": "https://www.sbicard.com/sbi-card-en/assets/media/images/personal/credit-cards/rewards/phonepe/tnc/RP-tnc.pdf",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sbi_phonepe_select_black_travel",
+          "category": "TRAVEL",
+          "kind": "REWARD",
+          "title": "10% back on travel via PhonePe",
+          "rateBps": 1000,
+          "monthlyCapPaise": 150000,
+          "channel": "PhonePe",
+          "conditions": "10 RP per Rs 100; 1 RP = Rs 1. Shared 1,500 RP monthly cap.",
+          "sourceUrl": "https://www.sbicard.com/sbi-card-en/assets/media/images/personal/credit-cards/rewards/phonepe/tnc/RP-tnc.pdf",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sbi_phonepe_select_black_insurance",
+          "category": "INSURANCE",
+          "kind": "REWARD",
+          "title": "10% back on insurance via PhonePe",
+          "rateBps": 1000,
+          "monthlyCapPaise": 50000,
+          "channel": "PhonePe",
+          "conditions": "10 RP per Rs 100; 1 RP = Rs 1. Insurance capped at 500 RP per month.",
+          "sourceUrl": "https://www.sbicard.com/sbi-card-en/assets/media/images/personal/credit-cards/rewards/phonepe/tnc/RP-tnc.pdf",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sbi_phonepe_select_black_online",
+          "category": "SHOPPING",
+          "kind": "REWARD",
+          "title": "5% back on other online spends",
+          "rateBps": 500,
+          "monthlyCapPaise": 100000,
+          "channel": "Online",
+          "conditions": "5 RP per Rs 100; 1 RP = Rs 1. Capped at 1,000 RP per month. From 1 Jul 2026 UPI scan-and-pay/online UPI outside PhonePe earns nothing.",
+          "sourceUrl": "https://www.sbicard.com/sbi-card-en/assets/media/images/personal/credit-cards/rewards/phonepe/tnc/RP-tnc.pdf",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sbi_phonepe_select_black_base",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "1% back on other spends",
+          "rateBps": 100,
+          "monthlyCapPaise": 200000,
+          "conditions": "1 RP per Rs 100; 1 RP = Rs 1. Capped at 2,000 RP per month.",
+          "sourceUrl": "https://www.sbicard.com/sbi-card-en/assets/media/images/personal/credit-cards/rewards/phonepe/tnc/RP-tnc.pdf",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sbi_phonepe_select_black_fuel",
+          "category": "FUEL",
+          "kind": "REWARD",
+          "title": "No points on fuel",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards. 1% fuel surcharge waiver on Rs 500-4,000 transactions.",
+          "sourceUrl": "https://www.sbicard.com/sbi-card-en/assets/docs/pdf/ekit-tncs/PhonePe-select-ekit.pdf",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sbi_phonepe_select_black_lounge",
+          "category": "TRAVEL",
+          "kind": "INFO",
+          "title": "Lounge access",
+          "conditions": "4 domestic lounge visits per year (1 per quarter) plus complimentary Priority Pass membership.",
+          "sourceUrl": "https://magnify.club/guides/phonepe-sbi-card-select-black-review",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sbi_phonepe_select_black_forex",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "3.5% forex markup",
+          "rateBps": 350,
+          "conditions": "Foreign currency transaction fee 3.5%.",
+          "sourceUrl": "https://www.sbicard.com/sbi-card-en/assets/docs/pdf/key-fact-statement.pdf",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "sbi_miles_elite",
+      "bankId": "sbi",
+      "name": "SBI Card MILES ELITE",
+      "tagline": "6 travel credits per Rs 200 on travel, 1.99% forex",
+      "network": "VISA",
+      "annualFeePaise": 499900,
+      "joiningFeePaise": 499900,
+      "waiverSpendPaise": 150000000,
+      "face": {
+        "finish": "matte",
+        "base": "#1F2A2A",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.sbicard.com/en/personal/credit-cards/sbi-card-miles-elite.html",
+      "benefits": [
+        {
+          "id": "sbi_miles_elite_travel",
+          "category": "TRAVEL",
+          "kind": "REWARD",
+          "title": "6 travel credits per Rs 200 on travel",
+          "rateBps": 150,
+          "conditions": "6 TC per Rs 200; valued at Rs 0.50/TC for travel bookings (no statement-credit value; Rs 1/TC only when converted to airline/hotel partners, Rs 0.25 in catalogue).",
+          "sourceUrl": "https://www.sbicard.com/sbi-card-en/assets/docs/pdf/tnc/sbi-card-miles-elite-tnc.pdf",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sbi_miles_elite_base",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "2 travel credits per Rs 200 on other spends",
+          "rateBps": 50,
+          "conditions": "2 TC per Rs 200; valued at Rs 0.50/TC for travel bookings.",
+          "sourceUrl": "https://www.sbicard.com/sbi-card-en/assets/docs/pdf/tnc/sbi-card-miles-elite-tnc.pdf",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sbi_miles_elite_lounge",
+          "category": "TRAVEL",
+          "kind": "INFO",
+          "title": "Domestic and international lounges",
+          "conditions": "Up to 8 domestic lounge visits (more via spend milestones, max 15/yr) and up to 6 international visits per year.",
+          "sourceUrl": "https://www.sbicard.com/sbi-card-en/assets/docs/pdf/tnc/sbi-card-miles-elite-tnc.pdf",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sbi_miles_elite_forex",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "1.99% forex markup",
+          "rateBps": 199,
+          "conditions": "Forex markup 1.99%.",
+          "sourceUrl": "https://www.sbicard.com/sbi-card-en/assets/docs/pdf/key-fact-statement.pdf",
+          "confidence": "secondary"
+        }
+      ]
+    }
+  ]
+}

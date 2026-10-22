@@ -1,0 +1,55 @@
+{
+  "bank": {
+    "id": "onecard",
+    "name": "OneCard"
+  },
+  "products": [
+    {
+      "id": "onecard_metal",
+      "bankId": "onecard",
+      "name": "OneCard Metal",
+      "tagline": "Lifetime-free metal card, 5X on your top 2 categories, 1% forex",
+      "network": "VISA",
+      "annualFeePaise": 0,
+      "joiningFeePaise": 0,
+      "face": {
+        "finish": "metal",
+        "base": "#1C1C1C",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.paisabazaar.com/credit-card/onecard/",
+      "benefits": [
+        {
+          "id": "onecard_metal_base",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "1 RP per ₹50 on all spends",
+          "rateBps": 20,
+          "conditions": "1 point per ₹50; 1 pt = ₹0.10 cashback. No points on cash withdrawals, transfers, wallet loads.",
+          "sourceUrl": "https://www.paisabazaar.com/credit-card/onecard/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "onecard_metal_top2",
+          "category": "OTHER",
+          "kind": "INFO",
+          "title": "5X points on top 2 spend categories",
+          "conditions": "Each month your top 2 spend categories earn 5X (5 pts per ₹50 = 1% at ₹0.10/pt). Requires spends in at least 3 categories that month. Category varies per user, so not encoded as a fixed REWARD.",
+          "sourceUrl": "https://www.paisabazaar.com/credit-card/onecard/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "onecard_metal_forex",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "1% forex markup",
+          "rateBps": 100,
+          "conditions": "1% + GST",
+          "sourceUrl": "https://www.paisabazaar.com/credit-card/onecard/",
+          "confidence": "secondary"
+        }
+      ]
+    }
+  ]
+}

@@ -23,10 +23,10 @@ Built and covered by tests (`flutter test`, 45 tests):
 
 Not done yet (honest list): see [`docs/00-FEATURE-REVIEW.md` §7](docs/00-FEATURE-REVIEW.md). In short:
 - **Not run on a real phone yet.** Tested in Flutter's test environment and built by GitHub Actions.
-- Benefits data is **sample data** (every rate shows "Verify" until checked).
+- Benefits: **96 cards from 14 banks**, researched from search results because the build environment couldn't open bank pages. Every rate has a source link and shows "Verify" until a person checks it. RBL and Yes Bank are not covered yet.
 - Benefit updates and stable APK signing wait on keys only you should create (below).
 - Pro is built but **switched off** (everything free) until products exist on Google Play.
-- Not built: Hindi, light theme, add-on cards.
+- Not built: Hindi, add-on cards.
 
 Third-party note: PDF text extraction uses PDFium via `pdfrx` (MIT); only local bytes are opened, never URLs.
 
@@ -49,6 +49,10 @@ base64 -w0 cardmaster.jks   # paste as ANDROID_KEYSTORE_BASE64
 # the password you chose      -> ANDROID_KEYSTORE_PASSWORD
 ```
 Keep `cardmaster.jks` and the password safe and offline. Without these secrets, builds are signed with a throwaway key and each new build must be installed fresh (uninstalling deletes app data).
+
+### Updating benefits
+
+One file per bank in `catalog/cards/`. Edit it, then run `dart run tool/build_catalog.dart`: it checks every card (sources, sane rates, unique ids) and writes `catalog/catalog.json` and the copy bundled in the APK. CI fails if you forget to run it.
 
 ### Turning on benefit updates
 ```bash

@@ -128,7 +128,7 @@ void main() {
     final db = await t.runAsync(_seed);
     await _pump(t, db!, const CardDetailScreen(cardId: 'airtel'));
     expect(find.text('Benefits'), findsOneWidget);
-    expect(find.text('Airtel bills'), findsNWidgets(2)); // caps + benefits
+    expect(find.text('25% cashback on Airtel bills'), findsNWidgets(2)); // caps + benefits
     expect(find.text('Fee waiver progress'), findsOneWidget);
     expect(find.text('Verify'), findsWidgets);
     await _close(t, db);
@@ -312,8 +312,8 @@ Rs.900 spent on card XX5566 at UNKNOWN SHOP on 20-10-26.
 
   testWidgets('best card suggests a better card and has travel mode', (t) async {
     final db = await t.runAsync(_seed);
-    // ₹40,000 on online shopping by cash in the last 90 days: SBI Cashback
-    // (5% on shopping, sample rate) would beat the cards owned.
+    // ₹40,000 on online shopping by cash in the last 90 days: a 5%-on-shopping
+    // card from the catalog would beat the cards owned.
     await t.runAsync(() => db!.addSpend(Spend(
           id: 'shop',
           amountPaise: 4000000,
@@ -323,7 +323,6 @@ Rs.900 spent on card XX5566 at UNKNOWN SHOP on 20-10-26.
         )));
     await _pump(t, db!, const BestCardScreen());
     expect(find.text('A card that fits your spending'), findsOneWidget);
-    expect(find.text('SBI Cashback'), findsOneWidget);
 
     await t.tap(find.text('Travel mode'));
     await _settle(t);

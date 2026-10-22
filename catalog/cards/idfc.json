@@ -1,0 +1,822 @@
+{
+  "bank": {
+    "id": "idfc",
+    "name": "IDFC FIRST Bank",
+    "helpline": "180010888",
+    "helplineSource": "https://moneyview.in/credit-card/all-credit-cards-customer-care-numbers"
+  },
+  "products": [
+    {
+      "id": "idfc_millennia",
+      "bankId": "idfc",
+      "name": "FIRST Millennia",
+      "tagline": "Lifetime-free entry card with 10X on dining and travel",
+      "network": "VISA",
+      "annualFeePaise": 0,
+      "joiningFeePaise": 0,
+      "face": {
+        "finish": "gloss",
+        "base": "#1E2A44",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.idfcfirst.bank.in/credit-card/millennia",
+      "benefits": [
+        {
+          "id": "idfc_millennia_dining",
+          "category": "DINING",
+          "kind": "REWARD",
+          "title": "10X reward points on dining",
+          "rateBps": 125,
+          "conditions": "10 RP per Rs 200 (1X = 1 RP per Rs 200); 1 RP = Rs 0.25. Rewards only on spends up to the credit limit per cycle; Rs 99 + GST per redemption.",
+          "sourceUrl": "https://www.idfcfirst.bank.in/credit-card/millennia",
+          "confidence": "secondary"
+        },
+        {
+          "id": "idfc_millennia_travel",
+          "category": "TRAVEL",
+          "kind": "REWARD",
+          "title": "10X reward points on travel",
+          "rateBps": 125,
+          "conditions": "10 RP per Rs 200; 1 RP = Rs 0.25.",
+          "sourceUrl": "https://www.idfcfirst.bank.in/credit-card/millennia",
+          "confidence": "secondary"
+        },
+        {
+          "id": "idfc_millennia_other",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "3X reward points on other spends",
+          "rateBps": 38,
+          "conditions": "3 RP per Rs 200 (0.375%); 1 RP = Rs 0.25. Birthday spends earn 10X (1.25%).",
+          "sourceUrl": "https://www.idfcfirst.bank.in/credit-card/benefits/rewards-points",
+          "confidence": "secondary"
+        },
+        {
+          "id": "idfc_millennia_util",
+          "category": "UTILITIES",
+          "kind": "REWARD",
+          "title": "1X on utilities, railways, FASTag",
+          "rateBps": 13,
+          "conditions": "1 RP per Rs 200 (0.125%); 1 RP = Rs 0.25.",
+          "sourceUrl": "https://www.idfcfirst.bank.in/credit-card/benefits/rewards-points",
+          "confidence": "secondary"
+        },
+        {
+          "id": "idfc_millennia_ins",
+          "category": "INSURANCE",
+          "kind": "REWARD",
+          "title": "1X on insurance",
+          "rateBps": 13,
+          "conditions": "1 RP per Rs 200 (0.125%); 1 RP = Rs 0.25.",
+          "sourceUrl": "https://www.idfcfirst.bank.in/credit-card/benefits/rewards-points",
+          "confidence": "secondary"
+        },
+        {
+          "id": "idfc_millennia_fuel",
+          "category": "FUEL",
+          "kind": "REWARD",
+          "title": "No rewards on fuel",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards (also EMI and cash withdrawals).",
+          "sourceUrl": "https://www.idfcfirst.bank.in/credit-card/benefits/rewards-points",
+          "confidence": "secondary"
+        },
+        {
+          "id": "idfc_millennia_intl",
+          "category": "FOREIGN",
+          "kind": "REWARD",
+          "title": "No rewards on international spends",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards effective 26 Oct 2026 (earned 10X before that).",
+          "sourceUrl": "https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/credit-card/Credit-Card-Communication1-Sep-26.pdf",
+          "confidence": "secondary"
+        },
+        {
+          "id": "idfc_millennia_forex",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "Zero forex markup",
+          "rateBps": 0,
+          "conditions": "Zero markup on all IDFC FIRST credit cards from Sep 2026.",
+          "sourceUrl": "https://www.idfcfirst.bank.in/finfirst-blogs/credit-card/zero-forex-on-every-idfc-first-bank-credit-card",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "idfc_classic",
+      "bankId": "idfc",
+      "name": "FIRST Classic",
+      "tagline": "Lifetime-free card with 10X on dining and travel",
+      "network": "VISA",
+      "annualFeePaise": 0,
+      "joiningFeePaise": 0,
+      "face": {
+        "finish": "gloss",
+        "base": "#7A1F3D",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.idfcfirst.bank.in/credit-card/classic",
+      "benefits": [
+        {
+          "id": "idfc_classic_dining",
+          "category": "DINING",
+          "kind": "REWARD",
+          "title": "10X reward points on dining",
+          "rateBps": 125,
+          "conditions": "10 RP per Rs 200; 1 RP = Rs 0.25. Rs 99 + GST per redemption; points valid 24 months.",
+          "sourceUrl": "https://www.idfcfirst.bank.in/credit-card/classic",
+          "confidence": "secondary"
+        },
+        {
+          "id": "idfc_classic_travel",
+          "category": "TRAVEL",
+          "kind": "REWARD",
+          "title": "10X reward points on travel",
+          "rateBps": 125,
+          "conditions": "10 RP per Rs 200; 1 RP = Rs 0.25.",
+          "sourceUrl": "https://www.idfcfirst.bank.in/credit-card/classic",
+          "confidence": "secondary"
+        },
+        {
+          "id": "idfc_classic_other",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "3X reward points on other spends",
+          "rateBps": 38,
+          "conditions": "3 RP per Rs 200 (0.375%); 1 RP = Rs 0.25. Birthday spends earn 10X.",
+          "sourceUrl": "https://www.idfcfirst.bank.in/credit-card/classic",
+          "confidence": "secondary"
+        },
+        {
+          "id": "idfc_classic_util",
+          "category": "UTILITIES",
+          "kind": "REWARD",
+          "title": "1X on utilities, railways, FASTag",
+          "rateBps": 13,
+          "conditions": "1 RP per Rs 200; 1 RP = Rs 0.25.",
+          "sourceUrl": "https://www.idfcfirst.bank.in/credit-card/classic",
+          "confidence": "secondary"
+        },
+        {
+          "id": "idfc_classic_ins",
+          "category": "INSURANCE",
+          "kind": "REWARD",
+          "title": "1X on insurance",
+          "rateBps": 13,
+          "conditions": "1 RP per Rs 200; 1 RP = Rs 0.25.",
+          "sourceUrl": "https://www.idfcfirst.bank.in/credit-card/classic",
+          "confidence": "secondary"
+        },
+        {
+          "id": "idfc_classic_fuel",
+          "category": "FUEL",
+          "kind": "REWARD",
+          "title": "No rewards on fuel",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards (also EMI and cash withdrawals).",
+          "sourceUrl": "https://www.idfcfirst.bank.in/credit-card/classic",
+          "confidence": "secondary"
+        },
+        {
+          "id": "idfc_classic_intl",
+          "category": "FOREIGN",
+          "kind": "REWARD",
+          "title": "No rewards on international spends",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards effective 26 Oct 2026 (earned 10X before that).",
+          "sourceUrl": "https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/credit-card/Credit-Card-Communication1-Sep-26.pdf",
+          "confidence": "secondary"
+        },
+        {
+          "id": "idfc_classic_forex",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "Zero forex markup",
+          "rateBps": 0,
+          "sourceUrl": "https://www.idfcfirst.bank.in/credit-card/classic",
+          "confidence": "secondary"
+        },
+        {
+          "id": "idfc_classic_fuelwaiver",
+          "category": "FUEL",
+          "kind": "INFO",
+          "title": "1% fuel surcharge waiver",
+          "conditions": "On fuel transactions Rs 200 to Rs 5,000; max Rs 200 per billing cycle.",
+          "sourceUrl": "https://www.idfcfirst.bank.in/credit-card/classic",
+          "confidence": "secondary"
+        },
+        {
+          "id": "idfc_classic_lounge",
+          "category": "TRAVEL",
+          "kind": "INFO",
+          "title": "Railway lounge access",
+          "conditions": "4 complimentary railway lounge visits per quarter.",
+          "sourceUrl": "https://www.idfcfirst.bank.in/credit-card/classic",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "idfc_select",
+      "bankId": "idfc",
+      "name": "FIRST Select",
+      "tagline": "Lifetime-free with airport and railway lounges",
+      "network": "VISA",
+      "annualFeePaise": 0,
+      "joiningFeePaise": 0,
+      "face": {
+        "finish": "matte",
+        "base": "#1C1C1C",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.idfcfirst.bank.in/credit-card/select",
+      "benefits": [
+        {
+          "id": "idfc_select_dining",
+          "category": "DINING",
+          "kind": "REWARD",
+          "title": "10X reward points on dining",
+          "rateBps": 125,
+          "conditions": "10 RP per Rs 200 (earning base revised from Rs 150 to Rs 200 on 18 Jan 2026); 1 RP = Rs 0.25.",
+          "sourceUrl": "https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/credit-card/Select-Credit-Card.pdf",
+          "confidence": "secondary"
+        },
+        {
+          "id": "idfc_select_travel",
+          "category": "TRAVEL",
+          "kind": "REWARD",
+          "title": "10X reward points on travel",
+          "rateBps": 125,
+          "conditions": "10 RP per Rs 200; 1 RP = Rs 0.25.",
+          "sourceUrl": "https://www.idfcfirst.bank.in/credit-card/benefits/rewards-points",
+          "confidence": "secondary"
+        },
+        {
+          "id": "idfc_select_other",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "3X reward points on other spends",
+          "rateBps": 38,
+          "conditions": "3 RP per Rs 200; 1 RP = Rs 0.25.",
+          "sourceUrl": "https://www.idfcfirst.bank.in/credit-card/benefits/rewards-points",
+          "confidence": "secondary"
+        },
+        {
+          "id": "idfc_select_util",
+          "category": "UTILITIES",
+          "kind": "REWARD",
+          "title": "1X on utilities, railways, FASTag",
+          "rateBps": 13,
+          "conditions": "1 RP per Rs 200; 1 RP = Rs 0.25.",
+          "sourceUrl": "https://www.idfcfirst.bank.in/credit-card/benefits/rewards-points",
+          "confidence": "secondary"
+        },
+        {
+          "id": "idfc_select_ins",
+          "category": "INSURANCE",
+          "kind": "REWARD",
+          "title": "1X on insurance",
+          "rateBps": 13,
+          "conditions": "1 RP per Rs 200; 1 RP = Rs 0.25.",
+          "sourceUrl": "https://www.idfcfirst.bank.in/credit-card/benefits/rewards-points",
+          "confidence": "secondary"
+        },
+        {
+          "id": "idfc_select_fuel",
+          "category": "FUEL",
+          "kind": "REWARD",
+          "title": "No rewards on fuel",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards.",
+          "sourceUrl": "https://www.idfcfirst.bank.in/credit-card/benefits/rewards-points",
+          "confidence": "secondary"
+        },
+        {
+          "id": "idfc_select_intl",
+          "category": "FOREIGN",
+          "kind": "REWARD",
+          "title": "No rewards on international spends",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards effective 26 Oct 2026.",
+          "sourceUrl": "https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/credit-card/Credit-Card-Communication1-Sep-26.pdf",
+          "confidence": "secondary"
+        },
+        {
+          "id": "idfc_select_forex",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "Zero forex markup",
+          "rateBps": 0,
+          "conditions": "Older material shows 1.99%; zero markup applies to all IDFC FIRST cards from Sep 2026.",
+          "sourceUrl": "https://www.idfcfirst.bank.in/finfirst-blogs/credit-card/zero-forex-on-every-idfc-first-bank-credit-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "idfc_select_lounge",
+          "category": "TRAVEL",
+          "kind": "INFO",
+          "title": "Domestic airport and railway lounges",
+          "conditions": "1 domestic airport lounge visit per quarter and 4 railway lounge visits per quarter, unlocked by Rs 20,000 spend in the previous calendar month. No international lounges.",
+          "sourceUrl": "https://www.idfcfirst.bank.in/credit-card/select",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "idfc_wealth",
+      "bankId": "idfc",
+      "name": "FIRST Wealth",
+      "tagline": "Lifetime-free premium card with lounges and golf",
+      "network": "VISA",
+      "annualFeePaise": 0,
+      "joiningFeePaise": 0,
+      "face": {
+        "finish": "matte",
+        "base": "#2A2A2A",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.idfcfirst.bank.in/credit-card/wealth",
+      "benefits": [
+        {
+          "id": "idfc_wealth_dining",
+          "category": "DINING",
+          "kind": "REWARD",
+          "title": "10X reward points on dining",
+          "rateBps": 125,
+          "conditions": "10 RP per Rs 200; 1 RP = Rs 0.25.",
+          "sourceUrl": "https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/Wealth-CC-Rewards-Structure-TnC-28-05-25-copy.pdf",
+          "confidence": "secondary"
+        },
+        {
+          "id": "idfc_wealth_travel",
+          "category": "TRAVEL",
+          "kind": "REWARD",
+          "title": "10X reward points on travel",
+          "rateBps": 125,
+          "conditions": "10 RP per Rs 200; 1 RP = Rs 0.25.",
+          "sourceUrl": "https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/Wealth-CC-Rewards-Structure-TnC-28-05-25-copy.pdf",
+          "confidence": "secondary"
+        },
+        {
+          "id": "idfc_wealth_other",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "3X reward points on other spends",
+          "rateBps": 38,
+          "conditions": "3 RP per Rs 200; 1 RP = Rs 0.25.",
+          "sourceUrl": "https://www.idfcfirst.bank.in/credit-card/wealth",
+          "confidence": "secondary"
+        },
+        {
+          "id": "idfc_wealth_util",
+          "category": "UTILITIES",
+          "kind": "REWARD",
+          "title": "1X on utilities, railways, FASTag",
+          "rateBps": 13,
+          "conditions": "1 RP per Rs 200; 1 RP = Rs 0.25.",
+          "sourceUrl": "https://www.idfcfirst.bank.in/credit-card/wealth",
+          "confidence": "secondary"
+        },
+        {
+          "id": "idfc_wealth_ins",
+          "category": "INSURANCE",
+          "kind": "REWARD",
+          "title": "1X on insurance",
+          "rateBps": 13,
+          "conditions": "1 RP per Rs 200; 1 RP = Rs 0.25.",
+          "sourceUrl": "https://www.idfcfirst.bank.in/credit-card/wealth",
+          "confidence": "secondary"
+        },
+        {
+          "id": "idfc_wealth_fuel",
+          "category": "FUEL",
+          "kind": "REWARD",
+          "title": "No rewards on fuel",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards.",
+          "sourceUrl": "https://www.idfcfirst.bank.in/credit-card/benefits/rewards-points",
+          "confidence": "secondary"
+        },
+        {
+          "id": "idfc_wealth_intl",
+          "category": "FOREIGN",
+          "kind": "REWARD",
+          "title": "No rewards on international spends",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards effective 26 Oct 2026.",
+          "sourceUrl": "https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/credit-card/Credit-Card-Communication1-Sep-26.pdf",
+          "confidence": "secondary"
+        },
+        {
+          "id": "idfc_wealth_forex",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "Zero forex markup",
+          "rateBps": 0,
+          "conditions": "Older material shows 1.5%; zero markup on all IDFC FIRST cards from Sep 2026.",
+          "sourceUrl": "https://www.idfcfirst.bank.in/credit-card/wealth",
+          "confidence": "secondary"
+        },
+        {
+          "id": "idfc_wealth_lounge",
+          "category": "TRAVEL",
+          "kind": "INFO",
+          "title": "Domestic and international lounges",
+          "conditions": "1 domestic + 1 international lounge visit per quarter, needs Rs 20,000 spend in the current calendar month to unlock next month's visits.",
+          "sourceUrl": "https://www.idfcfirst.bank.in/credit-card/wealth",
+          "confidence": "secondary"
+        },
+        {
+          "id": "idfc_wealth_golf",
+          "category": "OTHER",
+          "kind": "INFO",
+          "title": "Complimentary golf",
+          "conditions": "1 golf round/lesson per quarter on Rs 20,000 spend in a billing cycle (from 1 Apr 2026).",
+          "sourceUrl": "https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/credit-card/Wealth-1-Credit-Card.pdf",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "idfc_mayura",
+      "bankId": "idfc",
+      "name": "Mayura",
+      "tagline": "Metal card with 4+4 lounge visits a quarter",
+      "network": "VISA",
+      "annualFeePaise": 599900,
+      "joiningFeePaise": 599900,
+      "face": {
+        "finish": "metal",
+        "base": "#3A3F44",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.idfcfirst.bank.in/credit-card/metal-credit-card/mayura",
+      "benefits": [
+        {
+          "id": "idfc_mayura_other",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "5X reward points on spends",
+          "rateBps": 83,
+          "conditions": "5 RP per Rs 150 on spends up to Rs 20,000 per statement cycle (1X = 1 RP per Rs 150); 1 RP = Rs 0.25 standard (Rs 0.50 on travel bookings). Up to 10 RP per Rs 150 (1.67%) above Rs 20,000. Rewards only up to credit limit per cycle.",
+          "sourceUrl": "https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/credit-card/Mayura-Credit-Card-Communication-May-26.pdf",
+          "confidence": "secondary"
+        },
+        {
+          "id": "idfc_mayura_forex",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "Zero forex markup",
+          "rateBps": 0,
+          "conditions": "International spends continue to earn rewards after 26 Oct 2026.",
+          "sourceUrl": "https://www.idfcfirst.bank.in/credit-card/metal-credit-card/mayura",
+          "confidence": "secondary"
+        },
+        {
+          "id": "idfc_mayura_lounge",
+          "category": "TRAVEL",
+          "kind": "INFO",
+          "title": "Airport lounge access",
+          "conditions": "4 international + 4 domestic lounge visits per quarter, plus 1 domestic guest visit per quarter; unlocked by Rs 20,000+ spend in the calendar month.",
+          "sourceUrl": "https://www.idfcfirst.bank.in/credit-card/metal-credit-card/mayura",
+          "confidence": "secondary"
+        },
+        {
+          "id": "idfc_mayura_milestone",
+          "category": "OTHER",
+          "kind": "INFO",
+          "title": "Annual fee offset milestone",
+          "conditions": "Reward points credited at fee payment on Rs 8 lakh annual spend; 15,000 RP on Rs 15 lakh. No spend-based fee waiver.",
+          "sourceUrl": "https://www.idfcfirst.bank.in/credit-card/metal-credit-card/mayura",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "idfc_ashva",
+      "bankId": "idfc",
+      "name": "Ashva",
+      "tagline": "Metal travel card with domestic and global lounges",
+      "network": "MASTERCARD",
+      "annualFeePaise": 299900,
+      "joiningFeePaise": 299900,
+      "face": {
+        "finish": "metal",
+        "base": "#4A4A4A",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.idfcfirst.bank.in/credit-card/metal-credit-card/ashva",
+      "benefits": [
+        {
+          "id": "idfc_ashva_other",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "5X reward points on spends",
+          "rateBps": 83,
+          "conditions": "5 RP per Rs 150 up to Rs 20,000 per statement cycle; 10X (1.67%) above Rs 20,000. 1 RP = Rs 0.25 standard (Rs 0.40 on app hotel/flight bookings). Points never expire.",
+          "sourceUrl": "https://www.idfcfirst.bank.in/credit-card/metal-credit-card/ashva",
+          "confidence": "secondary"
+        },
+        {
+          "id": "idfc_ashva_intl",
+          "category": "FOREIGN",
+          "kind": "REWARD",
+          "title": "2X reward points on international spends",
+          "rateBps": 33,
+          "conditions": "2 RP per Rs 150 effective 26 Oct 2026 (was 5X); 1 RP = Rs 0.25.",
+          "sourceUrl": "https://www.idfcfirst.bank.in/credit-card/metal-credit-card/ashva",
+          "confidence": "secondary"
+        },
+        {
+          "id": "idfc_ashva_forex",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "Zero forex markup",
+          "rateBps": 0,
+          "sourceUrl": "https://www.idfcfirst.bank.in/finfirst-blogs/credit-card/zero-forex-on-every-idfc-first-bank-credit-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "idfc_ashva_lounge",
+          "category": "TRAVEL",
+          "kind": "INFO",
+          "title": "Airport and railway lounges",
+          "conditions": "4 domestic + 2 international airport lounge visits per quarter (Rs 20,000+ monthly spend may be required), plus railway lounges.",
+          "sourceUrl": "https://www.idfcfirst.bank.in/credit-card/metal-credit-card/ashva",
+          "confidence": "secondary"
+        },
+        {
+          "id": "idfc_ashva_milestone",
+          "category": "OTHER",
+          "kind": "INFO",
+          "title": "Fee offset milestone",
+          "conditions": "7,500 RP on Rs 8 lakh annual spend, credited with next annual fee payment.",
+          "sourceUrl": "https://www.idfcfirst.bank.in/credit-card/metal-credit-card/ashva",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "idfc_power_plus",
+      "bankId": "idfc",
+      "name": "FIRST Power+ (HPCL)",
+      "tagline": "HPCL fuel card with 5% on fuel, grocery and utilities",
+      "network": "VISA",
+      "otherNetworks": [
+        "RUPAY"
+      ],
+      "annualFeePaise": 49900,
+      "joiningFeePaise": 49900,
+      "waiverSpendPaise": 15000000,
+      "face": {
+        "finish": "gloss",
+        "base": "#1D3F8F",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.idfcfirst.bank.in/credit-card/hpcl-power-fuel-credit-card",
+      "benefits": [
+        {
+          "id": "idfc_power_plus_fuel",
+          "category": "FUEL",
+          "kind": "REWARD",
+          "title": "30X rewards on HPCL fuel",
+          "rateBps": 500,
+          "channel": "HPCL",
+          "conditions": "30 RP per Rs 150 at HPCL; 1 RP = Rs 0.25. On fuel spends up to Rs 12,000 per statement cycle (Rs 600 reward). Extra ~1.5% as HP Pay Happy Coins and 1% surcharge waiver (bank says up to 6.5% total).",
+          "sourceUrl": "https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/FIRST-Power-plus-Product-Guide-26th-Sept.pdf",
+          "confidence": "secondary"
+        },
+        {
+          "id": "idfc_power_plus_grocery",
+          "category": "GROCERIES",
+          "kind": "REWARD",
+          "title": "30X rewards on grocery",
+          "rateBps": 500,
+          "conditions": "30 RP per Rs 150; 1 RP = Rs 0.25. Grocery + utility combined capped at Rs 2,000 spend per statement cycle (400 RP).",
+          "sourceUrl": "https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/credit-card/FIRST-Power-Plus-Credit-Card-Communication-May-26.pdf",
+          "confidence": "secondary"
+        },
+        {
+          "id": "idfc_power_plus_util",
+          "category": "UTILITIES",
+          "kind": "REWARD",
+          "title": "30X rewards on utilities and FASTag",
+          "rateBps": 500,
+          "conditions": "30 RP per Rs 150; 1 RP = Rs 0.25. Shares the Rs 2,000 spend per statement cycle cap with grocery.",
+          "sourceUrl": "https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/credit-card/FIRST-Power-Plus-Credit-Card-Communication-May-26.pdf",
+          "confidence": "secondary"
+        },
+        {
+          "id": "idfc_power_plus_other",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "3X rewards on other spends and UPI",
+          "rateBps": 50,
+          "conditions": "3 RP per Rs 150; 1 RP = Rs 0.25; uncapped.",
+          "sourceUrl": "https://www.idfcfirst.bank.in/credit-card/hpcl-power-fuel-credit-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "idfc_power_plus_forex",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "Zero forex markup",
+          "rateBps": 0,
+          "sourceUrl": "https://www.idfcfirst.bank.in/finfirst-blogs/credit-card/zero-forex-on-every-idfc-first-bank-credit-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "idfc_power_plus_fuelwaiver",
+          "category": "FUEL",
+          "kind": "INFO",
+          "title": "1% fuel surcharge waiver",
+          "conditions": "On Rs 200 to Rs 5,000 fuel transactions; max Rs 200 per month.",
+          "sourceUrl": "https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/Savings-Maximiser-FIRST-Power-plus.pdf",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "idfc_wow",
+      "bankId": "idfc",
+      "name": "FIRST WOW!",
+      "tagline": "Lifetime-free FD-backed card with zero forex",
+      "network": "VISA",
+      "annualFeePaise": 0,
+      "joiningFeePaise": 0,
+      "face": {
+        "finish": "gloss",
+        "base": "#E8572A",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.idfcfirst.bank.in/credit-card/wow",
+      "benefits": [
+        {
+          "id": "idfc_wow_other",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "4 reward points per Rs 200",
+          "rateBps": 50,
+          "conditions": "4 RP per Rs 200 (base revised from Rs 150 on 18 Jan 2026); 1 RP = Rs 0.25.",
+          "sourceUrl": "https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/credit-card/FIRST-WOW-Credit-Card-Important-Update.pdf",
+          "confidence": "secondary"
+        },
+        {
+          "id": "idfc_wow_intl",
+          "category": "FOREIGN",
+          "kind": "REWARD",
+          "title": "Rewards on international spends",
+          "rateBps": 50,
+          "conditions": "4 RP per Rs 200; WOW! keeps international rewards after 26 Oct 2026.",
+          "sourceUrl": "https://www.idfcfirst.bank.in/credit-card/wow",
+          "confidence": "secondary"
+        },
+        {
+          "id": "idfc_wow_forex",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "Zero forex markup",
+          "rateBps": 0,
+          "sourceUrl": "https://www.idfcfirst.bank.in/credit-card/wow",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "idfc_wow_black",
+      "bankId": "idfc",
+      "name": "FIRST WOW! Black",
+      "tagline": "FD-backed premium card with zero forex and UPI",
+      "network": "RUPAY",
+      "annualFeePaise": 75000,
+      "joiningFeePaise": 75000,
+      "waiverSpendPaise": 15000000,
+      "face": {
+        "finish": "matte",
+        "base": "#111111",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.idfcfirst.bank.in/credit-card/wow-black-credit-card",
+      "benefits": [
+        {
+          "id": "idfc_wow_black_other",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "4 reward points per Rs 150",
+          "rateBps": 67,
+          "conditions": "4 RP per Rs 150; 1 RP = Rs 0.25 (Rs 0.50 on app hotel/flight bookings).",
+          "sourceUrl": "https://www.idfcfirst.bank.in/credit-card/wow-black-credit-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "idfc_wow_black_intl",
+          "category": "FOREIGN",
+          "kind": "REWARD",
+          "title": "4 reward points per Rs 150 abroad",
+          "rateBps": 67,
+          "conditions": "Continues after 26 Oct 2026; 1 RP = Rs 0.25.",
+          "sourceUrl": "https://www.idfcfirst.bank.in/credit-card/wow-black-credit-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "idfc_wow_black_util",
+          "category": "UTILITIES",
+          "kind": "REWARD",
+          "title": "1 RP per Rs 150 on utilities, railway, FASTag",
+          "rateBps": 17,
+          "conditions": "1 RP per Rs 150; 1 RP = Rs 0.25.",
+          "sourceUrl": "https://www.idfcfirst.bank.in/credit-card/wow-black-credit-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "idfc_wow_black_ins",
+          "category": "INSURANCE",
+          "kind": "REWARD",
+          "title": "1 RP per Rs 150 on insurance",
+          "rateBps": 17,
+          "conditions": "1 RP per Rs 150; 1 RP = Rs 0.25.",
+          "sourceUrl": "https://www.idfcfirst.bank.in/credit-card/wow-black-credit-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "idfc_wow_black_forex",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "Zero forex markup",
+          "rateBps": 0,
+          "sourceUrl": "https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/news-media/press-release/FIRST-WOW-Black-8th-Dec-press-release.pdf",
+          "confidence": "secondary"
+        },
+        {
+          "id": "idfc_wow_black_lounge",
+          "category": "TRAVEL",
+          "kind": "INFO",
+          "title": "Domestic lounge access",
+          "conditions": "4 domestic lounge visits per year (reviewer says tied to Rs 20,000 quarterly spend).",
+          "sourceUrl": "https://www.idfcfirst.bank.in/content/dam/idfcfirstbank/pdf/news-media/press-release/FIRST-WOW-Black-8th-Dec-press-release.pdf",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "idfc_indigo",
+      "bankId": "idfc",
+      "name": "IndiGo IDFC FIRST Dual",
+      "tagline": "IndiGo co-brand earning BluChips, Mastercard + RuPay",
+      "network": "MASTERCARD",
+      "otherNetworks": [
+        "RUPAY"
+      ],
+      "annualFeePaise": 499900,
+      "joiningFeePaise": 499900,
+      "face": {
+        "finish": "gloss",
+        "base": "#1A2B8C",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.idfcfirstbank.com/credit-card/indigo-credit-card",
+      "benefits": [
+        {
+          "id": "idfc_indigo_bluchips",
+          "category": "TRAVEL",
+          "kind": "INFO",
+          "title": "IndiGo BluChips on spends",
+          "channel": "IndiGo",
+          "conditions": "Up to 22 BluChips per Rs 100 on IndiGo web/app bookings (reviews say 6), 3 per Rs 100 on other spends, 0.5 on insurance, fuel, utility, rent, wallet, UPI. No fixed rupee value for BluChips.",
+          "sourceUrl": "https://www.goindigo.in/loyalty/partners/idfc-first-bank-credit-card.html",
+          "confidence": "secondary"
+        },
+        {
+          "id": "idfc_indigo_milestone",
+          "category": "TRAVEL",
+          "kind": "INFO",
+          "title": "Milestone BluChip vouchers",
+          "conditions": "5,000 BluChips voucher at Rs 2L, 5L, 8L, 10L and 12L annual spend.",
+          "sourceUrl": "https://www.goindigo.in/loyalty/partners/idfc-first-bank-credit-card.html",
+          "confidence": "secondary"
+        },
+        {
+          "id": "idfc_indigo_forex",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "Zero forex markup",
+          "rateBps": 0,
+          "conditions": "Was 1.49%; zero on all IDFC FIRST cards from Sep 2026.",
+          "sourceUrl": "https://www.idfcfirst.bank.in/finfirst-blogs/credit-card/zero-forex-on-every-idfc-first-bank-credit-card",
+          "confidence": "secondary"
+        }
+      ]
+    }
+  ]
+}

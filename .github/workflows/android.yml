@@ -38,6 +38,9 @@ jobs:
       - name: Analyze
         run: flutter analyze
 
+      - name: Benefits catalog is built and valid
+        run: dart run tool/build_catalog.dart --check
+
       - name: PDFium for the statement PDF test
         run: |
           mkdir -p "$RUNNER_TEMP/pdfium"

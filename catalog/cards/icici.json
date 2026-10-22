@@ -1,0 +1,608 @@
+{
+  "bank": {
+    "id": "icici",
+    "name": "ICICI Bank",
+    "helpline": "18001080",
+    "helplineSource": "https://cardinsider.com/icici-bank/how-to-block-and-replace-credit-card/"
+  },
+  "products": [
+    {
+      "id": "icici_amazonpay",
+      "bankId": "icici",
+      "name": "Amazon Pay ICICI Bank",
+      "tagline": "5% back on Amazon for Prime members, lifetime free",
+      "network": "VISA",
+      "annualFeePaise": 0,
+      "joiningFeePaise": 0,
+      "face": {
+        "finish": "matte",
+        "base": "#1C1C1C",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.icici.bank.in/personal-banking/cards/credit-card/amazon-pay-credit-card/index",
+      "benefits": [
+        {
+          "id": "icici_amazonpay_amazon",
+          "category": "SHOPPING",
+          "kind": "REWARD",
+          "title": "5% back on Amazon.in (Prime)",
+          "rateBps": 500,
+          "channel": "Amazon",
+          "conditions": "Prime members 5%, non-Prime 3%; credited as Amazon Pay balance (1 pt = ₹1); uncapped",
+          "sourceUrl": "https://www.aboutamazon.in/news/retail/amazon-icici-co-branded-credit-card-benefits",
+          "confidence": "secondary"
+        },
+        {
+          "id": "icici_amazonpay_partner",
+          "category": "FOOD_DELIVERY",
+          "kind": "REWARD",
+          "title": "2% on Amazon Pay partner merchants",
+          "rateBps": 200,
+          "channel": "Amazon Pay partner merchants",
+          "conditions": "2% at 100+ Amazon Pay partner merchants (food delivery, travel, entertainment); sources conflict - ICICI page snippet suggested 1%",
+          "sourceUrl": "https://cardadvisor.in/cards/icici-amazon-pay",
+          "confidence": "secondary"
+        },
+        {
+          "id": "icici_amazonpay_base",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "1% on other spends",
+          "rateBps": 100,
+          "conditions": "1% as Amazon Pay balance; EMI, tax, education, gold, Amazon Business and international spends excluded",
+          "sourceUrl": "https://bankbazaar.com/credit-card/amazon-pay-icici-credit-card.html",
+          "confidence": "secondary"
+        },
+        {
+          "id": "icici_amazonpay_fuel",
+          "category": "FUEL",
+          "kind": "REWARD",
+          "title": "Fuel",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards",
+          "sourceUrl": "https://bankbazaar.com/credit-card/amazon-pay-icici-credit-card.html",
+          "confidence": "secondary"
+        },
+        {
+          "id": "icici_amazonpay_rent",
+          "category": "RENT",
+          "kind": "REWARD",
+          "title": "Rent",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards",
+          "sourceUrl": "https://bankbazaar.com/credit-card/amazon-pay-icici-credit-card.html",
+          "confidence": "secondary"
+        },
+        {
+          "id": "icici_amazonpay_util",
+          "category": "UTILITIES",
+          "kind": "REWARD",
+          "title": "Utilities outside Amazon",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards when paid outside Amazon (from Oct 2025)",
+          "sourceUrl": "https://cardadvisor.in/changes/2025-W41",
+          "confidence": "secondary"
+        },
+        {
+          "id": "icici_amazonpay_forex",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "1.99% forex markup",
+          "rateBps": 199,
+          "conditions": "Reduced from 3.5% effective 11 Oct 2025; international spends earn no rewards",
+          "sourceUrl": "https://cardadvisor.in/changes/2025-W41",
+          "confidence": "secondary"
+        },
+        {
+          "id": "icici_amazonpay_fuelwaiver",
+          "category": "OTHER",
+          "kind": "INFO",
+          "title": "1% fuel surcharge waiver",
+          "conditions": "1% fuel surcharge waiver at petrol pumps",
+          "sourceUrl": "https://bankbazaar.com/credit-card/amazon-pay-icici-credit-card.html",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "icici_coral",
+      "bankId": "icici",
+      "name": "ICICI Bank Coral",
+      "tagline": "Entry rewards card with movie and lounge perks",
+      "network": "VISA",
+      "otherNetworks": [
+        "RUPAY"
+      ],
+      "annualFeePaise": 50000,
+      "joiningFeePaise": 50000,
+      "waiverSpendPaise": 15000000,
+      "face": {
+        "finish": "gloss",
+        "base": "#D9533B",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.icici.bank.in/personal-banking/cards/credit-card/coral-credit-card?",
+      "benefits": [
+        {
+          "id": "icici_coral_base",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "2 RP per ₹100",
+          "rateBps": 50,
+          "conditions": "2 reward points per ₹100; 1 pt = ₹0.25 statement credit",
+          "sourceUrl": "https://cardadvisor.in/cards/icici-coral",
+          "confidence": "secondary"
+        },
+        {
+          "id": "icici_coral_util",
+          "category": "UTILITIES",
+          "kind": "REWARD",
+          "title": "1 RP per ₹100 on utilities",
+          "rateBps": 25,
+          "conditions": "1 pt per ₹100; 1 pt = ₹0.25",
+          "sourceUrl": "https://cardadvisor.in/cards/icici-coral",
+          "confidence": "secondary"
+        },
+        {
+          "id": "icici_coral_ins",
+          "category": "INSURANCE",
+          "kind": "REWARD",
+          "title": "1 RP per ₹100 on insurance",
+          "rateBps": 25,
+          "conditions": "1 pt per ₹100; 1 pt = ₹0.25",
+          "sourceUrl": "https://cardadvisor.in/cards/icici-coral",
+          "confidence": "secondary"
+        },
+        {
+          "id": "icici_coral_fuel",
+          "category": "FUEL",
+          "kind": "REWARD",
+          "title": "Fuel",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards",
+          "sourceUrl": "https://cardadvisor.in/cards/icici-coral",
+          "confidence": "secondary"
+        },
+        {
+          "id": "icici_coral_forex",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "3.5% forex markup",
+          "rateBps": 350,
+          "sourceUrl": "https://www.icici.bank.in/personal-banking/cards/credit-card/coral-credit-card?",
+          "confidence": "secondary"
+        },
+        {
+          "id": "icici_coral_lounge",
+          "category": "TRAVEL",
+          "kind": "INFO",
+          "title": "Domestic airport lounge",
+          "conditions": "Domestic airport lounge visits gated on ₹75,000 spend in previous quarter; railway lounge access; sources conflict on counts",
+          "sourceUrl": "https://cardadvisor.in/cards/icici-coral",
+          "confidence": "secondary"
+        },
+        {
+          "id": "icici_coral_fuelwaiver",
+          "category": "OTHER",
+          "kind": "INFO",
+          "title": "1% fuel surcharge waiver at HPCL",
+          "conditions": "Transactions ₹400-₹4,000 at HPCL on ICICI swipe machines",
+          "sourceUrl": "https://www.icici.bank.in/personal-banking/cards/credit-card/coral-credit-card?",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "icici_rubyx",
+      "bankId": "icici",
+      "name": "ICICI Bank Rubyx",
+      "tagline": "Mid-tier rewards with double points abroad",
+      "network": "MASTERCARD",
+      "otherNetworks": [
+        "VISA",
+        "RUPAY"
+      ],
+      "annualFeePaise": 200000,
+      "joiningFeePaise": 300000,
+      "waiverSpendPaise": 30000000,
+      "face": {
+        "finish": "gloss",
+        "base": "#8B1A2B",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://cardinsider.com/icici-bank/icici-bank-rubyx-credit-card/",
+      "benefits": [
+        {
+          "id": "icici_rubyx_base",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "2 RP per ₹100 domestic",
+          "rateBps": 50,
+          "conditions": "2 pts per ₹100; 1 pt = ₹0.25 statement credit",
+          "sourceUrl": "https://cardadvisor.in/cards/icici-rubyx",
+          "confidence": "secondary"
+        },
+        {
+          "id": "icici_rubyx_intl",
+          "category": "FOREIGN",
+          "kind": "REWARD",
+          "title": "4 RP per ₹100 international",
+          "rateBps": 100,
+          "conditions": "4 pts per ₹100; 1 pt = ₹0.25",
+          "sourceUrl": "https://cardinsider.com/icici-bank/icici-bank-rubyx-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "icici_rubyx_util",
+          "category": "UTILITIES",
+          "kind": "REWARD",
+          "title": "1 RP per ₹100 on utilities",
+          "rateBps": 25,
+          "conditions": "1 pt per ₹100; 1 pt = ₹0.25",
+          "sourceUrl": "https://cardadvisor.in/cards/icici-rubyx",
+          "confidence": "secondary"
+        },
+        {
+          "id": "icici_rubyx_ins",
+          "category": "INSURANCE",
+          "kind": "REWARD",
+          "title": "1 RP per ₹100 on insurance",
+          "rateBps": 25,
+          "conditions": "1 pt per ₹100; 1 pt = ₹0.25",
+          "sourceUrl": "https://cardadvisor.in/cards/icici-rubyx",
+          "confidence": "secondary"
+        },
+        {
+          "id": "icici_rubyx_forex",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "3.5% forex markup",
+          "rateBps": 350,
+          "sourceUrl": "https://cardtrail.in/cards/icici-rubyx-credit-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "icici_rubyx_lounge",
+          "category": "TRAVEL",
+          "kind": "INFO",
+          "title": "Domestic airport lounge",
+          "conditions": "2 domestic visits per quarter if ₹75,000 spent in preceding quarter",
+          "sourceUrl": "https://cardexpress.in/reviews/icici-rubyx",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "icici_sapphiro",
+      "bankId": "icici",
+      "name": "ICICI Bank Sapphiro",
+      "tagline": "Premium travel card with lounge access",
+      "network": "VISA",
+      "otherNetworks": [
+        "MASTERCARD",
+        "AMEX"
+      ],
+      "annualFeePaise": 350000,
+      "joiningFeePaise": 650000,
+      "waiverSpendPaise": 60000000,
+      "face": {
+        "finish": "gloss",
+        "base": "#1B2A4A",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://cardadvisor.in/cards/icici-sapphiro",
+      "benefits": [
+        {
+          "id": "icici_sapphiro_base",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "2 RP per ₹100 domestic",
+          "rateBps": 50,
+          "conditions": "2 pts per ₹100; 1 pt = ₹0.25 statement credit",
+          "sourceUrl": "https://cardadvisor.in/cards/icici-sapphiro",
+          "confidence": "secondary"
+        },
+        {
+          "id": "icici_sapphiro_intl",
+          "category": "FOREIGN",
+          "kind": "REWARD",
+          "title": "4 RP per ₹100 international",
+          "rateBps": 100,
+          "conditions": "4 pts per ₹100; 1 pt = ₹0.25",
+          "sourceUrl": "https://cardadvisor.in/cards/icici-sapphiro",
+          "confidence": "secondary"
+        },
+        {
+          "id": "icici_sapphiro_fuel",
+          "category": "FUEL",
+          "kind": "REWARD",
+          "title": "Fuel",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards (also govt, tax, wallet)",
+          "sourceUrl": "https://cardadvisor.in/cards/icici-sapphiro",
+          "confidence": "secondary"
+        },
+        {
+          "id": "icici_sapphiro_rent",
+          "category": "RENT",
+          "kind": "REWARD",
+          "title": "Rent",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards",
+          "sourceUrl": "https://cardadvisor.in/cards/icici-sapphiro",
+          "confidence": "secondary"
+        },
+        {
+          "id": "icici_sapphiro_forex",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "3.5% forex markup",
+          "rateBps": 350,
+          "sourceUrl": "https://cardadvisor.in/cards/icici-sapphiro",
+          "confidence": "secondary"
+        },
+        {
+          "id": "icici_sapphiro_lounge",
+          "category": "TRAVEL",
+          "kind": "INFO",
+          "title": "Airport lounges",
+          "conditions": "Domestic visits per quarter gated on ₹75,000 previous-quarter spend; 2 international visits/year; sources conflict on counts",
+          "sourceUrl": "https://www.creditmantri.com/article-icici-sapphiro-credit-card-benefits-fees-lounge-access-eligibility/",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "icici_emeralde_private",
+      "bankId": "icici",
+      "name": "ICICI Bank Emeralde Private Metal",
+      "tagline": "Invite-only metal card, unlimited lounges, 2% forex",
+      "network": "VISA",
+      "annualFeePaise": 1249900,
+      "joiningFeePaise": 1249900,
+      "waiverSpendPaise": 100000000,
+      "face": {
+        "finish": "metal",
+        "base": "#0F2A24",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.icici.bank.in/personal-banking/cards/credit-card/emeralde-private-metal-credit-card",
+      "benefits": [
+        {
+          "id": "icici_emeralde_private_base",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "6 RP per ₹200",
+          "rateBps": 120,
+          "conditions": "6 pts per ₹200; 1 pt = ₹0.40 statement credit (up to ₹1 on flights/hotels/vouchers via iShop)",
+          "sourceUrl": "https://www.paisabazaar.com/credit-card/compare-yes-marquee-icici-emeralde-private-metal/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "icici_emeralde_private_rent",
+          "category": "RENT",
+          "kind": "REWARD",
+          "title": "Rent",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards (2026 change)",
+          "sourceUrl": "https://cardadvisor.in/articles/icici-emeralde-private-metal-review-2026",
+          "confidence": "secondary"
+        },
+        {
+          "id": "icici_emeralde_private_util",
+          "category": "UTILITIES",
+          "kind": "REWARD",
+          "title": "Utilities",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards (2026 change; tax also excluded)",
+          "sourceUrl": "https://cardadvisor.in/articles/icici-emeralde-private-metal-review-2026",
+          "confidence": "secondary"
+        },
+        {
+          "id": "icici_emeralde_private_forex",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "2% forex markup",
+          "rateBps": 200,
+          "sourceUrl": "https://www.icici.bank.in/personal-banking/cards/credit-card/emeralde-private-metal-credit-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "icici_emeralde_private_lounge",
+          "category": "TRAVEL",
+          "kind": "INFO",
+          "title": "Unlimited airport lounges",
+          "conditions": "Unlimited domestic and international airport lounge access; Taj Epicure and EazyDiner Prime memberships",
+          "sourceUrl": "https://www.icici.bank.in/personal-banking/cards/credit-card/emeralde-private-metal-credit-card",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "icici_times_black",
+      "bankId": "icici",
+      "name": "Times Black ICICI Bank",
+      "tagline": "Super-premium metal card with 1.49% forex",
+      "network": "VISA",
+      "annualFeePaise": 2000000,
+      "joiningFeePaise": 2000000,
+      "waiverSpendPaise": 250000000,
+      "face": {
+        "finish": "metal",
+        "base": "#0A0A0A",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://cardadvisor.in/cards/icici-times-black",
+      "benefits": [
+        {
+          "id": "icici_times_black_forex",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "1.49% forex markup",
+          "rateBps": 149,
+          "sourceUrl": "https://www.timesblack.com/benefits/signature-benefits/forex-markup",
+          "confidence": "secondary"
+        },
+        {
+          "id": "icici_times_black_lounge",
+          "category": "TRAVEL",
+          "kind": "INFO",
+          "title": "Airport lounge access",
+          "conditions": "Lounge access; sources conflict between unlimited and limited visits",
+          "sourceUrl": "https://www.paisabazaar.com/icici-bank/times-black-icici-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "icici_times_black_milestone",
+          "category": "OTHER",
+          "kind": "INFO",
+          "title": "Milestone benefits",
+          "conditions": "Milestone benefits up to ₹70,000 at ₹25 lakh annual spend",
+          "sourceUrl": "https://cardadvisor.in/cards/icici-times-black",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "icici_mmt",
+      "bankId": "icici",
+      "name": "MakeMyTrip ICICI Bank",
+      "tagline": "myCash on MakeMyTrip bookings, 0.99% forex",
+      "network": "MASTERCARD",
+      "otherNetworks": [
+        "RUPAY"
+      ],
+      "annualFeePaise": 99900,
+      "joiningFeePaise": 99900,
+      "waiverSpendPaise": 30000000,
+      "face": {
+        "finish": "gloss",
+        "base": "#0A3D7A",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://icicibank.com/personal-banking/cards/credit-card/travel-mmt/makemytrip-icici-credit-card",
+      "benefits": [
+        {
+          "id": "icici_mmt_travel",
+          "category": "TRAVEL",
+          "kind": "REWARD",
+          "title": "3% myCash on MakeMyTrip travel",
+          "rateBps": 300,
+          "channel": "MakeMyTrip",
+          "conditions": "3% on flights, buses, cabs; 6% on hotels via MakeMyTrip; 1 myCash = ₹1, usable only on MakeMyTrip",
+          "sourceUrl": "https://www.bankbazaar.com/credit-card/makemytrip-icici-bank-credit-card.html",
+          "confidence": "secondary"
+        },
+        {
+          "id": "icici_mmt_base",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "1% myCash on other spends",
+          "rateBps": 100,
+          "conditions": "1 myCash = ₹1 for MakeMyTrip bookings only",
+          "sourceUrl": "https://www.bankbazaar.com/credit-card/makemytrip-icici-bank-credit-card.html",
+          "confidence": "secondary"
+        },
+        {
+          "id": "icici_mmt_forex",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "0.99% forex markup",
+          "rateBps": 99,
+          "sourceUrl": "https://icicibank.com/personal-banking/cards/credit-card/travel-mmt/makemytrip-icici-credit-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "icici_mmt_lounge",
+          "category": "TRAVEL",
+          "kind": "INFO",
+          "title": "Airport lounges",
+          "conditions": "Complimentary lounge visits; sources conflict (8 domestic/year vs 2 per quarter)",
+          "sourceUrl": "https://cardadvisor.in/cards/icici-mmt",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "icici_hpcl_supersaver",
+      "bankId": "icici",
+      "name": "ICICI Bank HPCL Super Saver",
+      "tagline": "Fuel cashback at HPCL plus 5% on bills and groceries",
+      "network": "VISA",
+      "annualFeePaise": 50000,
+      "joiningFeePaise": 50000,
+      "waiverSpendPaise": 15000000,
+      "face": {
+        "finish": "gloss",
+        "base": "#1C3F94",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.icicibank.com/personal-banking/cards/credit-card/hpcl-super-saver/savings-rewards",
+      "benefits": [
+        {
+          "id": "icici_hpcl_supersaver_fuel",
+          "category": "FUEL",
+          "kind": "REWARD",
+          "title": "4% cashback on HPCL fuel",
+          "rateBps": 400,
+          "monthlyCapPaise": 20000,
+          "channel": "HPCL",
+          "conditions": "4% cashback at HPCL pumps, capped ₹200/month; plus 1% surcharge waiver and ~1.5% extra via HP Pay app",
+          "sourceUrl": "https://paisabazaar.com/icici-bank/hpcl-super-saver-credit-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "icici_hpcl_supersaver_groc",
+          "category": "GROCERIES",
+          "kind": "REWARD",
+          "title": "5% on departmental stores",
+          "rateBps": 500,
+          "monthlyCapPaise": 10000,
+          "conditions": "5% as reward points; cap ₹100/month shared with utilities and mobile bills",
+          "sourceUrl": "https://www.icicibank.com/personal-banking/cards/credit-card/hpcl-super-saver/savings-rewards",
+          "confidence": "secondary"
+        },
+        {
+          "id": "icici_hpcl_supersaver_util",
+          "category": "UTILITIES",
+          "kind": "REWARD",
+          "title": "5% on electricity bills",
+          "rateBps": 500,
+          "monthlyCapPaise": 10000,
+          "conditions": "5% as reward points; cap ₹100/month shared with departmental stores and mobile bills",
+          "sourceUrl": "https://www.icicibank.com/personal-banking/cards/credit-card/hpcl-super-saver/savings-rewards",
+          "confidence": "secondary"
+        },
+        {
+          "id": "icici_hpcl_supersaver_tel",
+          "category": "TELECOM",
+          "kind": "REWARD",
+          "title": "5% on mobile bills",
+          "rateBps": 500,
+          "monthlyCapPaise": 10000,
+          "conditions": "5% as reward points; cap ₹100/month shared with departmental stores and electricity",
+          "sourceUrl": "https://www.icicibank.com/personal-banking/cards/credit-card/hpcl-super-saver/savings-rewards",
+          "confidence": "secondary"
+        },
+        {
+          "id": "icici_hpcl_supersaver_base",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "0.5% on other spends",
+          "rateBps": 50,
+          "conditions": "2 pts per ₹100; 1 pt = ₹0.25",
+          "sourceUrl": "https://select.finology.in/credit-card/icici-bank-hpcl-supersaver-credit-card",
+          "confidence": "secondary"
+        }
+      ]
+    }
+  ]
+}

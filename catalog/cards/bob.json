@@ -1,0 +1,632 @@
+{
+  "bank": {
+    "id": "bob",
+    "name": "BOBCARD (Bank of Baroda)"
+  },
+  "products": [
+    {
+      "id": "bob_eterna",
+      "bankId": "bob",
+      "name": "BOBCARD Eterna",
+      "tagline": "Premium rewards on travel, dining and online, low 2% forex",
+      "network": "VISA",
+      "otherNetworks": [
+        "RUPAY"
+      ],
+      "annualFeePaise": 249900,
+      "joiningFeePaise": 249900,
+      "waiverSpendPaise": 25000000,
+      "face": {
+        "finish": "matte",
+        "base": "#1B1F2A",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.paisabazaar.com/bobcard/bobcard-eterna-credit-card/",
+      "benefits": [
+        {
+          "id": "bob_eterna_travel",
+          "category": "TRAVEL",
+          "kind": "REWARD",
+          "title": "15 RP per ₹100 on travel",
+          "rateBps": 375,
+          "conditions": "15 points per ₹100; 1 pt = ₹0.25 cashback. Accelerated points capped at 5,000 RP/month combined across travel, dining, online shopping and international.",
+          "sourceUrl": "https://www.paisabazaar.com/bobcard/bobcard-eterna-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "bob_eterna_dining",
+          "category": "DINING",
+          "kind": "REWARD",
+          "title": "15 RP per ₹100 on dining",
+          "rateBps": 375,
+          "conditions": "15 points per ₹100; 1 pt = ₹0.25. Shared cap 5,000 RP/month across accelerated categories.",
+          "sourceUrl": "https://www.paisabazaar.com/bobcard/bobcard-eterna-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "bob_eterna_online",
+          "category": "SHOPPING",
+          "kind": "REWARD",
+          "title": "15 RP per ₹100 on online shopping",
+          "rateBps": 375,
+          "channel": "Online",
+          "conditions": "15 points per ₹100 on online spends; 1 pt = ₹0.25. Shared cap 5,000 RP/month across accelerated categories.",
+          "sourceUrl": "https://www.paisabazaar.com/bobcard/bobcard-eterna-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "bob_eterna_intl",
+          "category": "FOREIGN",
+          "kind": "REWARD",
+          "title": "15 RP per ₹100 on international spends",
+          "rateBps": 375,
+          "conditions": "15 points per ₹100; 1 pt = ₹0.25. Shared 5,000 RP/month cap. 2% forex markup applies.",
+          "sourceUrl": "https://www.paisabazaar.com/bobcard/bobcard-eterna-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "bob_eterna_base",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "3 RP per ₹100 on other spends",
+          "rateBps": 75,
+          "conditions": "3 points per ₹100; 1 pt = ₹0.25 cashback.",
+          "sourceUrl": "https://www.paisabazaar.com/bobcard/bobcard-eterna-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "bob_eterna_fuel",
+          "category": "FUEL",
+          "kind": "REWARD",
+          "title": "No points on fuel",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards",
+          "sourceUrl": "https://www.pickmywork.com/bob-eterna-credit-card-review-2026/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "bob_eterna_rent",
+          "category": "RENT",
+          "kind": "REWARD",
+          "title": "No points on rent",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards (MCC 6513); wallet loads also excluded",
+          "sourceUrl": "https://www.card24.ai/blog/bobcard-reward-points-value",
+          "confidence": "secondary"
+        },
+        {
+          "id": "bob_eterna_insurance",
+          "category": "INSURANCE",
+          "kind": "REWARD",
+          "title": "No points on insurance",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards",
+          "sourceUrl": "https://www.pickmywork.com/bob-eterna-credit-card-review-2026/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "bob_eterna_forex",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "2% forex markup",
+          "rateBps": 200,
+          "conditions": "2% + GST on foreign currency transactions",
+          "sourceUrl": "https://www.paisabazaar.com/bobcard/bobcard-eterna-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "bob_eterna_lounge",
+          "category": "TRAVEL",
+          "kind": "INFO",
+          "title": "Unlimited domestic lounge access",
+          "conditions": "Unlimited domestic lounge visits for primary cardholder subject to quarterly spend threshold (sources say ₹40,000 or ₹75,000 per quarter - verify).",
+          "sourceUrl": "https://www.paisabazaar.com/bobcard/bobcard-eterna-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "bob_eterna_fuelwaiver",
+          "category": "FUEL",
+          "kind": "INFO",
+          "title": "1% fuel surcharge waiver",
+          "minTxnPaise": 40000,
+          "conditions": "1% waiver on fuel transactions ₹400-₹5,000, max ₹250 per statement cycle.",
+          "sourceUrl": "https://www.pickmywork.com/bob-eterna-credit-card-review-2026/",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "bob_tiara",
+      "bankId": "bob",
+      "name": "BOBCARD Tiara",
+      "tagline": "Women's premium card with 15X on dining, travel, international",
+      "network": "RUPAY",
+      "annualFeePaise": 249900,
+      "joiningFeePaise": 249900,
+      "waiverSpendPaise": 25000000,
+      "face": {
+        "finish": "matte",
+        "base": "#5A2140",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.bobcard.co.in/credit-card-types/tiara",
+      "benefits": [
+        {
+          "id": "bob_tiara_dining",
+          "category": "DINING",
+          "kind": "REWARD",
+          "title": "15 RP per ₹100 on dining",
+          "rateBps": 375,
+          "conditions": "15 points per ₹100; 1 pt = ₹0.25 cashback. Monthly cap on accelerated points not confirmed.",
+          "sourceUrl": "https://www.paisabazaar.com/bobcard/bobcard-tiara-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "bob_tiara_travel",
+          "category": "TRAVEL",
+          "kind": "REWARD",
+          "title": "15 RP per ₹100 on travel",
+          "rateBps": 375,
+          "conditions": "15 points per ₹100; 1 pt = ₹0.25 cashback.",
+          "sourceUrl": "https://www.paisabazaar.com/bobcard/bobcard-tiara-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "bob_tiara_intl",
+          "category": "FOREIGN",
+          "kind": "REWARD",
+          "title": "15 RP per ₹100 on international spends",
+          "rateBps": 375,
+          "conditions": "15 points per ₹100; 1 pt = ₹0.25. 2% forex markup applies.",
+          "sourceUrl": "https://www.paisabazaar.com/bobcard/bobcard-tiara-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "bob_tiara_base",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "3 RP per ₹100 on other spends",
+          "rateBps": 75,
+          "conditions": "3 points per ₹100; 1 pt = ₹0.25 cashback.",
+          "sourceUrl": "https://www.paisabazaar.com/bobcard/bobcard-tiara-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "bob_tiara_forex",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "2% forex markup",
+          "rateBps": 200,
+          "conditions": "2% + GST",
+          "sourceUrl": "https://www.paisabazaar.com/bobcard/bobcard-tiara-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "bob_tiara_lounge",
+          "category": "TRAVEL",
+          "kind": "INFO",
+          "title": "Unlimited domestic lounge access",
+          "conditions": "Primary cardholder; requires ₹40,000 spend per quarter per most sources (one says ₹75,000). No international lounge access. Joining fee reversed on ₹25,000 spend in first 60 days.",
+          "sourceUrl": "https://www.paisabazaar.com/bobcard/bobcard-tiara-credit-card/",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "bob_premier",
+      "bankId": "bob",
+      "name": "BOBCARD Premier",
+      "tagline": "Mid-tier travel and dining rewards",
+      "network": "MASTERCARD",
+      "annualFeePaise": 100000,
+      "joiningFeePaise": 100000,
+      "waiverSpendPaise": 12000000,
+      "face": {
+        "finish": "matte",
+        "base": "#1D2B4F",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.paisabazaar.com/bobcard/bobcard-premier-credit-card/",
+      "benefits": [
+        {
+          "id": "bob_premier_travel",
+          "category": "TRAVEL",
+          "kind": "REWARD",
+          "title": "10 RP per ₹100 on travel",
+          "rateBps": 250,
+          "conditions": "10 points per ₹100; 1 pt = ₹0.25. Accelerated points capped at 2,000 RP per statement cycle.",
+          "sourceUrl": "https://www.paisabazaar.com/bobcard/bobcard-premier-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "bob_premier_hotel_smartdeal",
+          "category": "TRAVEL",
+          "kind": "REWARD",
+          "title": "20 RP per ₹100 on hotels via SmartDeal",
+          "rateBps": 500,
+          "channel": "BOBCARD SmartDeal",
+          "conditions": "20 points per ₹100 on hotel bookings via SmartDeal (8 RP/₹100 on flights via SmartDeal); 1 pt = ₹0.25.",
+          "sourceUrl": "https://www.paisabazaar.com/bobcard/bobcard-premier-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "bob_premier_dining",
+          "category": "DINING",
+          "kind": "REWARD",
+          "title": "10 RP per ₹100 on dining",
+          "rateBps": 250,
+          "conditions": "10 points per ₹100; 1 pt = ₹0.25. Shared cap 2,000 RP per statement cycle.",
+          "sourceUrl": "https://www.paisabazaar.com/bobcard/bobcard-premier-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "bob_premier_intl",
+          "category": "FOREIGN",
+          "kind": "REWARD",
+          "title": "10 RP per ₹100 on international spends",
+          "rateBps": 250,
+          "conditions": "10 points per ₹100; 1 pt = ₹0.25. 3.5% forex markup applies, so net value is low.",
+          "sourceUrl": "https://www.paisabazaar.com/bobcard/bobcard-premier-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "bob_premier_forex",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "3.5% forex markup",
+          "rateBps": 350,
+          "conditions": "3.5% + GST",
+          "sourceUrl": "https://www.paisabazaar.com/bobcard/bobcard-premier-credit-card/",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "bob_select",
+      "bankId": "bob",
+      "name": "BOBCARD Select",
+      "tagline": "5X on dining and online spends",
+      "network": "VISA",
+      "otherNetworks": [
+        "RUPAY"
+      ],
+      "annualFeePaise": 75000,
+      "joiningFeePaise": 75000,
+      "waiverSpendPaise": 7000000,
+      "face": {
+        "finish": "gloss",
+        "base": "#1F4E8C",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.bobcard.co.in/credit-card-types/select",
+      "benefits": [
+        {
+          "id": "bob_select_dining",
+          "category": "DINING",
+          "kind": "REWARD",
+          "title": "5 RP per ₹100 on dining",
+          "rateBps": 100,
+          "conditions": "5 points per ₹100; 1 pt = ₹0.20 cashback (some sources say ₹0.25). 1,000 RP per statement cycle cap combined with online.",
+          "sourceUrl": "https://www.paisabazaar.com/bobcard/bobcard-select-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "bob_select_online",
+          "category": "SHOPPING",
+          "kind": "REWARD",
+          "title": "5 RP per ₹100 on online spends",
+          "rateBps": 100,
+          "channel": "Online",
+          "conditions": "5 points per ₹100; 1 pt = ₹0.20. Shared 1,000 RP per statement cycle cap; base rate after cap.",
+          "sourceUrl": "https://www.paisabazaar.com/bobcard/bobcard-select-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "bob_select_base",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "1 RP per ₹100 on other spends",
+          "rateBps": 20,
+          "conditions": "1 point per ₹100; 1 pt = ₹0.20.",
+          "sourceUrl": "https://www.paisabazaar.com/bobcard/bobcard-select-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "bob_select_fuel",
+          "category": "FUEL",
+          "kind": "REWARD",
+          "title": "No points on fuel",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards",
+          "sourceUrl": "https://www.bobcard.co.in/credit-card-types/select",
+          "confidence": "secondary"
+        },
+        {
+          "id": "bob_select_fuelwaiver",
+          "category": "FUEL",
+          "kind": "INFO",
+          "title": "1% fuel surcharge waiver",
+          "minTxnPaise": 40000,
+          "conditions": "Transactions ₹400-₹5,000; max ₹250 per statement cycle.",
+          "sourceUrl": "https://www.bobcard.co.in/credit-card-types/select",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "bob_easy",
+      "bankId": "bob",
+      "name": "BOBCARD Easy",
+      "tagline": "Entry card with 5X on groceries, departmental stores and movies",
+      "network": "VISA",
+      "otherNetworks": [
+        "RUPAY"
+      ],
+      "annualFeePaise": 50000,
+      "joiningFeePaise": 50000,
+      "waiverSpendPaise": 3500000,
+      "face": {
+        "finish": "gloss",
+        "base": "#E46A1F",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.paisabazaar.com/bobcard/bobcard-easy-credit-card/",
+      "benefits": [
+        {
+          "id": "bob_easy_grocery",
+          "category": "GROCERIES",
+          "kind": "REWARD",
+          "title": "5 RP per ₹100 on groceries & departmental stores",
+          "rateBps": 100,
+          "conditions": "5 points per ₹100 (also movies); 1 pt = ₹0.20. Cap 1,000 bonus RP per statement cycle (shared vs per-category unclear).",
+          "sourceUrl": "https://www.paisabazaar.com/bobcard/bobcard-easy-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "bob_easy_base",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "1 RP per ₹100 on other spends",
+          "rateBps": 20,
+          "conditions": "1 point per ₹100; 1 pt = ₹0.20. Movie tickets earn 5 RP/₹100 (1%).",
+          "sourceUrl": "https://www.paisabazaar.com/bobcard/bobcard-easy-credit-card/",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "bob_cashback",
+      "bankId": "bob",
+      "name": "BOBCARD Cashback",
+      "tagline": "5% cashback online, 1% offline",
+      "network": "VISA",
+      "annualFeePaise": 49900,
+      "face": {
+        "finish": "gloss",
+        "base": "#F26522",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.paisabazaar.com/bobcard/bobcard-cashback-credit-card/",
+      "benefits": [
+        {
+          "id": "bob_cashback_online",
+          "category": "SHOPPING",
+          "kind": "REWARD",
+          "title": "5% cashback on online spends",
+          "rateBps": 500,
+          "monthlyCapPaise": 150000,
+          "channel": "Online",
+          "conditions": "1% base + 4% accelerated; accelerated cashback capped at ₹1,500/month. Some reviews say 4 transactions/month needed. One source cites ₹5,000 total cap - verify.",
+          "sourceUrl": "https://www.paisabazaar.com/bobcard/bobcard-cashback-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "bob_cashback_base",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "1% cashback offline",
+          "rateBps": 100,
+          "conditions": "Unlimited 1% cashback on offline spends.",
+          "sourceUrl": "https://www.paisabazaar.com/bobcard/bobcard-cashback-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "bob_cashback_fuel",
+          "category": "FUEL",
+          "kind": "REWARD",
+          "title": "No cashback on fuel",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards",
+          "sourceUrl": "https://captaintorch.in/cards/bob-cashback",
+          "confidence": "secondary"
+        },
+        {
+          "id": "bob_cashback_rent",
+          "category": "RENT",
+          "kind": "REWARD",
+          "title": "No cashback on rent",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards (wallet loads also excluded)",
+          "sourceUrl": "https://captaintorch.in/cards/bob-cashback",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "bob_irctc",
+      "bankId": "bob",
+      "name": "IRCTC BOBCARD",
+      "tagline": "Rail rewards on IRCTC bookings",
+      "network": "RUPAY",
+      "annualFeePaise": 35000,
+      "joiningFeePaise": 50000,
+      "face": {
+        "finish": "gloss",
+        "base": "#1E3C78",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.paisabazaar.com/bobcard/bobcard-irctc-rupay-credit-card/",
+      "benefits": [
+        {
+          "id": "bob_irctc_rail",
+          "category": "TRAVEL",
+          "kind": "REWARD",
+          "title": "16-40 RP per ₹100 on IRCTC tickets",
+          "rateBps": 400,
+          "channel": "IRCTC",
+          "conditions": "16 RP per ₹100 off-peak (4%); up to 40 RP per ₹100 (10%) in peak windows 15 Jan-31 Mar and 15 Jul-15 Sep per one source; 1 pt = ₹0.25. Rate shown is the off-peak floor.",
+          "sourceUrl": "https://www.paisabazaar.com/bobcard/bobcard-irctc-rupay-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "bob_irctc_grocery",
+          "category": "GROCERIES",
+          "kind": "REWARD",
+          "title": "4 RP per ₹100 on grocery & departmental",
+          "rateBps": 100,
+          "conditions": "4 points per ₹100; 1 pt = ₹0.25.",
+          "sourceUrl": "https://www.paisabazaar.com/bobcard/bobcard-irctc-rupay-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "bob_irctc_base",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "2 RP per ₹100 on other spends",
+          "rateBps": 50,
+          "conditions": "2 points per ₹100; 1 pt = ₹0.25.",
+          "sourceUrl": "https://www.paisabazaar.com/bobcard/bobcard-irctc-rupay-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "bob_irctc_forex",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "3.5% forex markup",
+          "rateBps": 350,
+          "conditions": "3.5% + GST",
+          "sourceUrl": "https://cardinsider.com/bank-of-baroda/irctc-rupay-bobcard-credit-card/",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "bob_hpcl_energie",
+      "bankId": "bob",
+      "name": "HPCL ENERGIE BOBCARD",
+      "tagline": "Fuel rewards at HPCL pumps",
+      "network": "RUPAY",
+      "annualFeePaise": 49900,
+      "joiningFeePaise": 49900,
+      "waiverSpendPaise": 5000000,
+      "face": {
+        "finish": "gloss",
+        "base": "#1E3A8A",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.paisabazaar.com/bobcard/bobcard-hpcl-energie-credit-card/",
+      "benefits": [
+        {
+          "id": "bob_hpcl_energie_fuel",
+          "category": "FUEL",
+          "kind": "REWARD",
+          "title": "24 RP per ₹150 at HPCL",
+          "rateBps": 400,
+          "channel": "HPCL",
+          "conditions": "24 points per ₹150 at HPCL outlets; 1 pt = ₹0.25. Capped at 1,000 RP (₹250) per statement cycle.",
+          "sourceUrl": "https://www.paisabazaar.com/bobcard/bobcard-hpcl-energie-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "bob_hpcl_energie_grocery",
+          "category": "GROCERIES",
+          "kind": "REWARD",
+          "title": "10 RP per ₹150 on grocery & departmental",
+          "rateBps": 167,
+          "conditions": "10 points per ₹150; 1 pt = ₹0.25.",
+          "sourceUrl": "https://www.paisabazaar.com/bobcard/bobcard-hpcl-energie-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "bob_hpcl_energie_fuelwaiver",
+          "category": "FUEL",
+          "kind": "INFO",
+          "title": "1% fuel surcharge waiver at HPCL",
+          "minTxnPaise": 40000,
+          "channel": "HPCL",
+          "conditions": "Transactions ₹400-₹5,000 at HPCL; max ₹100 per billing cycle.",
+          "sourceUrl": "https://www.paisabazaar.com/bobcard/bobcard-hpcl-energie-credit-card/",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "bob_snapdeal",
+      "bankId": "bob",
+      "name": "Snapdeal BOBCARD",
+      "tagline": "5% on Snapdeal, 2.5% on online and grocery",
+      "network": "VISA",
+      "annualFeePaise": 24900,
+      "joiningFeePaise": 24900,
+      "face": {
+        "finish": "gloss",
+        "base": "#E40046",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.card24.ai/bobcard/snapdeal-credit-card-review",
+      "benefits": [
+        {
+          "id": "bob_snapdeal_snapdeal",
+          "category": "SHOPPING",
+          "kind": "REWARD",
+          "title": "5% back on Snapdeal",
+          "rateBps": 500,
+          "channel": "Snapdeal",
+          "conditions": "20 RP per ₹100; 1 pt = ₹0.25. Points now redeemed manually via BOBCARD app.",
+          "sourceUrl": "https://www.card24.ai/bobcard/snapdeal-credit-card-review",
+          "confidence": "secondary"
+        },
+        {
+          "id": "bob_snapdeal_online",
+          "category": "SHOPPING",
+          "kind": "REWARD",
+          "title": "2.5% back on other online spends",
+          "rateBps": 250,
+          "channel": "Online",
+          "conditions": "10 RP per ₹100; 1 pt = ₹0.25. Capped at 2,000 RP per statement (shared with grocery).",
+          "sourceUrl": "https://www.card24.ai/bobcard/snapdeal-credit-card-review",
+          "confidence": "secondary"
+        },
+        {
+          "id": "bob_snapdeal_grocery",
+          "category": "GROCERIES",
+          "kind": "REWARD",
+          "title": "2.5% back on grocery & departmental",
+          "rateBps": 250,
+          "conditions": "10 RP per ₹100; 1 pt = ₹0.25. Shared 2,000 RP per statement cap.",
+          "sourceUrl": "https://www.card24.ai/bobcard/snapdeal-credit-card-review",
+          "confidence": "secondary"
+        },
+        {
+          "id": "bob_snapdeal_base",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "1% back on other spends",
+          "rateBps": 100,
+          "conditions": "4 RP per ₹100; 1 pt = ₹0.25 (reported by aggregators, not verified).",
+          "sourceUrl": "https://groww.in/credit-card/bank-of-baroda-snapdeal-credit-card",
+          "confidence": "secondary"
+        }
+      ]
+    }
+  ]
+}

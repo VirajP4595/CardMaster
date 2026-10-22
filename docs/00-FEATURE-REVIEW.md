@@ -76,10 +76,14 @@ Move to 1.0.x: budgets, multi-copy import, lost-card button, merchant memory.
 - From 1.2: statement PDF import (beta, generic parser), Quick Settings tile, home-screen widget, lounge tracker, travel mode.
 - From 1.3: card suggestions (no links), saved offers, EMI tracker.
 - Later list: card comparison, closing checklist, utilisation coach (from logged spends; says so).
+- Light theme (Settings → Appearance), Indian comma grouping while typing amounts.
 - Infrastructure: weekly automatic backup to Downloads, local reminders, signed benefits publishing (off until the key is created), release APKs on GitHub.
 
 **Not built**
-- Hindi / other languages, light theme, add-on/family cards.
+- Hindi / other languages, add-on/family cards.
+- Benefits for RBL Bank and Yes Bank (research was cut off by a usage limit).
+
+**Benefits data** (96 cards, 14 banks): researched from search-result snippets — the build environment's network policy blocked every bank website, so no page was opened. Each product and benefit keeps its `sourceUrl` and `confidence: secondary`; `lastVerified` stays null so the app shows Verify. Pipeline: `catalog/cards/<bank>.json` → `tool/build_catalog.dart` (lint + build) → shipped asset and published catalog.
 
 **Needs you**
 - Verify the sample benefit rates against each bank's MITC (`catalog/catalog.json`, then bump `version`).

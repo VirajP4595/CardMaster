@@ -1,0 +1,535 @@
+{
+  "bank": {
+    "id": "au",
+    "name": "AU Small Finance Bank",
+    "helpline": "180012001500",
+    "helplineSource": "https://moneyview.in/credit-card/all-credit-cards-customer-care-numbers"
+  },
+  "products": [
+    {
+      "id": "au_altura",
+      "bankId": "au",
+      "name": "Altura",
+      "tagline": "Entry cashback card: 2% on grocery and utilities",
+      "network": "VISA",
+      "annualFeePaise": 19900,
+      "joiningFeePaise": 19900,
+      "waiverSpendPaise": 4000000,
+      "face": {
+        "finish": "gloss",
+        "base": "#23408E",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.au.bank.in/personal-banking/credit-cards/altura-credit-card",
+      "benefits": [
+        {
+          "id": "au_altura_grocery",
+          "category": "GROCERIES",
+          "kind": "REWARD",
+          "title": "2% cashback on grocery",
+          "rateBps": 200,
+          "conditions": "All cashback capped at Rs 50 per statement cycle.",
+          "sourceUrl": "https://www.au.bank.in/personal-banking/credit-cards/altura-credit-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "au_altura_util",
+          "category": "UTILITIES",
+          "kind": "REWARD",
+          "title": "2% cashback on utility bills",
+          "rateBps": 200,
+          "conditions": "Capped at Rs 50 per statement cycle (shared). BBPS, education and government transactions ineligible since 1 Apr 2024.",
+          "sourceUrl": "https://www.au.bank.in/personal-banking/credit-cards/altura-credit-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "au_altura_shopping",
+          "category": "SHOPPING",
+          "kind": "REWARD",
+          "title": "2% cashback at departmental stores",
+          "rateBps": 200,
+          "conditions": "Capped at Rs 50 per statement cycle (shared).",
+          "sourceUrl": "https://www.au.bank.in/personal-banking/credit-cards/altura-credit-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "au_altura_other",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "1% cashback on other retail",
+          "rateBps": 100,
+          "conditions": "Capped at Rs 50 per statement cycle (shared). Extra Rs 50 cashback on Rs 10,000 retail spend in a cycle.",
+          "sourceUrl": "https://www.au.bank.in/personal-banking/credit-cards/altura-credit-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "au_altura_fuel",
+          "category": "FUEL",
+          "kind": "REWARD",
+          "title": "No cashback on fuel",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards (also wallet and cash).",
+          "sourceUrl": "https://www.au.bank.in/personal-banking/credit-cards/altura-credit-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "au_altura_rent",
+          "category": "RENT",
+          "kind": "REWARD",
+          "title": "No cashback on rent",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards.",
+          "sourceUrl": "https://www.au.bank.in/personal-banking/credit-cards/altura-credit-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "au_altura_forex",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "3.49% forex markup",
+          "rateBps": 349,
+          "sourceUrl": "https://www.au.bank.in/personal-banking/credit-cards",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "au_altura_plus",
+      "bankId": "au",
+      "name": "Altura Plus",
+      "tagline": "1.5% cashback on in-store spends",
+      "network": "VISA",
+      "annualFeePaise": 49900,
+      "joiningFeePaise": 49900,
+      "face": {
+        "finish": "gloss",
+        "base": "#3B2A6B",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.au.bank.in/personal-banking/credit-cards/altura-plus-credit-card",
+      "benefits": [
+        {
+          "id": "au_altura_plus_other",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "1.5% cashback on in-store retail",
+          "rateBps": 150,
+          "channel": "POS",
+          "conditions": "Offline POS retail only, up to a per-cycle cashback limit (amount not confirmed); after the limit, 1 RP per Rs 100. Online spends earn 2X reward points (value not confirmed).",
+          "sourceUrl": "https://www.au.bank.in/personal-banking/credit-cards/altura-plus-credit-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "au_altura_plus_forex",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "3.49% forex markup",
+          "rateBps": 349,
+          "sourceUrl": "https://www.au.bank.in/personal-banking/credit-cards",
+          "confidence": "secondary"
+        },
+        {
+          "id": "au_altura_plus_fuelwaiver",
+          "category": "FUEL",
+          "kind": "INFO",
+          "title": "1% fuel surcharge waiver",
+          "conditions": "Waiver limits not confirmed.",
+          "sourceUrl": "https://www.au.bank.in/personal-banking/credit-cards/altura-plus-credit-card",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "au_vetta",
+      "bankId": "au",
+      "name": "Vetta",
+      "tagline": "Rewards on grocery and departmental stores",
+      "network": "MASTERCARD",
+      "annualFeePaise": 299900,
+      "joiningFeePaise": 299900,
+      "waiverSpendPaise": 15000000,
+      "face": {
+        "finish": "matte",
+        "base": "#1F3B3A",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.au.bank.in/personal-banking/credit-cards",
+      "benefits": [
+        {
+          "id": "au_vetta_grocery",
+          "category": "GROCERIES",
+          "kind": "REWARD",
+          "title": "4 RP per Rs 100 on grocery",
+          "rateBps": 100,
+          "conditions": "4 RP per Rs 100; 1 RP = Rs 0.25 (AU Rewardz).",
+          "sourceUrl": "https://www.paisabazaar.com/au-small-finance-bank/vetta-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "au_vetta_shopping",
+          "category": "SHOPPING",
+          "kind": "REWARD",
+          "title": "4 RP per Rs 100 at departmental stores",
+          "rateBps": 100,
+          "conditions": "4 RP per Rs 100; 1 RP = Rs 0.25.",
+          "sourceUrl": "https://www.paisabazaar.com/au-small-finance-bank/vetta-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "au_vetta_other",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "2 RP per Rs 100 on other retail",
+          "rateBps": 50,
+          "conditions": "2 RP per Rs 100; 1 RP = Rs 0.25. 1,000 RP birthday bonus; quarterly milestone bonuses.",
+          "sourceUrl": "https://www.paisabazaar.com/au-small-finance-bank/vetta-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "au_vetta_util",
+          "category": "UTILITIES",
+          "kind": "REWARD",
+          "title": "1 RP per Rs 100 on utilities",
+          "rateBps": 25,
+          "conditions": "1 RP per Rs 100; 1 RP = Rs 0.25 (sources conflict).",
+          "sourceUrl": "https://cardinsider.com/au-bank/vetta-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "au_vetta_forex",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "2.99% forex markup",
+          "rateBps": 299,
+          "sourceUrl": "https://www.au.bank.in/personal-banking/credit-cards",
+          "confidence": "secondary"
+        },
+        {
+          "id": "au_vetta_fuelwaiver",
+          "category": "FUEL",
+          "kind": "INFO",
+          "title": "1% fuel surcharge waiver",
+          "conditions": "On Rs 400 to Rs 5,000 transactions.",
+          "sourceUrl": "https://www.au.bank.in/personal-banking/credit-cards",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "au_zenith",
+      "bankId": "au",
+      "name": "Zenith",
+      "tagline": "Premium rewards on dining, grocery and international",
+      "network": "VISA",
+      "annualFeePaise": 799900,
+      "joiningFeePaise": 799900,
+      "waiverSpendPaise": 50000000,
+      "face": {
+        "finish": "matte",
+        "base": "#141414",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.au.bank.in/personal-banking/credit-cards/zenith-credit-card",
+      "benefits": [
+        {
+          "id": "au_zenith_dining",
+          "category": "DINING",
+          "kind": "REWARD",
+          "title": "5 RP per Rs 100 on dining",
+          "rateBps": 125,
+          "conditions": "Standalone restaurants; capped at 5,000 RP per statement cycle. Assumes 1 RP = Rs 0.25 (AU Rewardz value, not confirmed for Zenith).",
+          "sourceUrl": "https://www.au.bank.in/personal-banking/credit-cards/zenith-credit-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "au_zenith_grocery",
+          "category": "GROCERIES",
+          "kind": "REWARD",
+          "title": "5 RP per Rs 100 on grocery",
+          "rateBps": 125,
+          "conditions": "Assumes 1 RP = Rs 0.25.",
+          "sourceUrl": "https://www.au.bank.in/personal-banking/credit-cards/zenith-credit-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "au_zenith_shopping",
+          "category": "SHOPPING",
+          "kind": "REWARD",
+          "title": "5 RP per Rs 100 at departmental stores",
+          "rateBps": 125,
+          "conditions": "Assumes 1 RP = Rs 0.25.",
+          "sourceUrl": "https://www.au.bank.in/personal-banking/credit-cards/zenith-credit-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "au_zenith_intl",
+          "category": "FOREIGN",
+          "kind": "REWARD",
+          "title": "5 RP per Rs 100 on international",
+          "rateBps": 125,
+          "conditions": "Assumes 1 RP = Rs 0.25.",
+          "sourceUrl": "https://www.au.bank.in/personal-banking/credit-cards/zenith-credit-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "au_zenith_other",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "3 RP per Rs 100 on other spends",
+          "rateBps": 75,
+          "conditions": "Assumes 1 RP = Rs 0.25. 1,000 bonus RP on Rs 50,000 spend in a cycle.",
+          "sourceUrl": "https://www.au.bank.in/personal-banking/credit-cards/zenith-credit-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "au_zenith_util",
+          "category": "UTILITIES",
+          "kind": "REWARD",
+          "title": "1 RP per Rs 100 on utilities",
+          "rateBps": 25,
+          "conditions": "Assumes 1 RP = Rs 0.25. BBPS transactions excluded.",
+          "sourceUrl": "https://www.au.bank.in/personal-banking/credit-cards/zenith-credit-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "au_zenith_ins",
+          "category": "INSURANCE",
+          "kind": "REWARD",
+          "title": "1 RP per Rs 100 on insurance",
+          "rateBps": 25,
+          "conditions": "Assumes 1 RP = Rs 0.25.",
+          "sourceUrl": "https://www.au.bank.in/personal-banking/credit-cards/zenith-credit-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "au_zenith_fuel",
+          "category": "FUEL",
+          "kind": "REWARD",
+          "title": "No rewards on fuel",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards (also cash, EMI, education/government, transportation).",
+          "sourceUrl": "https://www.au.bank.in/personal-banking/credit-cards/zenith-credit-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "au_zenith_rent",
+          "category": "RENT",
+          "kind": "REWARD",
+          "title": "No rewards on rent",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards.",
+          "sourceUrl": "https://www.au.bank.in/personal-banking/credit-cards/zenith-credit-card",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "au_zenith_plus",
+      "bankId": "au",
+      "name": "Zenith+",
+      "tagline": "Metal card: 2% on travel, dining and international",
+      "network": "VISA",
+      "annualFeePaise": 499900,
+      "joiningFeePaise": 499900,
+      "waiverSpendPaise": 80000000,
+      "face": {
+        "finish": "metal",
+        "base": "#1A1A1A",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.au.bank.in/premium-banking/credit-cards/zenith-plus-credit-card",
+      "benefits": [
+        {
+          "id": "au_zenith_plus_travel",
+          "category": "TRAVEL",
+          "kind": "REWARD",
+          "title": "2 RP per Rs 100 on travel",
+          "rateBps": 200,
+          "conditions": "2 RP per Rs 100; 1 RP = Rs 1.",
+          "sourceUrl": "https://www.au.bank.in/premium-banking/credit-cards/zenith-plus-credit-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "au_zenith_plus_dining",
+          "category": "DINING",
+          "kind": "REWARD",
+          "title": "2 RP per Rs 100 on dining",
+          "rateBps": 200,
+          "conditions": "2 RP per Rs 100; 1 RP = Rs 1.",
+          "sourceUrl": "https://www.au.bank.in/premium-banking/credit-cards/zenith-plus-credit-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "au_zenith_plus_intl",
+          "category": "FOREIGN",
+          "kind": "REWARD",
+          "title": "2 RP per Rs 100 on international",
+          "rateBps": 200,
+          "conditions": "2 RP per Rs 100; 1 RP = Rs 1.",
+          "sourceUrl": "https://www.au.bank.in/premium-banking/credit-cards/zenith-plus-credit-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "au_zenith_plus_other",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "1 RP per Rs 100 on other spends",
+          "rateBps": 100,
+          "conditions": "1 RP per Rs 100; 1 RP = Rs 1.",
+          "sourceUrl": "https://www.au.bank.in/premium-banking/credit-cards/zenith-plus-credit-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "au_zenith_plus_util",
+          "category": "UTILITIES",
+          "kind": "REWARD",
+          "title": "1 RP per Rs 100 on utilities, capped",
+          "rateBps": 100,
+          "conditions": "Utility, telecom, insurance, education, government and rent spends together earn max 1,000 RP (period not confirmed).",
+          "sourceUrl": "https://www.au.bank.in/premium-banking/credit-cards/zenith-plus-credit-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "au_zenith_plus_forex",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "0.99% forex markup",
+          "rateBps": 99,
+          "sourceUrl": "https://www.au.bank.in/personal-banking/credit-cards",
+          "confidence": "secondary"
+        },
+        {
+          "id": "au_zenith_plus_lounge",
+          "category": "TRAVEL",
+          "kind": "INFO",
+          "title": "Domestic and Priority Pass lounges",
+          "conditions": "16 domestic (4/quarter) and 16 international via Priority Pass (4/quarter) per year.",
+          "sourceUrl": "https://www.au.bank.in/premium-banking/credit-cards/zenith-plus-credit-card",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "au_lit",
+      "bankId": "au",
+      "name": "LIT",
+      "tagline": "Lifetime-free card with paid add-on features",
+      "network": "VISA",
+      "annualFeePaise": 0,
+      "joiningFeePaise": 0,
+      "face": {
+        "finish": "gloss",
+        "base": "#202024",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.au.bank.in/personal-banking/credit-cards/lit-credit-card",
+      "benefits": [
+        {
+          "id": "au_lit_features",
+          "category": "OTHER",
+          "kind": "INFO",
+          "title": "Paid add-on reward features",
+          "conditions": "Buy 90-day features: 5X/10X accelerated points (max 10,000 RP per cycle), 5% grocery or apparel cashback (max Rs 500 per 30 days), milestone cashback. Fuel, rent, BBPS, cash, education/government excluded.",
+          "sourceUrl": "https://www.au.bank.in/personal-banking/credit-cards/lit-credit-card/features",
+          "confidence": "secondary"
+        },
+        {
+          "id": "au_lit_forex",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "3.49% forex markup",
+          "rateBps": 349,
+          "sourceUrl": "https://www.au.bank.in/personal-banking/credit-cards",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "au_ixigo",
+      "bankId": "au",
+      "name": "ixigo AU",
+      "tagline": "Zero-forex travel card with ixigo discounts",
+      "network": "VISA",
+      "otherNetworks": [
+        "RUPAY"
+      ],
+      "annualFeePaise": 0,
+      "joiningFeePaise": 0,
+      "face": {
+        "finish": "gloss",
+        "base": "#F26B1D",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.au.bank.in/personal-banking/credit-cards/ixigo-au-credit-card",
+      "benefits": [
+        {
+          "id": "au_ixigo_other",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "5 RP per Rs 200",
+          "rateBps": 63,
+          "monthlyCapPaise": 250000,
+          "conditions": "5 RP per Rs 200 online, offline or UPI QR (UPI on RuPay only); 1 RP = Rs 0.25 (Rs 0.50 as ixigo money). Max 10,000 RP per month. Rs 99 + GST per redemption.",
+          "sourceUrl": "https://www.ixigo.com/travel-credit-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "au_ixigo_fuel",
+          "category": "FUEL",
+          "kind": "REWARD",
+          "title": "No rewards on fuel",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards (also jewellery, wallet).",
+          "sourceUrl": "https://www.au.bank.in/pdf/credit-card/revision-of-ixigo-au-credit-card-usage-tnc.pdf",
+          "confidence": "secondary"
+        },
+        {
+          "id": "au_ixigo_rent",
+          "category": "RENT",
+          "kind": "REWARD",
+          "title": "No rewards on rent",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards.",
+          "sourceUrl": "https://www.au.bank.in/pdf/credit-card/revision-of-ixigo-au-credit-card-usage-tnc.pdf",
+          "confidence": "secondary"
+        },
+        {
+          "id": "au_ixigo_ins",
+          "category": "INSURANCE",
+          "kind": "REWARD",
+          "title": "No rewards on insurance",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards per card T&C (a 2024 revision mentions capped 1 RP per Rs 100 on utility/telecom/insurance; sources conflict).",
+          "sourceUrl": "https://www.au.bank.in/pdf/credit-card/revision-of-ixigo-au-credit-card-usage-tnc.pdf",
+          "confidence": "secondary"
+        },
+        {
+          "id": "au_ixigo_intl",
+          "category": "FOREIGN",
+          "kind": "REWARD",
+          "title": "No rewards on international spends",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards since the 0% markup was introduced.",
+          "sourceUrl": "https://www.au.bank.in/pdf/credit-card/revision-of-ixigo-au-credit-card-usage-tnc.pdf",
+          "confidence": "secondary"
+        },
+        {
+          "id": "au_ixigo_forex",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "Zero forex markup",
+          "rateBps": 0,
+          "sourceUrl": "https://www.au.bank.in/personal-banking/credit-cards",
+          "confidence": "secondary"
+        }
+      ]
+    }
+  ]
+}

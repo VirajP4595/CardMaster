@@ -1,0 +1,477 @@
+{
+  "bank": {
+    "id": "amex",
+    "name": "American Express India",
+    "helpline": "18004192122",
+    "helplineSource": "https://www.paisabazaar.com/amex-bank/customer-care/"
+  },
+  "products": [
+    {
+      "id": "amex_smartearn",
+      "bankId": "amex",
+      "name": "American Express SmartEarn",
+      "tagline": "Entry card with 10X points on Flipkart, Zomato, Uber and other partners",
+      "network": "AMEX",
+      "annualFeePaise": 49500,
+      "joiningFeePaise": 49500,
+      "waiverSpendPaise": 4000000,
+      "face": {
+        "finish": "gloss",
+        "base": "#3A8FB7",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.americanexpress.com/in/credit-cards/smart-earn-credit-card/",
+      "benefits": [
+        {
+          "id": "amex_smartearn_partners10x",
+          "category": "SHOPPING",
+          "kind": "REWARD",
+          "title": "10X points at partner merchants",
+          "rateBps": 500,
+          "monthlyCapPaise": 12500,
+          "channel": "Flipkart, Ajio, Nykaa, BookMyShow, Uber and other 10X partners",
+          "conditions": "10X MR points (20 pts per Rs 100); 1 pt = Rs 0.25 statement credit (third-party valuation). Capped at 500 bonus points/month jointly across these merchants. Partner list changes; check amex.co/seccrewards",
+          "sourceUrl": "https://www.americanexpress.com/in/credit-cards/smart-earn-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "amex_smartearn_zomato",
+          "category": "FOOD_DELIVERY",
+          "kind": "REWARD",
+          "title": "10X points on Zomato",
+          "rateBps": 500,
+          "monthlyCapPaise": 12500,
+          "channel": "Zomato",
+          "conditions": "10X MR points; 1 pt = Rs 0.25 statement credit. Separate 500 points/month cap shared by Zomato and EaseMyTrip",
+          "sourceUrl": "https://www.americanexpress.com/in/credit-cards/smart-earn-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "amex_smartearn_amazon",
+          "category": "SHOPPING",
+          "kind": "REWARD",
+          "title": "5X points on Amazon",
+          "rateBps": 250,
+          "monthlyCapPaise": 6250,
+          "channel": "Amazon",
+          "conditions": "5X MR points (10 pts per Rs 100); 1 pt = Rs 0.25 statement credit. Capped at 250 points/month",
+          "sourceUrl": "https://www.americanexpress.com/in/credit-cards/smart-earn-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "amex_smartearn_base",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "1 MR point per Rs 50",
+          "rateBps": 50,
+          "conditions": "1 pt per Rs 50; 1 pt = Rs 0.25 statement credit (third-party valuation). Excludes fuel, insurance, utilities, cash and EMI at POS",
+          "sourceUrl": "https://www.americanexpress.com/in/credit-cards/smart-earn-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "amex_smartearn_fuel",
+          "category": "FUEL",
+          "kind": "REWARD",
+          "title": "No points on fuel",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards",
+          "sourceUrl": "https://www.americanexpress.com/in/credit-cards/smart-earn-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "amex_smartearn_insurance",
+          "category": "INSURANCE",
+          "kind": "REWARD",
+          "title": "No points on insurance",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards",
+          "sourceUrl": "https://www.americanexpress.com/in/credit-cards/smart-earn-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "amex_smartearn_utilities",
+          "category": "UTILITIES",
+          "kind": "REWARD",
+          "title": "No points on utilities",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards",
+          "sourceUrl": "https://www.americanexpress.com/in/credit-cards/smart-earn-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "amex_smartearn_forex",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "3.5% forex markup",
+          "rateBps": 350,
+          "conditions": "Plus GST",
+          "sourceUrl": "https://www.paisabazaar.com/amex-bank/membership-rewards-credit-card",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "amex_mrcc",
+      "bankId": "amex",
+      "name": "American Express Membership Rewards",
+      "tagline": "Monthly bonus points for regular card use",
+      "network": "AMEX",
+      "annualFeePaise": 450000,
+      "joiningFeePaise": 100000,
+      "waiverSpendPaise": 15000000,
+      "face": {
+        "finish": "gloss",
+        "base": "#8FA3B5",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.americanexpress.com/in/credit-cards/membership-rewards-card/",
+      "benefits": [
+        {
+          "id": "amex_mrcc_base",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "1 MR point per Rs 50",
+          "rateBps": 50,
+          "conditions": "1 pt per Rs 50; 1 pt = Rs 0.25 statement credit (third-party valuation; vouchers/Gold Collection worth more). Excludes fuel, insurance, utilities, cash, EMI at POS",
+          "sourceUrl": "https://www.americanexpress.com/in/credit-cards/membership-rewards-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "amex_mrcc_fuel",
+          "category": "FUEL",
+          "kind": "REWARD",
+          "title": "No points on fuel",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards",
+          "sourceUrl": "https://www.americanexpress.com/in/credit-cards/membership-rewards-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "amex_mrcc_insurance",
+          "category": "INSURANCE",
+          "kind": "REWARD",
+          "title": "No points on insurance",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards",
+          "sourceUrl": "https://www.americanexpress.com/in/credit-cards/membership-rewards-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "amex_mrcc_utilities",
+          "category": "UTILITIES",
+          "kind": "REWARD",
+          "title": "No points on utilities",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards",
+          "sourceUrl": "https://www.americanexpress.com/in/credit-cards/membership-rewards-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "amex_mrcc_monthly_bonus",
+          "category": "OTHER",
+          "kind": "INFO",
+          "title": "1,000 bonus points monthly",
+          "conditions": "1,000 bonus MR points for 4 transactions of Rs 1,500+ in a calendar month; another 1,000 points on Rs 20,000 spend in a calendar month (enrolment required)",
+          "sourceUrl": "https://www.americanexpress.com/in/credit-cards/membership-rewards-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "amex_mrcc_forex",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "3.5% forex markup",
+          "rateBps": 350,
+          "conditions": "Plus GST",
+          "sourceUrl": "https://www.paisabazaar.com/amex-bank/membership-rewards-credit-card",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "amex_platinum_travel",
+      "bankId": "amex",
+      "name": "American Express Platinum Travel",
+      "tagline": "Travel milestones with Taj vouchers",
+      "network": "AMEX",
+      "annualFeePaise": 500000,
+      "face": {
+        "finish": "gloss",
+        "base": "#C0C4C8",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.americanexpress.com/in/credit-cards/platinum-travel-credit-card/",
+      "benefits": [
+        {
+          "id": "amex_platinum_travel_base",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "1 MR point per Rs 50",
+          "rateBps": 50,
+          "conditions": "1 pt per Rs 50; 1 pt = Rs 0.25 statement credit (third-party valuation). Value mainly comes from milestones",
+          "sourceUrl": "https://cardadvisor.in/cards/amex-platinum-travel",
+          "confidence": "secondary"
+        },
+        {
+          "id": "amex_platinum_travel_milestones",
+          "category": "TRAVEL",
+          "kind": "INFO",
+          "title": "Annual spend milestones",
+          "conditions": "From 10 Sep 2026 (reported): Rs 1.9 lakh milestone removed; Rs 4 lakh = 10,000 bonus points; Rs 7 lakh = Rs 20,000 Taj Experiences e-gift card. Verify with Amex",
+          "sourceUrl": "https://livefromalounge.com/american-express-platinum-travel-card-gets-another-devaluation-inr-1-9-lakh-milestone-removed-inr-7-lakh-milestone-rewards-cut-lounge-access-gets-a-spend-condition/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "amex_platinum_travel_lounge",
+          "category": "TRAVEL",
+          "kind": "INFO",
+          "title": "Domestic lounge access",
+          "conditions": "From 1 Oct 2026 (reported): up to 2 domestic lounge visits per calendar quarter, needs Rs 1 lakh+ spend in the previous quarter",
+          "sourceUrl": "https://livefromalounge.com/american-express-platinum-travel-card-gets-another-devaluation-inr-1-9-lakh-milestone-removed-inr-7-lakh-milestone-rewards-cut-lounge-access-gets-a-spend-condition/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "amex_platinum_travel_forex",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "3.5% forex markup",
+          "rateBps": 350,
+          "conditions": "Plus GST",
+          "sourceUrl": "https://cardadvisor.in/cards/amex-platinum-travel",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "amex_platinum_reserve",
+      "bankId": "amex",
+      "name": "American Express Platinum Reserve",
+      "tagline": "Lifestyle memberships and lounge access",
+      "network": "AMEX",
+      "annualFeePaise": 1000000,
+      "waiverSpendPaise": 100000000,
+      "face": {
+        "finish": "gloss",
+        "base": "#9EA3A8",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.americanexpress.com/in/credit-cards/platinum-reserve-credit-card/",
+      "benefits": [
+        {
+          "id": "amex_platinum_reserve_base",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "1 MR point per Rs 50",
+          "rateBps": 50,
+          "conditions": "1 pt per Rs 50; 1 pt = Rs 0.25 statement credit (third-party valuation). Excludes fuel, insurance, utilities, cash, EMI",
+          "sourceUrl": "https://www.americanexpress.com/in/credit-cards/platinum-reserve-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "amex_platinum_reserve_fuel",
+          "category": "FUEL",
+          "kind": "REWARD",
+          "title": "No points on fuel",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards",
+          "sourceUrl": "https://www.americanexpress.com/in/credit-cards/platinum-reserve-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "amex_platinum_reserve_insurance",
+          "category": "INSURANCE",
+          "kind": "REWARD",
+          "title": "No points on insurance",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards",
+          "sourceUrl": "https://www.americanexpress.com/in/credit-cards/platinum-reserve-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "amex_platinum_reserve_utilities",
+          "category": "UTILITIES",
+          "kind": "REWARD",
+          "title": "No points on utilities",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards",
+          "sourceUrl": "https://www.americanexpress.com/in/credit-cards/platinum-reserve-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "amex_platinum_reserve_lounge",
+          "category": "TRAVEL",
+          "kind": "INFO",
+          "title": "Lounge access",
+          "conditions": "12 domestic lounge visits a year (3 per quarter) plus Priority Pass with 2 international visits a year",
+          "sourceUrl": "https://cardadvisor.in/cards/amex-platinum-reserve",
+          "confidence": "secondary"
+        },
+        {
+          "id": "amex_platinum_reserve_memberships",
+          "category": "OTHER",
+          "kind": "INFO",
+          "title": "Taj Epicure, Accor and EazyDiner memberships",
+          "conditions": "Complimentary ALL Accor+ Explorer, Taj Epicure and EazyDiner Prime memberships; monthly Rs 1,000 voucher reported on a spend condition",
+          "sourceUrl": "https://www.americanexpress.com/in/credit-cards/platinum-reserve-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "amex_platinum_reserve_forex",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "3.5% forex markup",
+          "rateBps": 350,
+          "conditions": "Plus GST",
+          "sourceUrl": "https://cardadvisor.in/cards/amex-platinum-reserve",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "amex_gold_charge",
+      "bankId": "amex",
+      "name": "American Express Gold Charge Card",
+      "tagline": "Charge card with points on utilities and Gold Collection redemption",
+      "network": "AMEX",
+      "annualFeePaise": 450000,
+      "joiningFeePaise": 100000,
+      "face": {
+        "finish": "metal",
+        "base": "#C9A24D",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.americanexpress.com/in/charge-cards/gold-card/",
+      "benefits": [
+        {
+          "id": "amex_gold_charge_base",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "1 MR point per Rs 50 incl. utilities",
+          "rateBps": 50,
+          "conditions": "1 pt per Rs 50 including utilities; 1 pt = Rs 0.25 statement credit (third-party valuation; Gold Collection redemptions ~Rs 0.50/pt)",
+          "sourceUrl": "https://www.americanexpress.com/in/charge-cards/gold-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "amex_gold_charge_fuel",
+          "category": "FUEL",
+          "kind": "REWARD",
+          "title": "No points on fuel",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards since 12 Jun 2025 (petrol, diesel, CNG at OMCs)",
+          "sourceUrl": "https://www.americanexpress.com/in/charge-cards/gold-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "amex_gold_charge_bonus",
+          "category": "OTHER",
+          "kind": "INFO",
+          "title": "1,000 bonus points monthly",
+          "conditions": "1,000 bonus points for 6 transactions of Rs 1,000+ in a calendar month (official page); one review reports a Rs 15,000 monthly spend condition since Jun 2025",
+          "sourceUrl": "https://www.americanexpress.com/in/charge-cards/gold-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "amex_gold_charge_forex",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "3.5% forex markup",
+          "rateBps": 350,
+          "conditions": "Plus GST",
+          "sourceUrl": "https://www.paisabazaar.com/amex-bank/membership-rewards-credit-card",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "amex_platinum_charge",
+      "bankId": "amex",
+      "name": "The American Express Platinum Card",
+      "tagline": "Ultra-premium metal charge card with Centurion lounges",
+      "network": "AMEX",
+      "annualFeePaise": 6600000,
+      "face": {
+        "finish": "metal",
+        "base": "#D0D2D4",
+        "ink": "#FFFFFF",
+        "chip": "silver"
+      },
+      "sourceUrl": "https://americanexpress.com/in/content/platinum-card",
+      "benefits": [
+        {
+          "id": "amex_platinum_charge_base",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "1 MR point per Rs 40",
+          "rateBps": 63,
+          "conditions": "1 pt per Rs 40; 1 pt = Rs 0.25 statement credit (third-party valuation). Excludes fuel, utilities, insurance, cash",
+          "sourceUrl": "https://americanexpress.com/in/content/platinum-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "amex_platinum_charge_foreign",
+          "category": "FOREIGN",
+          "kind": "REWARD",
+          "title": "3X points on overseas spends",
+          "rateBps": 188,
+          "conditions": "3X MR points on overseas spends (7.5 pts per Rs 100); 1 pt = Rs 0.25. Net of 3.5% markup this is still a loss",
+          "sourceUrl": "https://americanexpress.com/in/content/platinum-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "amex_platinum_charge_fuel",
+          "category": "FUEL",
+          "kind": "REWARD",
+          "title": "No points on fuel",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards",
+          "sourceUrl": "https://americanexpress.com/in/content/platinum-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "amex_platinum_charge_utilities",
+          "category": "UTILITIES",
+          "kind": "REWARD",
+          "title": "No points on utilities",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards",
+          "sourceUrl": "https://americanexpress.com/in/content/platinum-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "amex_platinum_charge_insurance",
+          "category": "INSURANCE",
+          "kind": "REWARD",
+          "title": "No points on insurance",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards",
+          "sourceUrl": "https://americanexpress.com/in/content/platinum-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "amex_platinum_charge_lounge",
+          "category": "TRAVEL",
+          "kind": "INFO",
+          "title": "Global Lounge Collection incl. Centurion",
+          "conditions": "1,400+ airport lounges in 130+ countries including Centurion lounges",
+          "sourceUrl": "https://americanexpress.com/in/content/platinum-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "amex_platinum_charge_forex",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "3.5% forex markup",
+          "rateBps": 350,
+          "conditions": "Plus GST",
+          "sourceUrl": "https://cardadvisor.in/cards/amex-platinum-charge",
+          "confidence": "secondary"
+        }
+      ]
+    }
+  ]
+}

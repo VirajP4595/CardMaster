@@ -1,0 +1,603 @@
+{
+  "bank": {
+    "id": "hdfc",
+    "name": "HDFC Bank",
+    "helpline": "18001600",
+    "helplineSource": "https://www.hdfc.bank.in/credit-cards/services/credit-card-customer-care"
+  },
+  "products": [
+    {
+      "id": "hdfc_millennia",
+      "bankId": "hdfc",
+      "name": "HDFC Millennia",
+      "tagline": "5% back on 10 popular apps, 1% on the rest",
+      "network": "VISA",
+      "otherNetworks": [
+        "MASTERCARD"
+      ],
+      "annualFeePaise": 100000,
+      "joiningFeePaise": 100000,
+      "waiverSpendPaise": 10000000,
+      "face": {
+        "finish": "gloss",
+        "base": "#1C1C2E",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.hdfcbank.com/personal/products/cards/millennia-cards/millennia-credit-card",
+      "benefits": [
+        {
+          "id": "hdfc_millennia_shopping",
+          "category": "SHOPPING",
+          "kind": "REWARD",
+          "title": "5% CashPoints on partner shopping apps",
+          "rateBps": 500,
+          "channel": "Amazon, Flipkart, Myntra, Tata CLiQ, BookMyShow, Cult.fit, SonyLIV, Uber",
+          "conditions": "5% as CashPoints; 1 CashPoint = Rs 1 statement credit (min 500 CP to redeem). 5% tier capped at 1,000 CashPoints per statement cycle, shared across all 10 merchants.",
+          "sourceUrl": "https://cardadvisor.in/cards/hdfc-millennia",
+          "confidence": "secondary"
+        },
+        {
+          "id": "hdfc_millennia_food",
+          "category": "FOOD_DELIVERY",
+          "kind": "REWARD",
+          "title": "5% CashPoints on Swiggy and Zomato",
+          "rateBps": 500,
+          "channel": "Swiggy, Zomato",
+          "conditions": "Part of the 10-merchant 5% tier; 1 CashPoint = Rs 1 statement credit. Shared cap of 1,000 CashPoints per statement cycle.",
+          "sourceUrl": "https://cardadvisor.in/cards/hdfc-millennia",
+          "confidence": "secondary"
+        },
+        {
+          "id": "hdfc_millennia_base",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "1% CashPoints on other spends",
+          "rateBps": 100,
+          "conditions": "1 CashPoint = Rs 1 statement credit. Capped at 1,000 CashPoints per statement cycle (separate from the 5% cap). Fuel, rent, wallet loads, EMI and government spends excluded.",
+          "sourceUrl": "https://cardadvisor.in/cards/hdfc-millennia",
+          "confidence": "secondary"
+        },
+        {
+          "id": "hdfc_millennia_fuel",
+          "category": "FUEL",
+          "kind": "REWARD",
+          "title": "No rewards on fuel",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards",
+          "sourceUrl": "https://cardadvisor.in/cards/hdfc-millennia",
+          "confidence": "secondary"
+        },
+        {
+          "id": "hdfc_millennia_rent",
+          "category": "RENT",
+          "kind": "REWARD",
+          "title": "No rewards on rent",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards",
+          "sourceUrl": "https://cardadvisor.in/cards/hdfc-millennia",
+          "confidence": "secondary"
+        },
+        {
+          "id": "hdfc_millennia_forex",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "3.5% forex markup",
+          "rateBps": 350,
+          "conditions": "Plus GST",
+          "sourceUrl": "https://cardexpress.in/cards/hdfc-millennia",
+          "confidence": "secondary"
+        },
+        {
+          "id": "hdfc_millennia_lounge",
+          "category": "TRAVEL",
+          "kind": "INFO",
+          "title": "Quarterly lounge access or voucher",
+          "conditions": "Quarterly benefit (domestic lounge access or a voucher, either/or) requires Rs 1 lakh spend in the previous quarter. Sources disagree on visit counts.",
+          "sourceUrl": "https://cardadvisor.in/articles/hdfc-millennia-credit-card-review-2026",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "hdfc_swiggy",
+      "bankId": "hdfc",
+      "name": "Swiggy HDFC Bank",
+      "tagline": "10% back on Swiggy, 5% on online spends",
+      "network": "MASTERCARD",
+      "annualFeePaise": 50000,
+      "joiningFeePaise": 50000,
+      "waiverSpendPaise": 20000000,
+      "face": {
+        "finish": "gloss",
+        "base": "#F26A1B",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://cardadvisor.in/cards/hdfc-swiggy",
+      "benefits": [
+        {
+          "id": "hdfc_swiggy_swiggy",
+          "category": "FOOD_DELIVERY",
+          "kind": "REWARD",
+          "title": "10% cashback on Swiggy",
+          "rateBps": 1000,
+          "minTxnPaise": 24900,
+          "channel": "Swiggy",
+          "conditions": "Covers Swiggy food, Instamart and Dineout. Cashback credited to statement. Capped at Rs 1,500 per statement cycle. From April 2026 each Swiggy transaction must be Rs 249 or more.",
+          "sourceUrl": "https://cardadvisor.in/articles/swiggy-hdfc-bank-credit-card-review-2026",
+          "confidence": "secondary"
+        },
+        {
+          "id": "hdfc_swiggy_online",
+          "category": "SHOPPING",
+          "kind": "REWARD",
+          "title": "5% cashback on online spends",
+          "rateBps": 500,
+          "channel": "Online",
+          "conditions": "Eligible online merchant categories only. Separate cap of Rs 1,500 per statement cycle.",
+          "sourceUrl": "https://cardadvisor.in/articles/swiggy-hdfc-bank-credit-card-review-2026",
+          "confidence": "secondary"
+        },
+        {
+          "id": "hdfc_swiggy_base",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "1% cashback on other spends",
+          "rateBps": 100,
+          "conditions": "Capped at Rs 500 per statement cycle.",
+          "sourceUrl": "https://cardadvisor.in/articles/swiggy-hdfc-bank-credit-card-review-2026",
+          "confidence": "secondary"
+        },
+        {
+          "id": "hdfc_swiggy_forex",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "3.5% forex markup",
+          "rateBps": 350,
+          "conditions": "Plus GST",
+          "sourceUrl": "https://cardadvisor.in/articles/swiggy-hdfc-bank-credit-card-review-2026",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "hdfc_tataneu_infinity",
+      "bankId": "hdfc",
+      "name": "Tata Neu Infinity HDFC Bank",
+      "tagline": "5% NeuCoins on Tata brands, 1.5% elsewhere",
+      "network": "RUPAY",
+      "otherNetworks": [
+        "VISA"
+      ],
+      "annualFeePaise": 149900,
+      "joiningFeePaise": 149900,
+      "waiverSpendPaise": 30000000,
+      "face": {
+        "finish": "gloss",
+        "base": "#2B1A4A",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://hdfcbank.com/personal/pay/cards/credit-cards/tata-neu-infinity-hdfc-bank-credit-card",
+      "benefits": [
+        {
+          "id": "hdfc_tataneu_infinity_tata",
+          "category": "SHOPPING",
+          "kind": "REWARD",
+          "title": "5% NeuCoins on Tata Neu and Tata brands",
+          "rateBps": 500,
+          "channel": "Tata Neu",
+          "conditions": "5% NeuCoins on non-EMI spends at Tata Neu and partner Tata brands; 1 NeuCoin = Rs 1 on Tata Neu (usable only in Tata ecosystem). An extra 5% is possible via NeuPass on the Tata Neu app, but not on Tata Pay bills, Tanishq, Cult.fit, Air India or Tata Play.",
+          "sourceUrl": "https://hdfcbank.com/personal/pay/cards/credit-cards/tata-neu-infinity-hdfc-bank-credit-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "hdfc_tataneu_infinity_base",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "1.5% NeuCoins on other spends",
+          "rateBps": 150,
+          "conditions": "1.5% NeuCoins on non-Tata spends and merchant EMI; 1 NeuCoin = Rs 1 on Tata Neu. UPI earns a lower rate (sources conflict: 0.5% to 1.5% depending on UPI ID, cap 500 NeuCoins/month).",
+          "sourceUrl": "https://hdfcbank.com/personal/pay/cards/credit-cards/tata-neu-infinity-hdfc-bank-credit-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "hdfc_tataneu_infinity_forex",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "2% forex markup",
+          "rateBps": 200,
+          "conditions": "Plus GST",
+          "sourceUrl": "https://hdfcbank.com/personal/pay/cards/credit-cards/tata-neu-infinity-hdfc-bank-credit-card",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "hdfc_tataneu_plus",
+      "bankId": "hdfc",
+      "name": "Tata Neu Plus HDFC Bank",
+      "tagline": "2% NeuCoins on Tata brands, 1% elsewhere",
+      "network": "RUPAY",
+      "otherNetworks": [
+        "VISA"
+      ],
+      "annualFeePaise": 49900,
+      "joiningFeePaise": 49900,
+      "waiverSpendPaise": 10000000,
+      "face": {
+        "finish": "gloss",
+        "base": "#5B3F8C",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://hdfcbank.com/personal/pay/cards/credit-cards/tata-neu-plus-hdfc-bank-credit-card",
+      "benefits": [
+        {
+          "id": "hdfc_tataneu_plus_tata",
+          "category": "SHOPPING",
+          "kind": "REWARD",
+          "title": "2% NeuCoins on Tata Neu and Tata brands",
+          "rateBps": 200,
+          "channel": "Tata Neu",
+          "conditions": "2% NeuCoins on non-EMI Tata spends; 1 NeuCoin = Rs 1 on Tata Neu (Tata ecosystem only). Extra NeuPass coins possible via Tata Neu app.",
+          "sourceUrl": "https://hdfcbank.com/personal/pay/cards/credit-cards/tata-neu-plus-hdfc-bank-credit-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "hdfc_tataneu_plus_base",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "1% NeuCoins on other spends",
+          "rateBps": 100,
+          "conditions": "1% NeuCoins on non-Tata spends and merchant EMI; 1 NeuCoin = Rs 1 on Tata Neu. UPI spends earn 1% capped at 500 NeuCoins per calendar month.",
+          "sourceUrl": "https://hdfcbank.com/personal/pay/cards/credit-cards/tata-neu-plus-hdfc-bank-credit-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "hdfc_tataneu_plus_forex",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "3.5% forex markup",
+          "rateBps": 350,
+          "conditions": "Plus GST",
+          "sourceUrl": "https://cardadvisor.in/cards/hdfc-tata-neu-plus",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "hdfc_infinia",
+      "bankId": "hdfc",
+      "name": "HDFC Infinia Metal",
+      "tagline": "Invite-only flagship with unlimited lounges",
+      "network": "VISA",
+      "otherNetworks": [
+        "MASTERCARD"
+      ],
+      "annualFeePaise": 1250000,
+      "joiningFeePaise": 1250000,
+      "face": {
+        "finish": "metal",
+        "base": "#1A1A1A",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.hdfc.bank.in/credit-cards/infinia-credit-card",
+      "benefits": [
+        {
+          "id": "hdfc_infinia_base",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "5 reward points per Rs 150",
+          "rateBps": 100,
+          "conditions": "5 RP per Rs 150; 1 RP = about Rs 0.30 on cashback/catalogue redemption (worth Rs 1 on SmartBuy travel or airmiles, i.e. ~3.3%).",
+          "sourceUrl": "https://cardadvisor.in/cards/hdfc-infinia",
+          "confidence": "secondary"
+        },
+        {
+          "id": "hdfc_infinia_smartbuy",
+          "category": "TRAVEL",
+          "kind": "REWARD",
+          "title": "10X points on SmartBuy flights and hotels",
+          "rateBps": 1000,
+          "monthlyCapPaise": 450000,
+          "channel": "SmartBuy",
+          "conditions": "10X points (50 RP per Rs 150) on SmartBuy flights/hotels; valued at 1 RP = Rs 0.30 cashback (33% at Rs 1/RP for travel redemption). Overall SmartBuy cap 15,000 RP/month (= Rs 4,500 at Rs 0.30); vouchers capped at 3,000 RP/month from July 2026.",
+          "sourceUrl": "https://cardexpress.in/cards/hdfc-infinia",
+          "confidence": "secondary"
+        },
+        {
+          "id": "hdfc_infinia_forex",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "2% forex markup",
+          "rateBps": 200,
+          "conditions": "Plus GST",
+          "sourceUrl": "https://www.bankbazaar.com/credit-card/hdfc-infinia-credit-card.html",
+          "confidence": "secondary"
+        },
+        {
+          "id": "hdfc_infinia_lounge",
+          "category": "TRAVEL",
+          "kind": "INFO",
+          "title": "Unlimited domestic and international lounges",
+          "conditions": "Unlimited airport lounge access for primary and add-on cardholders.",
+          "sourceUrl": "https://cardexpress.in/cards/hdfc-infinia",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "hdfc_diners_black_metal",
+      "bankId": "hdfc",
+      "name": "HDFC Diners Club Black Metal Edition",
+      "tagline": "Premium Diners metal card with quarterly milestones",
+      "network": "DINERS",
+      "annualFeePaise": 1000000,
+      "joiningFeePaise": 1000000,
+      "waiverSpendPaise": 80000000,
+      "face": {
+        "finish": "metal",
+        "base": "#111111",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://hdfc.bank.in/credit-cards/diners-club-black-metal-edition-credit-card",
+      "benefits": [
+        {
+          "id": "hdfc_diners_black_metal_base",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "5 reward points per Rs 150",
+          "rateBps": 100,
+          "conditions": "5 RP per Rs 150; 1 RP = about Rs 0.30 on cashback/catalogue redemption (Rs 1 on SmartBuy travel/airmiles, ~3.3%).",
+          "sourceUrl": "https://www.bankbazaar.com/credit-card/hdfc-bank-diners-club-black-metal-edition-credit-card.html",
+          "confidence": "secondary"
+        },
+        {
+          "id": "hdfc_diners_black_metal_forex",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "2% forex markup",
+          "rateBps": 200,
+          "conditions": "Plus GST; confirmed only on an aggregator",
+          "sourceUrl": "https://cardadvisor.in/best-cards/premium",
+          "confidence": "secondary"
+        },
+        {
+          "id": "hdfc_diners_black_metal_milestone",
+          "category": "OTHER",
+          "kind": "INFO",
+          "title": "10,000 bonus points per Rs 4 lakh quarter",
+          "conditions": "10,000 bonus reward points on spends of Rs 4 lakh in each calendar quarter.",
+          "sourceUrl": "https://hdfc.bank.in/credit-cards/diners-club-black-metal-edition-credit-card",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "hdfc_regalia_gold",
+      "bankId": "hdfc",
+      "name": "HDFC Regalia Gold",
+      "tagline": "Travel card with lounges and milestone vouchers",
+      "network": "VISA",
+      "otherNetworks": [
+        "MASTERCARD"
+      ],
+      "annualFeePaise": 250000,
+      "joiningFeePaise": 250000,
+      "waiverSpendPaise": 40000000,
+      "face": {
+        "finish": "gloss",
+        "base": "#8C6A3A",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.hdfc.bank.in/credit-cards/regalia-gold-credit-card",
+      "benefits": [
+        {
+          "id": "hdfc_regalia_gold_forex",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "2% forex markup",
+          "rateBps": 200,
+          "conditions": "Plus GST",
+          "sourceUrl": "https://cardadvisor.in/cards/hdfc-regalia-gold",
+          "confidence": "secondary"
+        },
+        {
+          "id": "hdfc_regalia_gold_lounge",
+          "category": "TRAVEL",
+          "kind": "INFO",
+          "title": "12 domestic + 6 international lounge visits",
+          "conditions": "12 domestic and 6 international lounge visits a year. Domestic access is spend-gated from July 2026 (sources disagree on the quarterly threshold: Rs 35,000 or Rs 60,000).",
+          "sourceUrl": "https://cardadvisor.in/cards/hdfc-regalia-gold",
+          "confidence": "secondary"
+        },
+        {
+          "id": "hdfc_regalia_gold_milestone",
+          "category": "OTHER",
+          "kind": "INFO",
+          "title": "Quarterly and annual milestone vouchers",
+          "conditions": "Rs 1,500 voucher on Rs 1.5 lakh spend per calendar quarter; Rs 5,000 flight voucher at Rs 5 lakh annual spend and another Rs 5,000 at Rs 7.5 lakh.",
+          "sourceUrl": "https://www.hdfc.bank.in/credit-cards/regalia-gold-credit-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "hdfc_regalia_gold_points",
+          "category": "OTHER",
+          "kind": "INFO",
+          "title": "5 RP per Rs 200; 5X on Myntra, Nykaa, M&S, Reliance Digital",
+          "conditions": "Since 15 May 2026: 5 RP per Rs 200 on retail, 5X on partner brands (cap 7,500 RP/month). The statement-credit value per point was not confirmed, so no percentage rate is given.",
+          "sourceUrl": "https://www.paisabazaar.com/credit-card/hdfc-credit-card-revisions/",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "hdfc_moneyback_plus",
+      "bankId": "hdfc",
+      "name": "HDFC MoneyBack+",
+      "tagline": "10X CashPoints on Amazon, Flipkart, Swiggy and more",
+      "network": "VISA",
+      "otherNetworks": [
+        "MASTERCARD"
+      ],
+      "annualFeePaise": 50000,
+      "joiningFeePaise": 50000,
+      "waiverSpendPaise": 5000000,
+      "face": {
+        "finish": "gloss",
+        "base": "#1F4E9A",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://cardexpress.in/cards/hdfc-moneyback-plus",
+      "benefits": [
+        {
+          "id": "hdfc_moneyback_plus_partners",
+          "category": "SHOPPING",
+          "kind": "REWARD",
+          "title": "10X CashPoints on partner brands",
+          "rateBps": 250,
+          "monthlyCapPaise": 62500,
+          "channel": "Amazon, Flipkart, Swiggy, BigBasket, Reliance Smart",
+          "conditions": "10X CashPoints; 1 CP = Rs 0.25 statement credit. Rate shown is after the May 2026 change to per-Rs 200 accrual (2.5%); older sources say 3.33%. Cap 2,500 CP per calendar month (= Rs 625).",
+          "sourceUrl": "https://cardexpress.in/cards/hdfc-moneyback-plus",
+          "confidence": "secondary"
+        },
+        {
+          "id": "hdfc_moneyback_plus_base",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "Base CashPoints on other spends",
+          "rateBps": 25,
+          "conditions": "1 CP = Rs 0.25 statement credit; 0.25% after the May 2026 revision (older sources: 0.33%).",
+          "sourceUrl": "https://cardexpress.in/cards/hdfc-moneyback-plus",
+          "confidence": "secondary"
+        },
+        {
+          "id": "hdfc_moneyback_plus_forex",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "3.5% forex markup",
+          "rateBps": 350,
+          "conditions": "Plus GST",
+          "sourceUrl": "https://cardtrail.in/cards/hdfc-moneyback-plus/",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "hdfc_indianoil",
+      "bankId": "hdfc",
+      "name": "IndianOil HDFC Bank",
+      "tagline": "Fuel Points at IndianOil, groceries and bills",
+      "network": "VISA",
+      "annualFeePaise": 50000,
+      "joiningFeePaise": 50000,
+      "waiverSpendPaise": 5000000,
+      "face": {
+        "finish": "gloss",
+        "base": "#0F2A5C",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://hdfc.bank.in/credit-cards/indianoil-hdfc-bank-credit-card",
+      "benefits": [
+        {
+          "id": "hdfc_indianoil_fuel",
+          "category": "FUEL",
+          "kind": "REWARD",
+          "title": "5% Fuel Points at IndianOil",
+          "rateBps": 480,
+          "monthlyCapPaise": 14400,
+          "channel": "IndianOil outlets",
+          "conditions": "5% as Fuel Points; 1 FP = Rs 0.96 when redeemed for free fuel at IndianOil via XTRAREWARDS (catalogue/cashback only up to Rs 0.20, i.e. ~1%). Cap 250 FP/month for the first 6 months, then 150 FP/month (= Rs 144).",
+          "sourceUrl": "https://hdfc.bank.in/credit-cards/indianoil-hdfc-bank-credit-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "hdfc_indianoil_groceries",
+          "category": "GROCERIES",
+          "kind": "REWARD",
+          "title": "5% Fuel Points on groceries",
+          "rateBps": 480,
+          "monthlyCapPaise": 9600,
+          "conditions": "5% as Fuel Points (POS and e-commerce); 1 FP = Rs 0.96 as IndianOil fuel. Cap 100 FP per month (= Rs 96).",
+          "sourceUrl": "https://hdfc.bank.in/credit-cards/indianoil-hdfc-bank-credit-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "hdfc_indianoil_bills",
+          "category": "UTILITIES",
+          "kind": "REWARD",
+          "title": "5% Fuel Points on bill payments",
+          "rateBps": 480,
+          "monthlyCapPaise": 9600,
+          "conditions": "5% as Fuel Points; 1 FP = Rs 0.96 as IndianOil fuel. Cap 100 FP per month (= Rs 96).",
+          "sourceUrl": "https://hdfc.bank.in/credit-cards/indianoil-hdfc-bank-credit-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "hdfc_indianoil_surcharge",
+          "category": "FUEL",
+          "kind": "INFO",
+          "title": "1% fuel surcharge waiver",
+          "conditions": "1% fuel surcharge waived on transactions of Rs 400 and above (one review says capped at Rs 250/month).",
+          "sourceUrl": "https://bankbazaar.com/credit-card/indianoil-hdfc-bank-credit-card.html",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "hdfc_marriott_bonvoy",
+      "bankId": "hdfc",
+      "name": "Marriott Bonvoy HDFC Bank",
+      "tagline": "Marriott points, free night and Silver Elite",
+      "network": "DINERS",
+      "annualFeePaise": 300000,
+      "joiningFeePaise": 300000,
+      "face": {
+        "finish": "gloss",
+        "base": "#3A2A2A",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.bankbazaar.com/credit-card/marriott-bonvoy-hdfc-bank-credit-card.html",
+      "benefits": [
+        {
+          "id": "hdfc_marriott_bonvoy_forex",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "3.5% forex markup",
+          "rateBps": 350,
+          "conditions": "Plus GST (one aggregator says 2%)",
+          "sourceUrl": "https://www.bankbazaar.com/credit-card/marriott-bonvoy-hdfc-bank-credit-card.html",
+          "confidence": "secondary"
+        },
+        {
+          "id": "hdfc_marriott_bonvoy_points",
+          "category": "TRAVEL",
+          "kind": "INFO",
+          "title": "8/4/2 Marriott Bonvoy points per Rs 150",
+          "channel": "Marriott",
+          "conditions": "8 Bonvoy points per Rs 150 at Marriott hotels, 4 on travel/dining/entertainment, 2 on other retail. Fuel, rent, wallet, EMI and government payments excluded. Points have no fixed rupee value, so no percentage rate is given.",
+          "sourceUrl": "https://www.bankbazaar.com/credit-card/marriott-bonvoy-hdfc-bank-credit-card.html",
+          "confidence": "secondary"
+        },
+        {
+          "id": "hdfc_marriott_bonvoy_lounge",
+          "category": "TRAVEL",
+          "kind": "INFO",
+          "title": "Lounges, free night and Silver Elite",
+          "conditions": "12 domestic and 12 international lounge visits a year; Free Night Award on joining and renewal; Marriott Bonvoy Silver Elite status. No fee-waiver spend.",
+          "sourceUrl": "https://cardadvisor.in/cards/hdfc-marriott-bonvoy",
+          "confidence": "secondary"
+        }
+      ]
+    }
+  ]
+}

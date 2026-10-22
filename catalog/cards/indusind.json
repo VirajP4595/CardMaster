@@ -1,0 +1,250 @@
+{
+  "bank": {
+    "id": "indusind",
+    "name": "IndusInd Bank",
+    "helpline": "18602677777",
+    "helplineSource": "https://carandbike.bankbazaar.com/indusind-bank-credit-card-customer-care-number.html"
+  },
+  "products": [
+    {
+      "id": "indusind_tiger",
+      "bankId": "indusind",
+      "name": "Tiger",
+      "tagline": "Lifetime-free card whose rewards rise with annual spend",
+      "network": "VISA",
+      "annualFeePaise": 0,
+      "joiningFeePaise": 0,
+      "face": {
+        "finish": "pattern",
+        "base": "#1A1A1A",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/tiger-credit-card.html",
+      "benefits": [
+        {
+          "id": "indusind_tiger_other",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "Tiered reward points",
+          "rateBps": 40,
+          "monthlyCapPaise": 200000,
+          "conditions": "1 RP per Rs 100 on first Rs 1L annual spend; 2X Rs 1L-2.5L, 4X Rs 2.5L-5L, 6X above Rs 5L (up to 2.4%). 1 RP = Rs 0.40 cash credit. Max 5,000 RP per month; Rs 149 + GST cash-credit redemption fee.",
+          "sourceUrl": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/tiger-credit-card.html",
+          "confidence": "secondary"
+        },
+        {
+          "id": "indusind_tiger_forex",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "1.5% forex markup",
+          "rateBps": 150,
+          "sourceUrl": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/tiger-credit-card.html",
+          "confidence": "secondary"
+        },
+        {
+          "id": "indusind_tiger_lounge",
+          "category": "TRAVEL",
+          "kind": "INFO",
+          "title": "Lounge access",
+          "conditions": "2 domestic lounge visits per quarter; 2 international visits per year via Priority Pass.",
+          "sourceUrl": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/tiger-credit-card.html",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "indusind_legend",
+      "bankId": "indusind",
+      "name": "Legend",
+      "tagline": "Double points on weekends, low forex",
+      "network": "VISA",
+      "annualFeePaise": 0,
+      "joiningFeePaise": 0,
+      "face": {
+        "finish": "matte",
+        "base": "#1B1B1B",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/legend-credit-card.html",
+      "benefits": [
+        {
+          "id": "indusind_legend_other",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "1 RP per Rs 100 (2 on weekends)",
+          "rateBps": 75,
+          "conditions": "1 RP per Rs 100 weekdays, 2 RP per Rs 100 weekends (1.5%). 1 RP = Rs 0.75 cash value (IndusInd blog). 3,000 bonus RP on Rs 5L spend in a year.",
+          "sourceUrl": "https://www.indusind.bank.in/iblogs/beyond-business/know-about-the-reward-points-structure-for-the-legend-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "indusind_legend_forex",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "1.8% forex markup",
+          "rateBps": 180,
+          "sourceUrl": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/legend-credit-card.html",
+          "confidence": "secondary"
+        },
+        {
+          "id": "indusind_legend_fuel",
+          "category": "FUEL",
+          "kind": "INFO",
+          "title": "Fuel surcharge waiver",
+          "conditions": "Fuel surcharge waiver; limits not confirmed.",
+          "sourceUrl": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/legend-credit-card.html",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "indusind_pinnacle",
+      "bankId": "indusind",
+      "name": "Pinnacle",
+      "tagline": "High rewards on online shopping",
+      "network": "MASTERCARD",
+      "annualFeePaise": 0,
+      "joiningFeePaise": 1500000,
+      "face": {
+        "finish": "metal",
+        "base": "#2C2C2C",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/pinnacle-world-credit-card.html",
+      "benefits": [
+        {
+          "id": "indusind_pinnacle_shopping",
+          "category": "SHOPPING",
+          "kind": "REWARD",
+          "title": "2.5 RP per Rs 100 online",
+          "rateBps": 188,
+          "channel": "Online",
+          "conditions": "2.5 RP per Rs 100 on e-commerce; 1 RP = Rs 0.75 cash credit. Cash redemption max 7,500 RP per month.",
+          "sourceUrl": "https://www.indusind.bank.in/in/en/personal/tnc-pinnacle-rewards-program.html",
+          "confidence": "secondary"
+        },
+        {
+          "id": "indusind_pinnacle_travel",
+          "category": "TRAVEL",
+          "kind": "REWARD",
+          "title": "1.5 RP per Rs 100 on online travel",
+          "rateBps": 113,
+          "channel": "Online",
+          "conditions": "1.5 RP per Rs 100 on e-commerce travel and airline sites; 1 RP = Rs 0.75.",
+          "sourceUrl": "https://www.indusind.bank.in/in/en/personal/tnc-pinnacle-rewards-program.html",
+          "confidence": "secondary"
+        },
+        {
+          "id": "indusind_pinnacle_other",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "1 RP per Rs 100 in-store",
+          "rateBps": 75,
+          "conditions": "1 RP per Rs 100 on POS, MoTo, IVR, standing instructions; 1 RP = Rs 0.75.",
+          "sourceUrl": "https://www.indusind.bank.in/in/en/personal/tnc-pinnacle-rewards-program.html",
+          "confidence": "secondary"
+        },
+        {
+          "id": "indusind_pinnacle_util",
+          "category": "UTILITIES",
+          "kind": "REWARD",
+          "title": "0.7 RP per Rs 100 on utilities",
+          "rateBps": 53,
+          "conditions": "0.7 RP per Rs 100; 1 RP = Rs 0.75.",
+          "sourceUrl": "https://www.indusind.bank.in/in/en/personal/revision-indusInd-bank-credit-card-rewards-program.html",
+          "confidence": "secondary"
+        },
+        {
+          "id": "indusind_pinnacle_ins",
+          "category": "INSURANCE",
+          "kind": "REWARD",
+          "title": "0.7 RP per Rs 100 on insurance",
+          "rateBps": 53,
+          "conditions": "0.7 RP per Rs 100; 1 RP = Rs 0.75.",
+          "sourceUrl": "https://www.indusind.bank.in/in/en/personal/revision-indusInd-bank-credit-card-rewards-program.html",
+          "confidence": "secondary"
+        },
+        {
+          "id": "indusind_pinnacle_rent",
+          "category": "RENT",
+          "kind": "REWARD",
+          "title": "0.7 RP per Rs 100 on rent",
+          "rateBps": 53,
+          "conditions": "0.7 RP per Rs 100; rent via third parties capped at 500 RP per statement cycle.",
+          "sourceUrl": "https://www.indusind.bank.in/in/en/personal/revision-indusInd-bank-credit-card-rewards-program.html",
+          "confidence": "secondary"
+        },
+        {
+          "id": "indusind_pinnacle_fuel",
+          "category": "FUEL",
+          "kind": "REWARD",
+          "title": "No rewards on fuel",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards.",
+          "sourceUrl": "https://www.indusind.bank.in/in/en/personal/revision-indusInd-bank-credit-card-rewards-program.html",
+          "confidence": "secondary"
+        },
+        {
+          "id": "indusind_pinnacle_forex",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "3.5% forex markup",
+          "rateBps": 350,
+          "conditions": "Aggregator figure.",
+          "sourceUrl": "https://www.paisabazaar.com/credit-card/indusind-bank-pinnacle-credit-card-review",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "indusind_eazydiner",
+      "bankId": "indusind",
+      "name": "EazyDiner IndusInd Bank",
+      "tagline": "Dining discounts with EazyDiner Prime",
+      "network": "VISA",
+      "annualFeePaise": 299900,
+      "joiningFeePaise": 299900,
+      "face": {
+        "finish": "gloss",
+        "base": "#B3122E",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/eazydiner-credit-card.html",
+      "benefits": [
+        {
+          "id": "indusind_eazydiner_dining",
+          "category": "DINING",
+          "kind": "INFO",
+          "title": "EazyDiner Prime dining discounts",
+          "channel": "EazyDiner",
+          "conditions": "EazyDiner Prime membership; extra discounts and 3X EazyPoints on EazyDiner bookings. Dining earns no card reward points.",
+          "sourceUrl": "https://www.indusind.bank.in/in/en/personal/cards/credit-card/eazydiner-credit-card.html",
+          "confidence": "secondary"
+        },
+        {
+          "id": "indusind_eazydiner_points",
+          "category": "OTHER",
+          "kind": "INFO",
+          "title": "Reward points (value unconfirmed)",
+          "conditions": "10 RP per Rs 100 on hotel/travel, shopping, entertainment; 4 RP per Rs 100 on other spends except fuel and dining. Point value conflicting (Rs 0.10-0.20), so no rate set.",
+          "sourceUrl": "https://www.indusind.bank.in/iblogs/credit-card/indusind-eazydiner-credit-card-features-benefits/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "indusind_eazydiner_forex",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "3.5% forex markup",
+          "rateBps": 350,
+          "conditions": "Aggregator figure.",
+          "sourceUrl": "https://cardadvisor.in/cards/indusind-eazydiner",
+          "confidence": "secondary"
+        }
+      ]
+    }
+  ]
+}

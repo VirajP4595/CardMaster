@@ -1,0 +1,546 @@
+{
+  "bank": {
+    "id": "sc",
+    "name": "Standard Chartered India",
+    "helpline": "18003451000",
+    "helplineSource": "https://www.cardtrail.in/basics/credit-card-lost-stolen-india-what-to-do/"
+  },
+  "products": [
+    {
+      "id": "sc_smart",
+      "bankId": "sc",
+      "name": "Standard Chartered Smart",
+      "tagline": "2% cashback on all online spends",
+      "network": "VISA",
+      "annualFeePaise": 49900,
+      "joiningFeePaise": 49900,
+      "waiverSpendPaise": 12000000,
+      "face": {
+        "finish": "gloss",
+        "base": "#0072AA",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.sc.bank.in/credit-cards/smart-credit-card/",
+      "benefits": [
+        {
+          "id": "sc_smart_online",
+          "category": "SHOPPING",
+          "kind": "REWARD",
+          "title": "2% cashback on online spends",
+          "rateBps": 200,
+          "channel": "Online",
+          "conditions": "Cashback on all online spends; capped at Rs 1,000 per statement cycle (since 25 Aug 2024)",
+          "sourceUrl": "https://www.sc.bank.in/credit-cards/smart-card-faqs/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sc_smart_base",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "1% cashback offline",
+          "rateBps": 100,
+          "conditions": "Cashback on offline spends; capped at Rs 500 per statement cycle",
+          "sourceUrl": "https://www.sc.bank.in/credit-cards/smart-card-faqs/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sc_smart_fuel",
+          "category": "FUEL",
+          "kind": "REWARD",
+          "title": "No cashback on fuel",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards",
+          "sourceUrl": "https://www.sc.bank.in/credit-cards/smart-card-faqs/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sc_smart_forex",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "3.5% forex markup",
+          "rateBps": 350,
+          "conditions": "SC India general markup per aggregator; plus GST",
+          "sourceUrl": "https://www.paisabazaar.com/standard-chartered-bank/credit-card-fees-charges/",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "sc_ultimate",
+      "bankId": "sc",
+      "name": "Standard Chartered Ultimate",
+      "tagline": "3.3% flat rewards with Rs 1 per point redemption",
+      "network": "VISA",
+      "otherNetworks": [
+        "MASTERCARD"
+      ],
+      "annualFeePaise": 500000,
+      "joiningFeePaise": 500000,
+      "face": {
+        "finish": "matte",
+        "base": "#1A1A1A",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.sc.bank.in/credit-cards/ultimate-card/",
+      "benefits": [
+        {
+          "id": "sc_ultimate_base",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "5 points per Rs 150",
+          "rateBps": 333,
+          "conditions": "5 RP per Rs 150; 1 RP = Rs 1 (bank stated, vouchers/merchandise)",
+          "sourceUrl": "https://www.sc.bank.in/credit-cards/ultimate-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sc_ultimate_utilities",
+          "category": "UTILITIES",
+          "kind": "REWARD",
+          "title": "3 points per Rs 150 on utilities",
+          "rateBps": 200,
+          "conditions": "3 RP per Rs 150; 1 RP = Rs 1",
+          "sourceUrl": "https://www.sc.bank.in/credit-cards/ultimate-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sc_ultimate_insurance",
+          "category": "INSURANCE",
+          "kind": "REWARD",
+          "title": "3 points per Rs 150 on insurance",
+          "rateBps": 200,
+          "conditions": "3 RP per Rs 150; 1 RP = Rs 1",
+          "sourceUrl": "https://www.sc.bank.in/credit-cards/ultimate-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sc_ultimate_groceries",
+          "category": "GROCERIES",
+          "kind": "REWARD",
+          "title": "3 points per Rs 150 at supermarkets",
+          "rateBps": 200,
+          "conditions": "3 RP per Rs 150; 1 RP = Rs 1",
+          "sourceUrl": "https://www.sc.bank.in/credit-cards/ultimate-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sc_ultimate_rent",
+          "category": "RENT",
+          "kind": "REWARD",
+          "title": "3 points per Rs 150 on rent/property management",
+          "rateBps": 200,
+          "conditions": "3 RP per Rs 150; 1 RP = Rs 1",
+          "sourceUrl": "https://www.sc.bank.in/credit-cards/ultimate-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sc_ultimate_fuel",
+          "category": "FUEL",
+          "kind": "REWARD",
+          "title": "No points on fuel",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards",
+          "sourceUrl": "https://www.sc.bank.in/credit-cards/ultimate-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sc_ultimate_fuel_waiver",
+          "category": "FUEL",
+          "kind": "INFO",
+          "title": "1% fuel surcharge waiver",
+          "conditions": "1% surcharge waiver at all pumps, max Rs 1,000/month",
+          "sourceUrl": "https://www.sc.bank.in/credit-cards/ultimate-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sc_ultimate_dutyfree",
+          "category": "OTHER",
+          "kind": "INFO",
+          "title": "5% cashback on duty-free",
+          "channel": "Airport duty-free",
+          "conditions": "5% cashback at international airport duty-free, reported cap Rs 1,000 per cycle",
+          "sourceUrl": "https://www.sc.bank.in/credit-cards/ultimate-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sc_ultimate_lounge",
+          "category": "TRAVEL",
+          "kind": "INFO",
+          "title": "Lounge access",
+          "conditions": "4 domestic lounge visits per quarter; Priority Pass international visit fee waived for 1 visit/month if previous month spend > Rs 20,000",
+          "sourceUrl": "https://www.sc.bank.in/credit-cards/ultimate-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sc_ultimate_forex",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "2% forex markup",
+          "rateBps": 200,
+          "conditions": "Since 25 Aug 2024; plus GST",
+          "sourceUrl": "https://www.sc.bank.in/credit-cards/ultimate-card/",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "sc_easemytrip",
+      "bankId": "sc",
+      "name": "Standard Chartered EaseMyTrip",
+      "tagline": "Co-branded travel card with EaseMyTrip discounts",
+      "network": "VISA",
+      "annualFeePaise": 35000,
+      "joiningFeePaise": 35000,
+      "waiverSpendPaise": 5000000,
+      "face": {
+        "finish": "gloss",
+        "base": "#1B75BC",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.sc.bank.in/credit-cards/easemytrip-credit-card/",
+      "benefits": [
+        {
+          "id": "sc_easemytrip_portal",
+          "category": "TRAVEL",
+          "kind": "REWARD",
+          "title": "10% off flights on EaseMyTrip",
+          "rateBps": 1000,
+          "channel": "EaseMyTrip",
+          "conditions": "Instant discount 10% on flights, 20% on hotels; max Rs 5,000 per domestic and Rs 10,000 per international booking",
+          "sourceUrl": "https://www.sc.bank.in/credit-cards/easemytrip-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sc_easemytrip_direct",
+          "category": "TRAVEL",
+          "kind": "REWARD",
+          "title": "10 points per Rs 100 on airline/hotel sites",
+          "rateBps": 250,
+          "channel": "Standalone airline/hotel websites",
+          "conditions": "10 RP per Rs 100 on direct airline/hotel bookings (not via travel portals); 1 RP = Rs 0.25 (bank stated)",
+          "sourceUrl": "https://www.sc.bank.in/content/dam/sc/in/credit-cards/docs/in-easemytrip-product-terms-and-conditions.pdf",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sc_easemytrip_base",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "2 points per Rs 100",
+          "rateBps": 50,
+          "conditions": "2 RP per Rs 100 on retail spends; 1 RP = Rs 0.25",
+          "sourceUrl": "https://www.sc.bank.in/credit-cards/easemytrip-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sc_easemytrip_lounge",
+          "category": "TRAVEL",
+          "kind": "INFO",
+          "title": "Lounge access",
+          "conditions": "1 domestic lounge visit per quarter; 2 international Priority Pass visits a year",
+          "sourceUrl": "https://www.sc.bank.in/credit-cards/easemytrip-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sc_easemytrip_forex",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "3.5% forex markup",
+          "rateBps": 350,
+          "conditions": "SC India general markup per aggregator; plus GST",
+          "sourceUrl": "https://www.paisabazaar.com/standard-chartered-bank/credit-card-fees-charges/",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "sc_rewards",
+      "bankId": "sc",
+      "name": "Standard Chartered Rewards",
+      "tagline": "4X points with bonus points above Rs 20,000 a month",
+      "network": "VISA",
+      "annualFeePaise": 100000,
+      "joiningFeePaise": 0,
+      "waiverSpendPaise": 15000000,
+      "face": {
+        "finish": "gloss",
+        "base": "#2B6E4F",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.sc.bank.in/credit-cards/rewards-credit-card/",
+      "benefits": [
+        {
+          "id": "sc_rewards_base",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "4 points per Rs 150",
+          "rateBps": 53,
+          "conditions": "4 RP per Rs 150; 1 RP = Rs 0.20 against statement (Rs 0.25 catalogue)",
+          "sourceUrl": "https://www.sc.bank.in/credit-cards/rewards-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sc_rewards_insurance",
+          "category": "INSURANCE",
+          "kind": "REWARD",
+          "title": "1 point per Rs 150 on insurance",
+          "rateBps": 13,
+          "conditions": "1 RP per Rs 150 on insurance and government; 1 RP = Rs 0.20 statement",
+          "sourceUrl": "https://www.sc.bank.in/credit-cards/rewards-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sc_rewards_fuel",
+          "category": "FUEL",
+          "kind": "REWARD",
+          "title": "No points on fuel",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards",
+          "sourceUrl": "https://www.sc.bank.in/credit-cards/rewards-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sc_rewards_bonus",
+          "category": "OTHER",
+          "kind": "INFO",
+          "title": "Bonus points above Rs 20,000/month",
+          "conditions": "Extra 4 RP per Rs 150 on monthly retail spends above Rs 20,000, max 2,000 bonus RP per statement cycle. 4,000 RP on fee payment if spend waiver not met",
+          "sourceUrl": "https://www.sc.bank.in/credit-cards/rewards-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sc_rewards_forex",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "3.5% forex markup",
+          "rateBps": 350,
+          "conditions": "SC India general markup per aggregator; plus GST",
+          "sourceUrl": "https://www.paisabazaar.com/standard-chartered-bank/credit-card-fees-charges/",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "sc_platinum_rewards",
+      "bankId": "sc",
+      "name": "Standard Chartered Platinum Rewards",
+      "tagline": "5X points on dining and fuel",
+      "network": "VISA",
+      "annualFeePaise": 25000,
+      "face": {
+        "finish": "gloss",
+        "base": "#B8BCC0",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.sc.bank.in/credit-cards/platinum-rewards/",
+      "benefits": [
+        {
+          "id": "sc_platinum_rewards_dining",
+          "category": "DINING",
+          "kind": "REWARD",
+          "title": "5 points per Rs 150 on dining",
+          "rateBps": 83,
+          "conditions": "5 RP per Rs 150 when merchant MCC is dining; 1 RP = Rs 0.25",
+          "sourceUrl": "https://cardadvisor.in/cards/sc-platinum-rewards",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sc_platinum_rewards_fuel",
+          "category": "FUEL",
+          "kind": "REWARD",
+          "title": "5 points per Rs 150 on fuel",
+          "rateBps": 83,
+          "conditions": "5 RP per Rs 150 when merchant MCC is fuel; 1 RP = Rs 0.25",
+          "sourceUrl": "https://cardadvisor.in/cards/sc-platinum-rewards",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sc_platinum_rewards_base",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "1 point per Rs 150",
+          "rateBps": 17,
+          "conditions": "1 RP per Rs 150; 1 RP = Rs 0.25",
+          "sourceUrl": "https://cardadvisor.in/cards/sc-platinum-rewards",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sc_platinum_rewards_forex",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "3.5% forex markup",
+          "rateBps": 350,
+          "conditions": "Plus GST",
+          "sourceUrl": "https://cardadvisor.in/cards/sc-platinum-rewards",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "sc_super_value_titanium",
+      "bankId": "sc",
+      "name": "Standard Chartered Super Value Titanium",
+      "tagline": "5% cashback on fuel, phone and utility bills",
+      "network": "VISA",
+      "annualFeePaise": 75000,
+      "joiningFeePaise": 75000,
+      "waiverSpendPaise": 9000000,
+      "face": {
+        "finish": "gloss",
+        "base": "#5B6B7A",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.sc.bank.in/credit-cards/super-value-titanium/",
+      "benefits": [
+        {
+          "id": "sc_super_value_titanium_fuel",
+          "category": "FUEL",
+          "kind": "REWARD",
+          "title": "5% cashback on fuel",
+          "rateBps": 500,
+          "monthlyCapPaise": 20000,
+          "conditions": "Cashback on fuel transactions of Rs 2,000 or less; max Rs 100 per transaction, Rs 200/month",
+          "sourceUrl": "https://www.sc.bank.in/credit-cards/super-value-titanium/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sc_super_value_titanium_telecom",
+          "category": "TELECOM",
+          "kind": "REWARD",
+          "title": "5% cashback on phone bills",
+          "rateBps": 500,
+          "monthlyCapPaise": 20000,
+          "minTxnPaise": 75000,
+          "channel": "SC Billpay",
+          "conditions": "Cashback on phone bills of Rs 750+ paid via SC Billpay; max Rs 100 per transaction, Rs 200/month",
+          "sourceUrl": "https://www.sc.bank.in/credit-cards/super-value-titanium/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sc_super_value_titanium_utilities",
+          "category": "UTILITIES",
+          "kind": "REWARD",
+          "title": "5% cashback on utility bills",
+          "rateBps": 500,
+          "monthlyCapPaise": 10000,
+          "channel": "SC Billpay",
+          "conditions": "Cashback on utility bills via SC Billpay; Rs 100/month cap per aggregator (not stated on bank page)",
+          "sourceUrl": "https://www.paisabazaar.com/standard-chartered-bank/standard-chartered-super-value-titanium-credit-cards/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sc_super_value_titanium_base",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "1 point per Rs 150",
+          "rateBps": 17,
+          "conditions": "1 RP per Rs 150; assumed 1 RP = Rs 0.25 (SC catalogue value on other cards)",
+          "sourceUrl": "https://www.sc.bank.in/credit-cards/super-value-titanium/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sc_super_value_titanium_forex",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "3.5% forex markup",
+          "rateBps": 350,
+          "conditions": "SC India general markup per aggregator; plus GST",
+          "sourceUrl": "https://www.paisabazaar.com/standard-chartered-bank/credit-card-fees-charges/",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "sc_beyond",
+      "bankId": "sc",
+      "name": "Standard Chartered Beyond",
+      "tagline": "Invite-only metal card for Priority clients",
+      "network": "VISA",
+      "annualFeePaise": 2500000,
+      "joiningFeePaise": 1500000,
+      "face": {
+        "finish": "metal",
+        "base": "#2C2C34",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.sc.bank.in/credit-cards/beyond-credit-card/",
+      "benefits": [
+        {
+          "id": "sc_beyond_base",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "5 points per Rs 150",
+          "rateBps": 333,
+          "conditions": "5 RP per Rs 150; 1 RP = Rs 1 via SC 360 Rewards",
+          "sourceUrl": "https://cardadvisor.in/cards/sc-beyond",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sc_beyond_utilities",
+          "category": "UTILITIES",
+          "kind": "REWARD",
+          "title": "3 points per Rs 150 on utilities",
+          "rateBps": 200,
+          "conditions": "3 RP per Rs 150 (also insurance, supermarkets, schools, property management, government); 1 RP = Rs 1",
+          "sourceUrl": "https://cardadvisor.in/cards/sc-beyond",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sc_beyond_insurance",
+          "category": "INSURANCE",
+          "kind": "REWARD",
+          "title": "3 points per Rs 150 on insurance",
+          "rateBps": 200,
+          "conditions": "3 RP per Rs 150; 1 RP = Rs 1",
+          "sourceUrl": "https://cardadvisor.in/cards/sc-beyond",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sc_beyond_groceries",
+          "category": "GROCERIES",
+          "kind": "REWARD",
+          "title": "3 points per Rs 150 at supermarkets",
+          "rateBps": 200,
+          "conditions": "3 RP per Rs 150; 1 RP = Rs 1",
+          "sourceUrl": "https://cardadvisor.in/cards/sc-beyond",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sc_beyond_fuel",
+          "category": "FUEL",
+          "kind": "REWARD",
+          "title": "No points on fuel",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards",
+          "sourceUrl": "https://cardadvisor.in/cards/sc-beyond",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sc_beyond_lounge",
+          "category": "TRAVEL",
+          "kind": "INFO",
+          "title": "Lounge access",
+          "conditions": "Bank page says unlimited domestic and international lounge access with 8 guest visits/year; benefit table elsewhere lists 8 domestic + 6 international. Verify",
+          "sourceUrl": "https://www.sc.bank.in/credit-cards/beyond-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "sc_beyond_forex",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "2% forex markup",
+          "rateBps": 200,
+          "conditions": "Plus GST",
+          "sourceUrl": "https://www.sc.bank.in/credit-cards/beyond-credit-card/",
+          "confidence": "secondary"
+        }
+      ]
+    }
+  ]
+}

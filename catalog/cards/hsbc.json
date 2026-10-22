@@ -1,0 +1,435 @@
+{
+  "bank": {
+    "id": "hsbc",
+    "name": "HSBC India",
+    "helpline": "18002673456",
+    "helplineSource": "https://www.fibe.in/blogs/all-credit-cards-customer-care-numbers-in-india-2026-bank-wise-helpline-directory/"
+  },
+  "products": [
+    {
+      "id": "hsbc_live_plus",
+      "bankId": "hsbc",
+      "name": "HSBC Live+",
+      "tagline": "10% cashback on dining, food, groceries, shopping and utilities",
+      "network": "VISA",
+      "annualFeePaise": 99900,
+      "joiningFeePaise": 99900,
+      "waiverSpendPaise": 20000000,
+      "face": {
+        "finish": "gloss",
+        "base": "#1C1C1C",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.hsbc.bank.in/credit-cards/products/live-plus/",
+      "benefits": [
+        {
+          "id": "hsbc_live_plus_dining",
+          "category": "DINING",
+          "kind": "REWARD",
+          "title": "10% cashback on dining",
+          "rateBps": 1000,
+          "monthlyCapPaise": 120000,
+          "conditions": "Cashback; Rs 1,200/month cap shared across dining, food delivery, grocery, shopping and utilities (from 26 Jul 2026)",
+          "sourceUrl": "https://www.hsbc.bank.in/credit-cards/products/live-plus/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "hsbc_live_plus_food",
+          "category": "FOOD_DELIVERY",
+          "kind": "REWARD",
+          "title": "10% cashback on food delivery",
+          "rateBps": 1000,
+          "monthlyCapPaise": 120000,
+          "conditions": "Cashback; shared Rs 1,200/month cap across 10% categories",
+          "sourceUrl": "https://www.hsbc.bank.in/credit-cards/products/live-plus/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "hsbc_live_plus_grocery",
+          "category": "GROCERIES",
+          "kind": "REWARD",
+          "title": "10% cashback on groceries",
+          "rateBps": 1000,
+          "monthlyCapPaise": 120000,
+          "conditions": "Cashback; shared Rs 1,200/month cap across 10% categories",
+          "sourceUrl": "https://www.hsbc.bank.in/credit-cards/products/live-plus/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "hsbc_live_plus_shopping",
+          "category": "SHOPPING",
+          "kind": "REWARD",
+          "title": "10% cashback on shopping",
+          "rateBps": 1000,
+          "monthlyCapPaise": 120000,
+          "conditions": "Cashback; shared Rs 1,200/month cap. Amazon, Flipkart and Myntra excluded from 10% (earn 1.5%)",
+          "sourceUrl": "https://www.hsbc.bank.in/credit-cards/products/live-plus/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "hsbc_live_plus_utilities",
+          "category": "UTILITIES",
+          "kind": "REWARD",
+          "title": "10% cashback on utilities",
+          "rateBps": 1000,
+          "monthlyCapPaise": 120000,
+          "conditions": "Cashback; shared Rs 1,200/month cap across 10% categories",
+          "sourceUrl": "https://www.hsbc.bank.in/credit-cards/products/live-plus/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "hsbc_live_plus_base",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "1.5% unlimited cashback",
+          "rateBps": 150,
+          "conditions": "Cashback on other eligible spends; hospital and local transit spends reportedly removed",
+          "sourceUrl": "https://www.hsbc.bank.in/credit-cards/products/live-plus/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "hsbc_live_plus_foreign",
+          "category": "FOREIGN",
+          "kind": "REWARD",
+          "title": "No cashback on international spends",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards since forex markup cut to 1.99%",
+          "sourceUrl": "https://www.hsbc.bank.in/credit-cards/products/live-plus/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "hsbc_live_plus_fuel",
+          "category": "FUEL",
+          "kind": "REWARD",
+          "title": "No cashback on fuel",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards",
+          "sourceUrl": "https://cardadvisor.in/cards/hsbc-live-plus",
+          "confidence": "secondary"
+        },
+        {
+          "id": "hsbc_live_plus_rent",
+          "category": "RENT",
+          "kind": "REWARD",
+          "title": "No cashback on rent",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards",
+          "sourceUrl": "https://cardadvisor.in/cards/hsbc-live-plus",
+          "confidence": "secondary"
+        },
+        {
+          "id": "hsbc_live_plus_insurance",
+          "category": "INSURANCE",
+          "kind": "REWARD",
+          "title": "No cashback on insurance",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards",
+          "sourceUrl": "https://cardadvisor.in/cards/hsbc-live-plus",
+          "confidence": "secondary"
+        },
+        {
+          "id": "hsbc_live_plus_lounge",
+          "category": "TRAVEL",
+          "kind": "INFO",
+          "title": "Lounge access",
+          "conditions": "2 domestic lounge visits a year (1 per 6 months) and 1 international visit a year from 1 Sep 2026",
+          "sourceUrl": "https://www.hsbc.bank.in/credit-cards/products/live-plus/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "hsbc_live_plus_forex",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "1.99% forex markup",
+          "rateBps": 199,
+          "conditions": "Plus GST. Temporary 0% markup promo 15 Aug-31 Oct 2026",
+          "sourceUrl": "https://www.hsbc.bank.in/credit-cards/products/live-plus/",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "hsbc_travelone",
+      "bankId": "hsbc",
+      "name": "HSBC TravelOne",
+      "tagline": "Travel rewards with 20 airline and hotel transfer partners",
+      "network": "MASTERCARD",
+      "annualFeePaise": 499900,
+      "joiningFeePaise": 499900,
+      "waiverSpendPaise": 80000000,
+      "face": {
+        "finish": "matte",
+        "base": "#1D3C4A",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.hsbc.bank.in/credit-cards/products/travelone/",
+      "benefits": [
+        {
+          "id": "hsbc_travelone_travel",
+          "category": "TRAVEL",
+          "kind": "REWARD",
+          "title": "4 points per Rs 100 on flights and travel aggregators",
+          "rateBps": 400,
+          "conditions": "4 RP per Rs 100; 1 RP = Rs 1 on HSBC Travel with Points bookings (bank's stated value; no cash/statement-credit value found). Accelerated points capped at 50,000/month",
+          "sourceUrl": "https://www.hsbc.bank.in/credit-cards/products/travelone/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "hsbc_travelone_foreign",
+          "category": "FOREIGN",
+          "kind": "REWARD",
+          "title": "4 points per Rs 100 on foreign currency spends",
+          "rateBps": 400,
+          "conditions": "4 RP per Rs 100; 1 RP = Rs 1 on Travel with Points bookings. 3.5% markup still applies",
+          "sourceUrl": "https://www.hsbc.bank.in/credit-cards/products/travelone/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "hsbc_travelone_base",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "2 points per Rs 100",
+          "rateBps": 200,
+          "conditions": "2 RP per Rs 100, no cap; 1 RP = Rs 1 on Travel with Points bookings (travel-only redemption value)",
+          "sourceUrl": "https://www.hsbc.bank.in/credit-cards/products/travelone/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "hsbc_travelone_fuel",
+          "category": "FUEL",
+          "kind": "REWARD",
+          "title": "No points on fuel",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards (launch exclusion list; also e-wallets, government, tax)",
+          "sourceUrl": "https://livefromalounge.com/hsbc-launches-travelone-credit-card-in-india/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "hsbc_travelone_milestone",
+          "category": "OTHER",
+          "kind": "INFO",
+          "title": "10,000 bonus points at Rs 12 lakh",
+          "conditions": "10,000 bonus RP on Rs 12 lakh annual spend",
+          "sourceUrl": "https://www.hsbc.bank.in/credit-cards/products/travelone/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "hsbc_travelone_lounge",
+          "category": "TRAVEL",
+          "kind": "INFO",
+          "title": "Lounge access",
+          "conditions": "6 domestic and 4 international (LoungeKey) lounge visits a year",
+          "sourceUrl": "https://www.hsbc.bank.in/credit-cards/products/travelone/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "hsbc_travelone_forex",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "3.5% forex markup",
+          "rateBps": 350,
+          "conditions": "Plus GST. Temporary 0% markup promo 15 Aug-31 Oct 2026",
+          "sourceUrl": "https://www.hsbc.bank.in/content/dam/hsbc/in/documents/credit-cards/hsbc-travelone-credit-card-tnc.pdf",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "hsbc_premier",
+      "bankId": "hsbc",
+      "name": "HSBC Premier",
+      "tagline": "Metal card for Premier customers with 0.99% forex",
+      "network": "MASTERCARD",
+      "annualFeePaise": 2000000,
+      "joiningFeePaise": 1200000,
+      "face": {
+        "finish": "metal",
+        "base": "#111111",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://cardadvisor.in/cards/hsbc-premier",
+      "benefits": [
+        {
+          "id": "hsbc_premier_base",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "3 points per Rs 100",
+          "rateBps": 300,
+          "conditions": "3 RP per Rs 100; 1 RP = Rs 1 on HSBC Travel with Points / 1:1 air miles (no cash value found). Some categories (utilities, insurance etc.) capped at Rs 1 lakh spend/month combined",
+          "sourceUrl": "https://cardadvisor.in/cards/hsbc-premier",
+          "confidence": "secondary"
+        },
+        {
+          "id": "hsbc_premier_fuel",
+          "category": "FUEL",
+          "kind": "REWARD",
+          "title": "No points on fuel",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards",
+          "sourceUrl": "https://cardadvisor.in/articles/hsbc-premier-world-mastercard-review-2026",
+          "confidence": "secondary"
+        },
+        {
+          "id": "hsbc_premier_lounge",
+          "category": "TRAVEL",
+          "kind": "INFO",
+          "title": "Unlimited lounge access",
+          "conditions": "Unlimited domestic and international lounge access plus 8 international guest visits; Taj Epicure and Rs 12,000 Taj voucher on activation",
+          "sourceUrl": "https://paisabazaar.com/hsbc-bank/hsbc-bank-premier-credit-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "hsbc_premier_forex",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "0.99% forex markup",
+          "rateBps": 99,
+          "conditions": "Plus GST",
+          "sourceUrl": "https://paisabazaar.com/hsbc-bank/hsbc-bank-premier-credit-card",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "hsbc_visa_platinum",
+      "bankId": "hsbc",
+      "name": "HSBC Visa Platinum",
+      "tagline": "Lifetime free entry card with transfer partners",
+      "network": "VISA",
+      "annualFeePaise": 0,
+      "joiningFeePaise": 0,
+      "face": {
+        "finish": "gloss",
+        "base": "#B9BCC0",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.hsbc.bank.in/credit-cards/products/visa-platinum/",
+      "benefits": [
+        {
+          "id": "hsbc_visa_platinum_base",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "2 points per Rs 150",
+          "rateBps": 33,
+          "conditions": "2 RP per Rs 150; 1 RP = Rs 0.25 voucher value (third-party). Up to 6X on hotels/flights/car rentals via HSBC Travel with Points",
+          "sourceUrl": "https://www.hsbc.co.in/credit-cards/products/visa-platinum/rewards/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "hsbc_visa_platinum_forex",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "3.5% forex markup",
+          "rateBps": 350,
+          "conditions": "Plus GST. Temporary 0% markup promo 15 Aug-31 Oct 2026",
+          "sourceUrl": "https://www.hsbc.bank.in/content/dam/hsbc/in/documents/offers/zero-forex-tnc.pdf",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "hsbc_rupay_cashback",
+      "bankId": "hsbc",
+      "name": "HSBC RuPay Cashback",
+      "tagline": "UPI-ready card with 10% cashback on food and groceries",
+      "network": "RUPAY",
+      "annualFeePaise": 49900,
+      "joiningFeePaise": 49900,
+      "waiverSpendPaise": 20000000,
+      "face": {
+        "finish": "gloss",
+        "base": "#C8102E",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.hsbc.bank.in/credit-cards/products/rupay-cashback-credit-card/",
+      "benefits": [
+        {
+          "id": "hsbc_rupay_cashback_dining",
+          "category": "DINING",
+          "kind": "REWARD",
+          "title": "10% cashback on dining",
+          "rateBps": 1000,
+          "monthlyCapPaise": 40000,
+          "conditions": "Cashback; total cashback across all categories capped at Rs 400/month",
+          "sourceUrl": "https://www.hsbc.bank.in/credit-cards/products/rupay-cashback-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "hsbc_rupay_cashback_food",
+          "category": "FOOD_DELIVERY",
+          "kind": "REWARD",
+          "title": "10% cashback on food delivery",
+          "rateBps": 1000,
+          "monthlyCapPaise": 40000,
+          "conditions": "Cashback; shared Rs 400/month cap",
+          "sourceUrl": "https://www.hsbc.bank.in/credit-cards/products/rupay-cashback-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "hsbc_rupay_cashback_grocery",
+          "category": "GROCERIES",
+          "kind": "REWARD",
+          "title": "10% cashback on groceries",
+          "rateBps": 1000,
+          "monthlyCapPaise": 40000,
+          "conditions": "Cashback; shared Rs 400/month cap",
+          "sourceUrl": "https://www.hsbc.bank.in/credit-cards/products/rupay-cashback-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "hsbc_rupay_cashback_base",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "1% cashback incl. UPI",
+          "rateBps": 100,
+          "monthlyCapPaise": 40000,
+          "conditions": "Cashback on other eligible spends including UPI; shared Rs 400/month cap",
+          "sourceUrl": "https://www.hsbc.bank.in/credit-cards/products/rupay-cashback-credit-card/",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "hsbc_taj",
+      "bankId": "hsbc",
+      "name": "Taj HSBC",
+      "tagline": "Co-branded Taj metal card with NeuPass Platinum",
+      "network": "VISA",
+      "annualFeePaise": 11000000,
+      "face": {
+        "finish": "metal",
+        "base": "#2A2A2A",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://cardadvisor.in/cards/hsbc-taj",
+      "benefits": [
+        {
+          "id": "hsbc_taj_base",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "1.5 points per Rs 100",
+          "rateBps": 100,
+          "conditions": "1.5 RP per Rs 100; 1.5 RP = Rs 1 (third-party)",
+          "sourceUrl": "https://cardadvisor.in/cards/hsbc-taj",
+          "confidence": "secondary"
+        },
+        {
+          "id": "hsbc_taj_ihcl",
+          "category": "TRAVEL",
+          "kind": "INFO",
+          "title": "Taj/IHCL benefits",
+          "channel": "IHCL",
+          "conditions": "8 NeuCoins per Rs 100 at IHCL hotels plus 5 RP per Rs 100 at Taj and partner brands; NeuPass Platinum status; annual breakfast-inclusive Taj stays",
+          "sourceUrl": "https://cardadvisor.in/cards/hsbc-taj",
+          "confidence": "secondary"
+        }
+      ]
+    }
+  ]
+}

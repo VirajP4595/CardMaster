@@ -1,0 +1,103 @@
+{
+  "bank": {
+    "id": "federal",
+    "name": "Federal Bank"
+  },
+  "products": [
+    {
+      "id": "federal_scapia",
+      "bankId": "federal",
+      "name": "Scapia Federal Bank",
+      "tagline": "Zero forex markup, travel rewards",
+      "network": "VISA",
+      "annualFeePaise": 0,
+      "face": {
+        "finish": "gloss",
+        "base": "#0F4A4B",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://cardadvisor.in/articles/scapia-federal-credit-card-review-2026",
+      "benefits": [
+        {
+          "id": "federal_scapia_forex",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "Zero forex markup",
+          "rateBps": 0,
+          "sourceUrl": "https://www.paisabazaar.com/federal-bank/scapia-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "federal_scapia_foreign",
+          "category": "FOREIGN",
+          "kind": "REWARD",
+          "title": "International spends",
+          "rateBps": 200,
+          "conditions": "Scapia Coins, usable only on Scapia travel bookings",
+          "sourceUrl": "https://cardadvisor.in/articles/scapia-federal-credit-card-review-2026",
+          "confidence": "secondary"
+        },
+        {
+          "id": "federal_scapia_other",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "Everything else",
+          "rateBps": 200,
+          "conditions": "Scapia Coins, usable only on Scapia travel bookings",
+          "sourceUrl": "https://cardadvisor.in/articles/scapia-federal-credit-card-review-2026",
+          "confidence": "secondary"
+        },
+        {
+          "id": "federal_scapia_util",
+          "category": "UTILITIES",
+          "kind": "REWARD",
+          "title": "Utilities",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards since Feb 2026",
+          "sourceUrl": "https://cardadvisor.in/articles/scapia-federal-credit-card-review-2026",
+          "confidence": "secondary"
+        },
+        {
+          "id": "federal_scapia_fuel",
+          "category": "FUEL",
+          "kind": "REWARD",
+          "title": "Fuel",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards since Feb 2026",
+          "sourceUrl": "https://cardadvisor.in/articles/scapia-federal-credit-card-review-2026",
+          "confidence": "secondary"
+        },
+        {
+          "id": "federal_scapia_rent",
+          "category": "RENT",
+          "kind": "REWARD",
+          "title": "Rent",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards since Feb 2026",
+          "sourceUrl": "https://cardadvisor.in/articles/scapia-federal-credit-card-review-2026",
+          "confidence": "secondary"
+        },
+        {
+          "id": "federal_scapia_insurance",
+          "category": "INSURANCE",
+          "kind": "REWARD",
+          "title": "Insurance",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards since Feb 2026",
+          "sourceUrl": "https://cardadvisor.in/articles/scapia-federal-credit-card-review-2026",
+          "confidence": "secondary"
+        },
+        {
+          "id": "federal_scapia_lounge",
+          "category": "TRAVEL",
+          "kind": "INFO",
+          "title": "Domestic lounge access",
+          "conditions": "Needs ₹20,000 spend in the month (since Feb 2026)",
+          "sourceUrl": "https://cardadvisor.in/articles/scapia-federal-credit-card-review-2026",
+          "confidence": "secondary"
+        }
+      ]
+    }
+  ]
+}

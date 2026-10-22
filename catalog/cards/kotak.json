@@ -1,0 +1,379 @@
+{
+  "bank": {
+    "id": "kotak",
+    "name": "Kotak Mahindra Bank",
+    "helpline": "18002090000",
+    "helplineSource": "https://www.bankbazaar.com/kotak-credit-card-customer-care-number.html"
+  },
+  "products": [
+    {
+      "id": "kotak_cashback_plus",
+      "bankId": "kotak",
+      "name": "Kotak Cashback+",
+      "tagline": "5% on food delivery, groceries and entertainment",
+      "network": "VISA",
+      "annualFeePaise": 75000,
+      "joiningFeePaise": 75000,
+      "waiverSpendPaise": 20000000,
+      "face": {
+        "finish": "gloss",
+        "base": "#C8102E",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/kotak-cashback-plus-credit-card.html",
+      "benefits": [
+        {
+          "id": "kotak_cashback_plus_food",
+          "category": "FOOD_DELIVERY",
+          "kind": "REWARD",
+          "title": "5% on online food delivery",
+          "rateBps": 500,
+          "conditions": "1 pt = ₹1 cashback; accelerated categories (5% and 3%) share 750 pts per billing cycle cap (older T&C said 500)",
+          "sourceUrl": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/kotak-cashback-plus-credit-card/value-chart.html",
+          "confidence": "secondary"
+        },
+        {
+          "id": "kotak_cashback_plus_groc",
+          "category": "GROCERIES",
+          "kind": "REWARD",
+          "title": "5% on groceries",
+          "rateBps": 500,
+          "conditions": "1 pt = ₹1; shared 750 pts per billing cycle cap",
+          "sourceUrl": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/kotak-cashback-plus-credit-card/value-chart.html",
+          "confidence": "secondary"
+        },
+        {
+          "id": "kotak_cashback_plus_fuel",
+          "category": "FUEL",
+          "kind": "REWARD",
+          "title": "3% on fuel",
+          "rateBps": 300,
+          "conditions": "1 pt = ₹1; shared 750 pts per billing cycle cap",
+          "sourceUrl": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/kotak-cashback-plus-credit-card.html",
+          "confidence": "secondary"
+        },
+        {
+          "id": "kotak_cashback_plus_base",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "0.5% on other spends",
+          "rateBps": 50,
+          "conditions": "1 pt = ₹1; unlimited; entertainment also earns 5% within the shared cap",
+          "sourceUrl": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/kotak-cashback-plus-credit-card.html",
+          "confidence": "secondary"
+        },
+        {
+          "id": "kotak_cashback_plus_rent",
+          "category": "RENT",
+          "kind": "REWARD",
+          "title": "Rent",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards",
+          "sourceUrl": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/kotak-cashback-plus-credit-card/value-chart.html",
+          "confidence": "secondary"
+        },
+        {
+          "id": "kotak_cashback_plus_util",
+          "category": "UTILITIES",
+          "kind": "REWARD",
+          "title": "Utilities",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards",
+          "sourceUrl": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/kotak-cashback-plus-credit-card/value-chart.html",
+          "confidence": "secondary"
+        },
+        {
+          "id": "kotak_cashback_plus_ins",
+          "category": "INSURANCE",
+          "kind": "REWARD",
+          "title": "Insurance",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards (also education, government, wallet, EMI)",
+          "sourceUrl": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/kotak-cashback-plus-credit-card/value-chart.html",
+          "confidence": "secondary"
+        },
+        {
+          "id": "kotak_cashback_plus_fuelwaiver",
+          "category": "OTHER",
+          "kind": "INFO",
+          "title": "1% fuel surcharge waiver",
+          "conditions": "Transactions ₹500-₹4,000, capped ₹3,500 per anniversary year",
+          "sourceUrl": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/kotak-cashback-plus-credit-card/value-chart.html",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "kotak_indianoil",
+      "bankId": "kotak",
+      "name": "IndianOil Kotak",
+      "tagline": "Up to 5% savings on IndianOil fuel",
+      "network": "RUPAY",
+      "annualFeePaise": 44900,
+      "joiningFeePaise": 44900,
+      "waiverSpendPaise": 5000000,
+      "face": {
+        "finish": "gloss",
+        "base": "#F37021",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/indian-oil-credit-card/features.html",
+      "benefits": [
+        {
+          "id": "kotak_indianoil_fuel",
+          "category": "FUEL",
+          "kind": "REWARD",
+          "title": "4% on IndianOil fuel",
+          "rateBps": 400,
+          "channel": "IndianOil",
+          "conditions": "24 pts per ₹150; 1 pt ≈ ₹0.25 via Kotak rewards portal; capped 1,200 pts per statement cycle; plus 1% surcharge waiver",
+          "sourceUrl": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/indian-oil-credit-card/features.html",
+          "confidence": "secondary"
+        },
+        {
+          "id": "kotak_indianoil_dining",
+          "category": "DINING",
+          "kind": "REWARD",
+          "title": "2% on dining",
+          "rateBps": 200,
+          "conditions": "12 pts per ₹150 at ₹0.25/pt; 800 pts per statement cap shared with groceries",
+          "sourceUrl": "https://cardadvisor.in/cards/kotak-indianoil",
+          "confidence": "secondary"
+        },
+        {
+          "id": "kotak_indianoil_groc",
+          "category": "GROCERIES",
+          "kind": "REWARD",
+          "title": "2% on groceries",
+          "rateBps": 200,
+          "conditions": "12 pts per ₹150 at ₹0.25/pt; 800 pts per statement cap shared with dining",
+          "sourceUrl": "https://cardadvisor.in/cards/kotak-indianoil",
+          "confidence": "secondary"
+        },
+        {
+          "id": "kotak_indianoil_base",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "0.5% on other spends",
+          "rateBps": 50,
+          "conditions": "3 pts per ₹150; 1 pt ≈ ₹0.25 portal value",
+          "sourceUrl": "https://cardadvisor.in/cards/kotak-indianoil",
+          "confidence": "secondary"
+        },
+        {
+          "id": "kotak_indianoil_forex",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "3.5% forex markup",
+          "rateBps": 350,
+          "sourceUrl": "https://cardtrail.in/cards/indianoil-kotak-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "kotak_indianoil_fuelwaiver",
+          "category": "OTHER",
+          "kind": "INFO",
+          "title": "1% fuel surcharge waiver",
+          "conditions": "Up to ₹100 per statement",
+          "sourceUrl": "https://bankbazaar.com/credit-card/indianoil-kotak-credit-card.html",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "kotak_league_platinum",
+      "bankId": "kotak",
+      "name": "Kotak League Platinum",
+      "tagline": "Entry rewards card with PVR milestone",
+      "network": "VISA",
+      "otherNetworks": [
+        "RUPAY"
+      ],
+      "annualFeePaise": 49900,
+      "joiningFeePaise": 49900,
+      "waiverSpendPaise": 5000000,
+      "face": {
+        "finish": "gloss",
+        "base": "#1F2B5C",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/league-platinum-card/value-chart.html",
+      "benefits": [
+        {
+          "id": "kotak_league_platinum_travel",
+          "category": "TRAVEL",
+          "kind": "REWARD",
+          "title": "8 pts per ₹150 on airlines and travel",
+          "rateBps": 53,
+          "conditions": "8 pts per ₹150; 1 pt = ₹0.10 (bank's own welcome-offer value)",
+          "sourceUrl": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/league-platinum-card/value-chart.html",
+          "confidence": "secondary"
+        },
+        {
+          "id": "kotak_league_platinum_shop",
+          "category": "SHOPPING",
+          "kind": "REWARD",
+          "title": "8 pts per ₹150 at departmental stores and durables",
+          "rateBps": 53,
+          "conditions": "8 pts per ₹150; 1 pt = ₹0.10",
+          "sourceUrl": "https://www.desidime.com/discussions/kotak-lifetime-free-league-rupay-jcb-credit-card-launched?page=3",
+          "confidence": "secondary"
+        },
+        {
+          "id": "kotak_league_platinum_base",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "4 pts per ₹150 on other spends",
+          "rateBps": 27,
+          "conditions": "4 pts per ₹150 up to ₹2 lakh annual spend, 8 pts above; 1 pt = ₹0.10",
+          "sourceUrl": "https://www.desidime.com/discussions/kotak-lifetime-free-league-rupay-jcb-credit-card-launched?page=3",
+          "confidence": "secondary"
+        },
+        {
+          "id": "kotak_league_platinum_fuel",
+          "category": "FUEL",
+          "kind": "REWARD",
+          "title": "Fuel",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards (also rent, wallet, education, gaming)",
+          "sourceUrl": "https://select.finology.in/credit-card/kotak-bank-league-platinum-credit-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "kotak_league_platinum_rent",
+          "category": "RENT",
+          "kind": "REWARD",
+          "title": "Rent",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards",
+          "sourceUrl": "https://groww.in/credit-card/kotak-league-platinum-credit-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "kotak_league_platinum_forex",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "3.5% forex markup",
+          "rateBps": 350,
+          "sourceUrl": "https://cardtrail.in/cards/kotak-league-platinum/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "kotak_league_platinum_milestone",
+          "category": "OTHER",
+          "kind": "INFO",
+          "title": "Half-yearly milestone",
+          "conditions": "Spend ₹1.25 lakh in 6 months: 4 PVR tickets or 10,000 points (max 8 tickets/year)",
+          "sourceUrl": "https://select.finology.in/credit-card/kotak-bank-league-platinum-credit-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "kotak_league_platinum_fuelwaiver",
+          "category": "OTHER",
+          "kind": "INFO",
+          "title": "1% fuel surcharge waiver",
+          "conditions": "Capped ₹3,500 per year",
+          "sourceUrl": "https://groww.in/credit-card/kotak-league-platinum-credit-card",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "kotak_811",
+      "bankId": "kotak",
+      "name": "Kotak 811 #DreamDifferent",
+      "tagline": "Lifetime-free FD-backed starter card",
+      "network": "VISA",
+      "annualFeePaise": 0,
+      "joiningFeePaise": 0,
+      "face": {
+        "finish": "gloss",
+        "base": "#ED1C24",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://cardadvisor.in/cards/kotak-811",
+      "benefits": [
+        {
+          "id": "kotak_811_online",
+          "category": "SHOPPING",
+          "kind": "REWARD",
+          "title": "2 pts per ₹100 online",
+          "rateBps": 40,
+          "channel": "online",
+          "conditions": "2 pts per ₹100 online; ~₹0.20/pt per CardAdvisor (~0.4%); another source says 4 pts",
+          "sourceUrl": "https://cardadvisor.in/cards/kotak-811",
+          "confidence": "secondary"
+        },
+        {
+          "id": "kotak_811_base",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "1 pt per ₹100 offline",
+          "rateBps": 20,
+          "conditions": "1 pt per ₹100; ~₹0.20/pt",
+          "sourceUrl": "https://cardadvisor.in/cards/kotak-811",
+          "confidence": "secondary"
+        },
+        {
+          "id": "kotak_811_forex",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "3.5% forex markup",
+          "rateBps": 350,
+          "sourceUrl": "https://cardtrail.in/cards/kotak-811-dreamdifferent-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "kotak_811_fd",
+          "category": "OTHER",
+          "kind": "INFO",
+          "title": "FD-secured",
+          "conditions": "Credit limit backed by a fixed deposit (min ~₹10,000)",
+          "sourceUrl": "https://cardadvisor.in/articles/kotak-811-dreamdifferent-credit-card-review-2026",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "kotak_white",
+      "bankId": "kotak",
+      "name": "Kotak White",
+      "tagline": "Milestone-based White Pass rewards",
+      "network": "VISA",
+      "annualFeePaise": 300000,
+      "joiningFeePaise": 300000,
+      "waiverSpendPaise": 50000000,
+      "face": {
+        "finish": "gloss",
+        "base": "#F2F2F2",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/white-credit-card/value-chart.html",
+      "benefits": [
+        {
+          "id": "kotak_white_milestone",
+          "category": "OTHER",
+          "kind": "INFO",
+          "title": "White Pass milestones",
+          "conditions": "No flat points; White Pass value on spend milestones, up to ₹27,000/year at ₹12 lakh spend (~1% at ₹5 lakh); milestone calculation changed from 1 Apr 2026",
+          "sourceUrl": "https://www.kotak.bank.in/en/personal-banking/cards/credit-cards/white-credit-card/whitepass.html",
+          "confidence": "secondary"
+        },
+        {
+          "id": "kotak_white_lounge",
+          "category": "TRAVEL",
+          "kind": "INFO",
+          "title": "Airport lounges",
+          "conditions": "Priority Pass with 4 international visits/year; 2 domestic visits per quarter; programme changed from 1 Apr 2026",
+          "sourceUrl": "https://www.bankbazaar.com/credit-card/kotak-white-credit-card.html",
+          "confidence": "secondary"
+        }
+      ]
+    }
+  ]
+}

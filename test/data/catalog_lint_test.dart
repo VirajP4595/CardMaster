@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:card_master/data/catalog/catalog_lint.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -40,6 +43,13 @@ Map<String, dynamic> _product({List<Map<String, dynamic>>? benefits}) => {
     };
 
 void main() {
+  test('the shipped catalog passes the checks', () {
+    final shipped = jsonDecode(
+            File('assets/catalog/catalog_v1.json').readAsStringSync())
+        as Map<String, dynamic>;
+    expect(lintCatalog(shipped).errors, isEmpty);
+  });
+
   test('a clean product has no errors or warnings', () {
     final issues = lintCatalog(_catalog(_product()));
     expect(issues.errors, isEmpty);

@@ -1,0 +1,857 @@
+{
+  "bank": {
+    "id": "axis",
+    "name": "Axis Bank",
+    "helpline": "18604195555",
+    "helplineSource": "https://www.bankbazaar.com/axis-bank-credit-card-customer-care-number.html"
+  },
+  "products": [
+    {
+      "id": "axis_airtel",
+      "bankId": "axis",
+      "name": "Airtel Axis Bank",
+      "tagline": "25% back on Airtel bills, 10% on utilities",
+      "network": "MASTERCARD",
+      "annualFeePaise": 50000,
+      "joiningFeePaise": 50000,
+      "waiverSpendPaise": 20000000,
+      "face": {
+        "finish": "gloss",
+        "base": "#B3122E",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.axis.bank.in/retail/cards/credit-card/airtel-axis-bank-credit-card",
+      "benefits": [
+        {
+          "id": "axis_airtel_telecom",
+          "category": "TELECOM",
+          "kind": "REWARD",
+          "title": "25% cashback on Airtel bills",
+          "rateBps": 2500,
+          "monthlyCapPaise": 25000,
+          "channel": "Airtel Thanks app",
+          "conditions": "Airtel mobile/broadband/DTH/Wi-Fi bills via Airtel Thanks app. Since 12 Apr 2026 the monthly cap is the lower of Rs 250 or 2x the base (1%) cashback earned that statement month, so roughly Rs 12,500 other spend is needed to unlock the full Rs 250.",
+          "sourceUrl": "https://livefromalounge.com/airtel-axis-bank-credit-card-devalued/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "axis_airtel_utilities",
+          "category": "UTILITIES",
+          "kind": "REWARD",
+          "title": "10% cashback on utility bills",
+          "rateBps": 1000,
+          "monthlyCapPaise": 25000,
+          "channel": "Airtel Thanks app",
+          "conditions": "Electricity, gas, water bills via Airtel Thanks app. Since Apr 2026 the monthly cap is the lower of Rs 250 or the base cashback earned that month (about Rs 25,000 other spend to unlock Rs 250).",
+          "sourceUrl": "https://livefromalounge.com/airtel-axis-bank-credit-card-devalued/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "axis_airtel_food",
+          "category": "FOOD_DELIVERY",
+          "kind": "REWARD",
+          "title": "10% value back on Zomato, Blinkit, District",
+          "rateBps": 1000,
+          "channel": "Zomato / Blinkit / District",
+          "conditions": "Post-Apr 2026: 10% value back credited to the partner wallet (not statement), capped Rs 200 per brand per month. Swiggy/BigBasket no longer qualify per reports.",
+          "sourceUrl": "https://www.paisabazaar.com/credit-card/airtel-axis-credit-card-devaluation/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "axis_airtel_other",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "1% cashback on other spends",
+          "rateBps": 100,
+          "conditions": "Base cashback; usual Axis exclusions apply (fuel, rent, wallet etc.).",
+          "sourceUrl": "https://livefromalounge.com/airtel-axis-bank-credit-card-devalued/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "axis_airtel_lounge",
+          "category": "TRAVEL",
+          "kind": "INFO",
+          "title": "No lounge access",
+          "conditions": "Complimentary domestic lounge access discontinued from April 2026.",
+          "sourceUrl": "https://livefromalounge.com/airtel-axis-bank-credit-card-devalued/",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "axis_flipkart",
+      "bankId": "axis",
+      "name": "Flipkart Axis Bank",
+      "tagline": "5% on Flipkart & Cleartrip, 7.5% on Myntra",
+      "network": "MASTERCARD",
+      "otherNetworks": [
+        "VISA"
+      ],
+      "annualFeePaise": 50000,
+      "joiningFeePaise": 50000,
+      "waiverSpendPaise": 35000000,
+      "face": {
+        "finish": "gloss",
+        "base": "#1E2A5A",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.paisabazaar.com/axis-bank/flipkart-axis-bank-credit-card/",
+      "benefits": [
+        {
+          "id": "axis_flipkart_shopping",
+          "category": "SHOPPING",
+          "kind": "REWARD",
+          "title": "5% cashback on Flipkart",
+          "rateBps": 500,
+          "channel": "Flipkart",
+          "conditions": "Statement-credit cashback; capped Rs 4,000 per statement quarter for Flipkart (per-merchant cap).",
+          "sourceUrl": "https://www.paisabazaar.com/axis-bank/flipkart-axis-bank-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "axis_flipkart_myntra",
+          "category": "SHOPPING",
+          "kind": "REWARD",
+          "title": "7.5% cashback on Myntra",
+          "rateBps": 750,
+          "channel": "Myntra",
+          "conditions": "Capped Rs 4,000 per statement quarter for Myntra.",
+          "sourceUrl": "https://www.paisabazaar.com/axis-bank/flipkart-axis-bank-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "axis_flipkart_travel",
+          "category": "TRAVEL",
+          "kind": "REWARD",
+          "title": "5% cashback on Cleartrip",
+          "rateBps": 500,
+          "channel": "Cleartrip",
+          "conditions": "Capped Rs 4,000 per statement quarter for Cleartrip.",
+          "sourceUrl": "https://www.paisabazaar.com/axis-bank/flipkart-axis-bank-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "axis_flipkart_food",
+          "category": "FOOD_DELIVERY",
+          "kind": "REWARD",
+          "title": "4% cashback on Swiggy (partner)",
+          "rateBps": 400,
+          "channel": "Swiggy",
+          "conditions": "4% uncapped on preferred partners (Swiggy food, Uber, PVR, cult.fit etc.; list varies). Instamart reportedly excluded.",
+          "sourceUrl": "https://cardinsider.com/axis-bank/flipkart-axis-bank-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "axis_flipkart_other",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "1% cashback on other spends",
+          "rateBps": 100,
+          "conditions": "Base rate, statement credit.",
+          "sourceUrl": "https://www.paisabazaar.com/axis-bank/flipkart-axis-bank-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "axis_flipkart_utilities",
+          "category": "UTILITIES",
+          "kind": "REWARD",
+          "title": "No cashback on utilities & telecom",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards (utilities, telecom, education, rent, wallet, government, insurance, gold, fuel).",
+          "sourceUrl": "https://cardinsider.com/axis-bank/flipkart-axis-bank-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "axis_flipkart_fuel",
+          "category": "FUEL",
+          "kind": "REWARD",
+          "title": "No cashback on fuel",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards; 1% fuel surcharge waiver reported.",
+          "sourceUrl": "https://cardinsider.com/axis-bank/flipkart-axis-bank-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "axis_flipkart_rent",
+          "category": "RENT",
+          "kind": "REWARD",
+          "title": "No cashback on rent",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards",
+          "sourceUrl": "https://cardinsider.com/axis-bank/flipkart-axis-bank-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "axis_flipkart_insurance",
+          "category": "INSURANCE",
+          "kind": "REWARD",
+          "title": "No cashback on insurance",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards",
+          "sourceUrl": "https://cardinsider.com/axis-bank/flipkart-axis-bank-credit-card/",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "axis_ace",
+      "bankId": "axis",
+      "name": "Axis Bank ACE",
+      "tagline": "5% on bills via Google Pay, 1.5% everywhere",
+      "network": "VISA",
+      "otherNetworks": [
+        "MASTERCARD"
+      ],
+      "annualFeePaise": 49900,
+      "joiningFeePaise": 49900,
+      "waiverSpendPaise": 20000000,
+      "face": {
+        "finish": "matte",
+        "base": "#1C3A35",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.axisbank.com/docs/default-source/default-document-library/credit-card-tnc/terms-and-conditions-for-ace-credit-card.pdf",
+      "benefits": [
+        {
+          "id": "axis_ace_utilities",
+          "category": "UTILITIES",
+          "kind": "REWARD",
+          "title": "5% cashback on bills via Google Pay",
+          "rateBps": 500,
+          "channel": "Google Pay",
+          "conditions": "Electricity, gas, DTH, mobile/broadband bills paid via Google Pay. Utility bills paid elsewhere earn nothing. Sources differ on whether a combined Rs 500/statement cap applies to the 5% and 4% categories; verify.",
+          "sourceUrl": "https://cardadvisor.in/cards/axis-ace",
+          "confidence": "secondary"
+        },
+        {
+          "id": "axis_ace_telecom",
+          "category": "TELECOM",
+          "kind": "REWARD",
+          "title": "5% on mobile/DTH recharges via Google Pay",
+          "rateBps": 500,
+          "channel": "Google Pay",
+          "conditions": "Same 5% Google Pay bill-payment category.",
+          "sourceUrl": "https://cardadvisor.in/cards/axis-ace",
+          "confidence": "secondary"
+        },
+        {
+          "id": "axis_ace_food",
+          "category": "FOOD_DELIVERY",
+          "kind": "REWARD",
+          "title": "4% on Swiggy, Zomato, Ola",
+          "rateBps": 400,
+          "channel": "Swiggy / Zomato / Ola",
+          "conditions": "4% cashback at Swiggy, Zomato and Ola.",
+          "sourceUrl": "https://cardadvisor.in/cards/axis-ace",
+          "confidence": "secondary"
+        },
+        {
+          "id": "axis_ace_other",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "1.5% cashback on other spends",
+          "rateBps": 150,
+          "conditions": "Uncapped base cashback; tolls/bridge fees excluded from 28 Aug 2026.",
+          "sourceUrl": "https://cardadvisor.in/cards/axis-ace",
+          "confidence": "secondary"
+        },
+        {
+          "id": "axis_ace_fuel",
+          "category": "FUEL",
+          "kind": "REWARD",
+          "title": "No cashback on fuel",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards",
+          "sourceUrl": "https://cardadvisor.in/cards/axis-ace",
+          "confidence": "secondary"
+        },
+        {
+          "id": "axis_ace_rent",
+          "category": "RENT",
+          "kind": "REWARD",
+          "title": "No cashback on rent",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards (also wallet, education, government, gold/jewellery)",
+          "sourceUrl": "https://cardadvisor.in/cards/axis-ace",
+          "confidence": "secondary"
+        },
+        {
+          "id": "axis_ace_insurance",
+          "category": "INSURANCE",
+          "kind": "REWARD",
+          "title": "No cashback on insurance",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards",
+          "sourceUrl": "https://cardadvisor.in/cards/axis-ace",
+          "confidence": "secondary"
+        },
+        {
+          "id": "axis_ace_forex",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "3.5% forex markup",
+          "rateBps": 350,
+          "conditions": "Plus GST",
+          "sourceUrl": "https://cardadvisor.in/cards/axis-ace",
+          "confidence": "secondary"
+        },
+        {
+          "id": "axis_ace_fuel_waiver",
+          "category": "OTHER",
+          "kind": "INFO",
+          "title": "1% fuel surcharge waiver",
+          "conditions": "Transactions Rs 400-4,000; max Rs 500 per statement cycle.",
+          "sourceUrl": "https://cardadvisor.in/cards/axis-ace",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "axis_atlas",
+      "bankId": "axis",
+      "name": "Axis Bank Atlas",
+      "tagline": "5 EDGE Miles per Rs 100 on travel",
+      "network": "VISA",
+      "otherNetworks": [
+        "MASTERCARD"
+      ],
+      "annualFeePaise": 500000,
+      "joiningFeePaise": 500000,
+      "face": {
+        "finish": "gloss",
+        "base": "#1F3B5C",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.axis.bank.in/cards/credit-card/axis-bank-atlas-credit-card/rewards-benefits",
+      "benefits": [
+        {
+          "id": "axis_atlas_travel",
+          "category": "TRAVEL",
+          "kind": "REWARD",
+          "title": "5 EDGE Miles / Rs 100 on travel",
+          "rateBps": 500,
+          "channel": "Axis Travel EDGE / direct airline & hotel",
+          "conditions": "5 miles per Rs 100; 1 EDGE Mile = Rs 1 on Travel EDGE portal (no statement-credit redemption). Accelerated rate on travel spends up to Rs 2 lakh/month.",
+          "sourceUrl": "https://www.paisabazaar.com/axis-bank/atlas-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "axis_atlas_other",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "2 EDGE Miles / Rs 100",
+          "rateBps": 200,
+          "conditions": "2 miles per Rs 100; 1 EDGE Mile = Rs 1 on Travel EDGE portal.",
+          "sourceUrl": "https://www.paisabazaar.com/axis-bank/atlas-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "axis_atlas_milestone",
+          "category": "OTHER",
+          "kind": "INFO",
+          "title": "Milestone miles",
+          "conditions": "2,500 miles at Rs 3L, +2,500 at Rs 7.5L, +5,000 at Rs 15L annual spend. Fuel, rent, wallet, insurance, utilities, telecom, gold, government spends don't count.",
+          "sourceUrl": "https://www.paisabazaar.com/axis-bank/atlas-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "axis_atlas_lounge",
+          "category": "TRAVEL",
+          "kind": "INFO",
+          "title": "Tiered lounge access",
+          "conditions": "Silver: 8 domestic + 4 international/yr; Gold (Rs 7.5L spend): 12 + 6; Platinum (Rs 15L): 18 + 12.",
+          "sourceUrl": "https://tradebrains.in/money/axis-atlas-credit-card-overview-best-card-for-international-and-domestic-travel-in-2026/",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "axis_magnus",
+      "bankId": "axis",
+      "name": "Axis Bank Magnus",
+      "tagline": "Premium card, 35 pts/Rs 200 above Rs 1.5L monthly",
+      "network": "VISA",
+      "otherNetworks": [
+        "MASTERCARD"
+      ],
+      "annualFeePaise": 1250000,
+      "joiningFeePaise": 1250000,
+      "waiverSpendPaise": 250000000,
+      "face": {
+        "finish": "metal",
+        "base": "#2A2A2E",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://cardinsider.com/axis-bank/axis-bank-magnus-credit-card/",
+      "benefits": [
+        {
+          "id": "axis_magnus_other",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "12 EDGE points / Rs 200",
+          "rateBps": 120,
+          "conditions": "12 pts per Rs 200 on monthly spend up to Rs 1.5L; 35 pts per Rs 200 (3.5%) beyond Rs 1.5L in a month. 1 pt = Rs 0.20 catalogue value (secondary; sources disagree on point value).",
+          "sourceUrl": "https://cardinsider.com/axis-bank/axis-bank-magnus-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "axis_magnus_travel",
+          "category": "TRAVEL",
+          "kind": "REWARD",
+          "title": "60 EDGE points / Rs 200 on Travel EDGE",
+          "rateBps": 600,
+          "channel": "Axis Travel EDGE",
+          "conditions": "5X on Travel EDGE bookings up to Rs 2L/month; 1 pt = Rs 0.20 catalogue value.",
+          "sourceUrl": "https://cardtrail.in/cards/axis-magnus/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "axis_magnus_forex",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "2% forex markup",
+          "rateBps": 200,
+          "conditions": "Most sources say 2% + GST; one says 0%.",
+          "sourceUrl": "https://cardtrail.in/cards/axis-magnus/",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "axis_select",
+      "bankId": "axis",
+      "name": "Axis Bank Select",
+      "tagline": "2X points on retail shopping & groceries",
+      "network": "VISA",
+      "annualFeePaise": 300000,
+      "joiningFeePaise": 300000,
+      "waiverSpendPaise": 80000000,
+      "face": {
+        "finish": "matte",
+        "base": "#1A1A1D",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.paisabazaar.com/axis-bank/select-credit-card/",
+      "benefits": [
+        {
+          "id": "axis_select_shopping",
+          "category": "SHOPPING",
+          "kind": "REWARD",
+          "title": "20 EDGE points / Rs 200 on retail shopping",
+          "rateBps": 200,
+          "conditions": "2X (20 pts/Rs 200) on first Rs 20,000 per month of retail shopping & grocery spends, then 10 pts. 1 pt = Rs 0.20.",
+          "sourceUrl": "https://cardtrail.in/cards/axis-bank-select-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "axis_select_groceries",
+          "category": "GROCERIES",
+          "kind": "REWARD",
+          "title": "20 EDGE points / Rs 200 on groceries",
+          "rateBps": 200,
+          "conditions": "Shares the Rs 20,000/month 2X spend cap with retail shopping. 1 pt = Rs 0.20.",
+          "sourceUrl": "https://cardtrail.in/cards/axis-bank-select-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "axis_select_other",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "10 EDGE points / Rs 200",
+          "rateBps": 100,
+          "conditions": "10 pts per Rs 200; 1 pt = Rs 0.20 catalogue value.",
+          "sourceUrl": "https://www.paisabazaar.com/axis-bank/select-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "axis_select_fuel",
+          "category": "FUEL",
+          "kind": "REWARD",
+          "title": "No points on fuel",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards",
+          "sourceUrl": "https://cardtrail.in/cards/axis-bank-select-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "axis_select_forex",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "3.5% forex markup",
+          "rateBps": 350,
+          "conditions": "Plus GST",
+          "sourceUrl": "https://cardexpress.in/reviews/axis-select",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "axis_my_zone",
+      "bankId": "axis",
+      "name": "Axis Bank MY Zone",
+      "tagline": "Entry card with Swiggy and movie offers",
+      "network": "VISA",
+      "otherNetworks": [
+        "MASTERCARD",
+        "RUPAY"
+      ],
+      "annualFeePaise": 50000,
+      "joiningFeePaise": 50000,
+      "face": {
+        "finish": "gloss",
+        "base": "#6A1B3F",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.paisabazaar.com/axis-bank/axis-bank-my-zone-credit-cards/",
+      "benefits": [
+        {
+          "id": "axis_my_zone_other",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "4 EDGE points / Rs 200",
+          "rateBps": 40,
+          "conditions": "4 pts per Rs 200; 1 pt = Rs 0.20 catalogue value.",
+          "sourceUrl": "https://www.paisabazaar.com/axis-bank/axis-bank-my-zone-credit-cards/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "axis_my_zone_food",
+          "category": "FOOD_DELIVERY",
+          "kind": "INFO",
+          "title": "Rs 120 off on Swiggy",
+          "channel": "Swiggy",
+          "conditions": "Flat Rs 120 off on min order Rs 500, twice a month (code AXIS120).",
+          "sourceUrl": "https://cardmaven.in/axis-bank-my-zone-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "axis_my_zone_fuel",
+          "category": "FUEL",
+          "kind": "REWARD",
+          "title": "No points on fuel",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards (also movies, insurance, rent, wallet, utilities, education, jewellery, government, EMI).",
+          "sourceUrl": "https://www.paisabazaar.com/axis-bank/axis-bank-my-zone-credit-cards/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "axis_my_zone_utilities",
+          "category": "UTILITIES",
+          "kind": "REWARD",
+          "title": "No points on utilities",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards",
+          "sourceUrl": "https://www.paisabazaar.com/axis-bank/axis-bank-my-zone-credit-cards/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "axis_my_zone_rent",
+          "category": "RENT",
+          "kind": "REWARD",
+          "title": "No points on rent",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards",
+          "sourceUrl": "https://www.paisabazaar.com/axis-bank/axis-bank-my-zone-credit-cards/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "axis_my_zone_insurance",
+          "category": "INSURANCE",
+          "kind": "REWARD",
+          "title": "No points on insurance",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards",
+          "sourceUrl": "https://www.paisabazaar.com/axis-bank/axis-bank-my-zone-credit-cards/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "axis_my_zone_forex",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "3.5% forex markup",
+          "rateBps": 350,
+          "sourceUrl": "https://www.paisabazaar.com/axis-bank/axis-bank-my-zone-credit-cards/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "axis_my_zone_milestone",
+          "category": "OTHER",
+          "kind": "INFO",
+          "title": "Annual milestone",
+          "conditions": "1,000 EDGE points on Rs 1.5L spend in a card anniversary year (from Apr 2026).",
+          "sourceUrl": "https://www.paisabazaar.com/axis-bank/axis-bank-my-zone-credit-cards/",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "axis_neo",
+      "bankId": "axis",
+      "name": "Axis Bank Neo",
+      "tagline": "Lifetime-free card with Zomato & Blinkit offers",
+      "network": "VISA",
+      "otherNetworks": [
+        "MASTERCARD",
+        "RUPAY"
+      ],
+      "annualFeePaise": 0,
+      "joiningFeePaise": 0,
+      "face": {
+        "finish": "gloss",
+        "base": "#24163A",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.axis.bank.in/cards/credit-card/axis-bank-neo-credit-card",
+      "benefits": [
+        {
+          "id": "axis_neo_other",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "1 EDGE point / Rs 200",
+          "rateBps": 10,
+          "conditions": "1 pt per Rs 200; 1 pt = Rs 0.20 catalogue value.",
+          "sourceUrl": "https://www.paisabazaar.com/axis-bank/axis-bank-neo-credit-cards/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "axis_neo_food",
+          "category": "FOOD_DELIVERY",
+          "kind": "INFO",
+          "title": "Zomato discount",
+          "channel": "Zomato",
+          "conditions": "Up to Rs 120 off on min order Rs 499, twice a month (code AXISNEO).",
+          "sourceUrl": "https://cardinsider.com/axis-bank/axis-bank-neo-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "axis_neo_groceries",
+          "category": "GROCERIES",
+          "kind": "INFO",
+          "title": "10% off on Blinkit",
+          "channel": "Blinkit",
+          "conditions": "10% off up to Rs 250 on min order Rs 750, once a month.",
+          "sourceUrl": "https://cardinsider.com/axis-bank/axis-bank-neo-credit-card/",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "axis_privilege",
+      "bankId": "axis",
+      "name": "Axis Bank Privilege",
+      "tagline": "10 EDGE points per Rs 200 plus milestone",
+      "network": "VISA",
+      "annualFeePaise": 150000,
+      "joiningFeePaise": 150000,
+      "waiverSpendPaise": 50000000,
+      "face": {
+        "finish": "gloss",
+        "base": "#4E3B2A",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://cardadvisor.in/cards/axis-privilege",
+      "benefits": [
+        {
+          "id": "axis_privilege_other",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "10 EDGE points / Rs 200",
+          "rateBps": 100,
+          "conditions": "10 pts per Rs 200; 1 pt = Rs 0.20 catalogue value.",
+          "sourceUrl": "https://cardadvisor.in/cards/axis-privilege",
+          "confidence": "secondary"
+        },
+        {
+          "id": "axis_privilege_milestone",
+          "category": "OTHER",
+          "kind": "INFO",
+          "title": "Rs 2.5L milestone",
+          "conditions": "10,000 bonus EDGE points (worth Rs 2,000) on Rs 2.5L spend in a card anniversary year.",
+          "sourceUrl": "https://cardadvisor.in/cards/axis-privilege",
+          "confidence": "secondary"
+        },
+        {
+          "id": "axis_privilege_forex",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "3.5% forex markup",
+          "rateBps": 350,
+          "conditions": "Plus GST",
+          "sourceUrl": "https://cardinsider.com/axis-bank/axis-bank-privilege-credit-card/",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "axis_indianoil",
+      "bankId": "axis",
+      "name": "IndianOil Axis Bank",
+      "tagline": "4% value back on IndianOil fuel",
+      "network": "RUPAY",
+      "otherNetworks": [
+        "VISA"
+      ],
+      "annualFeePaise": 50000,
+      "joiningFeePaise": 50000,
+      "face": {
+        "finish": "gloss",
+        "base": "#E2591C",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://cardtrail.in/cards/indianoil-axis-bank/",
+      "benefits": [
+        {
+          "id": "axis_indianoil_fuel",
+          "category": "FUEL",
+          "kind": "REWARD",
+          "title": "20 EDGE points / Rs 100 at IndianOil",
+          "rateBps": 400,
+          "channel": "IndianOil outlets",
+          "conditions": "20 pts per Rs 100 at IOCL fuel outlets in India; 1 pt = Rs 0.20 (about 4% value back). Per-transaction/monthly caps apply; exact cap not confirmed.",
+          "sourceUrl": "https://cardtrail.in/cards/indianoil-axis-bank/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "axis_indianoil_other",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "1 EDGE point / Rs 100",
+          "rateBps": 20,
+          "conditions": "1 pt per Rs 100; 1 pt = Rs 0.20.",
+          "sourceUrl": "https://cardtrail.in/cards/indianoil-axis-bank/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "axis_indianoil_forex",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "3.5% forex markup",
+          "rateBps": 350,
+          "conditions": "Most sources say 3.5% + GST (some disagree).",
+          "sourceUrl": "https://cardtrail.in/cards/indianoil-axis-bank/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "axis_indianoil_fuel_waiver",
+          "category": "OTHER",
+          "kind": "INFO",
+          "title": "1% fuel surcharge waiver",
+          "conditions": "1% waiver; monthly cap reported variously as Rs 200-400.",
+          "sourceUrl": "https://cardtrail.in/cards/indianoil-axis-bank/",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "axis_horizon",
+      "bankId": "axis",
+      "name": "Axis Bank Horizon",
+      "tagline": "5 EDGE Miles per Rs 100 on travel",
+      "network": "VISA",
+      "otherNetworks": [
+        "MASTERCARD"
+      ],
+      "annualFeePaise": 300000,
+      "joiningFeePaise": 300000,
+      "face": {
+        "finish": "gloss",
+        "base": "#2F6DB5",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.paisabazaar.com/axis-bank/horizon-credit-card/",
+      "benefits": [
+        {
+          "id": "axis_horizon_travel",
+          "category": "TRAVEL",
+          "kind": "REWARD",
+          "title": "5 EDGE Miles / Rs 100 on travel",
+          "rateBps": 500,
+          "channel": "Axis Travel EDGE / direct airline",
+          "conditions": "5 miles per Rs 100; 1 EDGE Mile = Rs 1 on Travel EDGE portal (no statement credit).",
+          "sourceUrl": "https://www.paisabazaar.com/axis-bank/horizon-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "axis_horizon_other",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "2 EDGE Miles / Rs 100",
+          "rateBps": 200,
+          "conditions": "2 miles per Rs 100; 1 EDGE Mile = Rs 1 on Travel EDGE portal.",
+          "sourceUrl": "https://www.paisabazaar.com/axis-bank/horizon-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "axis_horizon_fuel",
+          "category": "FUEL",
+          "kind": "REWARD",
+          "title": "No miles on fuel",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards (also rent, utilities, insurance, education, wallet, government).",
+          "sourceUrl": "https://cardinsider.com/axis-bank/axis-bank-horizon-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "axis_horizon_utilities",
+          "category": "UTILITIES",
+          "kind": "REWARD",
+          "title": "No miles on utilities",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards",
+          "sourceUrl": "https://cardinsider.com/axis-bank/axis-bank-horizon-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "axis_horizon_rent",
+          "category": "RENT",
+          "kind": "REWARD",
+          "title": "No miles on rent",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards",
+          "sourceUrl": "https://cardinsider.com/axis-bank/axis-bank-horizon-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "axis_horizon_insurance",
+          "category": "INSURANCE",
+          "kind": "REWARD",
+          "title": "No miles on insurance",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards",
+          "sourceUrl": "https://cardinsider.com/axis-bank/axis-bank-horizon-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "axis_horizon_forex",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "3.5% forex markup",
+          "rateBps": 350,
+          "conditions": "Plus GST",
+          "sourceUrl": "https://www.paisabazaar.com/axis-bank/horizon-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "axis_horizon_lounge",
+          "category": "TRAVEL",
+          "kind": "INFO",
+          "title": "Domestic & international lounge access",
+          "conditions": "Commonly cited: 8 domestic visits/quarter (Visa; 6 on Mastercard) plus 2 international/quarter; sources vary.",
+          "sourceUrl": "https://www.paisabazaar.com/axis-bank/horizon-credit-card/",
+          "confidence": "secondary"
+        }
+      ]
+    }
+  ]
+}
