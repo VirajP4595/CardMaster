@@ -3925,6 +3925,1326 @@ class PointsBalancesCompanion extends UpdateCompanion<PointsRow> {
   }
 }
 
+class $LoungeRulesTable extends LoungeRules
+    with TableInfo<$LoungeRulesTable, LoungeRuleRow> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $LoungeRulesTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _cardIdMeta = const VerificationMeta('cardId');
+  @override
+  late final GeneratedColumn<String> cardId = GeneratedColumn<String>(
+    'card_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _visitsPerQuarterMeta = const VerificationMeta(
+    'visitsPerQuarter',
+  );
+  @override
+  late final GeneratedColumn<int> visitsPerQuarter = GeneratedColumn<int>(
+    'visits_per_quarter',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _spendGatePaiseMeta = const VerificationMeta(
+    'spendGatePaise',
+  );
+  @override
+  late final GeneratedColumn<int> spendGatePaise = GeneratedColumn<int>(
+    'spend_gate_paise',
+    aliasedName,
+    true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    cardId,
+    visitsPerQuarter,
+    spendGatePaise,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'lounge_rules';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<LoungeRuleRow> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('card_id')) {
+      context.handle(
+        _cardIdMeta,
+        cardId.isAcceptableOrUnknown(data['card_id']!, _cardIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_cardIdMeta);
+    }
+    if (data.containsKey('visits_per_quarter')) {
+      context.handle(
+        _visitsPerQuarterMeta,
+        visitsPerQuarter.isAcceptableOrUnknown(
+          data['visits_per_quarter']!,
+          _visitsPerQuarterMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_visitsPerQuarterMeta);
+    }
+    if (data.containsKey('spend_gate_paise')) {
+      context.handle(
+        _spendGatePaiseMeta,
+        spendGatePaise.isAcceptableOrUnknown(
+          data['spend_gate_paise']!,
+          _spendGatePaiseMeta,
+        ),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {cardId};
+  @override
+  LoungeRuleRow map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return LoungeRuleRow(
+      cardId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}card_id'],
+      )!,
+      visitsPerQuarter: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}visits_per_quarter'],
+      )!,
+      spendGatePaise: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}spend_gate_paise'],
+      ),
+    );
+  }
+
+  @override
+  $LoungeRulesTable createAlias(String alias) {
+    return $LoungeRulesTable(attachedDatabase, alias);
+  }
+}
+
+class LoungeRuleRow extends DataClass implements Insertable<LoungeRuleRow> {
+  final String cardId;
+  final int visitsPerQuarter;
+  final int? spendGatePaise;
+  const LoungeRuleRow({
+    required this.cardId,
+    required this.visitsPerQuarter,
+    this.spendGatePaise,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['card_id'] = Variable<String>(cardId);
+    map['visits_per_quarter'] = Variable<int>(visitsPerQuarter);
+    if (!nullToAbsent || spendGatePaise != null) {
+      map['spend_gate_paise'] = Variable<int>(spendGatePaise);
+    }
+    return map;
+  }
+
+  LoungeRulesCompanion toCompanion(bool nullToAbsent) {
+    return LoungeRulesCompanion(
+      cardId: Value(cardId),
+      visitsPerQuarter: Value(visitsPerQuarter),
+      spendGatePaise: spendGatePaise == null && nullToAbsent
+          ? const Value.absent()
+          : Value(spendGatePaise),
+    );
+  }
+
+  factory LoungeRuleRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return LoungeRuleRow(
+      cardId: serializer.fromJson<String>(json['cardId']),
+      visitsPerQuarter: serializer.fromJson<int>(json['visitsPerQuarter']),
+      spendGatePaise: serializer.fromJson<int?>(json['spendGatePaise']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'cardId': serializer.toJson<String>(cardId),
+      'visitsPerQuarter': serializer.toJson<int>(visitsPerQuarter),
+      'spendGatePaise': serializer.toJson<int?>(spendGatePaise),
+    };
+  }
+
+  LoungeRuleRow copyWith({
+    String? cardId,
+    int? visitsPerQuarter,
+    Value<int?> spendGatePaise = const Value.absent(),
+  }) => LoungeRuleRow(
+    cardId: cardId ?? this.cardId,
+    visitsPerQuarter: visitsPerQuarter ?? this.visitsPerQuarter,
+    spendGatePaise: spendGatePaise.present
+        ? spendGatePaise.value
+        : this.spendGatePaise,
+  );
+  LoungeRuleRow copyWithCompanion(LoungeRulesCompanion data) {
+    return LoungeRuleRow(
+      cardId: data.cardId.present ? data.cardId.value : this.cardId,
+      visitsPerQuarter: data.visitsPerQuarter.present
+          ? data.visitsPerQuarter.value
+          : this.visitsPerQuarter,
+      spendGatePaise: data.spendGatePaise.present
+          ? data.spendGatePaise.value
+          : this.spendGatePaise,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('LoungeRuleRow(')
+          ..write('cardId: $cardId, ')
+          ..write('visitsPerQuarter: $visitsPerQuarter, ')
+          ..write('spendGatePaise: $spendGatePaise')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(cardId, visitsPerQuarter, spendGatePaise);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is LoungeRuleRow &&
+          other.cardId == this.cardId &&
+          other.visitsPerQuarter == this.visitsPerQuarter &&
+          other.spendGatePaise == this.spendGatePaise);
+}
+
+class LoungeRulesCompanion extends UpdateCompanion<LoungeRuleRow> {
+  final Value<String> cardId;
+  final Value<int> visitsPerQuarter;
+  final Value<int?> spendGatePaise;
+  final Value<int> rowid;
+  const LoungeRulesCompanion({
+    this.cardId = const Value.absent(),
+    this.visitsPerQuarter = const Value.absent(),
+    this.spendGatePaise = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  LoungeRulesCompanion.insert({
+    required String cardId,
+    required int visitsPerQuarter,
+    this.spendGatePaise = const Value.absent(),
+    this.rowid = const Value.absent(),
+  }) : cardId = Value(cardId),
+       visitsPerQuarter = Value(visitsPerQuarter);
+  static Insertable<LoungeRuleRow> custom({
+    Expression<String>? cardId,
+    Expression<int>? visitsPerQuarter,
+    Expression<int>? spendGatePaise,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (cardId != null) 'card_id': cardId,
+      if (visitsPerQuarter != null) 'visits_per_quarter': visitsPerQuarter,
+      if (spendGatePaise != null) 'spend_gate_paise': spendGatePaise,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  LoungeRulesCompanion copyWith({
+    Value<String>? cardId,
+    Value<int>? visitsPerQuarter,
+    Value<int?>? spendGatePaise,
+    Value<int>? rowid,
+  }) {
+    return LoungeRulesCompanion(
+      cardId: cardId ?? this.cardId,
+      visitsPerQuarter: visitsPerQuarter ?? this.visitsPerQuarter,
+      spendGatePaise: spendGatePaise ?? this.spendGatePaise,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (cardId.present) {
+      map['card_id'] = Variable<String>(cardId.value);
+    }
+    if (visitsPerQuarter.present) {
+      map['visits_per_quarter'] = Variable<int>(visitsPerQuarter.value);
+    }
+    if (spendGatePaise.present) {
+      map['spend_gate_paise'] = Variable<int>(spendGatePaise.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('LoungeRulesCompanion(')
+          ..write('cardId: $cardId, ')
+          ..write('visitsPerQuarter: $visitsPerQuarter, ')
+          ..write('spendGatePaise: $spendGatePaise, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $LoungeVisitsTable extends LoungeVisits
+    with TableInfo<$LoungeVisitsTable, LoungeVisitRow> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $LoungeVisitsTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _cardIdMeta = const VerificationMeta('cardId');
+  @override
+  late final GeneratedColumn<String> cardId = GeneratedColumn<String>(
+    'card_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _visitedOnMeta = const VerificationMeta(
+    'visitedOn',
+  );
+  @override
+  late final GeneratedColumn<DateTime> visitedOn = GeneratedColumn<DateTime>(
+    'visited_on',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [id, cardId, visitedOn];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'lounge_visits';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<LoungeVisitRow> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('card_id')) {
+      context.handle(
+        _cardIdMeta,
+        cardId.isAcceptableOrUnknown(data['card_id']!, _cardIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_cardIdMeta);
+    }
+    if (data.containsKey('visited_on')) {
+      context.handle(
+        _visitedOnMeta,
+        visitedOn.isAcceptableOrUnknown(data['visited_on']!, _visitedOnMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_visitedOnMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  LoungeVisitRow map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return LoungeVisitRow(
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      cardId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}card_id'],
+      )!,
+      visitedOn: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}visited_on'],
+      )!,
+    );
+  }
+
+  @override
+  $LoungeVisitsTable createAlias(String alias) {
+    return $LoungeVisitsTable(attachedDatabase, alias);
+  }
+}
+
+class LoungeVisitRow extends DataClass implements Insertable<LoungeVisitRow> {
+  final String id;
+  final String cardId;
+  final DateTime visitedOn;
+  const LoungeVisitRow({
+    required this.id,
+    required this.cardId,
+    required this.visitedOn,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<String>(id);
+    map['card_id'] = Variable<String>(cardId);
+    map['visited_on'] = Variable<DateTime>(visitedOn);
+    return map;
+  }
+
+  LoungeVisitsCompanion toCompanion(bool nullToAbsent) {
+    return LoungeVisitsCompanion(
+      id: Value(id),
+      cardId: Value(cardId),
+      visitedOn: Value(visitedOn),
+    );
+  }
+
+  factory LoungeVisitRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return LoungeVisitRow(
+      id: serializer.fromJson<String>(json['id']),
+      cardId: serializer.fromJson<String>(json['cardId']),
+      visitedOn: serializer.fromJson<DateTime>(json['visitedOn']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<String>(id),
+      'cardId': serializer.toJson<String>(cardId),
+      'visitedOn': serializer.toJson<DateTime>(visitedOn),
+    };
+  }
+
+  LoungeVisitRow copyWith({String? id, String? cardId, DateTime? visitedOn}) =>
+      LoungeVisitRow(
+        id: id ?? this.id,
+        cardId: cardId ?? this.cardId,
+        visitedOn: visitedOn ?? this.visitedOn,
+      );
+  LoungeVisitRow copyWithCompanion(LoungeVisitsCompanion data) {
+    return LoungeVisitRow(
+      id: data.id.present ? data.id.value : this.id,
+      cardId: data.cardId.present ? data.cardId.value : this.cardId,
+      visitedOn: data.visitedOn.present ? data.visitedOn.value : this.visitedOn,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('LoungeVisitRow(')
+          ..write('id: $id, ')
+          ..write('cardId: $cardId, ')
+          ..write('visitedOn: $visitedOn')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(id, cardId, visitedOn);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is LoungeVisitRow &&
+          other.id == this.id &&
+          other.cardId == this.cardId &&
+          other.visitedOn == this.visitedOn);
+}
+
+class LoungeVisitsCompanion extends UpdateCompanion<LoungeVisitRow> {
+  final Value<String> id;
+  final Value<String> cardId;
+  final Value<DateTime> visitedOn;
+  final Value<int> rowid;
+  const LoungeVisitsCompanion({
+    this.id = const Value.absent(),
+    this.cardId = const Value.absent(),
+    this.visitedOn = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  LoungeVisitsCompanion.insert({
+    required String id,
+    required String cardId,
+    required DateTime visitedOn,
+    this.rowid = const Value.absent(),
+  }) : id = Value(id),
+       cardId = Value(cardId),
+       visitedOn = Value(visitedOn);
+  static Insertable<LoungeVisitRow> custom({
+    Expression<String>? id,
+    Expression<String>? cardId,
+    Expression<DateTime>? visitedOn,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (cardId != null) 'card_id': cardId,
+      if (visitedOn != null) 'visited_on': visitedOn,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  LoungeVisitsCompanion copyWith({
+    Value<String>? id,
+    Value<String>? cardId,
+    Value<DateTime>? visitedOn,
+    Value<int>? rowid,
+  }) {
+    return LoungeVisitsCompanion(
+      id: id ?? this.id,
+      cardId: cardId ?? this.cardId,
+      visitedOn: visitedOn ?? this.visitedOn,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (cardId.present) {
+      map['card_id'] = Variable<String>(cardId.value);
+    }
+    if (visitedOn.present) {
+      map['visited_on'] = Variable<DateTime>(visitedOn.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('LoungeVisitsCompanion(')
+          ..write('id: $id, ')
+          ..write('cardId: $cardId, ')
+          ..write('visitedOn: $visitedOn, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $EmisTable extends Emis with TableInfo<$EmisTable, EmiRow> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $EmisTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _cardIdMeta = const VerificationMeta('cardId');
+  @override
+  late final GeneratedColumn<String> cardId = GeneratedColumn<String>(
+    'card_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _titleMeta = const VerificationMeta('title');
+  @override
+  late final GeneratedColumn<String> title = GeneratedColumn<String>(
+    'title',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _monthlyPaiseMeta = const VerificationMeta(
+    'monthlyPaise',
+  );
+  @override
+  late final GeneratedColumn<int> monthlyPaise = GeneratedColumn<int>(
+    'monthly_paise',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _totalMonthsMeta = const VerificationMeta(
+    'totalMonths',
+  );
+  @override
+  late final GeneratedColumn<int> totalMonths = GeneratedColumn<int>(
+    'total_months',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _firstMonthMeta = const VerificationMeta(
+    'firstMonth',
+  );
+  @override
+  late final GeneratedColumn<DateTime> firstMonth = GeneratedColumn<DateTime>(
+    'first_month',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    id,
+    cardId,
+    title,
+    monthlyPaise,
+    totalMonths,
+    firstMonth,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'emis';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<EmiRow> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('card_id')) {
+      context.handle(
+        _cardIdMeta,
+        cardId.isAcceptableOrUnknown(data['card_id']!, _cardIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_cardIdMeta);
+    }
+    if (data.containsKey('title')) {
+      context.handle(
+        _titleMeta,
+        title.isAcceptableOrUnknown(data['title']!, _titleMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_titleMeta);
+    }
+    if (data.containsKey('monthly_paise')) {
+      context.handle(
+        _monthlyPaiseMeta,
+        monthlyPaise.isAcceptableOrUnknown(
+          data['monthly_paise']!,
+          _monthlyPaiseMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_monthlyPaiseMeta);
+    }
+    if (data.containsKey('total_months')) {
+      context.handle(
+        _totalMonthsMeta,
+        totalMonths.isAcceptableOrUnknown(
+          data['total_months']!,
+          _totalMonthsMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_totalMonthsMeta);
+    }
+    if (data.containsKey('first_month')) {
+      context.handle(
+        _firstMonthMeta,
+        firstMonth.isAcceptableOrUnknown(data['first_month']!, _firstMonthMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_firstMonthMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  EmiRow map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return EmiRow(
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      cardId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}card_id'],
+      )!,
+      title: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}title'],
+      )!,
+      monthlyPaise: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}monthly_paise'],
+      )!,
+      totalMonths: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}total_months'],
+      )!,
+      firstMonth: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}first_month'],
+      )!,
+    );
+  }
+
+  @override
+  $EmisTable createAlias(String alias) {
+    return $EmisTable(attachedDatabase, alias);
+  }
+}
+
+class EmiRow extends DataClass implements Insertable<EmiRow> {
+  final String id;
+  final String cardId;
+  final String title;
+  final int monthlyPaise;
+  final int totalMonths;
+  final DateTime firstMonth;
+  const EmiRow({
+    required this.id,
+    required this.cardId,
+    required this.title,
+    required this.monthlyPaise,
+    required this.totalMonths,
+    required this.firstMonth,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<String>(id);
+    map['card_id'] = Variable<String>(cardId);
+    map['title'] = Variable<String>(title);
+    map['monthly_paise'] = Variable<int>(monthlyPaise);
+    map['total_months'] = Variable<int>(totalMonths);
+    map['first_month'] = Variable<DateTime>(firstMonth);
+    return map;
+  }
+
+  EmisCompanion toCompanion(bool nullToAbsent) {
+    return EmisCompanion(
+      id: Value(id),
+      cardId: Value(cardId),
+      title: Value(title),
+      monthlyPaise: Value(monthlyPaise),
+      totalMonths: Value(totalMonths),
+      firstMonth: Value(firstMonth),
+    );
+  }
+
+  factory EmiRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return EmiRow(
+      id: serializer.fromJson<String>(json['id']),
+      cardId: serializer.fromJson<String>(json['cardId']),
+      title: serializer.fromJson<String>(json['title']),
+      monthlyPaise: serializer.fromJson<int>(json['monthlyPaise']),
+      totalMonths: serializer.fromJson<int>(json['totalMonths']),
+      firstMonth: serializer.fromJson<DateTime>(json['firstMonth']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<String>(id),
+      'cardId': serializer.toJson<String>(cardId),
+      'title': serializer.toJson<String>(title),
+      'monthlyPaise': serializer.toJson<int>(monthlyPaise),
+      'totalMonths': serializer.toJson<int>(totalMonths),
+      'firstMonth': serializer.toJson<DateTime>(firstMonth),
+    };
+  }
+
+  EmiRow copyWith({
+    String? id,
+    String? cardId,
+    String? title,
+    int? monthlyPaise,
+    int? totalMonths,
+    DateTime? firstMonth,
+  }) => EmiRow(
+    id: id ?? this.id,
+    cardId: cardId ?? this.cardId,
+    title: title ?? this.title,
+    monthlyPaise: monthlyPaise ?? this.monthlyPaise,
+    totalMonths: totalMonths ?? this.totalMonths,
+    firstMonth: firstMonth ?? this.firstMonth,
+  );
+  EmiRow copyWithCompanion(EmisCompanion data) {
+    return EmiRow(
+      id: data.id.present ? data.id.value : this.id,
+      cardId: data.cardId.present ? data.cardId.value : this.cardId,
+      title: data.title.present ? data.title.value : this.title,
+      monthlyPaise: data.monthlyPaise.present
+          ? data.monthlyPaise.value
+          : this.monthlyPaise,
+      totalMonths: data.totalMonths.present
+          ? data.totalMonths.value
+          : this.totalMonths,
+      firstMonth: data.firstMonth.present
+          ? data.firstMonth.value
+          : this.firstMonth,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('EmiRow(')
+          ..write('id: $id, ')
+          ..write('cardId: $cardId, ')
+          ..write('title: $title, ')
+          ..write('monthlyPaise: $monthlyPaise, ')
+          ..write('totalMonths: $totalMonths, ')
+          ..write('firstMonth: $firstMonth')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(id, cardId, title, monthlyPaise, totalMonths, firstMonth);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is EmiRow &&
+          other.id == this.id &&
+          other.cardId == this.cardId &&
+          other.title == this.title &&
+          other.monthlyPaise == this.monthlyPaise &&
+          other.totalMonths == this.totalMonths &&
+          other.firstMonth == this.firstMonth);
+}
+
+class EmisCompanion extends UpdateCompanion<EmiRow> {
+  final Value<String> id;
+  final Value<String> cardId;
+  final Value<String> title;
+  final Value<int> monthlyPaise;
+  final Value<int> totalMonths;
+  final Value<DateTime> firstMonth;
+  final Value<int> rowid;
+  const EmisCompanion({
+    this.id = const Value.absent(),
+    this.cardId = const Value.absent(),
+    this.title = const Value.absent(),
+    this.monthlyPaise = const Value.absent(),
+    this.totalMonths = const Value.absent(),
+    this.firstMonth = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  EmisCompanion.insert({
+    required String id,
+    required String cardId,
+    required String title,
+    required int monthlyPaise,
+    required int totalMonths,
+    required DateTime firstMonth,
+    this.rowid = const Value.absent(),
+  }) : id = Value(id),
+       cardId = Value(cardId),
+       title = Value(title),
+       monthlyPaise = Value(monthlyPaise),
+       totalMonths = Value(totalMonths),
+       firstMonth = Value(firstMonth);
+  static Insertable<EmiRow> custom({
+    Expression<String>? id,
+    Expression<String>? cardId,
+    Expression<String>? title,
+    Expression<int>? monthlyPaise,
+    Expression<int>? totalMonths,
+    Expression<DateTime>? firstMonth,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (cardId != null) 'card_id': cardId,
+      if (title != null) 'title': title,
+      if (monthlyPaise != null) 'monthly_paise': monthlyPaise,
+      if (totalMonths != null) 'total_months': totalMonths,
+      if (firstMonth != null) 'first_month': firstMonth,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  EmisCompanion copyWith({
+    Value<String>? id,
+    Value<String>? cardId,
+    Value<String>? title,
+    Value<int>? monthlyPaise,
+    Value<int>? totalMonths,
+    Value<DateTime>? firstMonth,
+    Value<int>? rowid,
+  }) {
+    return EmisCompanion(
+      id: id ?? this.id,
+      cardId: cardId ?? this.cardId,
+      title: title ?? this.title,
+      monthlyPaise: monthlyPaise ?? this.monthlyPaise,
+      totalMonths: totalMonths ?? this.totalMonths,
+      firstMonth: firstMonth ?? this.firstMonth,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (cardId.present) {
+      map['card_id'] = Variable<String>(cardId.value);
+    }
+    if (title.present) {
+      map['title'] = Variable<String>(title.value);
+    }
+    if (monthlyPaise.present) {
+      map['monthly_paise'] = Variable<int>(monthlyPaise.value);
+    }
+    if (totalMonths.present) {
+      map['total_months'] = Variable<int>(totalMonths.value);
+    }
+    if (firstMonth.present) {
+      map['first_month'] = Variable<DateTime>(firstMonth.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('EmisCompanion(')
+          ..write('id: $id, ')
+          ..write('cardId: $cardId, ')
+          ..write('title: $title, ')
+          ..write('monthlyPaise: $monthlyPaise, ')
+          ..write('totalMonths: $totalMonths, ')
+          ..write('firstMonth: $firstMonth, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $OffersTable extends Offers with TableInfo<$OffersTable, OfferRow> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $OffersTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _titleMeta = const VerificationMeta('title');
+  @override
+  late final GeneratedColumn<String> title = GeneratedColumn<String>(
+    'title',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _categoryMeta = const VerificationMeta(
+    'category',
+  );
+  @override
+  late final GeneratedColumn<String> category = GeneratedColumn<String>(
+    'category',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _validUntilMeta = const VerificationMeta(
+    'validUntil',
+  );
+  @override
+  late final GeneratedColumn<DateTime> validUntil = GeneratedColumn<DateTime>(
+    'valid_until',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _cardIdMeta = const VerificationMeta('cardId');
+  @override
+  late final GeneratedColumn<String> cardId = GeneratedColumn<String>(
+    'card_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    id,
+    title,
+    category,
+    validUntil,
+    cardId,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'offers';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<OfferRow> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('title')) {
+      context.handle(
+        _titleMeta,
+        title.isAcceptableOrUnknown(data['title']!, _titleMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_titleMeta);
+    }
+    if (data.containsKey('category')) {
+      context.handle(
+        _categoryMeta,
+        category.isAcceptableOrUnknown(data['category']!, _categoryMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_categoryMeta);
+    }
+    if (data.containsKey('valid_until')) {
+      context.handle(
+        _validUntilMeta,
+        validUntil.isAcceptableOrUnknown(data['valid_until']!, _validUntilMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_validUntilMeta);
+    }
+    if (data.containsKey('card_id')) {
+      context.handle(
+        _cardIdMeta,
+        cardId.isAcceptableOrUnknown(data['card_id']!, _cardIdMeta),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  OfferRow map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return OfferRow(
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      title: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}title'],
+      )!,
+      category: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}category'],
+      )!,
+      validUntil: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}valid_until'],
+      )!,
+      cardId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}card_id'],
+      ),
+    );
+  }
+
+  @override
+  $OffersTable createAlias(String alias) {
+    return $OffersTable(attachedDatabase, alias);
+  }
+}
+
+class OfferRow extends DataClass implements Insertable<OfferRow> {
+  final String id;
+  final String title;
+  final String category;
+  final DateTime validUntil;
+  final String? cardId;
+  const OfferRow({
+    required this.id,
+    required this.title,
+    required this.category,
+    required this.validUntil,
+    this.cardId,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<String>(id);
+    map['title'] = Variable<String>(title);
+    map['category'] = Variable<String>(category);
+    map['valid_until'] = Variable<DateTime>(validUntil);
+    if (!nullToAbsent || cardId != null) {
+      map['card_id'] = Variable<String>(cardId);
+    }
+    return map;
+  }
+
+  OffersCompanion toCompanion(bool nullToAbsent) {
+    return OffersCompanion(
+      id: Value(id),
+      title: Value(title),
+      category: Value(category),
+      validUntil: Value(validUntil),
+      cardId: cardId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(cardId),
+    );
+  }
+
+  factory OfferRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return OfferRow(
+      id: serializer.fromJson<String>(json['id']),
+      title: serializer.fromJson<String>(json['title']),
+      category: serializer.fromJson<String>(json['category']),
+      validUntil: serializer.fromJson<DateTime>(json['validUntil']),
+      cardId: serializer.fromJson<String?>(json['cardId']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<String>(id),
+      'title': serializer.toJson<String>(title),
+      'category': serializer.toJson<String>(category),
+      'validUntil': serializer.toJson<DateTime>(validUntil),
+      'cardId': serializer.toJson<String?>(cardId),
+    };
+  }
+
+  OfferRow copyWith({
+    String? id,
+    String? title,
+    String? category,
+    DateTime? validUntil,
+    Value<String?> cardId = const Value.absent(),
+  }) => OfferRow(
+    id: id ?? this.id,
+    title: title ?? this.title,
+    category: category ?? this.category,
+    validUntil: validUntil ?? this.validUntil,
+    cardId: cardId.present ? cardId.value : this.cardId,
+  );
+  OfferRow copyWithCompanion(OffersCompanion data) {
+    return OfferRow(
+      id: data.id.present ? data.id.value : this.id,
+      title: data.title.present ? data.title.value : this.title,
+      category: data.category.present ? data.category.value : this.category,
+      validUntil: data.validUntil.present
+          ? data.validUntil.value
+          : this.validUntil,
+      cardId: data.cardId.present ? data.cardId.value : this.cardId,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('OfferRow(')
+          ..write('id: $id, ')
+          ..write('title: $title, ')
+          ..write('category: $category, ')
+          ..write('validUntil: $validUntil, ')
+          ..write('cardId: $cardId')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(id, title, category, validUntil, cardId);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is OfferRow &&
+          other.id == this.id &&
+          other.title == this.title &&
+          other.category == this.category &&
+          other.validUntil == this.validUntil &&
+          other.cardId == this.cardId);
+}
+
+class OffersCompanion extends UpdateCompanion<OfferRow> {
+  final Value<String> id;
+  final Value<String> title;
+  final Value<String> category;
+  final Value<DateTime> validUntil;
+  final Value<String?> cardId;
+  final Value<int> rowid;
+  const OffersCompanion({
+    this.id = const Value.absent(),
+    this.title = const Value.absent(),
+    this.category = const Value.absent(),
+    this.validUntil = const Value.absent(),
+    this.cardId = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  OffersCompanion.insert({
+    required String id,
+    required String title,
+    required String category,
+    required DateTime validUntil,
+    this.cardId = const Value.absent(),
+    this.rowid = const Value.absent(),
+  }) : id = Value(id),
+       title = Value(title),
+       category = Value(category),
+       validUntil = Value(validUntil);
+  static Insertable<OfferRow> custom({
+    Expression<String>? id,
+    Expression<String>? title,
+    Expression<String>? category,
+    Expression<DateTime>? validUntil,
+    Expression<String>? cardId,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (title != null) 'title': title,
+      if (category != null) 'category': category,
+      if (validUntil != null) 'valid_until': validUntil,
+      if (cardId != null) 'card_id': cardId,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  OffersCompanion copyWith({
+    Value<String>? id,
+    Value<String>? title,
+    Value<String>? category,
+    Value<DateTime>? validUntil,
+    Value<String?>? cardId,
+    Value<int>? rowid,
+  }) {
+    return OffersCompanion(
+      id: id ?? this.id,
+      title: title ?? this.title,
+      category: category ?? this.category,
+      validUntil: validUntil ?? this.validUntil,
+      cardId: cardId ?? this.cardId,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (title.present) {
+      map['title'] = Variable<String>(title.value);
+    }
+    if (category.present) {
+      map['category'] = Variable<String>(category.value);
+    }
+    if (validUntil.present) {
+      map['valid_until'] = Variable<DateTime>(validUntil.value);
+    }
+    if (cardId.present) {
+      map['card_id'] = Variable<String>(cardId.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('OffersCompanion(')
+          ..write('id: $id, ')
+          ..write('title: $title, ')
+          ..write('category: $category, ')
+          ..write('validUntil: $validUntil, ')
+          ..write('cardId: $cardId, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
 class $MerchantRulesTable extends MerchantRules
     with TableInfo<$MerchantRulesTable, MerchantRule> {
   @override
@@ -4784,6 +6104,10 @@ abstract class _$AppDatabase extends GeneratedDatabase {
   late final $BudgetsTable budgets = $BudgetsTable(this);
   late final $RecurringsTable recurrings = $RecurringsTable(this);
   late final $PointsBalancesTable pointsBalances = $PointsBalancesTable(this);
+  late final $LoungeRulesTable loungeRules = $LoungeRulesTable(this);
+  late final $LoungeVisitsTable loungeVisits = $LoungeVisitsTable(this);
+  late final $EmisTable emis = $EmisTable(this);
+  late final $OffersTable offers = $OffersTable(this);
   late final $MerchantRulesTable merchantRules = $MerchantRulesTable(this);
   late final $NetworkLogsTable networkLogs = $NetworkLogsTable(this);
   late final $KeyValuesTable keyValues = $KeyValuesTable(this);
@@ -4799,6 +6123,10 @@ abstract class _$AppDatabase extends GeneratedDatabase {
     budgets,
     recurrings,
     pointsBalances,
+    loungeRules,
+    loungeVisits,
+    emis,
+    offers,
     merchantRules,
     networkLogs,
     keyValues,
@@ -6796,6 +8124,779 @@ typedef $$PointsBalancesTableProcessedTableManager =
       PointsRow,
       PrefetchHooks Function()
     >;
+typedef $$LoungeRulesTableCreateCompanionBuilder =
+    LoungeRulesCompanion Function({
+      required String cardId,
+      required int visitsPerQuarter,
+      Value<int?> spendGatePaise,
+      Value<int> rowid,
+    });
+typedef $$LoungeRulesTableUpdateCompanionBuilder =
+    LoungeRulesCompanion Function({
+      Value<String> cardId,
+      Value<int> visitsPerQuarter,
+      Value<int?> spendGatePaise,
+      Value<int> rowid,
+    });
+
+class $$LoungeRulesTableFilterComposer
+    extends Composer<_$AppDatabase, $LoungeRulesTable> {
+  $$LoungeRulesTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get cardId => $composableBuilder(
+    column: $table.cardId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get visitsPerQuarter => $composableBuilder(
+    column: $table.visitsPerQuarter,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get spendGatePaise => $composableBuilder(
+    column: $table.spendGatePaise,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$LoungeRulesTableOrderingComposer
+    extends Composer<_$AppDatabase, $LoungeRulesTable> {
+  $$LoungeRulesTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get cardId => $composableBuilder(
+    column: $table.cardId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get visitsPerQuarter => $composableBuilder(
+    column: $table.visitsPerQuarter,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get spendGatePaise => $composableBuilder(
+    column: $table.spendGatePaise,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$LoungeRulesTableAnnotationComposer
+    extends Composer<_$AppDatabase, $LoungeRulesTable> {
+  $$LoungeRulesTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get cardId =>
+      $composableBuilder(column: $table.cardId, builder: (column) => column);
+
+  GeneratedColumn<int> get visitsPerQuarter => $composableBuilder(
+    column: $table.visitsPerQuarter,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get spendGatePaise => $composableBuilder(
+    column: $table.spendGatePaise,
+    builder: (column) => column,
+  );
+}
+
+class $$LoungeRulesTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $LoungeRulesTable,
+          LoungeRuleRow,
+          $$LoungeRulesTableFilterComposer,
+          $$LoungeRulesTableOrderingComposer,
+          $$LoungeRulesTableAnnotationComposer,
+          $$LoungeRulesTableCreateCompanionBuilder,
+          $$LoungeRulesTableUpdateCompanionBuilder,
+          (
+            LoungeRuleRow,
+            BaseReferences<_$AppDatabase, $LoungeRulesTable, LoungeRuleRow>,
+          ),
+          LoungeRuleRow,
+          PrefetchHooks Function()
+        > {
+  $$LoungeRulesTableTableManager(_$AppDatabase db, $LoungeRulesTable table)
+    : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$LoungeRulesTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$LoungeRulesTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$LoungeRulesTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<String> cardId = const Value.absent(),
+                Value<int> visitsPerQuarter = const Value.absent(),
+                Value<int?> spendGatePaise = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => LoungeRulesCompanion(
+                cardId: cardId,
+                visitsPerQuarter: visitsPerQuarter,
+                spendGatePaise: spendGatePaise,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String cardId,
+                required int visitsPerQuarter,
+                Value<int?> spendGatePaise = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => LoungeRulesCompanion.insert(
+                cardId: cardId,
+                visitsPerQuarter: visitsPerQuarter,
+                spendGatePaise: spendGatePaise,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$LoungeRulesTable, LoungeRuleRow>(table),
+                  BaseReferences<
+                    _$AppDatabase,
+                    $LoungeRulesTable,
+                    LoungeRuleRow
+                  >(db, table, e),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$LoungeRulesTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $LoungeRulesTable,
+      LoungeRuleRow,
+      $$LoungeRulesTableFilterComposer,
+      $$LoungeRulesTableOrderingComposer,
+      $$LoungeRulesTableAnnotationComposer,
+      $$LoungeRulesTableCreateCompanionBuilder,
+      $$LoungeRulesTableUpdateCompanionBuilder,
+      (
+        LoungeRuleRow,
+        BaseReferences<_$AppDatabase, $LoungeRulesTable, LoungeRuleRow>,
+      ),
+      LoungeRuleRow,
+      PrefetchHooks Function()
+    >;
+typedef $$LoungeVisitsTableCreateCompanionBuilder =
+    LoungeVisitsCompanion Function({
+      required String id,
+      required String cardId,
+      required DateTime visitedOn,
+      Value<int> rowid,
+    });
+typedef $$LoungeVisitsTableUpdateCompanionBuilder =
+    LoungeVisitsCompanion Function({
+      Value<String> id,
+      Value<String> cardId,
+      Value<DateTime> visitedOn,
+      Value<int> rowid,
+    });
+
+class $$LoungeVisitsTableFilterComposer
+    extends Composer<_$AppDatabase, $LoungeVisitsTable> {
+  $$LoungeVisitsTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get cardId => $composableBuilder(
+    column: $table.cardId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get visitedOn => $composableBuilder(
+    column: $table.visitedOn,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$LoungeVisitsTableOrderingComposer
+    extends Composer<_$AppDatabase, $LoungeVisitsTable> {
+  $$LoungeVisitsTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get cardId => $composableBuilder(
+    column: $table.cardId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get visitedOn => $composableBuilder(
+    column: $table.visitedOn,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$LoungeVisitsTableAnnotationComposer
+    extends Composer<_$AppDatabase, $LoungeVisitsTable> {
+  $$LoungeVisitsTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get cardId =>
+      $composableBuilder(column: $table.cardId, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get visitedOn =>
+      $composableBuilder(column: $table.visitedOn, builder: (column) => column);
+}
+
+class $$LoungeVisitsTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $LoungeVisitsTable,
+          LoungeVisitRow,
+          $$LoungeVisitsTableFilterComposer,
+          $$LoungeVisitsTableOrderingComposer,
+          $$LoungeVisitsTableAnnotationComposer,
+          $$LoungeVisitsTableCreateCompanionBuilder,
+          $$LoungeVisitsTableUpdateCompanionBuilder,
+          (
+            LoungeVisitRow,
+            BaseReferences<_$AppDatabase, $LoungeVisitsTable, LoungeVisitRow>,
+          ),
+          LoungeVisitRow,
+          PrefetchHooks Function()
+        > {
+  $$LoungeVisitsTableTableManager(_$AppDatabase db, $LoungeVisitsTable table)
+    : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$LoungeVisitsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$LoungeVisitsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$LoungeVisitsTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<String> id = const Value.absent(),
+                Value<String> cardId = const Value.absent(),
+                Value<DateTime> visitedOn = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => LoungeVisitsCompanion(
+                id: id,
+                cardId: cardId,
+                visitedOn: visitedOn,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String id,
+                required String cardId,
+                required DateTime visitedOn,
+                Value<int> rowid = const Value.absent(),
+              }) => LoungeVisitsCompanion.insert(
+                id: id,
+                cardId: cardId,
+                visitedOn: visitedOn,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$LoungeVisitsTable, LoungeVisitRow>(table),
+                  BaseReferences<
+                    _$AppDatabase,
+                    $LoungeVisitsTable,
+                    LoungeVisitRow
+                  >(db, table, e),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$LoungeVisitsTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $LoungeVisitsTable,
+      LoungeVisitRow,
+      $$LoungeVisitsTableFilterComposer,
+      $$LoungeVisitsTableOrderingComposer,
+      $$LoungeVisitsTableAnnotationComposer,
+      $$LoungeVisitsTableCreateCompanionBuilder,
+      $$LoungeVisitsTableUpdateCompanionBuilder,
+      (
+        LoungeVisitRow,
+        BaseReferences<_$AppDatabase, $LoungeVisitsTable, LoungeVisitRow>,
+      ),
+      LoungeVisitRow,
+      PrefetchHooks Function()
+    >;
+typedef $$EmisTableCreateCompanionBuilder = EmisCompanion Function({
+  required String id,
+  required String cardId,
+  required String title,
+  required int monthlyPaise,
+  required int totalMonths,
+  required DateTime firstMonth,
+  Value<int> rowid,
+});
+typedef $$EmisTableUpdateCompanionBuilder = EmisCompanion Function({
+  Value<String> id,
+  Value<String> cardId,
+  Value<String> title,
+  Value<int> monthlyPaise,
+  Value<int> totalMonths,
+  Value<DateTime> firstMonth,
+  Value<int> rowid,
+});
+
+class $$EmisTableFilterComposer extends Composer<_$AppDatabase, $EmisTable> {
+  $$EmisTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get cardId => $composableBuilder(
+    column: $table.cardId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get title => $composableBuilder(
+    column: $table.title,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get monthlyPaise => $composableBuilder(
+    column: $table.monthlyPaise,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get totalMonths => $composableBuilder(
+    column: $table.totalMonths,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get firstMonth => $composableBuilder(
+    column: $table.firstMonth,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$EmisTableOrderingComposer extends Composer<_$AppDatabase, $EmisTable> {
+  $$EmisTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get cardId => $composableBuilder(
+    column: $table.cardId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get title => $composableBuilder(
+    column: $table.title,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get monthlyPaise => $composableBuilder(
+    column: $table.monthlyPaise,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get totalMonths => $composableBuilder(
+    column: $table.totalMonths,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get firstMonth => $composableBuilder(
+    column: $table.firstMonth,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$EmisTableAnnotationComposer
+    extends Composer<_$AppDatabase, $EmisTable> {
+  $$EmisTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get cardId =>
+      $composableBuilder(column: $table.cardId, builder: (column) => column);
+
+  GeneratedColumn<String> get title =>
+      $composableBuilder(column: $table.title, builder: (column) => column);
+
+  GeneratedColumn<int> get monthlyPaise => $composableBuilder(
+    column: $table.monthlyPaise,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get totalMonths => $composableBuilder(
+    column: $table.totalMonths,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<DateTime> get firstMonth => $composableBuilder(
+    column: $table.firstMonth,
+    builder: (column) => column,
+  );
+}
+
+class $$EmisTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $EmisTable,
+          EmiRow,
+          $$EmisTableFilterComposer,
+          $$EmisTableOrderingComposer,
+          $$EmisTableAnnotationComposer,
+          $$EmisTableCreateCompanionBuilder,
+          $$EmisTableUpdateCompanionBuilder,
+          (EmiRow, BaseReferences<_$AppDatabase, $EmisTable, EmiRow>),
+          EmiRow,
+          PrefetchHooks Function()
+        > {
+  $$EmisTableTableManager(_$AppDatabase db, $EmisTable table)
+    : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$EmisTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$EmisTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$EmisTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<String> id = const Value.absent(),
+                Value<String> cardId = const Value.absent(),
+                Value<String> title = const Value.absent(),
+                Value<int> monthlyPaise = const Value.absent(),
+                Value<int> totalMonths = const Value.absent(),
+                Value<DateTime> firstMonth = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => EmisCompanion(
+                id: id,
+                cardId: cardId,
+                title: title,
+                monthlyPaise: monthlyPaise,
+                totalMonths: totalMonths,
+                firstMonth: firstMonth,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String id,
+                required String cardId,
+                required String title,
+                required int monthlyPaise,
+                required int totalMonths,
+                required DateTime firstMonth,
+                Value<int> rowid = const Value.absent(),
+              }) => EmisCompanion.insert(
+                id: id,
+                cardId: cardId,
+                title: title,
+                monthlyPaise: monthlyPaise,
+                totalMonths: totalMonths,
+                firstMonth: firstMonth,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$EmisTable, EmiRow>(table),
+                  BaseReferences<_$AppDatabase, $EmisTable, EmiRow>(
+                    db,
+                    table,
+                    e,
+                  ),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$EmisTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $EmisTable,
+      EmiRow,
+      $$EmisTableFilterComposer,
+      $$EmisTableOrderingComposer,
+      $$EmisTableAnnotationComposer,
+      $$EmisTableCreateCompanionBuilder,
+      $$EmisTableUpdateCompanionBuilder,
+      (EmiRow, BaseReferences<_$AppDatabase, $EmisTable, EmiRow>),
+      EmiRow,
+      PrefetchHooks Function()
+    >;
+typedef $$OffersTableCreateCompanionBuilder = OffersCompanion Function({
+  required String id,
+  required String title,
+  required String category,
+  required DateTime validUntil,
+  Value<String?> cardId,
+  Value<int> rowid,
+});
+typedef $$OffersTableUpdateCompanionBuilder = OffersCompanion Function({
+  Value<String> id,
+  Value<String> title,
+  Value<String> category,
+  Value<DateTime> validUntil,
+  Value<String?> cardId,
+  Value<int> rowid,
+});
+
+class $$OffersTableFilterComposer
+    extends Composer<_$AppDatabase, $OffersTable> {
+  $$OffersTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get title => $composableBuilder(
+    column: $table.title,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get category => $composableBuilder(
+    column: $table.category,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get validUntil => $composableBuilder(
+    column: $table.validUntil,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get cardId => $composableBuilder(
+    column: $table.cardId,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$OffersTableOrderingComposer
+    extends Composer<_$AppDatabase, $OffersTable> {
+  $$OffersTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get title => $composableBuilder(
+    column: $table.title,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get category => $composableBuilder(
+    column: $table.category,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get validUntil => $composableBuilder(
+    column: $table.validUntil,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get cardId => $composableBuilder(
+    column: $table.cardId,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$OffersTableAnnotationComposer
+    extends Composer<_$AppDatabase, $OffersTable> {
+  $$OffersTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get title =>
+      $composableBuilder(column: $table.title, builder: (column) => column);
+
+  GeneratedColumn<String> get category =>
+      $composableBuilder(column: $table.category, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get validUntil => $composableBuilder(
+    column: $table.validUntil,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get cardId =>
+      $composableBuilder(column: $table.cardId, builder: (column) => column);
+}
+
+class $$OffersTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $OffersTable,
+          OfferRow,
+          $$OffersTableFilterComposer,
+          $$OffersTableOrderingComposer,
+          $$OffersTableAnnotationComposer,
+          $$OffersTableCreateCompanionBuilder,
+          $$OffersTableUpdateCompanionBuilder,
+          (OfferRow, BaseReferences<_$AppDatabase, $OffersTable, OfferRow>),
+          OfferRow,
+          PrefetchHooks Function()
+        > {
+  $$OffersTableTableManager(_$AppDatabase db, $OffersTable table)
+    : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$OffersTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$OffersTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$OffersTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<String> id = const Value.absent(),
+                Value<String> title = const Value.absent(),
+                Value<String> category = const Value.absent(),
+                Value<DateTime> validUntil = const Value.absent(),
+                Value<String?> cardId = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => OffersCompanion(
+                id: id,
+                title: title,
+                category: category,
+                validUntil: validUntil,
+                cardId: cardId,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String id,
+                required String title,
+                required String category,
+                required DateTime validUntil,
+                Value<String?> cardId = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => OffersCompanion.insert(
+                id: id,
+                title: title,
+                category: category,
+                validUntil: validUntil,
+                cardId: cardId,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$OffersTable, OfferRow>(table),
+                  BaseReferences<_$AppDatabase, $OffersTable, OfferRow>(
+                    db,
+                    table,
+                    e,
+                  ),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$OffersTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $OffersTable,
+      OfferRow,
+      $$OffersTableFilterComposer,
+      $$OffersTableOrderingComposer,
+      $$OffersTableAnnotationComposer,
+      $$OffersTableCreateCompanionBuilder,
+      $$OffersTableUpdateCompanionBuilder,
+      (OfferRow, BaseReferences<_$AppDatabase, $OffersTable, OfferRow>),
+      OfferRow,
+      PrefetchHooks Function()
+    >;
 typedef $$MerchantRulesTableCreateCompanionBuilder =
     MerchantRulesCompanion Function({
       required String merchant,
@@ -7341,6 +9442,13 @@ class $AppDatabaseManager {
       $$RecurringsTableTableManager(_db, _db.recurrings);
   $$PointsBalancesTableTableManager get pointsBalances =>
       $$PointsBalancesTableTableManager(_db, _db.pointsBalances);
+  $$LoungeRulesTableTableManager get loungeRules =>
+      $$LoungeRulesTableTableManager(_db, _db.loungeRules);
+  $$LoungeVisitsTableTableManager get loungeVisits =>
+      $$LoungeVisitsTableTableManager(_db, _db.loungeVisits);
+  $$EmisTableTableManager get emis => $$EmisTableTableManager(_db, _db.emis);
+  $$OffersTableTableManager get offers =>
+      $$OffersTableTableManager(_db, _db.offers);
   $$MerchantRulesTableTableManager get merchantRules =>
       $$MerchantRulesTableTableManager(_db, _db.merchantRules);
   $$NetworkLogsTableTableManager get networkLogs =>

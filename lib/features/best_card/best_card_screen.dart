@@ -9,6 +9,8 @@ import '../../domain/billing_cycle.dart';
 import '../../domain/models.dart';
 import '../../domain/money.dart';
 import '../../domain/recommender.dart';
+import '../../domain/trackers.dart';
+import 'offers.dart';
 import '../../ui/widgets.dart';
 
 /// Which card should I use? (design board 5) plus "Pay today with…".
@@ -116,6 +118,14 @@ class _BestCardScreenState extends ConsumerState<BestCardScreen> {
                 child: const Text('Add a card to see recommendations.'),
               )
             else ...[
+              for (final o in activeOffersFor(
+                  ref.watch(offersProvider).value ?? const <SavedOffer>[],
+                  category,
+                  DateTime.now()))
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 8),
+                  child: OfferTile(offer: o),
+                ),
               const Text('RANKED FOR YOU',
                   style: TextStyle(
                       fontSize: 12,
@@ -173,6 +183,8 @@ class _BestCardScreenState extends ConsumerState<BestCardScreen> {
                     ),
                   ),
               ],
+              const SizedBox(height: 24),
+              const OffersSection(),
               const SizedBox(height: 24),
               const SectionTitle('Pay today with…'),
               const Caption('Most interest-free days for a purchase today'),

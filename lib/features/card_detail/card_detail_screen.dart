@@ -16,6 +16,7 @@ import '../../domain/money.dart';
 import '../../ui/card_face.dart';
 import '../../ui/widgets.dart';
 import '../add_card/card_form.dart';
+import 'card_extras.dart';
 
 class CardDetailScreen extends ConsumerWidget {
   const CardDetailScreen({super.key, required this.cardId});
@@ -158,6 +159,8 @@ class CardDetailScreen extends ConsumerWidget {
           ),
           _Caps(card: card, benefits: benefits),
           _Points(card: card),
+          LoungeTile(card: card),
+          EmiSection(card: card),
           const SizedBox(height: 18),
           const SectionTitle('Benefits'),
           if (benefits.isEmpty)

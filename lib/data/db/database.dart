@@ -2,6 +2,7 @@ import 'package:drift/drift.dart';
 
 import '../../domain/models.dart' as m;
 import '../../domain/recurring.dart' as m2;
+import '../../domain/trackers.dart' as m3;
 
 part 'database.g.dart';
 
@@ -72,6 +73,54 @@ class PointsBalances extends Table {
 
   @override
   Set<Column> get primaryKey => {cardId};
+}
+
+/// Lounge allowance per card (added in v6).
+@DataClassName('LoungeRuleRow')
+class LoungeRules extends Table {
+  TextColumn get cardId => text()();
+  IntColumn get visitsPerQuarter => integer()();
+  IntColumn get spendGatePaise => integer().nullable()();
+
+  @override
+  Set<Column> get primaryKey => {cardId};
+}
+
+@DataClassName('LoungeVisitRow')
+class LoungeVisits extends Table {
+  TextColumn get id => text()();
+  TextColumn get cardId => text()();
+  DateTimeColumn get visitedOn => dateTime()();
+
+  @override
+  Set<Column> get primaryKey => {id};
+}
+
+/// EMIs on a card (added in v6).
+@DataClassName('EmiRow')
+class Emis extends Table {
+  TextColumn get id => text()();
+  TextColumn get cardId => text()();
+  TextColumn get title => text()();
+  IntColumn get monthlyPaise => integer()();
+  IntColumn get totalMonths => integer()();
+  DateTimeColumn get firstMonth => dateTime()();
+
+  @override
+  Set<Column> get primaryKey => {id};
+}
+
+/// Saved bank offers (added in v6).
+@DataClassName('OfferRow')
+class Offers extends Table {
+  TextColumn get id => text()();
+  TextColumn get title => text()();
+  TextColumn get category => text()();
+  DateTimeColumn get validUntil => dateTime()();
+  TextColumn get cardId => text().nullable()();
+
+  @override
+  Set<Column> get primaryKey => {id};
 }
 
 @DataClassName('SpendRow')
@@ -164,6 +213,10 @@ class KeyValues extends Table {
   Budgets,
   Recurrings,
   PointsBalances,
+  LoungeRules,
+  LoungeVisits,
+  Emis,
+  Offers,
   MerchantRules,
   NetworkLogs,
   KeyValues,
@@ -172,7 +225,7 @@ class AppDatabase extends _$AppDatabase {
   AppDatabase(super.e);
 
   @override
-  int get schemaVersion => 5;
+  int get schemaVersion => 6;
 
   @override
   MigrationStrategy get migration => MigrationStrategy(
@@ -185,6 +238,12 @@ class AppDatabase extends _$AppDatabase {
           }
           if (from < 4) await m.createTable(recurrings);
           if (from < 5) await m.createTable(pointsBalances);
+          if (from < 6) {
+            await m.createTable(loungeRules);
+            await m.createTable(loungeVisits);
+            await m.createTable(emis);
+            await m.createTable(offers);
+          }
         },
       );
 
@@ -225,6 +284,10 @@ class AppDatabase extends _$AppDatabase {
         await (delete(customBenefits)..where((t) => t.userCardId.equals(id)))
             .go();
         await (delete(pointsBalances)..where((t) => t.cardId.equals(id))).go();
+        await (delete(loungeRules)..where((t) => t.cardId.equals(id))).go();
+        await (delete(loungeVisits)..where((t) => t.cardId.equals(id))).go();
+        await (delete(emis)..where((t) => t.cardId.equals(id))).go();
+        await (delete(offers)..where((t) => t.cardId.equals(id))).go();
         // Keep the spends but detach them, so history and budgets survive.
         await (update(spends)..where((t) => t.userCardId.equals(id))).write(
             const SpendsCompanion(
@@ -360,6 +423,83 @@ class AppDatabase extends _$AppDatabase {
 
   Future<void> deletePoints(String cardId) =>
       (delete(pointsBalances)..where((t) => t.cardId.equals(cardId))).go();
+
+  // ---- Lounges, EMIs, offers ----
+
+  Stream<m3.LoungeRule?> watchLoungeRule(String cardId) =>
+      (select(loungeRules)..where((t) => t.cardId.equals(cardId)))
+          .watchSingleOrNull()
+          .map((r) => r == null
+              ? null
+              : m3.LoungeRule(
+                  cardId: r.cardId,
+                  visitsPerQuarter: r.visitsPerQuarter,
+                  spendGatePaise: r.spendGatePaise));
+
+  Future<void> saveLoungeRule(m3.LoungeRule? r, String cardId) => r == null
+      ? (delete(loungeRules)..where((t) => t.cardId.equals(cardId))).go()
+      : into(loungeRules).insertOnConflictUpdate(LoungeRulesCompanion.insert(
+          cardId: r.cardId,
+          visitsPerQuarter: r.visitsPerQuarter,
+          spendGatePaise: Value(r.spendGatePaise)));
+
+  Stream<List<DateTime>> watchLoungeVisits(String cardId) =>
+      (select(loungeVisits)..where((t) => t.cardId.equals(cardId)))
+          .watch()
+          .map((rows) => [for (final r in rows) r.visitedOn]);
+
+  Future<void> logLoungeVisit(String id, String cardId, DateTime on) =>
+      into(loungeVisits).insert(
+          LoungeVisitsCompanion.insert(id: id, cardId: cardId, visitedOn: on));
+
+  Stream<List<m3.Emi>> watchEmis() => select(emis).watch().map((rows) => [
+        for (final r in rows)
+          m3.Emi(
+            id: r.id,
+            cardId: r.cardId,
+            title: r.title,
+            monthlyPaise: r.monthlyPaise,
+            totalMonths: r.totalMonths,
+            firstMonth: r.firstMonth,
+          ),
+      ]);
+
+  Future<void> saveEmi(m3.Emi e) =>
+      into(emis).insertOnConflictUpdate(EmisCompanion.insert(
+        id: e.id,
+        cardId: e.cardId,
+        title: e.title,
+        monthlyPaise: e.monthlyPaise,
+        totalMonths: e.totalMonths,
+        firstMonth: e.firstMonth,
+      ));
+
+  Future<void> deleteEmi(String id) =>
+      (delete(emis)..where((t) => t.id.equals(id))).go();
+
+  Stream<List<m3.SavedOffer>> watchOffers() =>
+      select(offers).watch().map((rows) => [
+            for (final r in rows)
+              m3.SavedOffer(
+                id: r.id,
+                title: r.title,
+                category: m.SpendCategory.fromCode(r.category),
+                validUntil: r.validUntil,
+                cardId: r.cardId,
+              ),
+          ]);
+
+  Future<void> saveOffer(m3.SavedOffer o) =>
+      into(offers).insertOnConflictUpdate(OffersCompanion.insert(
+        id: o.id,
+        title: o.title,
+        category: o.category.code,
+        validUntil: o.validUntil,
+        cardId: Value(o.cardId),
+      ));
+
+  Future<void> deleteOffer(String id) =>
+      (delete(offers)..where((t) => t.id.equals(id))).go();
 
   // ---- Recurring ----
 

@@ -7,6 +7,7 @@ import 'package:card_master/data/catalog/catalog.dart';
 import 'package:card_master/data/db/database.dart';
 import 'package:card_master/domain/models.dart';
 import 'package:card_master/domain/recurring.dart';
+import 'package:card_master/domain/trackers.dart';
 import 'package:card_master/features/best_card/best_card_screen.dart';
 import 'package:card_master/features/card_detail/card_detail_screen.dart';
 import 'package:card_master/features/card_detail/worth_screen.dart';
@@ -321,6 +322,50 @@ Rs.900 spent on card XX5566 at UNKNOWN SHOP on 20-10-26.
     await _settle(t);
     expect(find.textContaining('forex markup'), findsWidgets);
     await _close(t, db);
+  });
+
+  testWidgets('lounge, EMI and offers show where expected', (t) async {
+    final db = await t.runAsync(_seed);
+    final now = DateTime.now();
+    await t.runAsync(() async {
+      await db!.saveLoungeRule(
+          const LoungeRule(
+              cardId: 'airtel', visitsPerQuarter: 2, spendGatePaise: 5000000),
+          'airtel');
+      await db.logLoungeVisit('v1', 'airtel', now);
+      await db.saveEmi(Emi(
+        id: 'e1',
+        cardId: 'airtel',
+        title: 'Phone',
+        monthlyPaise: 500000,
+        totalMonths: 12,
+        firstMonth: DateTime(now.year, now.month, 1),
+      ));
+      await db.saveOffer(SavedOffer(
+        id: 'o1',
+        title: '10% off on the big sale',
+        category: SpendCategory.utilities,
+        validUntil: now.add(const Duration(days: 3)),
+      ));
+    });
+    await _pump(t, db!, const CardDetailScreen(cardId: 'airtel'));
+    expect(find.text('Lounge: 1 of 2 used this quarter'), findsOneWidget);
+    expect(find.textContaining('to unlock next quarter'), findsOneWidget);
+    expect(find.text('Phone'), findsOneWidget);
+    expect(find.textContaining('11 of 12 left'), findsOneWidget);
+    await _close(t, db);
+
+    final db2 = await t.runAsync(_seed);
+    await t.runAsync(() => db2!.saveOffer(SavedOffer(
+          id: 'o1',
+          title: '10% off on the big sale',
+          category: SpendCategory.utilities,
+          validUntil: now.add(const Duration(days: 3)),
+        )));
+    await _pump(t, db2!, const BestCardScreen());
+    // Above the ranking for Utilities, and in the saved list.
+    expect(find.text('10% off on the big sale'), findsNWidgets(2));
+    await _close(t, db2);
   });
 
   testWidgets('trust center lists costs and an empty network log', (t) async {

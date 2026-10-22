@@ -79,7 +79,7 @@ void main() {
     await other.close();
   });
 
-  test('upgrading a version 1 database adds custom benefits, budgets and helpline', () async {
+  test('upgrading a version 1 database adds every table and column added since', () async {
     final dir = await Directory.systemTemp.createTemp('cm_mig');
     final file = File('${dir.path}/v1.db');
 
@@ -87,7 +87,17 @@ void main() {
     final v2 = AppDatabase(NativeDatabase(file));
     await v2.upsertCard(_custom);
     await v2.customStatement('DROP TABLE custom_benefits');
-    await v2.customStatement('DROP TABLE budgets');
+    for (final t in [
+      'budgets',
+      'recurrings',
+      'points_balances',
+      'lounge_rules',
+      'lounge_visits',
+      'emis',
+      'offers',
+    ]) {
+      await v2.customStatement('DROP TABLE $t');
+    }
     await v2.customStatement('ALTER TABLE user_cards DROP COLUMN helpline');
     await v2.customStatement('PRAGMA user_version = 1');
     await v2.close();
@@ -100,6 +110,11 @@ void main() {
     expect(await upgraded.watchHelpline('c1').first, '1860 000 0000');
     await upgraded.setBudget(SpendCategory.dining, 500000);
     expect(await upgraded.watchBudgets().first, {SpendCategory.dining: 500000});
+    // Every later table exists again and works.
+    for (final t in ['recurrings', 'points_balances', 'lounge_rules',
+        'lounge_visits', 'emis', 'offers']) {
+      await upgraded.customSelect('SELECT count(*) FROM $t').get();
+    }
     await upgraded.close();
     await dir.delete(recursive: true);
   });

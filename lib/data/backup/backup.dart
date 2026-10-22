@@ -95,6 +95,14 @@ Future<Map<String, Object?>> exportData(AppDatabase db) async => {
       'pointsBalances': [
         for (final r in await db.select(db.pointsBalances).get()) r.toJson()
       ],
+      'loungeRules': [
+        for (final r in await db.select(db.loungeRules).get()) r.toJson()
+      ],
+      'loungeVisits': [
+        for (final r in await db.select(db.loungeVisits).get()) r.toJson()
+      ],
+      'emis': [for (final r in await db.select(db.emis).get()) r.toJson()],
+      'offers': [for (final r in await db.select(db.offers).get()) r.toJson()],
       'budgets': [for (final r in await db.select(db.budgets).get()) r.toJson()],
       'merchantRules': [
         for (final r in await db.select(db.merchantRules).get()) r.toJson()
@@ -119,6 +127,10 @@ Future<void> importData(AppDatabase db, Map<String, Object?> data) async {
       db.budgets,
       db.recurrings,
       db.pointsBalances,
+      db.loungeRules,
+      db.loungeVisits,
+      db.emis,
+      db.offers,
       db.merchantRules,
       db.keyValues,
     ]) {
@@ -136,6 +148,12 @@ Future<void> importData(AppDatabase db, Map<String, Object?> data) async {
           db.recurrings, rows('recurrings').map(RecurringRow.fromJson));
       b.insertAll(db.pointsBalances,
           rows('pointsBalances').map(PointsRow.fromJson));
+      b.insertAll(
+          db.loungeRules, rows('loungeRules').map(LoungeRuleRow.fromJson));
+      b.insertAll(
+          db.loungeVisits, rows('loungeVisits').map(LoungeVisitRow.fromJson));
+      b.insertAll(db.emis, rows('emis').map(EmiRow.fromJson));
+      b.insertAll(db.offers, rows('offers').map(OfferRow.fromJson));
       b.insertAll(
           db.merchantRules, rows('merchantRules').map(MerchantRule.fromJson));
       b.insertAll(db.keyValues, rows('keyValues').map(KeyValue.fromJson));

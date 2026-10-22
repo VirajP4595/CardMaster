@@ -7,6 +7,7 @@ import '../domain/models.dart';
 import '../domain/recommender.dart';
 import '../domain/recurring.dart';
 import '../domain/suggestions.dart';
+import '../domain/trackers.dart';
 
 /// Overridden in main() with the opened encrypted database.
 final databaseProvider = Provider<AppDatabase>(
@@ -47,6 +48,22 @@ final recurringProvider = StreamProvider<List<RecurringRule>>(
 
 final pointsProvider = StreamProvider<List<PointsBalance>>(
   (ref) => ref.watch(databaseProvider).watchPoints(),
+);
+
+final loungeRuleProvider = StreamProvider.family<LoungeRule?, String>(
+  (ref, cardId) => ref.watch(databaseProvider).watchLoungeRule(cardId),
+);
+
+final loungeVisitsProvider = StreamProvider.family<List<DateTime>, String>(
+  (ref, cardId) => ref.watch(databaseProvider).watchLoungeVisits(cardId),
+);
+
+final emisProvider = StreamProvider<List<Emi>>(
+  (ref) => ref.watch(databaseProvider).watchEmis(),
+);
+
+final offersProvider = StreamProvider<List<SavedOffer>>(
+  (ref) => ref.watch(databaseProvider).watchOffers(),
 );
 
 final budgetsProvider = StreamProvider<Map<SpendCategory, int>>(
