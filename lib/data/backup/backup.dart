@@ -86,6 +86,9 @@ Future<Map<String, Object?>> exportData(AppDatabase db) async => {
       'benefitOverrides': [
         for (final r in await db.select(db.benefitOverrides).get()) r.toJson()
       ],
+      'customBenefits': [
+        for (final r in await db.select(db.customBenefits).get()) r.toJson()
+      ],
       'merchantRules': [
         for (final r in await db.select(db.merchantRules).get()) r.toJson()
       ],
@@ -105,6 +108,7 @@ Future<void> importData(AppDatabase db, Map<String, Object?> data) async {
       db.userCards,
       db.spends,
       db.benefitOverrides,
+      db.customBenefits,
       db.merchantRules,
       db.keyValues,
     ]) {
@@ -115,6 +119,8 @@ Future<void> importData(AppDatabase db, Map<String, Object?> data) async {
       b.insertAll(db.spends, rows('spends').map(SpendRow.fromJson));
       b.insertAll(db.benefitOverrides,
           rows('benefitOverrides').map(BenefitOverride.fromJson));
+      b.insertAll(db.customBenefits,
+          rows('customBenefits').map(CustomBenefit.fromJson));
       b.insertAll(
           db.merchantRules, rows('merchantRules').map(MerchantRule.fromJson));
       b.insertAll(db.keyValues, rows('keyValues').map(KeyValue.fromJson));

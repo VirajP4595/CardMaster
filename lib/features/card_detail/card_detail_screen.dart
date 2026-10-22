@@ -2,6 +2,7 @@ import 'package:drift/drift.dart' show Value;
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:uuid/uuid.dart';
 
 import '../../app/providers.dart';
 import '../../app/theme.dart';
@@ -158,9 +159,15 @@ class CardDetailScreen extends ConsumerWidget {
                 ],
               ]),
             ),
+          const SizedBox(height: 8),
+          OutlinedButton.icon(
+            onPressed: () => _customBenefitSheet(context, ref, card, null),
+            icon: const Icon(Icons.add),
+            label: const Text('Add a benefit'),
+          ),
           const SizedBox(height: 10),
           const Caption(
-              'Rates come from the benefits list and may be out of date. Tap a benefit to correct it or mark it verified.'),
+              'Rates come from the benefits list and may be out of date. Tap a benefit to correct it or mark it verified. Benefits you add take priority.'),
         ],
       ),
     );
@@ -195,8 +202,136 @@ class CardDetailScreen extends ConsumerWidget {
     };
   }
 
+  Future<void> _customBenefitSheet(BuildContext context, WidgetRef ref,
+      UserCard card, Benefit? existing) async {
+    final title = TextEditingController(text: existing?.title ?? '');
+    final rate = TextEditingController(
+        text: existing?.rateBps == null ? '' : '${existing!.rateBps! / 100}');
+    final cap = TextEditingController(
+        text: existing?.monthlyCapPaise == null
+            ? ''
+            : '${existing!.monthlyCapPaise! ~/ 100}');
+    final channel = TextEditingController(text: existing?.channel ?? '');
+    var category = existing?.category ?? SpendCategory.other;
+    var forex = existing?.kind == BenefitKind.forexMarkup;
+    final action = await showModalBottomSheet<String>(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: AppColors.surfaceHigh,
+      builder: (ctx) => StatefulBuilder(
+        builder: (ctx, set) => Padding(
+          padding: EdgeInsets.fromLTRB(
+              24, 20, 24, MediaQuery.of(ctx).viewInsets.bottom + 24),
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Text(existing == null ? 'Add a benefit' : 'Edit benefit',
+                    style: const TextStyle(
+                        fontSize: 18, fontWeight: FontWeight.w800)),
+                const SizedBox(height: 16),
+                TextField(
+                  controller: title,
+                  decoration: const InputDecoration(
+                      labelText: 'Name', hintText: 'e.g. 5% on Swiggy'),
+                  onChanged: (_) => set(() {}),
+                ),
+                const SizedBox(height: 12),
+                SegmentedButton<bool>(
+                  segments: const [
+                    ButtonSegment(value: false, label: Text('Reward')),
+                    ButtonSegment(value: true, label: Text('Forex markup')),
+                  ],
+                  selected: {forex},
+                  onSelectionChanged: (v) => set(() => forex = v.first),
+                ),
+                const SizedBox(height: 12),
+                DropdownButtonFormField<SpendCategory>(
+                  initialValue: forex ? SpendCategory.foreign : category,
+                  decoration: const InputDecoration(labelText: 'Category'),
+                  items: [
+                    for (final c in SpendCategory.values)
+                      DropdownMenuItem(value: c, child: Text(c.label)),
+                  ],
+                  onChanged: forex ? null : (c) => set(() => category = c!),
+                ),
+                const SizedBox(height: 12),
+                TextField(
+                  controller: rate,
+                  keyboardType:
+                      const TextInputType.numberWithOptions(decimal: true),
+                  decoration: InputDecoration(
+                      labelText: forex ? 'Markup' : 'Reward rate',
+                      helperText: forex
+                          ? null
+                          : 'For points, use their rupee value, e.g. 2 points per ₹100 worth ₹0.25 each = 0.5%',
+                      suffixText: '%'),
+                  onChanged: (_) => set(() {}),
+                ),
+                if (!forex) ...[
+                  const SizedBox(height: 12),
+                  TextField(
+                    controller: cap,
+                    keyboardType: TextInputType.number,
+                    decoration: const InputDecoration(
+                        labelText: 'Monthly cap (optional)', prefixText: '₹ '),
+                  ),
+                  const SizedBox(height: 12),
+                  TextField(
+                    controller: channel,
+                    decoration: const InputDecoration(
+                        labelText: 'Only via (optional)',
+                        hintText: 'e.g. Airtel Thanks app'),
+                  ),
+                ],
+                const SizedBox(height: 16),
+                FilledButton(
+                  onPressed: title.text.trim().isEmpty ||
+                          double.tryParse(rate.text.trim()) == null
+                      ? null
+                      : () => Navigator.pop(ctx, 'save'),
+                  child: const Text('Save'),
+                ),
+                if (existing != null)
+                  TextButton(
+                    onPressed: () => Navigator.pop(ctx, 'delete'),
+                    child: const Text('Delete this benefit'),
+                  ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+    final db = ref.read(databaseProvider);
+    final existingId =
+        existing?.id.substring(customBenefitPrefix.length);
+    if (action == 'delete' && existingId != null) {
+      await db.deleteCustomBenefit(existingId);
+      return;
+    }
+    if (action != 'save') return;
+    final pct = double.parse(rate.text.trim());
+    await db.saveCustomBenefit(CustomBenefitsCompanion(
+      id: Value(existingId ?? const Uuid().v4()),
+      userCardId: Value(card.id),
+      category: Value(forex ? SpendCategory.foreign.code : category.code),
+      kind: Value(forex ? BenefitKind.forexMarkup.code : BenefitKind.reward.code),
+      title: Value(title.text.trim()),
+      rateBps: Value((pct * 100).round()),
+      monthlyCapPaise:
+          Value(forex ? null : parseRupeesToPaise(cap.text)),
+      channel: Value(
+          forex || channel.text.trim().isEmpty ? null : channel.text.trim()),
+      createdAt: Value(DateTime.now()),
+    ));
+  }
+
   Future<void> _editBenefit(
       BuildContext context, WidgetRef ref, UserCard card, Benefit b) async {
+    if (b.id.startsWith(customBenefitPrefix)) {
+      return _customBenefitSheet(context, ref, card, b);
+    }
     final rate = TextEditingController(
         text: b.rateBps == null ? '' : (b.rateBps! / 100).toString());
     final cap = TextEditingController(

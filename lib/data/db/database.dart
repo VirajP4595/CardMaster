@@ -67,6 +67,23 @@ class BenefitOverrides extends Table {
   Set<Column> get primaryKey => {userCardId, benefitId};
 }
 
+/// Benefits the user added themselves (custom cards, or anything missing
+/// from the catalog). They take precedence over catalog benefits.
+class CustomBenefits extends Table {
+  TextColumn get id => text()();
+  TextColumn get userCardId => text()();
+  TextColumn get category => text()();
+  TextColumn get kind => text().withDefault(const Constant('REWARD'))();
+  TextColumn get title => text()();
+  IntColumn get rateBps => integer().nullable()();
+  IntColumn get monthlyCapPaise => integer().nullable()();
+  TextColumn get channel => text().nullable()();
+  DateTimeColumn get createdAt => dateTime()();
+
+  @override
+  Set<Column> get primaryKey => {id};
+}
+
 /// Merchant memory: "BESCOM" -> Utilities.
 class MerchantRules extends Table {
   TextColumn get merchant => text()();
@@ -100,6 +117,7 @@ class KeyValues extends Table {
   UserCards,
   Spends,
   BenefitOverrides,
+  CustomBenefits,
   MerchantRules,
   NetworkLogs,
   KeyValues,
@@ -108,7 +126,15 @@ class AppDatabase extends _$AppDatabase {
   AppDatabase(super.e);
 
   @override
-  int get schemaVersion => 1;
+  int get schemaVersion => 2;
+
+  @override
+  MigrationStrategy get migration => MigrationStrategy(
+        onCreate: (m) => m.createAll(),
+        onUpgrade: (m, from, to) async {
+          if (from < 2) await m.createTable(customBenefits);
+        },
+      );
 
   // ---- Cards ----
 
@@ -143,6 +169,8 @@ class AppDatabase extends _$AppDatabase {
   Future<void> deleteCard(String id) => transaction(() async {
         await (delete(userCards)..where((t) => t.id.equals(id))).go();
         await (delete(benefitOverrides)..where((t) => t.userCardId.equals(id)))
+            .go();
+        await (delete(customBenefits)..where((t) => t.userCardId.equals(id)))
             .go();
         // Keep the spends but detach them, so history and budgets survive.
         await (update(spends)..where((t) => t.userCardId.equals(id))).write(
@@ -230,6 +258,17 @@ class AppDatabase extends _$AppDatabase {
 
   Future<void> saveOverride(BenefitOverridesCompanion o) =>
       into(benefitOverrides).insertOnConflictUpdate(o);
+
+  // ---- Custom benefits ----
+
+  Stream<List<CustomBenefit>> watchCustomBenefits() =>
+      select(customBenefits).watch();
+
+  Future<void> saveCustomBenefit(CustomBenefitsCompanion b) =>
+      into(customBenefits).insertOnConflictUpdate(b);
+
+  Future<void> deleteCustomBenefit(String id) =>
+      (delete(customBenefits)..where((t) => t.id.equals(id))).go();
 
   // ---- Merchant memory ----
 

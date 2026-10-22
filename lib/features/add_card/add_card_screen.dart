@@ -271,7 +271,7 @@ class _AddCardScreenState extends ConsumerState<AddCardScreen> {
           ),
           const SizedBox(height: 12),
           const Caption(
-              "Custom cards don't have benefits yet, so Best card ranks them at 0%. Adding your own benefits is coming in an update."),
+              "Custom cards start without benefits. After saving, open the card and tap 'Add a benefit'."),
           const SizedBox(height: 16),
         ] else if (p != null) ...[
           Tile(

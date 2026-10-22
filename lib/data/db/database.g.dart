@@ -2126,6 +2126,575 @@ class BenefitOverridesCompanion extends UpdateCompanion<BenefitOverride> {
   }
 }
 
+class $CustomBenefitsTable extends CustomBenefits
+    with TableInfo<$CustomBenefitsTable, CustomBenefit> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $CustomBenefitsTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _userCardIdMeta = const VerificationMeta(
+    'userCardId',
+  );
+  @override
+  late final GeneratedColumn<String> userCardId = GeneratedColumn<String>(
+    'user_card_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _categoryMeta = const VerificationMeta(
+    'category',
+  );
+  @override
+  late final GeneratedColumn<String> category = GeneratedColumn<String>(
+    'category',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _kindMeta = const VerificationMeta('kind');
+  @override
+  late final GeneratedColumn<String> kind = GeneratedColumn<String>(
+    'kind',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant('REWARD'),
+  );
+  static const VerificationMeta _titleMeta = const VerificationMeta('title');
+  @override
+  late final GeneratedColumn<String> title = GeneratedColumn<String>(
+    'title',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _rateBpsMeta = const VerificationMeta(
+    'rateBps',
+  );
+  @override
+  late final GeneratedColumn<int> rateBps = GeneratedColumn<int>(
+    'rate_bps',
+    aliasedName,
+    true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _monthlyCapPaiseMeta = const VerificationMeta(
+    'monthlyCapPaise',
+  );
+  @override
+  late final GeneratedColumn<int> monthlyCapPaise = GeneratedColumn<int>(
+    'monthly_cap_paise',
+    aliasedName,
+    true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _channelMeta = const VerificationMeta(
+    'channel',
+  );
+  @override
+  late final GeneratedColumn<String> channel = GeneratedColumn<String>(
+    'channel',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _createdAtMeta = const VerificationMeta(
+    'createdAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> createdAt = GeneratedColumn<DateTime>(
+    'created_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    id,
+    userCardId,
+    category,
+    kind,
+    title,
+    rateBps,
+    monthlyCapPaise,
+    channel,
+    createdAt,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'custom_benefits';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<CustomBenefit> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('user_card_id')) {
+      context.handle(
+        _userCardIdMeta,
+        userCardId.isAcceptableOrUnknown(
+          data['user_card_id']!,
+          _userCardIdMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_userCardIdMeta);
+    }
+    if (data.containsKey('category')) {
+      context.handle(
+        _categoryMeta,
+        category.isAcceptableOrUnknown(data['category']!, _categoryMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_categoryMeta);
+    }
+    if (data.containsKey('kind')) {
+      context.handle(
+        _kindMeta,
+        kind.isAcceptableOrUnknown(data['kind']!, _kindMeta),
+      );
+    }
+    if (data.containsKey('title')) {
+      context.handle(
+        _titleMeta,
+        title.isAcceptableOrUnknown(data['title']!, _titleMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_titleMeta);
+    }
+    if (data.containsKey('rate_bps')) {
+      context.handle(
+        _rateBpsMeta,
+        rateBps.isAcceptableOrUnknown(data['rate_bps']!, _rateBpsMeta),
+      );
+    }
+    if (data.containsKey('monthly_cap_paise')) {
+      context.handle(
+        _monthlyCapPaiseMeta,
+        monthlyCapPaise.isAcceptableOrUnknown(
+          data['monthly_cap_paise']!,
+          _monthlyCapPaiseMeta,
+        ),
+      );
+    }
+    if (data.containsKey('channel')) {
+      context.handle(
+        _channelMeta,
+        channel.isAcceptableOrUnknown(data['channel']!, _channelMeta),
+      );
+    }
+    if (data.containsKey('created_at')) {
+      context.handle(
+        _createdAtMeta,
+        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_createdAtMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  CustomBenefit map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return CustomBenefit(
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      userCardId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}user_card_id'],
+      )!,
+      category: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}category'],
+      )!,
+      kind: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}kind'],
+      )!,
+      title: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}title'],
+      )!,
+      rateBps: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}rate_bps'],
+      ),
+      monthlyCapPaise: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}monthly_cap_paise'],
+      ),
+      channel: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}channel'],
+      ),
+      createdAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}created_at'],
+      )!,
+    );
+  }
+
+  @override
+  $CustomBenefitsTable createAlias(String alias) {
+    return $CustomBenefitsTable(attachedDatabase, alias);
+  }
+}
+
+class CustomBenefit extends DataClass implements Insertable<CustomBenefit> {
+  final String id;
+  final String userCardId;
+  final String category;
+  final String kind;
+  final String title;
+  final int? rateBps;
+  final int? monthlyCapPaise;
+  final String? channel;
+  final DateTime createdAt;
+  const CustomBenefit({
+    required this.id,
+    required this.userCardId,
+    required this.category,
+    required this.kind,
+    required this.title,
+    this.rateBps,
+    this.monthlyCapPaise,
+    this.channel,
+    required this.createdAt,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<String>(id);
+    map['user_card_id'] = Variable<String>(userCardId);
+    map['category'] = Variable<String>(category);
+    map['kind'] = Variable<String>(kind);
+    map['title'] = Variable<String>(title);
+    if (!nullToAbsent || rateBps != null) {
+      map['rate_bps'] = Variable<int>(rateBps);
+    }
+    if (!nullToAbsent || monthlyCapPaise != null) {
+      map['monthly_cap_paise'] = Variable<int>(monthlyCapPaise);
+    }
+    if (!nullToAbsent || channel != null) {
+      map['channel'] = Variable<String>(channel);
+    }
+    map['created_at'] = Variable<DateTime>(createdAt);
+    return map;
+  }
+
+  CustomBenefitsCompanion toCompanion(bool nullToAbsent) {
+    return CustomBenefitsCompanion(
+      id: Value(id),
+      userCardId: Value(userCardId),
+      category: Value(category),
+      kind: Value(kind),
+      title: Value(title),
+      rateBps: rateBps == null && nullToAbsent
+          ? const Value.absent()
+          : Value(rateBps),
+      monthlyCapPaise: monthlyCapPaise == null && nullToAbsent
+          ? const Value.absent()
+          : Value(monthlyCapPaise),
+      channel: channel == null && nullToAbsent
+          ? const Value.absent()
+          : Value(channel),
+      createdAt: Value(createdAt),
+    );
+  }
+
+  factory CustomBenefit.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return CustomBenefit(
+      id: serializer.fromJson<String>(json['id']),
+      userCardId: serializer.fromJson<String>(json['userCardId']),
+      category: serializer.fromJson<String>(json['category']),
+      kind: serializer.fromJson<String>(json['kind']),
+      title: serializer.fromJson<String>(json['title']),
+      rateBps: serializer.fromJson<int?>(json['rateBps']),
+      monthlyCapPaise: serializer.fromJson<int?>(json['monthlyCapPaise']),
+      channel: serializer.fromJson<String?>(json['channel']),
+      createdAt: serializer.fromJson<DateTime>(json['createdAt']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<String>(id),
+      'userCardId': serializer.toJson<String>(userCardId),
+      'category': serializer.toJson<String>(category),
+      'kind': serializer.toJson<String>(kind),
+      'title': serializer.toJson<String>(title),
+      'rateBps': serializer.toJson<int?>(rateBps),
+      'monthlyCapPaise': serializer.toJson<int?>(monthlyCapPaise),
+      'channel': serializer.toJson<String?>(channel),
+      'createdAt': serializer.toJson<DateTime>(createdAt),
+    };
+  }
+
+  CustomBenefit copyWith({
+    String? id,
+    String? userCardId,
+    String? category,
+    String? kind,
+    String? title,
+    Value<int?> rateBps = const Value.absent(),
+    Value<int?> monthlyCapPaise = const Value.absent(),
+    Value<String?> channel = const Value.absent(),
+    DateTime? createdAt,
+  }) => CustomBenefit(
+    id: id ?? this.id,
+    userCardId: userCardId ?? this.userCardId,
+    category: category ?? this.category,
+    kind: kind ?? this.kind,
+    title: title ?? this.title,
+    rateBps: rateBps.present ? rateBps.value : this.rateBps,
+    monthlyCapPaise: monthlyCapPaise.present
+        ? monthlyCapPaise.value
+        : this.monthlyCapPaise,
+    channel: channel.present ? channel.value : this.channel,
+    createdAt: createdAt ?? this.createdAt,
+  );
+  CustomBenefit copyWithCompanion(CustomBenefitsCompanion data) {
+    return CustomBenefit(
+      id: data.id.present ? data.id.value : this.id,
+      userCardId: data.userCardId.present
+          ? data.userCardId.value
+          : this.userCardId,
+      category: data.category.present ? data.category.value : this.category,
+      kind: data.kind.present ? data.kind.value : this.kind,
+      title: data.title.present ? data.title.value : this.title,
+      rateBps: data.rateBps.present ? data.rateBps.value : this.rateBps,
+      monthlyCapPaise: data.monthlyCapPaise.present
+          ? data.monthlyCapPaise.value
+          : this.monthlyCapPaise,
+      channel: data.channel.present ? data.channel.value : this.channel,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('CustomBenefit(')
+          ..write('id: $id, ')
+          ..write('userCardId: $userCardId, ')
+          ..write('category: $category, ')
+          ..write('kind: $kind, ')
+          ..write('title: $title, ')
+          ..write('rateBps: $rateBps, ')
+          ..write('monthlyCapPaise: $monthlyCapPaise, ')
+          ..write('channel: $channel, ')
+          ..write('createdAt: $createdAt')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+    id,
+    userCardId,
+    category,
+    kind,
+    title,
+    rateBps,
+    monthlyCapPaise,
+    channel,
+    createdAt,
+  );
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is CustomBenefit &&
+          other.id == this.id &&
+          other.userCardId == this.userCardId &&
+          other.category == this.category &&
+          other.kind == this.kind &&
+          other.title == this.title &&
+          other.rateBps == this.rateBps &&
+          other.monthlyCapPaise == this.monthlyCapPaise &&
+          other.channel == this.channel &&
+          other.createdAt == this.createdAt);
+}
+
+class CustomBenefitsCompanion extends UpdateCompanion<CustomBenefit> {
+  final Value<String> id;
+  final Value<String> userCardId;
+  final Value<String> category;
+  final Value<String> kind;
+  final Value<String> title;
+  final Value<int?> rateBps;
+  final Value<int?> monthlyCapPaise;
+  final Value<String?> channel;
+  final Value<DateTime> createdAt;
+  final Value<int> rowid;
+  const CustomBenefitsCompanion({
+    this.id = const Value.absent(),
+    this.userCardId = const Value.absent(),
+    this.category = const Value.absent(),
+    this.kind = const Value.absent(),
+    this.title = const Value.absent(),
+    this.rateBps = const Value.absent(),
+    this.monthlyCapPaise = const Value.absent(),
+    this.channel = const Value.absent(),
+    this.createdAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  CustomBenefitsCompanion.insert({
+    required String id,
+    required String userCardId,
+    required String category,
+    this.kind = const Value.absent(),
+    required String title,
+    this.rateBps = const Value.absent(),
+    this.monthlyCapPaise = const Value.absent(),
+    this.channel = const Value.absent(),
+    required DateTime createdAt,
+    this.rowid = const Value.absent(),
+  }) : id = Value(id),
+       userCardId = Value(userCardId),
+       category = Value(category),
+       title = Value(title),
+       createdAt = Value(createdAt);
+  static Insertable<CustomBenefit> custom({
+    Expression<String>? id,
+    Expression<String>? userCardId,
+    Expression<String>? category,
+    Expression<String>? kind,
+    Expression<String>? title,
+    Expression<int>? rateBps,
+    Expression<int>? monthlyCapPaise,
+    Expression<String>? channel,
+    Expression<DateTime>? createdAt,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (userCardId != null) 'user_card_id': userCardId,
+      if (category != null) 'category': category,
+      if (kind != null) 'kind': kind,
+      if (title != null) 'title': title,
+      if (rateBps != null) 'rate_bps': rateBps,
+      if (monthlyCapPaise != null) 'monthly_cap_paise': monthlyCapPaise,
+      if (channel != null) 'channel': channel,
+      if (createdAt != null) 'created_at': createdAt,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  CustomBenefitsCompanion copyWith({
+    Value<String>? id,
+    Value<String>? userCardId,
+    Value<String>? category,
+    Value<String>? kind,
+    Value<String>? title,
+    Value<int?>? rateBps,
+    Value<int?>? monthlyCapPaise,
+    Value<String?>? channel,
+    Value<DateTime>? createdAt,
+    Value<int>? rowid,
+  }) {
+    return CustomBenefitsCompanion(
+      id: id ?? this.id,
+      userCardId: userCardId ?? this.userCardId,
+      category: category ?? this.category,
+      kind: kind ?? this.kind,
+      title: title ?? this.title,
+      rateBps: rateBps ?? this.rateBps,
+      monthlyCapPaise: monthlyCapPaise ?? this.monthlyCapPaise,
+      channel: channel ?? this.channel,
+      createdAt: createdAt ?? this.createdAt,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (userCardId.present) {
+      map['user_card_id'] = Variable<String>(userCardId.value);
+    }
+    if (category.present) {
+      map['category'] = Variable<String>(category.value);
+    }
+    if (kind.present) {
+      map['kind'] = Variable<String>(kind.value);
+    }
+    if (title.present) {
+      map['title'] = Variable<String>(title.value);
+    }
+    if (rateBps.present) {
+      map['rate_bps'] = Variable<int>(rateBps.value);
+    }
+    if (monthlyCapPaise.present) {
+      map['monthly_cap_paise'] = Variable<int>(monthlyCapPaise.value);
+    }
+    if (channel.present) {
+      map['channel'] = Variable<String>(channel.value);
+    }
+    if (createdAt.present) {
+      map['created_at'] = Variable<DateTime>(createdAt.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('CustomBenefitsCompanion(')
+          ..write('id: $id, ')
+          ..write('userCardId: $userCardId, ')
+          ..write('category: $category, ')
+          ..write('kind: $kind, ')
+          ..write('title: $title, ')
+          ..write('rateBps: $rateBps, ')
+          ..write('monthlyCapPaise: $monthlyCapPaise, ')
+          ..write('channel: $channel, ')
+          ..write('createdAt: $createdAt, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
 class $MerchantRulesTable extends MerchantRules
     with TableInfo<$MerchantRulesTable, MerchantRule> {
   @override
@@ -2981,6 +3550,7 @@ abstract class _$AppDatabase extends GeneratedDatabase {
   late final $BenefitOverridesTable benefitOverrides = $BenefitOverridesTable(
     this,
   );
+  late final $CustomBenefitsTable customBenefits = $CustomBenefitsTable(this);
   late final $MerchantRulesTable merchantRules = $MerchantRulesTable(this);
   late final $NetworkLogsTable networkLogs = $NetworkLogsTable(this);
   late final $KeyValuesTable keyValues = $KeyValuesTable(this);
@@ -2992,6 +3562,7 @@ abstract class _$AppDatabase extends GeneratedDatabase {
     userCards,
     spends,
     benefitOverrides,
+    customBenefits,
     merchantRules,
     networkLogs,
     keyValues,
@@ -4027,6 +4598,297 @@ typedef $$BenefitOverridesTableProcessedTableManager =
       BenefitOverride,
       PrefetchHooks Function()
     >;
+typedef $$CustomBenefitsTableCreateCompanionBuilder =
+    CustomBenefitsCompanion Function({
+      required String id,
+      required String userCardId,
+      required String category,
+      Value<String> kind,
+      required String title,
+      Value<int?> rateBps,
+      Value<int?> monthlyCapPaise,
+      Value<String?> channel,
+      required DateTime createdAt,
+      Value<int> rowid,
+    });
+typedef $$CustomBenefitsTableUpdateCompanionBuilder =
+    CustomBenefitsCompanion Function({
+      Value<String> id,
+      Value<String> userCardId,
+      Value<String> category,
+      Value<String> kind,
+      Value<String> title,
+      Value<int?> rateBps,
+      Value<int?> monthlyCapPaise,
+      Value<String?> channel,
+      Value<DateTime> createdAt,
+      Value<int> rowid,
+    });
+
+class $$CustomBenefitsTableFilterComposer
+    extends Composer<_$AppDatabase, $CustomBenefitsTable> {
+  $$CustomBenefitsTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get userCardId => $composableBuilder(
+    column: $table.userCardId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get category => $composableBuilder(
+    column: $table.category,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get kind => $composableBuilder(
+    column: $table.kind,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get title => $composableBuilder(
+    column: $table.title,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get rateBps => $composableBuilder(
+    column: $table.rateBps,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get monthlyCapPaise => $composableBuilder(
+    column: $table.monthlyCapPaise,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get channel => $composableBuilder(
+    column: $table.channel,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$CustomBenefitsTableOrderingComposer
+    extends Composer<_$AppDatabase, $CustomBenefitsTable> {
+  $$CustomBenefitsTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get userCardId => $composableBuilder(
+    column: $table.userCardId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get category => $composableBuilder(
+    column: $table.category,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get kind => $composableBuilder(
+    column: $table.kind,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get title => $composableBuilder(
+    column: $table.title,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get rateBps => $composableBuilder(
+    column: $table.rateBps,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get monthlyCapPaise => $composableBuilder(
+    column: $table.monthlyCapPaise,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get channel => $composableBuilder(
+    column: $table.channel,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$CustomBenefitsTableAnnotationComposer
+    extends Composer<_$AppDatabase, $CustomBenefitsTable> {
+  $$CustomBenefitsTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get userCardId => $composableBuilder(
+    column: $table.userCardId,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get category =>
+      $composableBuilder(column: $table.category, builder: (column) => column);
+
+  GeneratedColumn<String> get kind =>
+      $composableBuilder(column: $table.kind, builder: (column) => column);
+
+  GeneratedColumn<String> get title =>
+      $composableBuilder(column: $table.title, builder: (column) => column);
+
+  GeneratedColumn<int> get rateBps =>
+      $composableBuilder(column: $table.rateBps, builder: (column) => column);
+
+  GeneratedColumn<int> get monthlyCapPaise => $composableBuilder(
+    column: $table.monthlyCapPaise,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get channel =>
+      $composableBuilder(column: $table.channel, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+}
+
+class $$CustomBenefitsTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $CustomBenefitsTable,
+          CustomBenefit,
+          $$CustomBenefitsTableFilterComposer,
+          $$CustomBenefitsTableOrderingComposer,
+          $$CustomBenefitsTableAnnotationComposer,
+          $$CustomBenefitsTableCreateCompanionBuilder,
+          $$CustomBenefitsTableUpdateCompanionBuilder,
+          (
+            CustomBenefit,
+            BaseReferences<_$AppDatabase, $CustomBenefitsTable, CustomBenefit>,
+          ),
+          CustomBenefit,
+          PrefetchHooks Function()
+        > {
+  $$CustomBenefitsTableTableManager(
+    _$AppDatabase db,
+    $CustomBenefitsTable table,
+  ) : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$CustomBenefitsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$CustomBenefitsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$CustomBenefitsTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<String> id = const Value.absent(),
+                Value<String> userCardId = const Value.absent(),
+                Value<String> category = const Value.absent(),
+                Value<String> kind = const Value.absent(),
+                Value<String> title = const Value.absent(),
+                Value<int?> rateBps = const Value.absent(),
+                Value<int?> monthlyCapPaise = const Value.absent(),
+                Value<String?> channel = const Value.absent(),
+                Value<DateTime> createdAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => CustomBenefitsCompanion(
+                id: id,
+                userCardId: userCardId,
+                category: category,
+                kind: kind,
+                title: title,
+                rateBps: rateBps,
+                monthlyCapPaise: monthlyCapPaise,
+                channel: channel,
+                createdAt: createdAt,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String id,
+                required String userCardId,
+                required String category,
+                Value<String> kind = const Value.absent(),
+                required String title,
+                Value<int?> rateBps = const Value.absent(),
+                Value<int?> monthlyCapPaise = const Value.absent(),
+                Value<String?> channel = const Value.absent(),
+                required DateTime createdAt,
+                Value<int> rowid = const Value.absent(),
+              }) => CustomBenefitsCompanion.insert(
+                id: id,
+                userCardId: userCardId,
+                category: category,
+                kind: kind,
+                title: title,
+                rateBps: rateBps,
+                monthlyCapPaise: monthlyCapPaise,
+                channel: channel,
+                createdAt: createdAt,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$CustomBenefitsTable, CustomBenefit>(table),
+                  BaseReferences<
+                    _$AppDatabase,
+                    $CustomBenefitsTable,
+                    CustomBenefit
+                  >(db, table, e),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$CustomBenefitsTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $CustomBenefitsTable,
+      CustomBenefit,
+      $$CustomBenefitsTableFilterComposer,
+      $$CustomBenefitsTableOrderingComposer,
+      $$CustomBenefitsTableAnnotationComposer,
+      $$CustomBenefitsTableCreateCompanionBuilder,
+      $$CustomBenefitsTableUpdateCompanionBuilder,
+      (
+        CustomBenefit,
+        BaseReferences<_$AppDatabase, $CustomBenefitsTable, CustomBenefit>,
+      ),
+      CustomBenefit,
+      PrefetchHooks Function()
+    >;
 typedef $$MerchantRulesTableCreateCompanionBuilder =
     MerchantRulesCompanion Function({
       required String merchant,
@@ -4564,6 +5426,8 @@ class $AppDatabaseManager {
       $$SpendsTableTableManager(_db, _db.spends);
   $$BenefitOverridesTableTableManager get benefitOverrides =>
       $$BenefitOverridesTableTableManager(_db, _db.benefitOverrides);
+  $$CustomBenefitsTableTableManager get customBenefits =>
+      $$CustomBenefitsTableTableManager(_db, _db.customBenefits);
   $$MerchantRulesTableTableManager get merchantRules =>
       $$MerchantRulesTableTableManager(_db, _db.merchantRules);
   $$NetworkLogsTableTableManager get networkLogs =>

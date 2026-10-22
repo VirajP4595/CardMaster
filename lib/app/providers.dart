@@ -39,6 +39,13 @@ final overridesProvider = StreamProvider<List<BenefitOverride>>(
   (ref) => ref.watch(databaseProvider).watchOverrides(),
 );
 
+final customBenefitsProvider = StreamProvider<List<CustomBenefit>>(
+  (ref) => ref.watch(databaseProvider).watchCustomBenefits(),
+);
+
+/// Ids of benefits the user created (shown with edit/delete).
+const customBenefitPrefix = 'custom:';
+
 final cardProvider = Provider.family<UserCard?, String>((ref, id) {
   final cards = ref.watch(cardsProvider).value ?? const [];
   return cards.where((c) => c.id == id).firstOrNull;
@@ -54,7 +61,26 @@ final benefitsForCardProvider =
     for (final o in ref.watch(overridesProvider).value ?? const <BenefitOverride>[])
       if (o.userCardId == cardId) o.benefitId: o,
   };
+  final custom = [
+    for (final c in ref.watch(customBenefitsProvider).value ??
+        const <CustomBenefit>[])
+      if (c.userCardId == cardId)
+        Benefit(
+          id: '$customBenefitPrefix${c.id}',
+          category: SpendCategory.fromCode(c.category),
+          kind: BenefitKind.fromCode(c.kind),
+          title: c.title,
+          rateBps: c.rateBps,
+          monthlyCapPaise: c.monthlyCapPaise,
+          channel: c.channel,
+          conditions: 'Added by you',
+          lastVerified: c.createdAt,
+        ),
+  ];
+  // Custom benefits come first: the recommender uses the first match per
+  // category, so the user's own entry wins over the catalog.
   return [
+    ...custom,
     for (final b in product?.benefits ?? const <Benefit>[])
       if (overrides[b.id] case final o?)
         Benefit(
