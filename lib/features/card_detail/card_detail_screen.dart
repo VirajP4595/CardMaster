@@ -2,6 +2,7 @@ import 'package:drift/drift.dart' show Value;
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:intl/intl.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:uuid/uuid.dart';
 
@@ -156,6 +157,7 @@ class CardDetailScreen extends ConsumerWidget {
             ]),
           ),
           _Caps(card: card, benefits: benefits),
+          _Points(card: card),
           const SizedBox(height: 18),
           const SectionTitle('Benefits'),
           if (benefits.isEmpty)
@@ -683,5 +685,137 @@ class _Caps extends ConsumerWidget {
         ],
       ),
     );
+  }
+}
+
+/// Reward points wallet for this card (balance, rupee value, expiry).
+class _Points extends ConsumerWidget {
+  const _Points({required this.card});
+  final UserCard card;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final all = ref.watch(pointsProvider).value ?? const <PointsBalance>[];
+    final p = all.where((x) => x.cardId == card.id).firstOrNull;
+    final expiring = p?.expiresOn != null &&
+        p!.expiresOn!.difference(DateTime.now()).inDays <= 60;
+    return Padding(
+      padding: const EdgeInsets.only(top: 12),
+      child: Tile(
+        onTap: () => _edit(context, ref, p),
+        child: Row(children: [
+          const Icon(Icons.stars_outlined, color: AppColors.attention),
+          const SizedBox(width: 12),
+          Expanded(
+            child: p == null
+                ? const Text('Track reward points',
+                    style: TextStyle(fontWeight: FontWeight.w700))
+                : Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                          '${groupIndian(p.points)} points ≈ ${formatInr(p.valuePaise)}',
+                          style: const TextStyle(fontWeight: FontWeight.w700)),
+                      if (p.expiresOn != null)
+                        Text(
+                            'Expire ${DateFormat('d MMM yyyy').format(p.expiresOn!)}',
+                            style: TextStyle(
+                                fontSize: 12,
+                                color: expiring
+                                    ? AppColors.attention
+                                    : AppColors.textSecondary)),
+                    ],
+                  ),
+          ),
+          const Icon(Icons.chevron_right),
+        ]),
+      ),
+    );
+  }
+
+  Future<void> _edit(
+      BuildContext context, WidgetRef ref, PointsBalance? p) async {
+    final points = TextEditingController(text: p == null ? '' : '${p.points}');
+    final value = TextEditingController(
+        text: p == null ? '0.25' : '${p.paisePerPoint / 100}');
+    DateTime? expires = p?.expiresOn;
+    final result = await showModalBottomSheet<String>(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: AppColors.surfaceHigh,
+      builder: (ctx) => StatefulBuilder(
+        builder: (ctx, set) => Padding(
+          padding: EdgeInsets.fromLTRB(
+              24, 20, 24, MediaQuery.of(ctx).viewInsets.bottom + 24),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              const Text('Reward points',
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w800)),
+              const SizedBox(height: 4),
+              const Caption(
+                  'Copy the balance from your statement or bank app. Value per point is what you can redeem one point for.'),
+              const SizedBox(height: 16),
+              TextField(
+                controller: points,
+                keyboardType: TextInputType.number,
+                decoration: const InputDecoration(labelText: 'Points balance'),
+              ),
+              const SizedBox(height: 12),
+              TextField(
+                controller: value,
+                keyboardType:
+                    const TextInputType.numberWithOptions(decimal: true),
+                decoration: const InputDecoration(
+                    labelText: 'Value per point', prefixText: '₹ '),
+              ),
+              const SizedBox(height: 12),
+              OutlinedButton.icon(
+                icon: const Icon(Icons.event_outlined),
+                label: Text(expires == null
+                    ? 'Expiry date (optional)'
+                    : 'Expire ${DateFormat('d MMM yyyy').format(expires!)}'),
+                onPressed: () async {
+                  final d = await showDatePicker(
+                    context: ctx,
+                    initialDate: expires ??
+                        DateTime.now().add(const Duration(days: 365)),
+                    firstDate: DateTime.now(),
+                    lastDate: DateTime.now().add(const Duration(days: 365 * 5)),
+                  );
+                  if (d != null) set(() => expires = d);
+                },
+              ),
+              const SizedBox(height: 16),
+              FilledButton(
+                onPressed: () => Navigator.pop(ctx, 'save'),
+                child: const Text('Save'),
+              ),
+              if (p != null)
+                TextButton(
+                  onPressed: () => Navigator.pop(ctx, 'delete'),
+                  child: const Text('Stop tracking points'),
+                ),
+            ],
+          ),
+        ),
+      ),
+    );
+    final db = ref.read(databaseProvider);
+    if (result == 'delete') {
+      await db.deletePoints(card.id);
+      return;
+    }
+    if (result != 'save') return;
+    final n = int.tryParse(points.text.replaceAll(',', '').trim());
+    final perPoint = parseRupeesToPaise(value.text);
+    if (n == null || perPoint == null) return;
+    await db.savePoints(PointsBalance(
+      cardId: card.id,
+      points: n,
+      paisePerPoint: perPoint,
+      expiresOn: expires,
+    ));
   }
 }

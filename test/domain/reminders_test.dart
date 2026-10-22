@@ -55,4 +55,24 @@ void main() {
         lastBackup: DateTime(2026, 10, 10));
     expect(r.single.at, DateTime(2026, 11, 9, 9));
   });
+
+  test('reminds 30 days before reward points expire', () {
+    final r = planReminders(
+      cards: [card],
+      spends: const [],
+      now: now,
+      lastBackup: now,
+      points: [
+        PointsBalance(
+          cardId: 'c',
+          points: 12450,
+          paisePerPoint: 25,
+          expiresOn: DateTime(2026, 12, 1),
+        ),
+      ],
+    );
+    final p = r.singleWhere((x) => x.title.contains('points expire'));
+    expect(p.at, DateTime(2026, 11, 1, 9));
+    expect(p.body, contains('₹3,112'));
+  });
 }

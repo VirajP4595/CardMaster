@@ -23,6 +23,7 @@ List<PlannedReminder> planReminders({
   required List<Spend> spends,
   required DateTime now,
   DateTime? lastBackup,
+  List<PointsBalance> points = const [],
   int horizonDays = 60,
 }) {
   final out = <PlannedReminder>[];
@@ -57,6 +58,17 @@ List<PlannedReminder> planReminders({
             '${formatInr(c.annualFeePaise)} fee.',
       );
     }
+  }
+
+  for (final p in points) {
+    final card = cards.where((c) => c.id == p.cardId).firstOrNull;
+    if (card == null || p.expiresOn == null || p.points == 0) continue;
+    add(
+      p.expiresOn!.subtract(const Duration(days: 30)),
+      '${card.displayName}: points expire in 30 days',
+      '${p.points} points worth about ${formatInr(p.valuePaise)} expire on '
+          '${p.expiresOn!.day}/${p.expiresOn!.month}. Redeem them before then.',
+    );
   }
 
   add(

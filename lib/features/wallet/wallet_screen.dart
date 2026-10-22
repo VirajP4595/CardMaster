@@ -149,13 +149,16 @@ class _EmptyWallet extends StatelessWidget {
       );
 }
 
-class _Summary extends StatelessWidget {
+class _Summary extends ConsumerWidget {
   const _Summary({required this.cards});
   final List<UserCard> cards;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final limit = cards.fold<int>(0, (s, c) => s + c.creditLimitPaise);
+    final pointsValue = (ref.watch(pointsProvider).value ?? const [])
+        .where((p) => cards.any((c) => c.id == p.cardId))
+        .fold<int>(0, (s, p) => s + p.valuePaise);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24),
       child: Tile(
@@ -177,6 +180,12 @@ class _Summary extends StatelessWidget {
               Text('${cards.length} card${cards.length == 1 ? '' : 's'}',
                   style: const TextStyle(color: AppColors.textSecondary)),
             ]),
+            if (pointsValue > 0) ...[
+              const SizedBox(height: 6),
+              Text('Reward points worth about ${formatInr(pointsValue)}',
+                  style: const TextStyle(
+                      fontSize: 12, color: AppColors.attention)),
+            ],
           ],
         ),
       ),

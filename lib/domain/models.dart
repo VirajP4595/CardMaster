@@ -173,3 +173,23 @@ class Spend {
   final String? note;
   final DateTime spentOn;
 }
+
+/// Reward points on a card, entered by the user (they're not visible to the
+/// app otherwise). Value per point is what the user can redeem them for.
+class PointsBalance {
+  const PointsBalance({
+    required this.cardId,
+    required this.points,
+    required this.paisePerPoint,
+    this.expiresOn,
+    this.updatedAt,
+  });
+
+  final String cardId;
+  final int points;
+  final int paisePerPoint;
+  final DateTime? expiresOn;
+  final DateTime? updatedAt;
+
+  int get valuePaise => points * paisePerPoint;
+}

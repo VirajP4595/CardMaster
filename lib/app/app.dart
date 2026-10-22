@@ -16,6 +16,7 @@ final reminderSyncProvider = Provider<void>((ref) {
   final spends = ref.watch(spendsProvider).value;
   final lastBackup =
       ref.watch(settingProvider(SettingKeys.lastBackupAt)).value;
+  final points = ref.watch(pointsProvider).value ?? const [];
   if (cards == null || spends == null) return;
   if (!enabled) {
     RemindersService.instance.cancelAll();
@@ -26,6 +27,7 @@ final reminderSyncProvider = Provider<void>((ref) {
     spends: spends,
     now: DateTime.now(),
     lastBackup: lastBackup == null ? null : DateTime.parse(lastBackup),
+    points: points,
   ));
 });
 

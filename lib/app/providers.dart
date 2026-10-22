@@ -44,6 +44,10 @@ final recurringProvider = StreamProvider<List<RecurringRule>>(
   (ref) => ref.watch(databaseProvider).watchRecurring(),
 );
 
+final pointsProvider = StreamProvider<List<PointsBalance>>(
+  (ref) => ref.watch(databaseProvider).watchPoints(),
+);
+
 final budgetsProvider = StreamProvider<Map<SpendCategory, int>>(
   (ref) => ref.watch(databaseProvider).watchBudgets(),
 );

@@ -3555,6 +3555,376 @@ class RecurringsCompanion extends UpdateCompanion<RecurringRow> {
   }
 }
 
+class $PointsBalancesTable extends PointsBalances
+    with TableInfo<$PointsBalancesTable, PointsRow> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $PointsBalancesTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _cardIdMeta = const VerificationMeta('cardId');
+  @override
+  late final GeneratedColumn<String> cardId = GeneratedColumn<String>(
+    'card_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _pointsMeta = const VerificationMeta('points');
+  @override
+  late final GeneratedColumn<int> points = GeneratedColumn<int>(
+    'points',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _paisePerPointMeta = const VerificationMeta(
+    'paisePerPoint',
+  );
+  @override
+  late final GeneratedColumn<int> paisePerPoint = GeneratedColumn<int>(
+    'paise_per_point',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _expiresOnMeta = const VerificationMeta(
+    'expiresOn',
+  );
+  @override
+  late final GeneratedColumn<DateTime> expiresOn = GeneratedColumn<DateTime>(
+    'expires_on',
+    aliasedName,
+    true,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _updatedAtMeta = const VerificationMeta(
+    'updatedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> updatedAt = GeneratedColumn<DateTime>(
+    'updated_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    cardId,
+    points,
+    paisePerPoint,
+    expiresOn,
+    updatedAt,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'points_balances';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<PointsRow> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('card_id')) {
+      context.handle(
+        _cardIdMeta,
+        cardId.isAcceptableOrUnknown(data['card_id']!, _cardIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_cardIdMeta);
+    }
+    if (data.containsKey('points')) {
+      context.handle(
+        _pointsMeta,
+        points.isAcceptableOrUnknown(data['points']!, _pointsMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_pointsMeta);
+    }
+    if (data.containsKey('paise_per_point')) {
+      context.handle(
+        _paisePerPointMeta,
+        paisePerPoint.isAcceptableOrUnknown(
+          data['paise_per_point']!,
+          _paisePerPointMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_paisePerPointMeta);
+    }
+    if (data.containsKey('expires_on')) {
+      context.handle(
+        _expiresOnMeta,
+        expiresOn.isAcceptableOrUnknown(data['expires_on']!, _expiresOnMeta),
+      );
+    }
+    if (data.containsKey('updated_at')) {
+      context.handle(
+        _updatedAtMeta,
+        updatedAt.isAcceptableOrUnknown(data['updated_at']!, _updatedAtMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_updatedAtMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {cardId};
+  @override
+  PointsRow map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return PointsRow(
+      cardId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}card_id'],
+      )!,
+      points: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}points'],
+      )!,
+      paisePerPoint: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}paise_per_point'],
+      )!,
+      expiresOn: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}expires_on'],
+      ),
+      updatedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}updated_at'],
+      )!,
+    );
+  }
+
+  @override
+  $PointsBalancesTable createAlias(String alias) {
+    return $PointsBalancesTable(attachedDatabase, alias);
+  }
+}
+
+class PointsRow extends DataClass implements Insertable<PointsRow> {
+  final String cardId;
+  final int points;
+  final int paisePerPoint;
+  final DateTime? expiresOn;
+  final DateTime updatedAt;
+  const PointsRow({
+    required this.cardId,
+    required this.points,
+    required this.paisePerPoint,
+    this.expiresOn,
+    required this.updatedAt,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['card_id'] = Variable<String>(cardId);
+    map['points'] = Variable<int>(points);
+    map['paise_per_point'] = Variable<int>(paisePerPoint);
+    if (!nullToAbsent || expiresOn != null) {
+      map['expires_on'] = Variable<DateTime>(expiresOn);
+    }
+    map['updated_at'] = Variable<DateTime>(updatedAt);
+    return map;
+  }
+
+  PointsBalancesCompanion toCompanion(bool nullToAbsent) {
+    return PointsBalancesCompanion(
+      cardId: Value(cardId),
+      points: Value(points),
+      paisePerPoint: Value(paisePerPoint),
+      expiresOn: expiresOn == null && nullToAbsent
+          ? const Value.absent()
+          : Value(expiresOn),
+      updatedAt: Value(updatedAt),
+    );
+  }
+
+  factory PointsRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return PointsRow(
+      cardId: serializer.fromJson<String>(json['cardId']),
+      points: serializer.fromJson<int>(json['points']),
+      paisePerPoint: serializer.fromJson<int>(json['paisePerPoint']),
+      expiresOn: serializer.fromJson<DateTime?>(json['expiresOn']),
+      updatedAt: serializer.fromJson<DateTime>(json['updatedAt']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'cardId': serializer.toJson<String>(cardId),
+      'points': serializer.toJson<int>(points),
+      'paisePerPoint': serializer.toJson<int>(paisePerPoint),
+      'expiresOn': serializer.toJson<DateTime?>(expiresOn),
+      'updatedAt': serializer.toJson<DateTime>(updatedAt),
+    };
+  }
+
+  PointsRow copyWith({
+    String? cardId,
+    int? points,
+    int? paisePerPoint,
+    Value<DateTime?> expiresOn = const Value.absent(),
+    DateTime? updatedAt,
+  }) => PointsRow(
+    cardId: cardId ?? this.cardId,
+    points: points ?? this.points,
+    paisePerPoint: paisePerPoint ?? this.paisePerPoint,
+    expiresOn: expiresOn.present ? expiresOn.value : this.expiresOn,
+    updatedAt: updatedAt ?? this.updatedAt,
+  );
+  PointsRow copyWithCompanion(PointsBalancesCompanion data) {
+    return PointsRow(
+      cardId: data.cardId.present ? data.cardId.value : this.cardId,
+      points: data.points.present ? data.points.value : this.points,
+      paisePerPoint: data.paisePerPoint.present
+          ? data.paisePerPoint.value
+          : this.paisePerPoint,
+      expiresOn: data.expiresOn.present ? data.expiresOn.value : this.expiresOn,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('PointsRow(')
+          ..write('cardId: $cardId, ')
+          ..write('points: $points, ')
+          ..write('paisePerPoint: $paisePerPoint, ')
+          ..write('expiresOn: $expiresOn, ')
+          ..write('updatedAt: $updatedAt')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(cardId, points, paisePerPoint, expiresOn, updatedAt);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is PointsRow &&
+          other.cardId == this.cardId &&
+          other.points == this.points &&
+          other.paisePerPoint == this.paisePerPoint &&
+          other.expiresOn == this.expiresOn &&
+          other.updatedAt == this.updatedAt);
+}
+
+class PointsBalancesCompanion extends UpdateCompanion<PointsRow> {
+  final Value<String> cardId;
+  final Value<int> points;
+  final Value<int> paisePerPoint;
+  final Value<DateTime?> expiresOn;
+  final Value<DateTime> updatedAt;
+  final Value<int> rowid;
+  const PointsBalancesCompanion({
+    this.cardId = const Value.absent(),
+    this.points = const Value.absent(),
+    this.paisePerPoint = const Value.absent(),
+    this.expiresOn = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  PointsBalancesCompanion.insert({
+    required String cardId,
+    required int points,
+    required int paisePerPoint,
+    this.expiresOn = const Value.absent(),
+    required DateTime updatedAt,
+    this.rowid = const Value.absent(),
+  }) : cardId = Value(cardId),
+       points = Value(points),
+       paisePerPoint = Value(paisePerPoint),
+       updatedAt = Value(updatedAt);
+  static Insertable<PointsRow> custom({
+    Expression<String>? cardId,
+    Expression<int>? points,
+    Expression<int>? paisePerPoint,
+    Expression<DateTime>? expiresOn,
+    Expression<DateTime>? updatedAt,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (cardId != null) 'card_id': cardId,
+      if (points != null) 'points': points,
+      if (paisePerPoint != null) 'paise_per_point': paisePerPoint,
+      if (expiresOn != null) 'expires_on': expiresOn,
+      if (updatedAt != null) 'updated_at': updatedAt,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  PointsBalancesCompanion copyWith({
+    Value<String>? cardId,
+    Value<int>? points,
+    Value<int>? paisePerPoint,
+    Value<DateTime?>? expiresOn,
+    Value<DateTime>? updatedAt,
+    Value<int>? rowid,
+  }) {
+    return PointsBalancesCompanion(
+      cardId: cardId ?? this.cardId,
+      points: points ?? this.points,
+      paisePerPoint: paisePerPoint ?? this.paisePerPoint,
+      expiresOn: expiresOn ?? this.expiresOn,
+      updatedAt: updatedAt ?? this.updatedAt,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (cardId.present) {
+      map['card_id'] = Variable<String>(cardId.value);
+    }
+    if (points.present) {
+      map['points'] = Variable<int>(points.value);
+    }
+    if (paisePerPoint.present) {
+      map['paise_per_point'] = Variable<int>(paisePerPoint.value);
+    }
+    if (expiresOn.present) {
+      map['expires_on'] = Variable<DateTime>(expiresOn.value);
+    }
+    if (updatedAt.present) {
+      map['updated_at'] = Variable<DateTime>(updatedAt.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('PointsBalancesCompanion(')
+          ..write('cardId: $cardId, ')
+          ..write('points: $points, ')
+          ..write('paisePerPoint: $paisePerPoint, ')
+          ..write('expiresOn: $expiresOn, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
 class $MerchantRulesTable extends MerchantRules
     with TableInfo<$MerchantRulesTable, MerchantRule> {
   @override
@@ -4413,6 +4783,7 @@ abstract class _$AppDatabase extends GeneratedDatabase {
   late final $CustomBenefitsTable customBenefits = $CustomBenefitsTable(this);
   late final $BudgetsTable budgets = $BudgetsTable(this);
   late final $RecurringsTable recurrings = $RecurringsTable(this);
+  late final $PointsBalancesTable pointsBalances = $PointsBalancesTable(this);
   late final $MerchantRulesTable merchantRules = $MerchantRulesTable(this);
   late final $NetworkLogsTable networkLogs = $NetworkLogsTable(this);
   late final $KeyValuesTable keyValues = $KeyValuesTable(this);
@@ -4427,6 +4798,7 @@ abstract class _$AppDatabase extends GeneratedDatabase {
     customBenefits,
     budgets,
     recurrings,
+    pointsBalances,
     merchantRules,
     networkLogs,
     keyValues,
@@ -6211,6 +6583,219 @@ typedef $$RecurringsTableProcessedTableManager =
       RecurringRow,
       PrefetchHooks Function()
     >;
+typedef $$PointsBalancesTableCreateCompanionBuilder =
+    PointsBalancesCompanion Function({
+      required String cardId,
+      required int points,
+      required int paisePerPoint,
+      Value<DateTime?> expiresOn,
+      required DateTime updatedAt,
+      Value<int> rowid,
+    });
+typedef $$PointsBalancesTableUpdateCompanionBuilder =
+    PointsBalancesCompanion Function({
+      Value<String> cardId,
+      Value<int> points,
+      Value<int> paisePerPoint,
+      Value<DateTime?> expiresOn,
+      Value<DateTime> updatedAt,
+      Value<int> rowid,
+    });
+
+class $$PointsBalancesTableFilterComposer
+    extends Composer<_$AppDatabase, $PointsBalancesTable> {
+  $$PointsBalancesTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get cardId => $composableBuilder(
+    column: $table.cardId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get points => $composableBuilder(
+    column: $table.points,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get paisePerPoint => $composableBuilder(
+    column: $table.paisePerPoint,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get expiresOn => $composableBuilder(
+    column: $table.expiresOn,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$PointsBalancesTableOrderingComposer
+    extends Composer<_$AppDatabase, $PointsBalancesTable> {
+  $$PointsBalancesTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get cardId => $composableBuilder(
+    column: $table.cardId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get points => $composableBuilder(
+    column: $table.points,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get paisePerPoint => $composableBuilder(
+    column: $table.paisePerPoint,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get expiresOn => $composableBuilder(
+    column: $table.expiresOn,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$PointsBalancesTableAnnotationComposer
+    extends Composer<_$AppDatabase, $PointsBalancesTable> {
+  $$PointsBalancesTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get cardId =>
+      $composableBuilder(column: $table.cardId, builder: (column) => column);
+
+  GeneratedColumn<int> get points =>
+      $composableBuilder(column: $table.points, builder: (column) => column);
+
+  GeneratedColumn<int> get paisePerPoint => $composableBuilder(
+    column: $table.paisePerPoint,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<DateTime> get expiresOn =>
+      $composableBuilder(column: $table.expiresOn, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+}
+
+class $$PointsBalancesTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $PointsBalancesTable,
+          PointsRow,
+          $$PointsBalancesTableFilterComposer,
+          $$PointsBalancesTableOrderingComposer,
+          $$PointsBalancesTableAnnotationComposer,
+          $$PointsBalancesTableCreateCompanionBuilder,
+          $$PointsBalancesTableUpdateCompanionBuilder,
+          (
+            PointsRow,
+            BaseReferences<_$AppDatabase, $PointsBalancesTable, PointsRow>,
+          ),
+          PointsRow,
+          PrefetchHooks Function()
+        > {
+  $$PointsBalancesTableTableManager(
+    _$AppDatabase db,
+    $PointsBalancesTable table,
+  ) : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$PointsBalancesTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$PointsBalancesTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$PointsBalancesTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<String> cardId = const Value.absent(),
+                Value<int> points = const Value.absent(),
+                Value<int> paisePerPoint = const Value.absent(),
+                Value<DateTime?> expiresOn = const Value.absent(),
+                Value<DateTime> updatedAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => PointsBalancesCompanion(
+                cardId: cardId,
+                points: points,
+                paisePerPoint: paisePerPoint,
+                expiresOn: expiresOn,
+                updatedAt: updatedAt,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String cardId,
+                required int points,
+                required int paisePerPoint,
+                Value<DateTime?> expiresOn = const Value.absent(),
+                required DateTime updatedAt,
+                Value<int> rowid = const Value.absent(),
+              }) => PointsBalancesCompanion.insert(
+                cardId: cardId,
+                points: points,
+                paisePerPoint: paisePerPoint,
+                expiresOn: expiresOn,
+                updatedAt: updatedAt,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$PointsBalancesTable, PointsRow>(table),
+                  BaseReferences<
+                    _$AppDatabase,
+                    $PointsBalancesTable,
+                    PointsRow
+                  >(db, table, e),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$PointsBalancesTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $PointsBalancesTable,
+      PointsRow,
+      $$PointsBalancesTableFilterComposer,
+      $$PointsBalancesTableOrderingComposer,
+      $$PointsBalancesTableAnnotationComposer,
+      $$PointsBalancesTableCreateCompanionBuilder,
+      $$PointsBalancesTableUpdateCompanionBuilder,
+      (
+        PointsRow,
+        BaseReferences<_$AppDatabase, $PointsBalancesTable, PointsRow>,
+      ),
+      PointsRow,
+      PrefetchHooks Function()
+    >;
 typedef $$MerchantRulesTableCreateCompanionBuilder =
     MerchantRulesCompanion Function({
       required String merchant,
@@ -6754,6 +7339,8 @@ class $AppDatabaseManager {
       $$BudgetsTableTableManager(_db, _db.budgets);
   $$RecurringsTableTableManager get recurrings =>
       $$RecurringsTableTableManager(_db, _db.recurrings);
+  $$PointsBalancesTableTableManager get pointsBalances =>
+      $$PointsBalancesTableTableManager(_db, _db.pointsBalances);
   $$MerchantRulesTableTableManager get merchantRules =>
       $$MerchantRulesTableTableManager(_db, _db.merchantRules);
   $$NetworkLogsTableTableManager get networkLogs =>

@@ -282,6 +282,26 @@ Rs.900 spent on card XX5566 at UNKNOWN SHOP on 20-10-26.
     await _close(t, db);
   });
 
+  testWidgets('points show on the card and in the wallet total', (t) async {
+    final db = await t.runAsync(_seed);
+    await t.runAsync(() => db!.savePoints(PointsBalance(
+          cardId: 'airtel',
+          points: 12450,
+          paisePerPoint: 25,
+          expiresOn: DateTime.now().add(const Duration(days: 20)),
+        )));
+    await _pump(t, db!, const CardDetailScreen(cardId: 'airtel'));
+    expect(find.text('12,450 points ≈ ₹3,112'), findsOneWidget);
+    await _close(t, db);
+
+    final db2 = await t.runAsync(_seed);
+    await t.runAsync(() => db2!.savePoints(const PointsBalance(
+        cardId: 'scapia', points: 1000, paisePerPoint: 50)));
+    await _pump(t, db2!, const WalletScreen());
+    expect(find.text('Reward points worth about ₹500'), findsOneWidget);
+    await _close(t, db2);
+  });
+
   testWidgets('trust center lists costs and an empty network log', (t) async {
     final db = await t.runAsync(_seed);
     await _pump(t, db!, const TrustScreen());

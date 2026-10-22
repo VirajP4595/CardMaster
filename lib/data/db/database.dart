@@ -61,6 +61,19 @@ class Recurrings extends Table {
   Set<Column> get primaryKey => {id};
 }
 
+/// Reward points per card (added in v5).
+@DataClassName('PointsRow')
+class PointsBalances extends Table {
+  TextColumn get cardId => text()();
+  IntColumn get points => integer()();
+  IntColumn get paisePerPoint => integer()();
+  DateTimeColumn get expiresOn => dateTime().nullable()();
+  DateTimeColumn get updatedAt => dateTime()();
+
+  @override
+  Set<Column> get primaryKey => {cardId};
+}
+
 @DataClassName('SpendRow')
 class Spends extends Table {
   TextColumn get id => text()();
@@ -150,6 +163,7 @@ class KeyValues extends Table {
   CustomBenefits,
   Budgets,
   Recurrings,
+  PointsBalances,
   MerchantRules,
   NetworkLogs,
   KeyValues,
@@ -158,7 +172,7 @@ class AppDatabase extends _$AppDatabase {
   AppDatabase(super.e);
 
   @override
-  int get schemaVersion => 4;
+  int get schemaVersion => 5;
 
   @override
   MigrationStrategy get migration => MigrationStrategy(
@@ -170,6 +184,7 @@ class AppDatabase extends _$AppDatabase {
             await m.createTable(budgets);
           }
           if (from < 4) await m.createTable(recurrings);
+          if (from < 5) await m.createTable(pointsBalances);
         },
       );
 
@@ -209,6 +224,7 @@ class AppDatabase extends _$AppDatabase {
             .go();
         await (delete(customBenefits)..where((t) => t.userCardId.equals(id)))
             .go();
+        await (delete(pointsBalances)..where((t) => t.cardId.equals(id))).go();
         // Keep the spends but detach them, so history and budgets survive.
         await (update(spends)..where((t) => t.userCardId.equals(id))).write(
             const SpendsCompanion(
@@ -318,6 +334,32 @@ class AppDatabase extends _$AppDatabase {
           ? (delete(budgets)..where((t) => t.category.equals(c.code))).go()
           : into(budgets).insertOnConflictUpdate(BudgetsCompanion.insert(
               category: c.code, amountPaise: amountPaise));
+
+  // ---- Reward points ----
+
+  Stream<List<m.PointsBalance>> watchPoints() =>
+      select(pointsBalances).watch().map((rows) => [
+            for (final r in rows)
+              m.PointsBalance(
+                cardId: r.cardId,
+                points: r.points,
+                paisePerPoint: r.paisePerPoint,
+                expiresOn: r.expiresOn,
+                updatedAt: r.updatedAt,
+              ),
+          ]);
+
+  Future<void> savePoints(m.PointsBalance p) =>
+      into(pointsBalances).insertOnConflictUpdate(PointsBalancesCompanion.insert(
+        cardId: p.cardId,
+        points: p.points,
+        paisePerPoint: p.paisePerPoint,
+        expiresOn: Value(p.expiresOn),
+        updatedAt: DateTime.now(),
+      ));
+
+  Future<void> deletePoints(String cardId) =>
+      (delete(pointsBalances)..where((t) => t.cardId.equals(cardId))).go();
 
   // ---- Recurring ----
 
