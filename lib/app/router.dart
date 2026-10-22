@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 import '../features/add_card/add_card_screen.dart';
 import '../features/best_card/best_card_screen.dart';
 import '../features/card_detail/card_detail_screen.dart';
+import '../features/card_detail/photo_face_screen.dart';
 import '../features/card_detail/worth_screen.dart';
 import '../features/money/import_review_screen.dart';
 import '../features/money/money_screen.dart';
@@ -56,6 +57,10 @@ final routerProvider = Provider<GoRouter>((ref) {
           GoRoute(
             path: 'worth',
             builder: (_, s) => WorthScreen(cardId: s.pathParameters['id']!),
+          ),
+          GoRoute(
+            path: 'photo',
+            builder: (_, s) => PhotoFaceScreen(cardId: s.pathParameters['id']!),
           ),
         ],
       ),

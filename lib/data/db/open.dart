@@ -6,6 +6,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
 
+import '../photo_face.dart';
 import 'database.dart';
 
 const _keyName = 'db_key_v1';
@@ -35,4 +36,25 @@ Future<AppDatabase> openEncryptedDatabase() async {
       db.select('SELECT count(*) FROM sqlite_master;');
     },
   ));
+}
+
+/// Card-photo store with its own key in the Android Keystore.
+Future<PhotoStore> openPhotoStore() async {
+  const storage = FlutterSecureStorage();
+  const name = 'photo_key_v1';
+  var key = await storage.read(key: name);
+  if (key == null) {
+    key = PhotoStore.newKey()
+        .map((b) => b.toRadixString(16).padLeft(2, '0'))
+        .join();
+    await storage.write(key: name, value: key);
+  }
+  final hex = key;
+  final bytes = [
+    for (var i = 0; i < hex.length; i += 2)
+      int.parse(hex.substring(i, i + 2), radix: 16),
+  ];
+  final dir = await getApplicationSupportDirectory();
+  return PhotoStore(
+      dir: Directory(p.join(dir.path, 'faces')), key: () async => bytes);
 }

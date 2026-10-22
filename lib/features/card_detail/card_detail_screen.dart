@@ -50,11 +50,24 @@ class CardDetailScreen extends ConsumerWidget {
           ),
           PopupMenuButton<String>(
             tooltip: 'More',
-            onSelected: (v) {
-              if (v == 'delete') _confirmDelete(context, ref, card);
+            onSelected: (v) async {
+              switch (v) {
+                case 'photo':
+                  context.push('/card/${card.id}/photo');
+                case 'styled':
+                  await ref.read(photoStoreProvider)?.delete(card.id);
+                  ref.invalidate(facePhotoProvider(card.id));
+                case 'delete':
+                  _confirmDelete(context, ref, card);
+              }
             },
-            itemBuilder: (_) => const [
-              PopupMenuItem(value: 'delete', child: Text('Remove card')),
+            itemBuilder: (_) => [
+              const PopupMenuItem(
+                  value: 'photo', child: Text('Use a photo of my card')),
+              if (ref.read(facePhotoProvider(card.id)).value != null)
+                const PopupMenuItem(
+                    value: 'styled', child: Text('Back to styled face')),
+              const PopupMenuItem(value: 'delete', child: Text('Remove card')),
             ],
           ),
         ],
@@ -62,7 +75,14 @@ class CardDetailScreen extends ConsumerWidget {
       body: ListView(
         padding: const EdgeInsets.fromLTRB(24, 8, 24, 32),
         children: [
-          Hero(tag: 'card-${card.id}', child: CardFace(card: card, style: style)),
+          Hero(
+            tag: 'card-${card.id}',
+            child: CardFace(
+              card: card,
+              style: style,
+              photo: ref.watch(facePhotoProvider(card.id)).value,
+            ),
+          ),
           const SizedBox(height: 18),
           GridView.count(
             crossAxisCount: 3,
@@ -502,6 +522,7 @@ class CardDetailScreen extends ConsumerWidget {
     );
     if (ok != true) return;
     await ref.read(databaseProvider).deleteCard(card.id);
+    await ref.read(photoStoreProvider)?.delete(card.id);
     if (context.mounted) context.pop();
   }
 }

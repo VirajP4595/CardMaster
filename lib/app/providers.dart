@@ -1,7 +1,10 @@
+import 'dart:typed_data';
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../data/catalog/catalog.dart';
 import '../data/db/database.dart';
+import '../data/photo_face.dart';
 import '../domain/fee_waiver.dart';
 import '../domain/models.dart';
 import '../domain/recommender.dart';
@@ -29,6 +32,21 @@ class CatalogNotifier extends Notifier<Catalog> {
 
   void replace(Catalog c) => state = c;
 }
+
+/// Encrypted card-photo store. Overridden in main(); null in tests.
+final photoStoreProvider = Provider<PhotoStore?>((ref) => null);
+
+/// The decrypted photo face of a card, if the user took one.
+final facePhotoProvider =
+    FutureProvider.family<Uint8List?, String>((ref, cardId) async {
+  final store = ref.watch(photoStoreProvider);
+  if (store == null) return null;
+  try {
+    return await store.load(cardId);
+  } catch (_) {
+    return null;
+  }
+});
 
 final cardsProvider = StreamProvider<List<UserCard>>(
   (ref) => ref.watch(databaseProvider).watchCards(),

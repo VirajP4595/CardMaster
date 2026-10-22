@@ -5,6 +5,7 @@ import 'package:card_master/app/providers.dart';
 import 'package:card_master/app/theme.dart';
 import 'package:card_master/data/catalog/catalog.dart';
 import 'package:card_master/data/db/database.dart';
+import 'package:card_master/data/photo_face.dart';
 import 'package:card_master/domain/models.dart';
 import 'package:card_master/domain/recurring.dart';
 import 'package:card_master/domain/trackers.dart';
@@ -20,6 +21,7 @@ import 'package:drift/native.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:image/image.dart' as img;
 
 final _catalog = Catalog.fromJsonString(
     File('assets/catalog/catalog_v1.json').readAsStringSync());
@@ -56,12 +58,14 @@ Future<AppDatabase> _seed({bool withCards = true}) async {
   return db;
 }
 
-Future<void> _pump(WidgetTester t, AppDatabase db, Widget screen) async {
+Future<void> _pump(WidgetTester t, AppDatabase db, Widget screen,
+    {PhotoStore? photos}) async {
   await t.binding.setSurfaceSize(const Size(400, 3200));
   await t.pumpWidget(ProviderScope(
     overrides: [
       databaseProvider.overrideWithValue(db),
       catalogProvider.overrideWith(() => CatalogNotifier(_catalog)),
+      if (photos != null) photoStoreProvider.overrideWithValue(photos),
     ],
     child: MaterialApp(theme: buildTheme(), home: screen),
   ));
@@ -366,6 +370,24 @@ Rs.900 spent on card XX5566 at UNKNOWN SHOP on 20-10-26.
     // Above the ranking for Utilities, and in the saved list.
     expect(find.text('10% off on the big sale'), findsNWidgets(2));
     await _close(t, db2);
+  });
+
+  testWidgets('a saved photo replaces the styled card face', (t) async {
+    final db = await t.runAsync(_seed);
+    final dir = await t.runAsync(() => Directory.systemTemp.createTemp('cm_p'));
+    final key = PhotoStore.newKey();
+    final store = PhotoStore(dir: dir!, key: () async => key);
+    await t.runAsync(() async {
+      final im = img.Image(width: 400, height: 300);
+      await store.save('airtel',
+          prepareCardPhoto(img.encodePng(im), [BlurBox.numberDefault]));
+    });
+    await _pump(t, db!, const CardDetailScreen(cardId: 'airtel'),
+        photos: store);
+    await _settle(t);
+    expect(find.bySemanticsLabel('Airtel Axis Bank card photo'), findsOneWidget);
+    await _close(t, db);
+    await t.runAsync(() => dir.delete(recursive: true));
   });
 
   testWidgets('trust center lists costs and an empty network log', (t) async {

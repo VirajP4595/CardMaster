@@ -218,7 +218,11 @@ class _Carousel extends ConsumerWidget {
                 label: 'Open ${c.displayName}',
                 child: Hero(
                   tag: 'card-${c.id}',
-                  child: CardFace(card: c, style: style),
+                  child: CardFace(
+                    card: c,
+                    style: style,
+                    photo: ref.watch(facePhotoProvider(c.id)).value,
+                  ),
                 ),
               ),
             ),

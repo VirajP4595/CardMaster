@@ -16,8 +16,10 @@ Future<void> main() async {
       (await db.getValue(SettingKeys.screenshotsBlocked)) != 'false';
   await setScreenSecure(blockScreenshots);
 
+  final photos = await openPhotoStore();
   final container = ProviderContainer(overrides: [
     databaseProvider.overrideWithValue(db),
+    photoStoreProvider.overrideWithValue(photos),
     catalogProvider.overrideWith(() => CatalogNotifier(catalog)),
   ]);
 

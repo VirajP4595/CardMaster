@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 
 import '../app/theme.dart';
@@ -13,15 +15,46 @@ class CardFace extends StatelessWidget {
     required this.style,
     this.width,
     this.compact = false,
+    this.photo,
   });
+
+  /// Photo face (number already blurred). Shown instead of the styled face.
 
   final UserCard card;
   final CardFaceStyle style;
   final double? width;
   final bool compact;
+  final Uint8List? photo;
 
   @override
   Widget build(BuildContext context) {
+    if (photo != null) {
+      return LayoutBuilder(builder: (context, c) {
+        final w = width ?? c.maxWidth;
+        return SizedBox(
+          width: w,
+          height: w / 1.586,
+          child: DecoratedBox(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(18 * w / 340),
+              boxShadow: compact
+                  ? null
+                  : const [
+                      BoxShadow(
+                          color: Color(0x66000000),
+                          blurRadius: 28,
+                          offset: Offset(0, 12)),
+                    ],
+            ),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(18 * w / 340),
+              child: Image.memory(photo!, fit: BoxFit.cover,
+                  semanticLabel: '${card.displayName} card photo'),
+            ),
+          ),
+        );
+      });
+    }
     final ink = Color(style.ink);
     final base = Color(card.faceColor);
     return LayoutBuilder(builder: (context, constraints) {
