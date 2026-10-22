@@ -6,7 +6,8 @@ plugins {
 
 android {
     namespace = "com.virajp.card_master"
-    compileSdk = flutter.compileSdkVersion
+    // receive_sharing_intent requires compiling against API 37+.
+    compileSdk = maxOf(flutter.compileSdkVersion, 37)
     ndkVersion = flutter.ndkVersion
 
     compileOptions {
