@@ -34,8 +34,9 @@ class CardDetailScreen extends ConsumerWidget {
         body: const Center(child: Text('This card was removed.')),
       );
     }
-    final style = ref.watch(catalogProvider).product(card.productId)?.face ??
-        const CardFaceStyle();
+    final product = ref.watch(catalogProvider).product(card.productId);
+    final style = product?.face ?? const CardFaceStyle();
+    final source = Uri.tryParse(product?.sourceUrl ?? '');
     final benefits = ref.watch(benefitsForCardProvider(cardId));
     final waiver = ref.watch(feeWaiverProvider(cardId));
     final cycle = cycleFor(card, DateTime.now());
@@ -220,6 +221,17 @@ class CardDetailScreen extends ConsumerWidget {
           const SizedBox(height: 10),
           const Caption(
               'Rates come from the benefits list and may be out of date. Tap a benefit to correct it or mark it verified. Benefits you add take priority.'),
+          if (source != null && source.scheme == 'https')
+            Align(
+              alignment: Alignment.centerLeft,
+              child: TextButton.icon(
+                // Opens the browser; Card Master itself doesn't load the page.
+                onPressed: () =>
+                    launchUrl(source, mode: LaunchMode.externalApplication),
+                icon: const Icon(Icons.open_in_new, size: 18),
+                label: Text('Check on ${source.host}'),
+              ),
+            ),
           const SizedBox(height: 22),
           _LostCard(card: card),
         ],

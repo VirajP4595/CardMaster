@@ -50,6 +50,7 @@ class CatalogProduct {
     this.annualFeePaise = 0,
     this.waiverSpendPaise,
     this.face = const CardFaceStyle(),
+    this.sourceUrl,
   });
 
   final String id;
@@ -61,6 +62,9 @@ class CatalogProduct {
   final int? waiverSpendPaise;
   final CardFaceStyle face;
   final List<Benefit> benefits;
+
+  /// The bank page the benefits were taken from, for the user to check.
+  final String? sourceUrl;
 }
 
 class Catalog {
@@ -115,6 +119,7 @@ class Catalog {
         annualFeePaise: p['annualFeePaise'] as int? ?? 0,
         waiverSpendPaise: p['waiverSpendPaise'] as int?,
         face: CardFaceStyle.fromJson(p['face'] as Map<String, dynamic>?),
+        sourceUrl: p['sourceUrl'] as String?,
         benefits: (p['benefits'] as List? ?? const [])
             .cast<Map<String, dynamic>>()
             .map((b) => Benefit(
