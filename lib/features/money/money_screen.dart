@@ -12,6 +12,8 @@ import '../../domain/models.dart';
 import '../../domain/csv_export.dart';
 import '../../domain/money.dart';
 import '../../domain/sms_backup.dart';
+import '../../domain/statement_parser.dart';
+import '../../data/pdf_text.dart';
 import '../../ui/widgets.dart';
 import 'import_review_screen.dart';
 import 'recurring_section.dart';
@@ -218,6 +220,7 @@ class _MoneyScreenState extends ConsumerState<MoneyScreen> {
                   onSelected: (v) => switch (v) {
                     'paste' => _pasteMessages(context),
                     'file' => _importBackupFile(context),
+                    'pdf' => _importStatement(context),
                     _ => _exportCsv(context, all),
                   },
                   itemBuilder: (_) => const [
@@ -225,6 +228,9 @@ class _MoneyScreenState extends ConsumerState<MoneyScreen> {
                         value: 'paste', child: Text('Paste bank messages')),
                     PopupMenuItem(
                         value: 'file', child: Text('Import SMS backup file')),
+                    PopupMenuItem(
+                        value: 'pdf',
+                        child: Text('Import statement PDF (beta)')),
                     PopupMenuItem(
                         value: 'csv', child: Text('Export all as CSV')),
                   ],
@@ -342,6 +348,63 @@ class _MoneyScreenState extends ConsumerState<MoneyScreen> {
       messenger.showSnackBar(
           SnackBar(content: Text('Exported ${all.length} expenses.')));
     }
+  }
+
+  /// Statement PDF import (beta): text is extracted on this phone and
+  /// parsed generically; every row goes through the review screen.
+  Future<void> _importStatement(BuildContext context) async {
+    final picked = await FilePicker.pickFiles();
+    if (picked.isEmpty || !context.mounted) return;
+    final messenger = ScaffoldMessenger.of(context);
+    try {
+      final bytes = await picked.single.readAsBytes();
+      final text = await extractPdfText(bytes, askPassword: () async {
+        if (!context.mounted) return null;
+        return _askPdfPassword(context);
+      });
+      final r = parseStatementText(text);
+      if (!context.mounted) return;
+      if (r.spends.isEmpty) {
+        messenger.showSnackBar(const SnackBar(
+            content: Text(
+                "Couldn't find transactions in that PDF. Statement layouts vary; share or paste the SMS instead.")));
+        return;
+      }
+      context.push('/import',
+          extra: ImportPayload(
+            spends: r.spends,
+            messagesRead: r.spends.length + r.creditsSkipped,
+            source: 'PDF',
+          ));
+    } on PdfPasswordNeeded {
+      messenger.showSnackBar(const SnackBar(
+          content: Text('That PDF needs its password to open.')));
+    } catch (e) {
+      messenger.showSnackBar(
+          SnackBar(content: Text('Could not read that PDF: $e')));
+    }
+  }
+
+  Future<String?> _askPdfPassword(BuildContext context) {
+    final c = TextEditingController();
+    return showDialog<String>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: const Text('Statement password'),
+        content: Column(mainAxisSize: MainAxisSize.min, children: [
+          const Text(
+              'Banks protect statements with a password (often part of your name and date of birth). It\'s used once to open the file and isn\'t saved.'),
+          TextField(controller: c, obscureText: true, autofocus: true),
+        ]),
+        actions: [
+          TextButton(
+              onPressed: () => Navigator.pop(ctx), child: const Text('Cancel')),
+          TextButton(
+              onPressed: () => Navigator.pop(ctx, c.text),
+              child: const Text('Open')),
+        ],
+      ),
+    );
   }
 
   /// Imports an XML export from an SMS backup app (docs/08 §2b). The file

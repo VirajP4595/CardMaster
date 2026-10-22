@@ -56,6 +56,8 @@ dependencies:
   xml: ^7.1.0
   camera: ^0.12.1
   image: ^4.12.0
+  pdfrx: ^2.9.0
+  pdfrx_engine: ^0.7.4
 dev_dependencies:
   flutter_test:
     sdk: flutter

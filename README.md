@@ -16,6 +16,9 @@ Built and covered by tests (`flutter test`, 45 tests):
 - Local reminders: bills (3 days and 1 day before), fee waiver, backup; inexact alarms only, asked in context
 - Weekly automatic encrypted backup to Downloads/Card Master (Android 10+), on app open
 - Your own benefits on any card; monthly budgets; lost-card button that dials the helpline you saved
+- Recurring expenses, CSV export, SMS backup (XML) import, statement PDF import (beta, PDFium on-device)
+- "Is this card worth keeping?", monthly caps, reward points wallet, lounge and EMI trackers, saved offers
+- Travel mode, card suggestions (no links), Quick Settings tile, home-screen widget, photo card faces (number blurred, encrypted)
 - Screens: onboarding, lock, Wallet, Card detail, Add card, Best card, Money, Quick add, Import review, Settings, Trust Center
 
 Not done yet (honest list):
