@@ -142,6 +142,20 @@ class CardDetailScreen extends ConsumerWidget {
               ]),
             ),
           ],
+          const SizedBox(height: 12),
+          Tile(
+            onTap: () => context.push('/card/${card.id}/worth'),
+            child: const Row(children: [
+              Icon(Icons.insights_outlined, color: AppColors.onPrimaryContainer),
+              SizedBox(width: 12),
+              Expanded(
+                child: Text('Is this card worth keeping?',
+                    style: TextStyle(fontWeight: FontWeight.w700)),
+              ),
+              Icon(Icons.chevron_right),
+            ]),
+          ),
+          _Caps(card: card, benefits: benefits),
           const SizedBox(height: 18),
           const SectionTitle('Benefits'),
           if (benefits.isEmpty)
@@ -618,5 +632,56 @@ class _LostCard extends ConsumerWidget {
     await ref
         .read(databaseProvider)
         .setHelpline(card.id, value.isEmpty ? null : value);
+  }
+}
+
+/// This month's cap usage per capped benefit (design board 3).
+class _Caps extends ConsumerWidget {
+  const _Caps({required this.card, required this.benefits});
+  final UserCard card;
+  final List<Benefit> benefits;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final capped = benefits
+        .where((b) => b.kind == BenefitKind.reward && b.monthlyCapPaise != null)
+        .toList();
+    if (capped.isEmpty) return const SizedBox.shrink();
+    final spends = ref.watch(spendsProvider).value ?? const <Spend>[];
+    final used = capUsageThisMonth(card, benefits, spends, DateTime.now());
+    return Padding(
+      padding: const EdgeInsets.only(top: 18),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          const SectionTitle("This month's caps"),
+          Tile(
+            child: Column(children: [
+              for (final b in capped)
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 6),
+                  child: Column(children: [
+                    Row(children: [
+                      Expanded(child: Text(b.title)),
+                      Text(
+                        '${formatInr(used[b.id] ?? 0)} / ${formatInr(b.monthlyCapPaise!)}'
+                        '${(used[b.id] ?? 0) >= b.monthlyCapPaise! ? ' · full' : ''}',
+                        style: const TextStyle(color: AppColors.textSecondary),
+                      ),
+                    ]),
+                    const SizedBox(height: 5),
+                    Bar(
+                      value: (used[b.id] ?? 0) / b.monthlyCapPaise!,
+                      color: (used[b.id] ?? 0) >= b.monthlyCapPaise!
+                          ? AppColors.danger
+                          : AppColors.earned,
+                    ),
+                  ]),
+                ),
+            ]),
+          ),
+        ],
+      ),
+    );
   }
 }

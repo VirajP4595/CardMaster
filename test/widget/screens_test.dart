@@ -8,6 +8,7 @@ import 'package:card_master/data/db/database.dart';
 import 'package:card_master/domain/models.dart';
 import 'package:card_master/features/best_card/best_card_screen.dart';
 import 'package:card_master/features/card_detail/card_detail_screen.dart';
+import 'package:card_master/features/card_detail/worth_screen.dart';
 import 'package:card_master/features/money/money_screen.dart';
 import 'package:card_master/features/money/quick_add_screen.dart';
 import 'package:card_master/features/settings/trust_screen.dart';
@@ -112,7 +113,7 @@ void main() {
     final db = await t.runAsync(_seed);
     await _pump(t, db!, const CardDetailScreen(cardId: 'airtel'));
     expect(find.text('Benefits'), findsOneWidget);
-    expect(find.text('Airtel bills'), findsOneWidget);
+    expect(find.text('Airtel bills'), findsNWidgets(2)); // caps + benefits
     expect(find.text('Fee waiver progress'), findsOneWidget);
     expect(find.text('Verify'), findsWidgets);
     await _close(t, db);
@@ -189,6 +190,37 @@ void main() {
     }
     expect(find.textContaining('Call Axis Bank to block it'), findsOneWidget);
     await _close(t, db);
+  });
+
+  testWidgets('worth-it report and caps reflect logged spends', (t) async {
+    final db = await t.runAsync(_seed);
+    await t.runAsync(() => db!.addSpend(Spend(
+          id: 'u1',
+          amountPaise: 300000,
+          category: SpendCategory.utilities,
+          paymentKind: PaymentKind.card,
+          userCardId: 'airtel',
+          spentOn: DateTime.now(),
+        )));
+    await _pump(t, db!, const CardDetailScreen(cardId: 'airtel'));
+    expect(find.text("This month's caps"), findsOneWidget);
+    expect(find.text('₹250 / ₹250 · full'), findsOneWidget);
+    await _close(t, db);
+
+    final db2 = await t.runAsync(_seed);
+    await t.runAsync(() => db2!.addSpend(Spend(
+          id: 'u1',
+          amountPaise: 300000,
+          category: SpendCategory.utilities,
+          paymentKind: PaymentKind.card,
+          userCardId: 'airtel',
+          spentOn: DateTime.now(),
+        )));
+    await _pump(t, db2!, const WorthScreen(cardId: 'airtel'));
+    // ₹250 reward − ₹500 fee (not waived) = −₹250.
+    expect(find.text('−₹250'), findsOneWidget);
+    expect(find.text('RECONSIDER'), findsOneWidget);
+    await _close(t, db2);
   });
 
   testWidgets('trust center lists costs and an empty network log', (t) async {
