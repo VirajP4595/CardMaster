@@ -1,0 +1,438 @@
+{
+  "bank": {
+    "id": "rbl",
+    "name": "RBL Bank",
+    "helpline": "+912262327777",
+    "helplineSource": "https://www.rbl.bank.in/contact-us/customer-care"
+  },
+  "products": [
+    {
+      "id": "rbl_shoprite",
+      "bankId": "rbl",
+      "name": "RBL Bank ShopRite",
+      "tagline": "Entry card with 5% value back on groceries",
+      "network": "MASTERCARD",
+      "annualFeePaise": 50000,
+      "joiningFeePaise": 50000,
+      "waiverSpendPaise": 15000000,
+      "face": {
+        "finish": "gloss",
+        "base": "#C8102E",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.rblbank.com/product/credit-cards/shoprite-credit-card",
+      "benefits": [
+        {
+          "id": "rbl_shoprite_grocery",
+          "category": "GROCERIES",
+          "kind": "REWARD",
+          "title": "5% value back on groceries",
+          "rateBps": 500,
+          "monthlyCapPaise": 25000,
+          "conditions": "20 RP per Rs100 on grocery; max 1,000 RP/month; 1 RP = Rs0.25 (catalogue/statement value); Rs99+GST redemption fee",
+          "sourceUrl": "https://cardadvisor.in/cards/rbl-shoprite",
+          "confidence": "secondary"
+        },
+        {
+          "id": "rbl_shoprite_utilities",
+          "category": "UTILITIES",
+          "kind": "REWARD",
+          "title": "No rewards on utilities",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards (utilities, insurance, EMI since 1 Oct 2023)",
+          "sourceUrl": "https://cardadvisor.in/cards/rbl-shoprite",
+          "confidence": "secondary"
+        },
+        {
+          "id": "rbl_shoprite_insurance",
+          "category": "INSURANCE",
+          "kind": "REWARD",
+          "title": "No rewards on insurance",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards",
+          "sourceUrl": "https://cardadvisor.in/cards/rbl-shoprite",
+          "confidence": "secondary"
+        },
+        {
+          "id": "rbl_shoprite_base",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "0.25% on other spends",
+          "rateBps": 25,
+          "conditions": "1 RP per Rs100; 1 RP = Rs0.25",
+          "sourceUrl": "https://cardadvisor.in/cards/rbl-shoprite",
+          "confidence": "secondary"
+        },
+        {
+          "id": "rbl_shoprite_fx",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "3.5% forex markup",
+          "rateBps": 350,
+          "conditions": "Standard RBL card markup per aggregator; plus GST",
+          "sourceUrl": "https://www.paisabazaar.com/rbl-bank/credit-card-fees-charges/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "rbl_shoprite_fuel",
+          "category": "FUEL",
+          "kind": "INFO",
+          "title": "1% fuel surcharge waiver",
+          "conditions": "Txns Rs500-4,000; max waiver Rs100/month",
+          "sourceUrl": "https://www.rblbank.com/product/credit-cards/shoprite-credit-card",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "rbl_platinum_maxima_plus",
+      "bankId": "rbl",
+      "name": "RBL Bank Platinum Maxima Plus",
+      "tagline": "10X points on dining, entertainment, grocery and international",
+      "network": "VISA",
+      "annualFeePaise": 250000,
+      "joiningFeePaise": 250000,
+      "face": {
+        "finish": "matte",
+        "base": "#2B2B2E",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.rblbank.com/personal-banking/cards/credit-cards/platinum-maxima-plus-credit-card",
+      "benefits": [
+        {
+          "id": "rbl_platinum_maxima_plus_dining",
+          "category": "DINING",
+          "kind": "REWARD",
+          "title": "2.5% on dining",
+          "rateBps": 250,
+          "monthlyCapPaise": 25000,
+          "conditions": "10 RP per Rs100 on dining/entertainment/grocery/international combined, max 1,000 RP/month (shared cap); 1 RP = Rs0.25",
+          "sourceUrl": "https://www.rblbank.com/personal-banking/cards/credit-cards/platinum-maxima-plus-credit-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "rbl_platinum_maxima_plus_grocery",
+          "category": "GROCERIES",
+          "kind": "REWARD",
+          "title": "2.5% on groceries",
+          "rateBps": 250,
+          "monthlyCapPaise": 25000,
+          "conditions": "10 RP per Rs100; 1,000 RP/month cap shared with dining/entertainment/international; 1 RP = Rs0.25",
+          "sourceUrl": "https://www.rblbank.com/personal-banking/cards/credit-cards/platinum-maxima-plus-credit-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "rbl_platinum_maxima_plus_intl",
+          "category": "FOREIGN",
+          "kind": "REWARD",
+          "title": "2.5% on international spends",
+          "rateBps": 250,
+          "monthlyCapPaise": 25000,
+          "conditions": "10 RP per Rs100; shared 1,000 RP/month cap; 1 RP = Rs0.25; 3.5% markup still applies",
+          "sourceUrl": "https://www.rblbank.com/personal-banking/cards/credit-cards/platinum-maxima-plus-credit-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "rbl_platinum_maxima_plus_fuel",
+          "category": "FUEL",
+          "kind": "REWARD",
+          "title": "No rewards on fuel",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards (Fuel & Auto MCCs)",
+          "sourceUrl": "https://www.rblbank.com/personal-banking/cards/credit-cards/platinum-maxima-plus-credit-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "rbl_platinum_maxima_plus_base",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "0.5% on other spends",
+          "rateBps": 50,
+          "conditions": "2 RP per Rs100; 1 RP = Rs0.25",
+          "sourceUrl": "https://www.rblbank.com/personal-banking/cards/credit-cards/platinum-maxima-plus-credit-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "rbl_platinum_maxima_plus_fx",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "3.5% forex markup",
+          "rateBps": 350,
+          "conditions": "Plus GST",
+          "sourceUrl": "https://www.bankbazaar.com/credit-card/rbl-platinum-maxima-plus-card.html",
+          "confidence": "secondary"
+        },
+        {
+          "id": "rbl_platinum_maxima_plus_milestone",
+          "category": "OTHER",
+          "kind": "INFO",
+          "title": "Annual milestone points",
+          "conditions": "10,000 RP each at Rs2L, Rs3.5L and Rs5L annual spend (fuel excluded); welcome 10,000 RP on fee payment",
+          "sourceUrl": "https://www.rblbank.com/personal-banking/cards/credit-cards/platinum-maxima-plus-credit-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "rbl_platinum_maxima_plus_lounge",
+          "category": "TRAVEL",
+          "kind": "INFO",
+          "title": "Domestic lounge access",
+          "conditions": "2 domestic visits per quarter with Rs35,000 spend in previous quarter (from 1 Jul 2025)",
+          "sourceUrl": "https://select.finology.in/articles/credit-card/rbl-credit-card-lounge-access-changes",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "rbl_world_safari",
+      "bankId": "rbl",
+      "name": "RBL Bank World Safari",
+      "tagline": "Zero forex markup travel card",
+      "network": "MASTERCARD",
+      "annualFeePaise": 300000,
+      "joiningFeePaise": 300000,
+      "face": {
+        "finish": "matte",
+        "base": "#173B3A",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.rblbank.com/world-safari-credit-card",
+      "benefits": [
+        {
+          "id": "rbl_world_safari_travel",
+          "category": "TRAVEL",
+          "kind": "REWARD",
+          "title": "1.25% on travel",
+          "rateBps": 125,
+          "conditions": "5 travel points per Rs100 on travel; 1 pt = Rs0.25",
+          "sourceUrl": "https://www.rblbank.com/world-safari-credit-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "rbl_world_safari_base",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "0.5% on other spends",
+          "rateBps": 50,
+          "conditions": "2 points per Rs100; 1 pt = Rs0.25",
+          "sourceUrl": "https://www.rblbank.com/world-safari-credit-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "rbl_world_safari_fx",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "0% forex markup",
+          "rateBps": 0,
+          "conditions": "Zero markup; network conversion rate applies. One source says international spends earn no points",
+          "sourceUrl": "https://cardadvisor.in/cards/rbl-world-safari",
+          "confidence": "secondary"
+        },
+        {
+          "id": "rbl_world_safari_lounge",
+          "category": "TRAVEL",
+          "kind": "INFO",
+          "title": "Lounge access",
+          "conditions": "2 domestic visits/quarter with Rs35,000 prior-quarter spend; Priority Pass with 2 international visits/year (sources differ)",
+          "sourceUrl": "https://www.paisabazaar.com/rbl-bank/world-safari-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "rbl_world_safari_milestone",
+          "category": "OTHER",
+          "kind": "INFO",
+          "title": "Milestone travel points",
+          "conditions": "Up to 25,000 travel points as annual milestone benefits",
+          "sourceUrl": "https://www.paisabazaar.com/rbl-bank/world-safari-credit-card/",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "rbl_indianoil_xtra",
+      "bankId": "rbl",
+      "name": "IndianOil RBL Bank XTRA",
+      "tagline": "Up to 7.5% back on IndianOil fuel",
+      "network": "MASTERCARD",
+      "annualFeePaise": 150000,
+      "joiningFeePaise": 150000,
+      "waiverSpendPaise": 27500000,
+      "face": {
+        "finish": "gloss",
+        "base": "#1E2A4A",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.rblbank.com/indianoil-rbl-bank-xtra-credit-card",
+      "benefits": [
+        {
+          "id": "rbl_indianoil_xtra_fuel",
+          "category": "FUEL",
+          "kind": "REWARD",
+          "title": "7.5% on IndianOil fuel",
+          "rateBps": 750,
+          "monthlyCapPaise": 100000,
+          "channel": "IndianOil outlets",
+          "conditions": "15 fuel points per Rs100 at IOCL; max 2,000 points/month; 1 fuel point = Rs0.50 as XTRA Rewards at IndianOil",
+          "sourceUrl": "https://www.rbl.bank.in/value-calculator/indianoil-rbl-bank-xtra-credit-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "rbl_indianoil_xtra_base",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "1% on other spends",
+          "rateBps": 100,
+          "conditions": "2 fuel points per Rs100; 1 pt = Rs0.50 at IndianOil (some RBL material shows 1 pt/Rs100)",
+          "sourceUrl": "https://www.rbl.bank.in/value-calculator/indianoil-rbl-bank-xtra-credit-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "rbl_indianoil_xtra_fx",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "3.5% forex markup",
+          "rateBps": 350,
+          "conditions": "Standard RBL card markup per aggregator",
+          "sourceUrl": "https://www.paisabazaar.com/rbl-bank/credit-card-fees-charges/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "rbl_indianoil_xtra_surcharge",
+          "category": "FUEL",
+          "kind": "INFO",
+          "title": "Fuel surcharge waiver",
+          "conditions": "1% waiver, up to Rs200/month",
+          "sourceUrl": "https://www.rbl.bank.in/value-calculator/indianoil-rbl-bank-xtra-credit-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "rbl_indianoil_xtra_milestone",
+          "category": "OTHER",
+          "kind": "INFO",
+          "title": "Quarterly milestone",
+          "conditions": "1,000 fuel points on Rs75,000 quarterly spend; welcome 3,000 fuel points",
+          "sourceUrl": "https://www.rbl.bank.in/value-calculator/indianoil-rbl-bank-xtra-credit-card",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "rbl_indianoil",
+      "bankId": "rbl",
+      "name": "IndianOil RBL Bank",
+      "tagline": "Entry fuel card with 5% back at IndianOil",
+      "network": "MASTERCARD",
+      "otherNetworks": [
+        "RUPAY"
+      ],
+      "annualFeePaise": 50000,
+      "joiningFeePaise": 50000,
+      "waiverSpendPaise": 17500000,
+      "face": {
+        "finish": "gloss",
+        "base": "#F26A21",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.rblbank.com/personal-banking/cards/credit-cards/indianoil-rbl-bank-credit-card",
+      "benefits": [
+        {
+          "id": "rbl_indianoil_fuel",
+          "category": "FUEL",
+          "kind": "REWARD",
+          "title": "5% on IndianOil fuel",
+          "rateBps": 500,
+          "monthlyCapPaise": 50000,
+          "channel": "IndianOil outlets",
+          "conditions": "10 fuel points per Rs100 at IOCL; max 1,000 points/month; 1 pt = Rs0.50 as XTRA Rewards",
+          "sourceUrl": "https://www.rbl.bank.in/value-calculator/indianoil-rbl-bank-credit-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "rbl_indianoil_base",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "0.5% on other spends",
+          "rateBps": 50,
+          "conditions": "1 fuel point per Rs100; 1 pt = Rs0.50 at IndianOil",
+          "sourceUrl": "https://www.rbl.bank.in/value-calculator/indianoil-rbl-bank-credit-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "rbl_indianoil_fx",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "3.5% forex markup",
+          "rateBps": 350,
+          "conditions": "Standard RBL card markup per aggregator",
+          "sourceUrl": "https://www.paisabazaar.com/rbl-bank/credit-card-fees-charges/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "rbl_indianoil_surcharge",
+          "category": "FUEL",
+          "kind": "INFO",
+          "title": "Fuel surcharge waiver",
+          "conditions": "1% on Rs500-4,000 txns, max Rs100/month",
+          "sourceUrl": "https://www.rblbank.com/personal-banking/cards/credit-cards/indianoil-rbl-bank-credit-card",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "rbl_paisabazaar_duet_plus",
+      "bankId": "rbl",
+      "name": "RBL Bank Paisabazaar Duet Plus",
+      "tagline": "Cashback card: 2.5% travel and dining, 1% everything else",
+      "network": "VISA",
+      "annualFeePaise": 149900,
+      "joiningFeePaise": 149900,
+      "waiverSpendPaise": 40000000,
+      "face": {
+        "finish": "gloss",
+        "base": "#3B2C6B",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.rblbank.com/product/credit-cards/rbl-bank-paisabazaar-duet-plus-card",
+      "benefits": [
+        {
+          "id": "rbl_paisabazaar_duet_plus_travel",
+          "category": "TRAVEL",
+          "kind": "REWARD",
+          "title": "2.5% cashback on travel",
+          "rateBps": 250,
+          "monthlyCapPaise": 20000,
+          "conditions": "Rs200/month cap shared by travel + dining; overall card cap Rs500/month",
+          "sourceUrl": "https://www.rblbank.com/product/credit-cards/rbl-bank-paisabazaar-duet-plus-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "rbl_paisabazaar_duet_plus_dining",
+          "category": "DINING",
+          "kind": "REWARD",
+          "title": "2.5% cashback on dining",
+          "rateBps": 250,
+          "monthlyCapPaise": 20000,
+          "conditions": "Rs200/month cap shared by travel + dining",
+          "sourceUrl": "https://www.rblbank.com/product/credit-cards/rbl-bank-paisabazaar-duet-plus-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "rbl_paisabazaar_duet_plus_base",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "1% cashback on other spends",
+          "rateBps": 100,
+          "monthlyCapPaise": 30000,
+          "conditions": "Capped at Rs300/month; 1% fee on large fuel/utility/education spends since Oct 2024",
+          "sourceUrl": "https://www.rblbank.com/product/credit-cards/rbl-bank-paisabazaar-duet-plus-card",
+          "confidence": "secondary"
+        }
+      ]
+    }
+  ]
+}

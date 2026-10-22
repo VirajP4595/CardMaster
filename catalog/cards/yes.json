@@ -1,0 +1,420 @@
+{
+  "bank": {
+    "id": "yes",
+    "name": "YES Bank",
+    "helpline": "18001031212",
+    "helplineSource": "https://cardinsider.com/yes-bank/credit-card-customer-care-number-email-id/"
+  },
+  "products": [
+    {
+      "id": "yes_marquee",
+      "bankId": "yes",
+      "name": "YES BANK Marquee",
+      "tagline": "Super-premium flagship with high online rewards",
+      "network": "MASTERCARD",
+      "annualFeePaise": 499900,
+      "joiningFeePaise": 999900,
+      "waiverSpendPaise": 100000000,
+      "face": {
+        "finish": "metal",
+        "base": "#121212",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://cardadvisor.in/cards/yes-marquee",
+      "benefits": [
+        {
+          "id": "yes_marquee_online",
+          "category": "SHOPPING",
+          "kind": "REWARD",
+          "title": "4.5% on online shopping",
+          "rateBps": 450,
+          "channel": "Online",
+          "conditions": "36 YES Rewardz per Rs200 online in selected categories; 1 RP = Rs0.25 (flights/hotels on YES Rewardz; vouchers ~Rs0.15-0.20); max 1 lakh RP per statement cycle; Rs100+GST redemption fee from 15 Jun 2026",
+          "sourceUrl": "https://www.paisabazaar.com/yes-bank/marquee-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "yes_marquee_base",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "2.25% on offline spends",
+          "rateBps": 225,
+          "conditions": "18 RP per Rs200 offline; 1 RP = Rs0.25. Select categories (utilities, insurance etc.) earn 10 RP/Rs200 (1.25%)",
+          "sourceUrl": "https://www.paisabazaar.com/yes-bank/marquee-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "yes_marquee_utilities",
+          "category": "UTILITIES",
+          "kind": "REWARD",
+          "title": "1.25% on select categories",
+          "rateBps": 125,
+          "conditions": "10 RP per Rs200 on select categories; 1 RP = Rs0.25; 1%+GST fee on utilities above Rs25,000/month",
+          "sourceUrl": "https://bb.bankbazaar.com/credit-card/yes-bank-marquee-credit-card.html",
+          "confidence": "secondary"
+        },
+        {
+          "id": "yes_marquee_fx",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "1% forex markup",
+          "rateBps": 100,
+          "conditions": "1% as of Jan 2026; YES raised markups on several variants from 15 Jun 2026, Marquee not confirmed",
+          "sourceUrl": "https://cardadvisor.in/articles/yes-bank-marquee-credit-card-review-2026",
+          "confidence": "secondary"
+        },
+        {
+          "id": "yes_marquee_lounge",
+          "category": "TRAVEL",
+          "kind": "INFO",
+          "title": "Lounge access",
+          "conditions": "Unlimited international lounge access (primary + add-on); domestic tied to ~Rs1L previous-quarter spend",
+          "sourceUrl": "https://cardadvisor.in/cards/yes-marquee",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "yes_reserv",
+      "bankId": "yes",
+      "name": "YES BANK RESERV",
+      "tagline": "Premium rewards card (formerly YES First Exclusive)",
+      "network": "MASTERCARD",
+      "annualFeePaise": 249900,
+      "waiverSpendPaise": 30000000,
+      "face": {
+        "finish": "matte",
+        "base": "#1B2A47",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.paisabazaar.com/yes-bank/yes-first-exclusive-credit-card/",
+      "benefits": [
+        {
+          "id": "yes_reserv_online",
+          "category": "SHOPPING",
+          "kind": "REWARD",
+          "title": "3% on online shopping",
+          "rateBps": 300,
+          "channel": "Online",
+          "conditions": "24 RP per Rs200 online; 1 RP = Rs0.25; max 36,000 RP per statement cycle",
+          "sourceUrl": "https://cardinsider.com/yes-bank/yes-bank-first-exclusive-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "yes_reserv_select",
+          "category": "INSURANCE",
+          "kind": "REWARD",
+          "title": "0.75% on select categories",
+          "rateBps": 75,
+          "conditions": "6 RP per Rs200 on insurance, education, tax payments; 1 RP = Rs0.25",
+          "sourceUrl": "https://cardinsider.com/yes-bank/yes-bank-first-exclusive-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "yes_reserv_fuel",
+          "category": "FUEL",
+          "kind": "REWARD",
+          "title": "No rewards on fuel",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards",
+          "sourceUrl": "https://cardinsider.com/yes-bank/yes-bank-first-exclusive-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "yes_reserv_rent",
+          "category": "RENT",
+          "kind": "REWARD",
+          "title": "No rewards on rent",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards (rent/wallet loads)",
+          "sourceUrl": "https://cardinsider.com/yes-bank/yes-bank-first-exclusive-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "yes_reserv_base",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "1.5% on offline spends",
+          "rateBps": 150,
+          "conditions": "12 RP per Rs200 offline; 1 RP = Rs0.25",
+          "sourceUrl": "https://cardinsider.com/yes-bank/yes-bank-first-exclusive-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "yes_reserv_fx",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "1.75% forex markup",
+          "rateBps": 175,
+          "conditions": "Per aggregator fee tables (2026)",
+          "sourceUrl": "https://www.bankbazaar.com/credit-card/yes-bank-credit-card-fees.html",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "yes_elite_plus",
+      "bankId": "yes",
+      "name": "YES BANK ELITE+",
+      "tagline": "Mid-tier rewards card",
+      "network": "MASTERCARD",
+      "annualFeePaise": 99900,
+      "waiverSpendPaise": 20000000,
+      "face": {
+        "finish": "matte",
+        "base": "#2F3B48",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://cardadvisor.in/cards/yes-elite-plus",
+      "benefits": [
+        {
+          "id": "yes_elite_plus_online",
+          "category": "SHOPPING",
+          "kind": "REWARD",
+          "title": "1.5% on online spends",
+          "rateBps": 150,
+          "channel": "Online",
+          "conditions": "12 RP per Rs200 online; 1 RP = Rs0.25",
+          "sourceUrl": "https://cardadvisor.in/cards/yes-elite-plus",
+          "confidence": "secondary"
+        },
+        {
+          "id": "yes_elite_plus_base",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "0.75% on offline spends",
+          "rateBps": 75,
+          "conditions": "6 RP per Rs200 offline; 1 RP = Rs0.25",
+          "sourceUrl": "https://cardadvisor.in/cards/yes-elite-plus",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "yes_ace",
+      "bankId": "yes",
+      "name": "YES BANK ACE",
+      "tagline": "Entry online-shopping card (formerly Prosperity Rewards Plus)",
+      "network": "MASTERCARD",
+      "annualFeePaise": 49900,
+      "waiverSpendPaise": 5000000,
+      "face": {
+        "finish": "gloss",
+        "base": "#1F4E9C",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://cardadvisor.in/cards/yes-ace",
+      "benefits": [
+        {
+          "id": "yes_ace_online",
+          "category": "SHOPPING",
+          "kind": "REWARD",
+          "title": "1% on online spends",
+          "rateBps": 100,
+          "channel": "Online",
+          "conditions": "8 RP per Rs200 online; max 5,000 RP per statement cycle; 1 RP = Rs0.25 (flights/hotels), ~Rs0.20 vouchers; Rs100 redemption fee",
+          "sourceUrl": "https://cardadvisor.in/cards/yes-ace",
+          "confidence": "secondary"
+        },
+        {
+          "id": "yes_ace_utilities",
+          "category": "UTILITIES",
+          "kind": "REWARD",
+          "title": "0.25% on utilities and insurance",
+          "rateBps": 25,
+          "conditions": "2 RP per Rs200 on select categories; 1 RP = Rs0.25",
+          "sourceUrl": "https://cardadvisor.in/cards/yes-ace",
+          "confidence": "secondary"
+        },
+        {
+          "id": "yes_ace_base",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "0.5% on offline spends",
+          "rateBps": 50,
+          "conditions": "4 RP per Rs200 offline; 1 RP = Rs0.25",
+          "sourceUrl": "https://cardadvisor.in/cards/yes-ace",
+          "confidence": "secondary"
+        },
+        {
+          "id": "yes_ace_fx",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "3.5% forex markup",
+          "rateBps": 350,
+          "conditions": "Per 2026 YES fee guide",
+          "sourceUrl": "https://gokiwi.in/blog/yes-bank-credit-card-charges",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "yes_paisasave",
+      "bankId": "yes",
+      "name": "YES BANK Paisabazaar PaisaSave",
+      "tagline": "6% cashback on dining and travel apps, 1% everywhere incl. UPI",
+      "network": "MASTERCARD",
+      "otherNetworks": [
+        "RUPAY"
+      ],
+      "annualFeePaise": 49900,
+      "joiningFeePaise": 0,
+      "waiverSpendPaise": 12000000,
+      "face": {
+        "finish": "gloss",
+        "base": "#1C1C1C",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.paisabazaar.com/yes-bank/paisabazaar-paisasave-credit-card/",
+      "benefits": [
+        {
+          "id": "yes_paisasave_dining",
+          "category": "DINING",
+          "kind": "REWARD",
+          "title": "6% on dining platforms",
+          "rateBps": 600,
+          "monthlyCapPaise": 300000,
+          "channel": "Zomato, Swiggy, EazyDiner",
+          "conditions": "6% cashback; Rs3,000/month cap shared with travel, then 1%. Terms effective 15 Dec 2025",
+          "sourceUrl": "https://www.business-standard.com/finance/personal-finance/love-dining-and-travel-this-card-now-gives-6-cashback-zero-joining-fee-125121600503_1.html",
+          "confidence": "secondary"
+        },
+        {
+          "id": "yes_paisasave_travel",
+          "category": "TRAVEL",
+          "kind": "REWARD",
+          "title": "6% on travel platforms",
+          "rateBps": 600,
+          "monthlyCapPaise": 300000,
+          "channel": "MakeMyTrip, Goibibo, Airbnb, Taj, Marriott, Radisson",
+          "conditions": "6% cashback; Rs3,000/month cap shared with dining, then 1%",
+          "sourceUrl": "https://www.business-standard.com/finance/personal-finance/love-dining-and-travel-this-card-now-gives-6-cashback-zero-joining-fee-125121600503_1.html",
+          "confidence": "secondary"
+        },
+        {
+          "id": "yes_paisasave_base",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "1% on all other spends incl. UPI",
+          "rateBps": 100,
+          "conditions": "Unlimited 1% cashback on online, offline and RuPay UPI",
+          "sourceUrl": "https://www.business-standard.com/finance/personal-finance/love-dining-and-travel-this-card-now-gives-6-cashback-zero-joining-fee-125121600503_1.html",
+          "confidence": "secondary"
+        },
+        {
+          "id": "yes_paisasave_fuel",
+          "category": "FUEL",
+          "kind": "INFO",
+          "title": "Fuel surcharge waiver",
+          "conditions": "1% waiver, max Rs250 per statement cycle (pre-revision listing; may have changed)",
+          "sourceUrl": "https://www.paisabazaar.com/yes-bank/paisabazaar-paisasave-credit-card/",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "yes_pop_club",
+      "bankId": "yes",
+      "name": "YES BANK POP-CLUB",
+      "tagline": "Co-branded card earning POPcoins on online and UPI",
+      "network": "RUPAY",
+      "annualFeePaise": 39900,
+      "waiverSpendPaise": 15000000,
+      "face": {
+        "finish": "gloss",
+        "base": "#E8407A",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.paisabazaar.com/yes-bank/popclub-credit-card",
+      "benefits": [
+        {
+          "id": "yes_pop_club_online",
+          "category": "SHOPPING",
+          "kind": "REWARD",
+          "title": "Up to 10% in POPcoins online",
+          "rateBps": 1000,
+          "channel": "Online",
+          "conditions": "10 POPcoins per Rs100 online; 1 POPcoin = up to Rs1, redeemable only in POP app (no cash/statement credit)",
+          "sourceUrl": "https://gokiwi.in/blog/yes-bank-pop-club-credit-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "yes_pop_club_base",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "2% in POPcoins offline",
+          "rateBps": 200,
+          "conditions": "2 POPcoins per Rs100; +5 POPcoins/Rs100 on UPI via POP UPI app (RuPay); 1 POPcoin = up to Rs1 in POP app",
+          "sourceUrl": "https://gokiwi.in/blog/yes-bank-pop-club-credit-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "yes_pop_club_fx",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "3.5% forex markup",
+          "rateBps": 350,
+          "conditions": "Per aggregator",
+          "sourceUrl": "https://cardtrail.in/cards/yes-bank-pop-club/",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "yes_kiwi",
+      "bankId": "yes",
+      "name": "Kiwi YES BANK RuPay",
+      "tagline": "Lifetime-free RuPay card for UPI scan and pay",
+      "network": "RUPAY",
+      "annualFeePaise": 0,
+      "joiningFeePaise": 0,
+      "face": {
+        "finish": "matte",
+        "base": "#141414",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://gokiwi.in/blog/yes-bank-credit-card-for-upi",
+      "benefits": [
+        {
+          "id": "yes_kiwi_upi",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "1.5% on UPI scan and pay",
+          "rateBps": 150,
+          "channel": "Kiwi app UPI",
+          "conditions": "Kiwis cashback (1 Kiwi = Rs0.25); base reward capped monthly at 1% of credit limit; paid Neon tier (Rs999) raises rates",
+          "sourceUrl": "https://gokiwi.in/blog/yes-bank-credit-card-for-upi",
+          "confidence": "secondary"
+        },
+        {
+          "id": "yes_kiwi_online",
+          "category": "SHOPPING",
+          "kind": "REWARD",
+          "title": "0.5% on online card spends",
+          "rateBps": 50,
+          "channel": "Online",
+          "conditions": "Per Kiwi blog",
+          "sourceUrl": "https://gokiwi.in/blog/yes-bank-credit-card-for-upi",
+          "confidence": "secondary"
+        },
+        {
+          "id": "yes_kiwi_fuel",
+          "category": "FUEL",
+          "kind": "REWARD",
+          "title": "No rewards on fuel",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards (also utilities, telecom, insurance, rent, govt) per review",
+          "sourceUrl": "https://book1a.com/blog/kiwi-rupay-credit-card-review-2026-neon-cashback-maths/",
+          "confidence": "secondary"
+        }
+      ]
+    }
+  ]
+}

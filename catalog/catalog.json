@@ -1,5 +1,5 @@
 {
-  "version": 2,
+  "version": 3,
   "generatedOn": "2026-10-22",
   "note": "Researched from bank websites and MITC documents (sourceUrl on every product and benefit). Not checked by a person yet: lastVerified stays null so the app shows a Verify badge. Rates convert points at the standard cashback/statement-credit value.",
   "banks": [
@@ -70,6 +70,12 @@
       "name": "OneCard"
     },
     {
+      "id": "rbl",
+      "name": "RBL Bank",
+      "helpline": "+912262327777",
+      "helplineSource": "https://www.rbl.bank.in/contact-us/customer-care"
+    },
+    {
       "id": "sbi",
       "name": "SBI Card",
       "helpline": "18601801290",
@@ -80,6 +86,12 @@
       "name": "Standard Chartered India",
       "helpline": "18003451000",
       "helplineSource": "https://www.cardtrail.in/basics/credit-card-lost-stolen-india-what-to-do/"
+    },
+    {
+      "id": "yes",
+      "name": "YES Bank",
+      "helpline": "18001031212",
+      "helplineSource": "https://cardinsider.com/yes-bank/credit-card-customer-care-number-email-id/"
     }
   ],
   "products": [
@@ -5726,6 +5738,434 @@
       ]
     },
     {
+      "id": "rbl_shoprite",
+      "bankId": "rbl",
+      "name": "RBL Bank ShopRite",
+      "tagline": "Entry card with 5% value back on groceries",
+      "network": "MASTERCARD",
+      "annualFeePaise": 50000,
+      "joiningFeePaise": 50000,
+      "waiverSpendPaise": 15000000,
+      "face": {
+        "finish": "gloss",
+        "base": "#C8102E",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.rblbank.com/product/credit-cards/shoprite-credit-card",
+      "benefits": [
+        {
+          "id": "rbl_shoprite_grocery",
+          "category": "GROCERIES",
+          "kind": "REWARD",
+          "title": "5% value back on groceries",
+          "rateBps": 500,
+          "monthlyCapPaise": 25000,
+          "conditions": "20 RP per Rs100 on grocery; max 1,000 RP/month; 1 RP = Rs0.25 (catalogue/statement value); Rs99+GST redemption fee",
+          "sourceUrl": "https://cardadvisor.in/cards/rbl-shoprite",
+          "confidence": "secondary"
+        },
+        {
+          "id": "rbl_shoprite_utilities",
+          "category": "UTILITIES",
+          "kind": "REWARD",
+          "title": "No rewards on utilities",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards (utilities, insurance, EMI since 1 Oct 2023)",
+          "sourceUrl": "https://cardadvisor.in/cards/rbl-shoprite",
+          "confidence": "secondary"
+        },
+        {
+          "id": "rbl_shoprite_insurance",
+          "category": "INSURANCE",
+          "kind": "REWARD",
+          "title": "No rewards on insurance",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards",
+          "sourceUrl": "https://cardadvisor.in/cards/rbl-shoprite",
+          "confidence": "secondary"
+        },
+        {
+          "id": "rbl_shoprite_base",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "0.25% on other spends",
+          "rateBps": 25,
+          "conditions": "1 RP per Rs100; 1 RP = Rs0.25",
+          "sourceUrl": "https://cardadvisor.in/cards/rbl-shoprite",
+          "confidence": "secondary"
+        },
+        {
+          "id": "rbl_shoprite_fx",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "3.5% forex markup",
+          "rateBps": 350,
+          "conditions": "Standard RBL card markup per aggregator; plus GST",
+          "sourceUrl": "https://www.paisabazaar.com/rbl-bank/credit-card-fees-charges/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "rbl_shoprite_fuel",
+          "category": "FUEL",
+          "kind": "INFO",
+          "title": "1% fuel surcharge waiver",
+          "conditions": "Txns Rs500-4,000; max waiver Rs100/month",
+          "sourceUrl": "https://www.rblbank.com/product/credit-cards/shoprite-credit-card",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "rbl_platinum_maxima_plus",
+      "bankId": "rbl",
+      "name": "RBL Bank Platinum Maxima Plus",
+      "tagline": "10X points on dining, entertainment, grocery and international",
+      "network": "VISA",
+      "annualFeePaise": 250000,
+      "joiningFeePaise": 250000,
+      "face": {
+        "finish": "matte",
+        "base": "#2B2B2E",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.rblbank.com/personal-banking/cards/credit-cards/platinum-maxima-plus-credit-card",
+      "benefits": [
+        {
+          "id": "rbl_platinum_maxima_plus_dining",
+          "category": "DINING",
+          "kind": "REWARD",
+          "title": "2.5% on dining",
+          "rateBps": 250,
+          "monthlyCapPaise": 25000,
+          "conditions": "10 RP per Rs100 on dining/entertainment/grocery/international combined, max 1,000 RP/month (shared cap); 1 RP = Rs0.25",
+          "sourceUrl": "https://www.rblbank.com/personal-banking/cards/credit-cards/platinum-maxima-plus-credit-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "rbl_platinum_maxima_plus_grocery",
+          "category": "GROCERIES",
+          "kind": "REWARD",
+          "title": "2.5% on groceries",
+          "rateBps": 250,
+          "monthlyCapPaise": 25000,
+          "conditions": "10 RP per Rs100; 1,000 RP/month cap shared with dining/entertainment/international; 1 RP = Rs0.25",
+          "sourceUrl": "https://www.rblbank.com/personal-banking/cards/credit-cards/platinum-maxima-plus-credit-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "rbl_platinum_maxima_plus_intl",
+          "category": "FOREIGN",
+          "kind": "REWARD",
+          "title": "2.5% on international spends",
+          "rateBps": 250,
+          "monthlyCapPaise": 25000,
+          "conditions": "10 RP per Rs100; shared 1,000 RP/month cap; 1 RP = Rs0.25; 3.5% markup still applies",
+          "sourceUrl": "https://www.rblbank.com/personal-banking/cards/credit-cards/platinum-maxima-plus-credit-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "rbl_platinum_maxima_plus_fuel",
+          "category": "FUEL",
+          "kind": "REWARD",
+          "title": "No rewards on fuel",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards (Fuel & Auto MCCs)",
+          "sourceUrl": "https://www.rblbank.com/personal-banking/cards/credit-cards/platinum-maxima-plus-credit-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "rbl_platinum_maxima_plus_base",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "0.5% on other spends",
+          "rateBps": 50,
+          "conditions": "2 RP per Rs100; 1 RP = Rs0.25",
+          "sourceUrl": "https://www.rblbank.com/personal-banking/cards/credit-cards/platinum-maxima-plus-credit-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "rbl_platinum_maxima_plus_fx",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "3.5% forex markup",
+          "rateBps": 350,
+          "conditions": "Plus GST",
+          "sourceUrl": "https://www.bankbazaar.com/credit-card/rbl-platinum-maxima-plus-card.html",
+          "confidence": "secondary"
+        },
+        {
+          "id": "rbl_platinum_maxima_plus_milestone",
+          "category": "OTHER",
+          "kind": "INFO",
+          "title": "Annual milestone points",
+          "conditions": "10,000 RP each at Rs2L, Rs3.5L and Rs5L annual spend (fuel excluded); welcome 10,000 RP on fee payment",
+          "sourceUrl": "https://www.rblbank.com/personal-banking/cards/credit-cards/platinum-maxima-plus-credit-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "rbl_platinum_maxima_plus_lounge",
+          "category": "TRAVEL",
+          "kind": "INFO",
+          "title": "Domestic lounge access",
+          "conditions": "2 domestic visits per quarter with Rs35,000 spend in previous quarter (from 1 Jul 2025)",
+          "sourceUrl": "https://select.finology.in/articles/credit-card/rbl-credit-card-lounge-access-changes",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "rbl_world_safari",
+      "bankId": "rbl",
+      "name": "RBL Bank World Safari",
+      "tagline": "Zero forex markup travel card",
+      "network": "MASTERCARD",
+      "annualFeePaise": 300000,
+      "joiningFeePaise": 300000,
+      "face": {
+        "finish": "matte",
+        "base": "#173B3A",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.rblbank.com/world-safari-credit-card",
+      "benefits": [
+        {
+          "id": "rbl_world_safari_travel",
+          "category": "TRAVEL",
+          "kind": "REWARD",
+          "title": "1.25% on travel",
+          "rateBps": 125,
+          "conditions": "5 travel points per Rs100 on travel; 1 pt = Rs0.25",
+          "sourceUrl": "https://www.rblbank.com/world-safari-credit-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "rbl_world_safari_base",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "0.5% on other spends",
+          "rateBps": 50,
+          "conditions": "2 points per Rs100; 1 pt = Rs0.25",
+          "sourceUrl": "https://www.rblbank.com/world-safari-credit-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "rbl_world_safari_fx",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "0% forex markup",
+          "rateBps": 0,
+          "conditions": "Zero markup; network conversion rate applies. One source says international spends earn no points",
+          "sourceUrl": "https://cardadvisor.in/cards/rbl-world-safari",
+          "confidence": "secondary"
+        },
+        {
+          "id": "rbl_world_safari_lounge",
+          "category": "TRAVEL",
+          "kind": "INFO",
+          "title": "Lounge access",
+          "conditions": "2 domestic visits/quarter with Rs35,000 prior-quarter spend; Priority Pass with 2 international visits/year (sources differ)",
+          "sourceUrl": "https://www.paisabazaar.com/rbl-bank/world-safari-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "rbl_world_safari_milestone",
+          "category": "OTHER",
+          "kind": "INFO",
+          "title": "Milestone travel points",
+          "conditions": "Up to 25,000 travel points as annual milestone benefits",
+          "sourceUrl": "https://www.paisabazaar.com/rbl-bank/world-safari-credit-card/",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "rbl_indianoil_xtra",
+      "bankId": "rbl",
+      "name": "IndianOil RBL Bank XTRA",
+      "tagline": "Up to 7.5% back on IndianOil fuel",
+      "network": "MASTERCARD",
+      "annualFeePaise": 150000,
+      "joiningFeePaise": 150000,
+      "waiverSpendPaise": 27500000,
+      "face": {
+        "finish": "gloss",
+        "base": "#1E2A4A",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.rblbank.com/indianoil-rbl-bank-xtra-credit-card",
+      "benefits": [
+        {
+          "id": "rbl_indianoil_xtra_fuel",
+          "category": "FUEL",
+          "kind": "REWARD",
+          "title": "7.5% on IndianOil fuel",
+          "rateBps": 750,
+          "monthlyCapPaise": 100000,
+          "channel": "IndianOil outlets",
+          "conditions": "15 fuel points per Rs100 at IOCL; max 2,000 points/month; 1 fuel point = Rs0.50 as XTRA Rewards at IndianOil",
+          "sourceUrl": "https://www.rbl.bank.in/value-calculator/indianoil-rbl-bank-xtra-credit-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "rbl_indianoil_xtra_base",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "1% on other spends",
+          "rateBps": 100,
+          "conditions": "2 fuel points per Rs100; 1 pt = Rs0.50 at IndianOil (some RBL material shows 1 pt/Rs100)",
+          "sourceUrl": "https://www.rbl.bank.in/value-calculator/indianoil-rbl-bank-xtra-credit-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "rbl_indianoil_xtra_fx",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "3.5% forex markup",
+          "rateBps": 350,
+          "conditions": "Standard RBL card markup per aggregator",
+          "sourceUrl": "https://www.paisabazaar.com/rbl-bank/credit-card-fees-charges/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "rbl_indianoil_xtra_surcharge",
+          "category": "FUEL",
+          "kind": "INFO",
+          "title": "Fuel surcharge waiver",
+          "conditions": "1% waiver, up to Rs200/month",
+          "sourceUrl": "https://www.rbl.bank.in/value-calculator/indianoil-rbl-bank-xtra-credit-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "rbl_indianoil_xtra_milestone",
+          "category": "OTHER",
+          "kind": "INFO",
+          "title": "Quarterly milestone",
+          "conditions": "1,000 fuel points on Rs75,000 quarterly spend; welcome 3,000 fuel points",
+          "sourceUrl": "https://www.rbl.bank.in/value-calculator/indianoil-rbl-bank-xtra-credit-card",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "rbl_indianoil",
+      "bankId": "rbl",
+      "name": "IndianOil RBL Bank",
+      "tagline": "Entry fuel card with 5% back at IndianOil",
+      "network": "MASTERCARD",
+      "otherNetworks": [
+        "RUPAY"
+      ],
+      "annualFeePaise": 50000,
+      "joiningFeePaise": 50000,
+      "waiverSpendPaise": 17500000,
+      "face": {
+        "finish": "gloss",
+        "base": "#F26A21",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.rblbank.com/personal-banking/cards/credit-cards/indianoil-rbl-bank-credit-card",
+      "benefits": [
+        {
+          "id": "rbl_indianoil_fuel",
+          "category": "FUEL",
+          "kind": "REWARD",
+          "title": "5% on IndianOil fuel",
+          "rateBps": 500,
+          "monthlyCapPaise": 50000,
+          "channel": "IndianOil outlets",
+          "conditions": "10 fuel points per Rs100 at IOCL; max 1,000 points/month; 1 pt = Rs0.50 as XTRA Rewards",
+          "sourceUrl": "https://www.rbl.bank.in/value-calculator/indianoil-rbl-bank-credit-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "rbl_indianoil_base",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "0.5% on other spends",
+          "rateBps": 50,
+          "conditions": "1 fuel point per Rs100; 1 pt = Rs0.50 at IndianOil",
+          "sourceUrl": "https://www.rbl.bank.in/value-calculator/indianoil-rbl-bank-credit-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "rbl_indianoil_fx",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "3.5% forex markup",
+          "rateBps": 350,
+          "conditions": "Standard RBL card markup per aggregator",
+          "sourceUrl": "https://www.paisabazaar.com/rbl-bank/credit-card-fees-charges/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "rbl_indianoil_surcharge",
+          "category": "FUEL",
+          "kind": "INFO",
+          "title": "Fuel surcharge waiver",
+          "conditions": "1% on Rs500-4,000 txns, max Rs100/month",
+          "sourceUrl": "https://www.rblbank.com/personal-banking/cards/credit-cards/indianoil-rbl-bank-credit-card",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "rbl_paisabazaar_duet_plus",
+      "bankId": "rbl",
+      "name": "RBL Bank Paisabazaar Duet Plus",
+      "tagline": "Cashback card: 2.5% travel and dining, 1% everything else",
+      "network": "VISA",
+      "annualFeePaise": 149900,
+      "joiningFeePaise": 149900,
+      "waiverSpendPaise": 40000000,
+      "face": {
+        "finish": "gloss",
+        "base": "#3B2C6B",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.rblbank.com/product/credit-cards/rbl-bank-paisabazaar-duet-plus-card",
+      "benefits": [
+        {
+          "id": "rbl_paisabazaar_duet_plus_travel",
+          "category": "TRAVEL",
+          "kind": "REWARD",
+          "title": "2.5% cashback on travel",
+          "rateBps": 250,
+          "monthlyCapPaise": 20000,
+          "conditions": "Rs200/month cap shared by travel + dining; overall card cap Rs500/month",
+          "sourceUrl": "https://www.rblbank.com/product/credit-cards/rbl-bank-paisabazaar-duet-plus-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "rbl_paisabazaar_duet_plus_dining",
+          "category": "DINING",
+          "kind": "REWARD",
+          "title": "2.5% cashback on dining",
+          "rateBps": 250,
+          "monthlyCapPaise": 20000,
+          "conditions": "Rs200/month cap shared by travel + dining",
+          "sourceUrl": "https://www.rblbank.com/product/credit-cards/rbl-bank-paisabazaar-duet-plus-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "rbl_paisabazaar_duet_plus_base",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "1% cashback on other spends",
+          "rateBps": 100,
+          "monthlyCapPaise": 30000,
+          "conditions": "Capped at Rs300/month; 1% fee on large fuel/utility/education spends since Oct 2024",
+          "sourceUrl": "https://www.rblbank.com/product/credit-cards/rbl-bank-paisabazaar-duet-plus-card",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
       "id": "sbi_cashback",
       "bankId": "sbi",
       "name": "SBI Cashback",
@@ -7245,6 +7685,416 @@
           "rateBps": 200,
           "conditions": "Plus GST",
           "sourceUrl": "https://www.sc.bank.in/credit-cards/beyond-credit-card/",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "yes_marquee",
+      "bankId": "yes",
+      "name": "YES BANK Marquee",
+      "tagline": "Super-premium flagship with high online rewards",
+      "network": "MASTERCARD",
+      "annualFeePaise": 499900,
+      "joiningFeePaise": 999900,
+      "waiverSpendPaise": 100000000,
+      "face": {
+        "finish": "metal",
+        "base": "#121212",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://cardadvisor.in/cards/yes-marquee",
+      "benefits": [
+        {
+          "id": "yes_marquee_online",
+          "category": "SHOPPING",
+          "kind": "REWARD",
+          "title": "4.5% on online shopping",
+          "rateBps": 450,
+          "channel": "Online",
+          "conditions": "36 YES Rewardz per Rs200 online in selected categories; 1 RP = Rs0.25 (flights/hotels on YES Rewardz; vouchers ~Rs0.15-0.20); max 1 lakh RP per statement cycle; Rs100+GST redemption fee from 15 Jun 2026",
+          "sourceUrl": "https://www.paisabazaar.com/yes-bank/marquee-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "yes_marquee_base",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "2.25% on offline spends",
+          "rateBps": 225,
+          "conditions": "18 RP per Rs200 offline; 1 RP = Rs0.25. Select categories (utilities, insurance etc.) earn 10 RP/Rs200 (1.25%)",
+          "sourceUrl": "https://www.paisabazaar.com/yes-bank/marquee-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "yes_marquee_utilities",
+          "category": "UTILITIES",
+          "kind": "REWARD",
+          "title": "1.25% on select categories",
+          "rateBps": 125,
+          "conditions": "10 RP per Rs200 on select categories; 1 RP = Rs0.25; 1%+GST fee on utilities above Rs25,000/month",
+          "sourceUrl": "https://bb.bankbazaar.com/credit-card/yes-bank-marquee-credit-card.html",
+          "confidence": "secondary"
+        },
+        {
+          "id": "yes_marquee_fx",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "1% forex markup",
+          "rateBps": 100,
+          "conditions": "1% as of Jan 2026; YES raised markups on several variants from 15 Jun 2026, Marquee not confirmed",
+          "sourceUrl": "https://cardadvisor.in/articles/yes-bank-marquee-credit-card-review-2026",
+          "confidence": "secondary"
+        },
+        {
+          "id": "yes_marquee_lounge",
+          "category": "TRAVEL",
+          "kind": "INFO",
+          "title": "Lounge access",
+          "conditions": "Unlimited international lounge access (primary + add-on); domestic tied to ~Rs1L previous-quarter spend",
+          "sourceUrl": "https://cardadvisor.in/cards/yes-marquee",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "yes_reserv",
+      "bankId": "yes",
+      "name": "YES BANK RESERV",
+      "tagline": "Premium rewards card (formerly YES First Exclusive)",
+      "network": "MASTERCARD",
+      "annualFeePaise": 249900,
+      "waiverSpendPaise": 30000000,
+      "face": {
+        "finish": "matte",
+        "base": "#1B2A47",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.paisabazaar.com/yes-bank/yes-first-exclusive-credit-card/",
+      "benefits": [
+        {
+          "id": "yes_reserv_online",
+          "category": "SHOPPING",
+          "kind": "REWARD",
+          "title": "3% on online shopping",
+          "rateBps": 300,
+          "channel": "Online",
+          "conditions": "24 RP per Rs200 online; 1 RP = Rs0.25; max 36,000 RP per statement cycle",
+          "sourceUrl": "https://cardinsider.com/yes-bank/yes-bank-first-exclusive-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "yes_reserv_select",
+          "category": "INSURANCE",
+          "kind": "REWARD",
+          "title": "0.75% on select categories",
+          "rateBps": 75,
+          "conditions": "6 RP per Rs200 on insurance, education, tax payments; 1 RP = Rs0.25",
+          "sourceUrl": "https://cardinsider.com/yes-bank/yes-bank-first-exclusive-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "yes_reserv_fuel",
+          "category": "FUEL",
+          "kind": "REWARD",
+          "title": "No rewards on fuel",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards",
+          "sourceUrl": "https://cardinsider.com/yes-bank/yes-bank-first-exclusive-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "yes_reserv_rent",
+          "category": "RENT",
+          "kind": "REWARD",
+          "title": "No rewards on rent",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards (rent/wallet loads)",
+          "sourceUrl": "https://cardinsider.com/yes-bank/yes-bank-first-exclusive-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "yes_reserv_base",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "1.5% on offline spends",
+          "rateBps": 150,
+          "conditions": "12 RP per Rs200 offline; 1 RP = Rs0.25",
+          "sourceUrl": "https://cardinsider.com/yes-bank/yes-bank-first-exclusive-credit-card/",
+          "confidence": "secondary"
+        },
+        {
+          "id": "yes_reserv_fx",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "1.75% forex markup",
+          "rateBps": 175,
+          "conditions": "Per aggregator fee tables (2026)",
+          "sourceUrl": "https://www.bankbazaar.com/credit-card/yes-bank-credit-card-fees.html",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "yes_elite_plus",
+      "bankId": "yes",
+      "name": "YES BANK ELITE+",
+      "tagline": "Mid-tier rewards card",
+      "network": "MASTERCARD",
+      "annualFeePaise": 99900,
+      "waiverSpendPaise": 20000000,
+      "face": {
+        "finish": "matte",
+        "base": "#2F3B48",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://cardadvisor.in/cards/yes-elite-plus",
+      "benefits": [
+        {
+          "id": "yes_elite_plus_online",
+          "category": "SHOPPING",
+          "kind": "REWARD",
+          "title": "1.5% on online spends",
+          "rateBps": 150,
+          "channel": "Online",
+          "conditions": "12 RP per Rs200 online; 1 RP = Rs0.25",
+          "sourceUrl": "https://cardadvisor.in/cards/yes-elite-plus",
+          "confidence": "secondary"
+        },
+        {
+          "id": "yes_elite_plus_base",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "0.75% on offline spends",
+          "rateBps": 75,
+          "conditions": "6 RP per Rs200 offline; 1 RP = Rs0.25",
+          "sourceUrl": "https://cardadvisor.in/cards/yes-elite-plus",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "yes_ace",
+      "bankId": "yes",
+      "name": "YES BANK ACE",
+      "tagline": "Entry online-shopping card (formerly Prosperity Rewards Plus)",
+      "network": "MASTERCARD",
+      "annualFeePaise": 49900,
+      "waiverSpendPaise": 5000000,
+      "face": {
+        "finish": "gloss",
+        "base": "#1F4E9C",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://cardadvisor.in/cards/yes-ace",
+      "benefits": [
+        {
+          "id": "yes_ace_online",
+          "category": "SHOPPING",
+          "kind": "REWARD",
+          "title": "1% on online spends",
+          "rateBps": 100,
+          "channel": "Online",
+          "conditions": "8 RP per Rs200 online; max 5,000 RP per statement cycle; 1 RP = Rs0.25 (flights/hotels), ~Rs0.20 vouchers; Rs100 redemption fee",
+          "sourceUrl": "https://cardadvisor.in/cards/yes-ace",
+          "confidence": "secondary"
+        },
+        {
+          "id": "yes_ace_utilities",
+          "category": "UTILITIES",
+          "kind": "REWARD",
+          "title": "0.25% on utilities and insurance",
+          "rateBps": 25,
+          "conditions": "2 RP per Rs200 on select categories; 1 RP = Rs0.25",
+          "sourceUrl": "https://cardadvisor.in/cards/yes-ace",
+          "confidence": "secondary"
+        },
+        {
+          "id": "yes_ace_base",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "0.5% on offline spends",
+          "rateBps": 50,
+          "conditions": "4 RP per Rs200 offline; 1 RP = Rs0.25",
+          "sourceUrl": "https://cardadvisor.in/cards/yes-ace",
+          "confidence": "secondary"
+        },
+        {
+          "id": "yes_ace_fx",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "3.5% forex markup",
+          "rateBps": 350,
+          "conditions": "Per 2026 YES fee guide",
+          "sourceUrl": "https://gokiwi.in/blog/yes-bank-credit-card-charges",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "yes_paisasave",
+      "bankId": "yes",
+      "name": "YES BANK Paisabazaar PaisaSave",
+      "tagline": "6% cashback on dining and travel apps, 1% everywhere incl. UPI",
+      "network": "MASTERCARD",
+      "otherNetworks": [
+        "RUPAY"
+      ],
+      "annualFeePaise": 49900,
+      "joiningFeePaise": 0,
+      "waiverSpendPaise": 12000000,
+      "face": {
+        "finish": "gloss",
+        "base": "#1C1C1C",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.paisabazaar.com/yes-bank/paisabazaar-paisasave-credit-card/",
+      "benefits": [
+        {
+          "id": "yes_paisasave_dining",
+          "category": "DINING",
+          "kind": "REWARD",
+          "title": "6% on dining platforms",
+          "rateBps": 600,
+          "monthlyCapPaise": 300000,
+          "channel": "Zomato, Swiggy, EazyDiner",
+          "conditions": "6% cashback; Rs3,000/month cap shared with travel, then 1%. Terms effective 15 Dec 2025",
+          "sourceUrl": "https://www.business-standard.com/finance/personal-finance/love-dining-and-travel-this-card-now-gives-6-cashback-zero-joining-fee-125121600503_1.html",
+          "confidence": "secondary"
+        },
+        {
+          "id": "yes_paisasave_travel",
+          "category": "TRAVEL",
+          "kind": "REWARD",
+          "title": "6% on travel platforms",
+          "rateBps": 600,
+          "monthlyCapPaise": 300000,
+          "channel": "MakeMyTrip, Goibibo, Airbnb, Taj, Marriott, Radisson",
+          "conditions": "6% cashback; Rs3,000/month cap shared with dining, then 1%",
+          "sourceUrl": "https://www.business-standard.com/finance/personal-finance/love-dining-and-travel-this-card-now-gives-6-cashback-zero-joining-fee-125121600503_1.html",
+          "confidence": "secondary"
+        },
+        {
+          "id": "yes_paisasave_base",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "1% on all other spends incl. UPI",
+          "rateBps": 100,
+          "conditions": "Unlimited 1% cashback on online, offline and RuPay UPI",
+          "sourceUrl": "https://www.business-standard.com/finance/personal-finance/love-dining-and-travel-this-card-now-gives-6-cashback-zero-joining-fee-125121600503_1.html",
+          "confidence": "secondary"
+        },
+        {
+          "id": "yes_paisasave_fuel",
+          "category": "FUEL",
+          "kind": "INFO",
+          "title": "Fuel surcharge waiver",
+          "conditions": "1% waiver, max Rs250 per statement cycle (pre-revision listing; may have changed)",
+          "sourceUrl": "https://www.paisabazaar.com/yes-bank/paisabazaar-paisasave-credit-card/",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "yes_pop_club",
+      "bankId": "yes",
+      "name": "YES BANK POP-CLUB",
+      "tagline": "Co-branded card earning POPcoins on online and UPI",
+      "network": "RUPAY",
+      "annualFeePaise": 39900,
+      "waiverSpendPaise": 15000000,
+      "face": {
+        "finish": "gloss",
+        "base": "#E8407A",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://www.paisabazaar.com/yes-bank/popclub-credit-card",
+      "benefits": [
+        {
+          "id": "yes_pop_club_online",
+          "category": "SHOPPING",
+          "kind": "REWARD",
+          "title": "Up to 10% in POPcoins online",
+          "rateBps": 1000,
+          "channel": "Online",
+          "conditions": "10 POPcoins per Rs100 online; 1 POPcoin = up to Rs1, redeemable only in POP app (no cash/statement credit)",
+          "sourceUrl": "https://gokiwi.in/blog/yes-bank-pop-club-credit-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "yes_pop_club_base",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "2% in POPcoins offline",
+          "rateBps": 200,
+          "conditions": "2 POPcoins per Rs100; +5 POPcoins/Rs100 on UPI via POP UPI app (RuPay); 1 POPcoin = up to Rs1 in POP app",
+          "sourceUrl": "https://gokiwi.in/blog/yes-bank-pop-club-credit-card",
+          "confidence": "secondary"
+        },
+        {
+          "id": "yes_pop_club_fx",
+          "category": "FOREIGN",
+          "kind": "FOREX_MARKUP",
+          "title": "3.5% forex markup",
+          "rateBps": 350,
+          "conditions": "Per aggregator",
+          "sourceUrl": "https://cardtrail.in/cards/yes-bank-pop-club/",
+          "confidence": "secondary"
+        }
+      ]
+    },
+    {
+      "id": "yes_kiwi",
+      "bankId": "yes",
+      "name": "Kiwi YES BANK RuPay",
+      "tagline": "Lifetime-free RuPay card for UPI scan and pay",
+      "network": "RUPAY",
+      "annualFeePaise": 0,
+      "joiningFeePaise": 0,
+      "face": {
+        "finish": "matte",
+        "base": "#141414",
+        "ink": "#FFFFFF",
+        "chip": "gold"
+      },
+      "sourceUrl": "https://gokiwi.in/blog/yes-bank-credit-card-for-upi",
+      "benefits": [
+        {
+          "id": "yes_kiwi_upi",
+          "category": "OTHER",
+          "kind": "REWARD",
+          "title": "1.5% on UPI scan and pay",
+          "rateBps": 150,
+          "channel": "Kiwi app UPI",
+          "conditions": "Kiwis cashback (1 Kiwi = Rs0.25); base reward capped monthly at 1% of credit limit; paid Neon tier (Rs999) raises rates",
+          "sourceUrl": "https://gokiwi.in/blog/yes-bank-credit-card-for-upi",
+          "confidence": "secondary"
+        },
+        {
+          "id": "yes_kiwi_online",
+          "category": "SHOPPING",
+          "kind": "REWARD",
+          "title": "0.5% on online card spends",
+          "rateBps": 50,
+          "channel": "Online",
+          "conditions": "Per Kiwi blog",
+          "sourceUrl": "https://gokiwi.in/blog/yes-bank-credit-card-for-upi",
+          "confidence": "secondary"
+        },
+        {
+          "id": "yes_kiwi_fuel",
+          "category": "FUEL",
+          "kind": "REWARD",
+          "title": "No rewards on fuel",
+          "rateBps": 0,
+          "conditions": "Excluded from rewards (also utilities, telecom, insurance, rent, govt) per review",
+          "sourceUrl": "https://book1a.com/blog/kiwi-rupay-credit-card-review-2026-neon-cashback-maths/",
           "confidence": "secondary"
         }
       ]

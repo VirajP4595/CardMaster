@@ -23,7 +23,7 @@ Built and covered by tests (`flutter test`, 45 tests):
 
 Not done yet (honest list): see [`docs/00-FEATURE-REVIEW.md` §7](docs/00-FEATURE-REVIEW.md). In short:
 - **Not run on a real phone yet.** Tested in Flutter's test environment and built by GitHub Actions.
-- Benefits: **96 cards from 14 banks**, researched from search results because the build environment couldn't open bank pages. Every rate has a source link and shows "Verify" until a person checks it. RBL and Yes Bank are not covered yet.
+- Benefits: **109 cards from 16 banks**, researched from search results because the build environment couldn't open bank pages. Every rate has a source link and shows "Verify" until a person checks it.
 - Benefit updates and stable APK signing wait on keys only you should create (below).
 - Pro is built but **switched off** (everything free) until products exist on Google Play.
 - Not built: Hindi, add-on cards.
