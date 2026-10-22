@@ -15,6 +15,7 @@ import 'package:card_master/features/card_detail/worth_screen.dart';
 import 'package:card_master/features/money/import_review_screen.dart';
 import 'package:card_master/features/money/money_screen.dart';
 import 'package:card_master/features/money/quick_add_screen.dart';
+import 'package:card_master/features/settings/pro_screen.dart';
 import 'package:card_master/features/settings/trust_screen.dart';
 import 'package:card_master/features/wallet/wallet_screen.dart';
 import 'package:drift/native.dart';
@@ -388,6 +389,22 @@ Rs.900 spent on card XX5566 at UNKNOWN SHOP on 20-10-26.
     expect(find.bySemanticsLabel('Airtel Axis Bank card photo'), findsOneWidget);
     await _close(t, db);
     await t.runAsync(() => dir.delete(recursive: true));
+  });
+
+  testWidgets('pro screen: honest while testing, coffee tiers step', (t) async {
+    final db = await t.runAsync(_seed);
+    await _pump(t, db!, const ProScreen());
+    expect(find.textContaining('unlocked while Card Master is in testing'),
+        findsOneWidget);
+    expect(find.text('Made by one person'), findsOneWidget);
+    expect(find.textContaining('Google Play keeps a share'), findsOneWidget);
+    await t.tap(find.text('Custom'));
+    await t.pump();
+    expect(find.text('₹299'), findsOneWidget);
+    await t.tap(find.byTooltip('Bigger tip'));
+    await t.pump();
+    expect(find.text('₹499'), findsOneWidget);
+    await _close(t, db);
   });
 
   testWidgets('trust center lists costs and an empty network log', (t) async {

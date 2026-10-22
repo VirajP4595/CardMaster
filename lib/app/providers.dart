@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../data/catalog/catalog.dart';
 import '../data/db/database.dart';
 import '../data/photo_face.dart';
+import '../domain/entitlement.dart';
 import '../domain/fee_waiver.dart';
 import '../domain/models.dart';
 import '../domain/recommender.dart';
@@ -238,6 +239,9 @@ abstract final class SettingKeys {
   static const remindersEnabled = 'reminders_enabled';
   static const autoBackup = 'auto_backup';
   static const travelMode = 'travel_mode';
+  static const proPurchased = 'pro_purchased';
+  static const supporter = 'supporter';
+  static const trialStart = 'trial_start';
 }
 
 final settingProvider = StreamProvider.family<String?, String>(
@@ -281,5 +285,19 @@ final suggestionsProvider = Provider<List<CardSuggestion>>((ref) {
     ],
     spends: spends,
     now: DateTime.now(),
+  );
+});
+
+/// Whether gating is on is decided in app/billing.dart (proGatingEnabled).
+final proGatingProvider = Provider<bool>((ref) => false);
+
+final entitlementProvider = Provider<Entitlement>((ref) {
+  final purchased =
+      ref.watch(settingProvider(SettingKeys.proPurchased)).value == 'true';
+  final start = ref.watch(settingProvider(SettingKeys.trialStart)).value;
+  return Entitlement(
+    purchased: purchased,
+    trialStart: start == null ? DateTime.now() : DateTime.parse(start),
+    gatingEnabled: ref.watch(proGatingProvider),
   );
 });

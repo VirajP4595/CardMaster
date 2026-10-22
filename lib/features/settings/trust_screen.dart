@@ -45,6 +45,7 @@ class TrustScreen extends ConsumerWidget {
     ('Fingerprint / face', 'Unlock the app', 'If you allow'),
     ('Notifications', 'Bill due dates, fee waivers, backup reminders', 'If you allow'),
     ('Camera', 'Photo of your card face (optional, number blurred)', 'Only when used'),
+    ('Google Play Billing', 'Pro and coffee tips, handled by the Play app', 'Only when used'),
     ('Run after restart', 'Re-schedule your reminders', 'Always'),
   ];
 

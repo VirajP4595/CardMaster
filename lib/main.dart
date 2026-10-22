@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'app/app.dart';
 import 'app/auto_backup.dart';
+import 'app/billing.dart';
 import 'app/providers.dart';
 import 'app/services.dart';
 import 'data/db/open.dart';
@@ -17,9 +18,13 @@ Future<void> main() async {
   await setScreenSecure(blockScreenshots);
 
   final photos = await openPhotoStore();
+  if (await db.getValue(SettingKeys.trialStart) == null) {
+    await db.setValue(SettingKeys.trialStart, DateTime.now().toIso8601String());
+  }
   final container = ProviderContainer(overrides: [
     databaseProvider.overrideWithValue(db),
     photoStoreProvider.overrideWithValue(photos),
+    proGatingProvider.overrideWithValue(proGatingEnabled),
     catalogProvider.overrideWith(() => CatalogNotifier(catalog)),
   ]);
 
@@ -27,6 +32,8 @@ Future<void> main() async {
     container: container,
     child: const CardMasterApp(),
   ));
+
+  Billing.instance.listen(db);
 
   // Recurring expenses set to add themselves (rent, subscriptions…).
   final rules = (await db.allRecurring()).where((r) => r.autoAdd).toList();

@@ -12,6 +12,7 @@ import '../features/money/import_review_screen.dart';
 import '../features/money/money_screen.dart';
 import '../features/money/quick_add_screen.dart';
 import '../features/onboarding/onboarding_screen.dart';
+import '../features/settings/pro_screen.dart';
 import '../features/settings/settings_screen.dart';
 import '../features/settings/trust_screen.dart';
 import '../features/wallet/wallet_screen.dart';
@@ -78,6 +79,7 @@ final routerProvider = Provider<GoRouter>((ref) {
         ),
       ),
       GoRoute(path: '/trust', builder: (_, _) => const TrustScreen()),
+      GoRoute(path: '/pro', builder: (_, _) => const ProScreen()),
     ],
   );
 });

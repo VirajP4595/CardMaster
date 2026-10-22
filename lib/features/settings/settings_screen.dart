@@ -80,6 +80,26 @@ class SettingsScreen extends ConsumerWidget {
                 ],
               ),
             ),
+            const SizedBox(height: 12),
+            Tile(
+              onTap: () => context.push('/pro'),
+              child: Row(children: [
+                const Icon(Icons.workspace_premium_outlined,
+                    color: AppColors.attention),
+                const SizedBox(width: 12),
+                const Expanded(
+                  child: Text('Card Master Pro & buy me a coffee',
+                      style: TextStyle(fontWeight: FontWeight.w700)),
+                ),
+                if (settingOn(ref, SettingKeys.supporter, fallback: false))
+                  const Padding(
+                    padding: EdgeInsets.only(right: 6),
+                    child: Text('☆',
+                        style: TextStyle(color: AppColors.attention)),
+                  ),
+                const Icon(Icons.chevron_right),
+              ]),
+            ),
             const _Header('Security'),
             Tile(
               padding: EdgeInsets.zero,
