@@ -418,6 +418,23 @@ Rs.900 spent on card XX5566 at UNKNOWN SHOP on 20-10-26.
     await _close(t, db);
   });
 
+  testWidgets('utilisation coach appears when logged spends are high', (t) async {
+    final db = await t.runAsync(_seed);
+    await t.runAsync(() => db!.addSpend(Spend(
+          id: 'big',
+          amountPaise: 15000000, // ₹1.5L on a ₹2.5L limit = 60%
+          category: SpendCategory.shopping,
+          paymentKind: PaymentKind.card,
+          userCardId: 'airtel',
+          spentOn: DateTime.now(),
+        )));
+    await _pump(t, db!, const CardDetailScreen(cardId: 'airtel'));
+    expect(find.text('Credit use this cycle: 60%'), findsOneWidget);
+    expect(find.textContaining('Paying ₹75,000 before your statement'),
+        findsOneWidget);
+    await _close(t, db);
+  });
+
   testWidgets('trust center lists costs and an empty network log', (t) async {
     final db = await t.runAsync(_seed);
     await _pump(t, db!, const TrustScreen());

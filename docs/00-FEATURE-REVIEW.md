@@ -75,11 +75,10 @@ Move to 1.0.x: budgets, multi-copy import, lost-card button, merchant memory.
 - From 1.1: worth-it report, caps, reward points wallet (+ expiry reminders), photo card faces (blur burned in, encrypted), recurring expenses, full history, CSV export, SMS backup (XML) import, your own benefits on any card, Pro plumbing (Play Billing, 14-day trial, upgrade screen, coffee tips with custom tiers). **Pro gating is switched off** (`proGatingEnabled` in `lib/app/billing.dart`) until the products exist on Play.
 - From 1.2: statement PDF import (beta, generic parser), Quick Settings tile, home-screen widget, lounge tracker, travel mode.
 - From 1.3: card suggestions (no links), saved offers, EMI tracker.
-- Later list: card comparison, closing checklist.
+- Later list: card comparison, closing checklist, utilisation coach (from logged spends; says so).
 - Infrastructure: weekly automatic backup to Downloads, local reminders, signed benefits publishing (off until the key is created), release APKs on GitHub.
 
 **Not built**
-- Utilisation coach: needs card balances, which the app doesn't track (only spends you log).
 - Hindi / other languages, light theme, add-on/family cards.
 
 **Needs you**

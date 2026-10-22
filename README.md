@@ -26,7 +26,7 @@ Not done yet (honest list): see [`docs/00-FEATURE-REVIEW.md` §7](docs/00-FEATUR
 - Benefits data is **sample data** (every rate shows "Verify" until checked).
 - Benefit updates and stable APK signing wait on keys only you should create (below).
 - Pro is built but **switched off** (everything free) until products exist on Google Play.
-- Not built: utilisation coach, Hindi, light theme, add-on cards.
+- Not built: Hindi, light theme, add-on cards.
 
 Third-party note: PDF text extraction uses PDFium via `pdfrx` (MIT); only local bytes are opened, never URLs.
 

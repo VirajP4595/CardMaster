@@ -18,6 +18,7 @@ import '../../ui/widgets.dart';
 import '../add_card/card_form.dart';
 import 'card_extras.dart';
 import 'compare_and_close.dart';
+import '../../domain/utilisation.dart';
 
 class CardDetailScreen extends ConsumerWidget {
   const CardDetailScreen({super.key, required this.cardId});
@@ -186,6 +187,7 @@ class CardDetailScreen extends ConsumerWidget {
               Icon(Icons.chevron_right),
             ]),
           ),
+          _Utilisation(card: card),
           _Caps(card: card, benefits: benefits),
           _Points(card: card),
           LoungeTile(card: card),
@@ -851,5 +853,44 @@ class _Points extends ConsumerWidget {
       paisePerPoint: perPoint,
       expiresOn: expires,
     ));
+  }
+}
+
+/// Credit use this billing cycle, from logged spends (utilisation coach).
+class _Utilisation extends ConsumerWidget {
+  const _Utilisation({required this.card});
+  final UserCard card;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final spends = ref.watch(spendsProvider).value ?? const <Spend>[];
+    final a = utilisationAdvice(card, spends, DateTime.now());
+    if (a.loggedPaise == 0 || card.creditLimitPaise == 0) {
+      return const SizedBox.shrink();
+    }
+    final pct = (a.ratio * 100).round();
+    return Padding(
+      padding: const EdgeInsets.only(top: 12),
+      child: Tile(
+        color: a.overTarget ? AppColors.attentionContainer : AppColors.surface,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text('Credit use this cycle: $pct%',
+                style: const TextStyle(fontWeight: FontWeight.w700)),
+            const SizedBox(height: 6),
+            Bar(
+              value: a.ratio,
+              color: a.overTarget ? AppColors.attention : AppColors.earned,
+            ),
+            const SizedBox(height: 6),
+            Caption(a.overTarget
+                ? 'Paying ${formatInr(a.payBeforeStatementPaise)} before your statement on ${a.nextStatement.day}/${a.nextStatement.month} keeps the reported balance under 30% of your limit, which credit scores tend to like.'
+                : 'Under 30% of your limit. Nice.'),
+            const Caption('Based on the card spends you logged, not your real balance.'),
+          ],
+        ),
+      ),
+    );
   }
 }
