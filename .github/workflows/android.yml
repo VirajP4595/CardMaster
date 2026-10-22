@@ -10,9 +10,9 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 45
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - uses: actions/setup-java@v4
+      - uses: actions/setup-java@v5
         with:
           distribution: temurin
           java-version: '17'
@@ -39,7 +39,19 @@ jobs:
         run: flutter test
 
       - name: Build APK
-        run: flutter build apk --release --split-per-abi
+        run: |
+          set -o pipefail
+          flutter build apk --release --split-per-abi 2>&1 | tee build.log
+
+      # Surfaces the build error as an annotation, readable without the
+      # full log (handy where log downloads are blocked).
+      - name: Report build error
+        if: failure()
+        run: |
+          [ -f build.log ] || exit 0
+          msg=$(grep -n -iE -A6 "what went wrong|error:|exception|failed" build.log | head -60)
+          msg="${msg//'%'/'%25'}"; msg="${msg//$'\n'/'%0A'}"
+          echo "::error title=Build APK failed::$msg"
 
       # Release blocker check (docs/04-BUILD-GUIDE.md §6, rule R7): the merged
       # manifest may only contain these permissions.
