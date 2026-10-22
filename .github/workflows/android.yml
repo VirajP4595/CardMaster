@@ -5,6 +5,9 @@ on:
   pull_request:
   workflow_dispatch:
 
+permissions:
+  contents: write # to publish the APK as a GitHub Release
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -38,10 +41,29 @@ jobs:
       - name: Unit tests
         run: flutter test
 
+      # Optional: your own signing key (repo secrets ANDROID_KEYSTORE_BASE64
+      # and ANDROID_KEYSTORE_PASSWORD). Keeps one key across builds so each
+      # new APK installs over the last one without losing data.
+      - name: Load signing key
+        env:
+          KEYSTORE_B64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+        run: |
+          if [ -n "$KEYSTORE_B64" ]; then
+            echo "$KEYSTORE_B64" | base64 -d > "$RUNNER_TEMP/release.jks"
+            echo "CM_KEYSTORE_PATH=$RUNNER_TEMP/release.jks" >> "$GITHUB_ENV"
+            echo "SIGNED=release" >> "$GITHUB_ENV"
+          else
+            echo "SIGNED=debug" >> "$GITHUB_ENV"
+            echo "::warning::No signing key secret: APK signed with a throwaway debug key"
+          fi
+
       - name: Build APK
+        env:
+          CM_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
         run: |
           set -o pipefail
-          flutter build apk --release --split-per-abi 2>&1 | tee build.log
+          flutter build apk --release --split-per-abi \
+            --build-name=1.0.0 --build-number=${{ github.run_number }} 2>&1 | tee build.log
 
       # Surfaces the build error as an annotation, readable without the
       # full log (handy where log downloads are blocked).
@@ -61,7 +83,7 @@ jobs:
           APK=build/app/outputs/flutter-apk/app-arm64-v8a-release.apk
           "$AAPT2" dump permissions "$APK" | tee permissions.txt
           echo "::notice title=APK permissions::$(grep 'uses-permission:' permissions.txt | sed "s/uses-permission: name='//; s/'.*//" | paste -sd ' ' -)"
-          ALLOWED='INTERNET|USE_BIOMETRIC|USE_FINGERPRINT|DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION'
+          ALLOWED='INTERNET|USE_BIOMETRIC|USE_FINGERPRINT|POST_NOTIFICATIONS|RECEIVE_BOOT_COMPLETED|DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION'
           if grep "uses-permission:" permissions.txt | grep -vE "$ALLOWED"; then
             echo "::error::Unapproved permission found (see list above)"
             exit 1
@@ -72,3 +94,30 @@ jobs:
           name: card-master-apks
           path: build/app/outputs/flutter-apk/*.apk
           retention-days: 14
+
+      - name: Name APKs for download
+        if: github.event_name == 'push'
+        run: |
+          mkdir -p dist
+          cp build/app/outputs/flutter-apk/app-arm64-v8a-release.apk dist/card-master-arm64.apk
+          cp build/app/outputs/flutter-apk/app-armeabi-v7a-release.apk dist/card-master-arm32.apk
+          cp build/app/outputs/flutter-apk/app-x86_64-release.apk dist/card-master-x86_64.apk
+
+      # Direct-download release for testing on a phone.
+      - name: Publish release
+        if: github.event_name == 'push'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v1.0.0-build.${{ github.run_number }}
+          name: Card Master 1.0.0 (build ${{ github.run_number }})
+          target_commitish: ${{ github.sha }}
+          make_latest: true
+          files: dist/*.apk
+          body: |
+            Test build from `${{ github.ref_name }}` (${{ github.sha }}).
+
+            **Install:** download `card-master-arm64.apk` (almost every phone from the last 6 years), open it, and allow installing from your browser/files app when Android asks.
+
+            Signing: `${{ env.SIGNED }}` key. ${{ env.SIGNED == 'debug' && 'Signed with a throwaway key: to install a newer build, uninstall the old one first (this deletes the app data, so export a backup first).' || 'Signed with the project key: newer builds install over this one and keep your data.' }}
+
+            Benefit rates are sample data until verified. Not a Play Store build.

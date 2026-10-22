@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../app/app.dart';
 import '../../app/providers.dart';
 import '../../app/services.dart';
 import '../../app/theme.dart';
@@ -88,6 +89,31 @@ class SettingsScreen extends ConsumerWidget {
                     'Also hides the app in recent apps',
                     also: setScreenSecure),
               ]),
+            ),
+            const _Header('Reminders'),
+            Tile(
+              padding: EdgeInsets.zero,
+              child: SwitchListTile(
+                title: const Text('Bill, fee-waiver and backup reminders',
+                    style: TextStyle(fontWeight: FontWeight.w600)),
+                subtitle: const Text(
+                    '3 days and 1 day before each bill is due. Scheduled on this phone.',
+                    style: TextStyle(color: AppColors.textSecondary)),
+                value: settingOn(ref, SettingKeys.remindersEnabled,
+                    fallback: false),
+                onChanged: (v) async {
+                  if (!v) {
+                    await db.setValue(SettingKeys.remindersEnabled, 'false');
+                    return;
+                  }
+                  final on = await enableReminders(ref);
+                  if (!on && context.mounted) {
+                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                        content: Text(
+                            'Notifications are off for Card Master. You can allow them in Android Settings.')));
+                  }
+                },
+              ),
             ),
             const _Header('Money'),
             Tile(

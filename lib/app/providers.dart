@@ -144,6 +144,7 @@ abstract final class SettingKeys {
   static const catalogVersion = 'catalog_version';
   static const catalogJson = 'catalog_json';
   static const lastClipboardHash = 'last_clipboard_hash';
+  static const remindersEnabled = 'reminders_enabled';
 }
 
 final settingProvider = StreamProvider.family<String?, String>(

@@ -13,13 +13,14 @@ Built and covered by tests (`flutter test`, 45 tests):
 - Bank SMS parser (share to app, clipboard, paste; multi-message, dedupe, card match by last 4)
 - Download-only benefits client with Ed25519 signature check and a network log; a test fails if any other code uses the network
 - Passphrase-encrypted backup export/restore (Argon2id + AES-GCM)
+- Local reminders: bills (3 days and 1 day before), fee waiver, backup; inexact alarms only, asked in context
 - Screens: onboarding, lock, Wallet, Card detail, Add card, Best card, Money, Quick add, Import review, Settings, Trust Center
 
 Not done yet (honest list):
 - **Not run on a real phone yet.** It's tested in Flutter's test environment and built by GitHub Actions; install the APK and report anything off.
 - Benefits data is **sample data** (`assets/catalog/catalog_v1.json`): every rate shows a "Verify" badge until checked against the bank's MITC.
 - No benefits server yet, so updates are switched off (`CatalogConfig.current` in `lib/core/net/catalog_client.dart`).
-- Due-date **notifications** (only shown in Wallet → Needs attention for now) and the **weekly automatic backup** (manual export works).
+- The **weekly automatic backup** (manual export works).
 - Adding your own benefits to a custom card.
 - Moved to 1.0.x as decided: budgets, lost-card button.
 
@@ -31,4 +32,14 @@ dart run build_runner build --delete-conflicting-outputs
 flutter test
 flutter build apk --release --split-per-abi
 ```
-Every push also builds the APKs on GitHub Actions (Actions tab → latest run → `card-master-apks`).
+Every push builds the APKs on GitHub Actions and publishes them as a GitHub Release:
+**https://github.com/VirajP4595/CardMaster/releases/latest** → `card-master-arm64.apk`.
+
+### Signing key (so updates install over each other)
+Create your own key once and add it as two repository secrets (Settings → Secrets and variables → Actions):
+```bash
+keytool -genkeypair -keystore cardmaster.jks -alias cardmaster -keyalg RSA -keysize 2048 -validity 10000
+base64 -w0 cardmaster.jks   # paste as ANDROID_KEYSTORE_BASE64
+# the password you chose      -> ANDROID_KEYSTORE_PASSWORD
+```
+Keep `cardmaster.jks` and the password safe and offline. Without these secrets, builds are signed with a throwaway key and each new build must be installed fresh (uninstalling deletes app data).

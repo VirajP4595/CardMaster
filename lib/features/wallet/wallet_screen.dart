@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../app/app.dart';
 import '../../app/providers.dart';
 import '../../app/theme.dart';
 import '../../data/catalog/catalog.dart';
@@ -53,6 +54,7 @@ class WalletScreen extends ConsumerWidget {
             if (cards.isEmpty)
               const _EmptyWallet()
             else ...[
+              const _ReminderPrompt(),
               _Summary(cards: cards),
               const SizedBox(height: 18),
               _Carousel(cards: cards),
@@ -340,4 +342,47 @@ class _DaysBadge extends StatelessWidget {
           ],
         ),
       );
+}
+
+/// Asks for reminders in context, once, after the first card exists.
+class _ReminderPrompt extends ConsumerWidget {
+  const _ReminderPrompt();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final asked = ref.watch(settingProvider(SettingKeys.remindersEnabled));
+    if (!asked.hasValue || asked.value != null) return const SizedBox.shrink();
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(24, 0, 24, 14),
+      child: Tile(
+        color: AppColors.primaryContainerLow,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text('Get a reminder before bills are due?',
+                style: TextStyle(fontWeight: FontWeight.w700)),
+            const SizedBox(height: 4),
+            const Caption(
+                '3 days and 1 day before each due date, plus fee-waiver and backup reminders. Scheduled on this phone. Nothing else.',
+                color: AppColors.textTertiary),
+            const SizedBox(height: 10),
+            Row(children: [
+              FilledButton(
+                style: FilledButton.styleFrom(minimumSize: const Size(0, 44)),
+                onPressed: () => enableReminders(ref),
+                child: const Text('Turn on'),
+              ),
+              const SizedBox(width: 8),
+              TextButton(
+                onPressed: () => ref
+                    .read(databaseProvider)
+                    .setValue(SettingKeys.remindersEnabled, 'false'),
+                child: const Text('Not now'),
+              ),
+            ]),
+          ],
+        ),
+      ),
+    );
+  }
 }

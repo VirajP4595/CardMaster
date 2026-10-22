@@ -43,6 +43,8 @@ class TrustScreen extends ConsumerWidget {
   static const _permissions = [
     ('Internet', 'Download card-benefit updates. Nothing is sent.', 'Always'),
     ('Fingerprint / face', 'Unlock the app', 'If you allow'),
+    ('Notifications', 'Bill due dates, fee waivers, backup reminders', 'If you allow'),
+    ('Run after restart', 'Re-schedule your reminders', 'Always'),
   ];
 
   @override

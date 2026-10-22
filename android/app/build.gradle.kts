@@ -11,6 +11,8 @@ android {
     ndkVersion = flutter.ndkVersion
 
     compileOptions {
+        // Needed by flutter_local_notifications for scheduled reminders.
+        isCoreLibraryDesugaringEnabled = true
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
@@ -29,10 +31,26 @@ android {
         versionName = flutter.versionName
     }
 
+    // Release signing key comes from the environment (CI secrets or your
+    // machine). Without it, builds fall back to the debug key, and each such
+    // build can't be installed over a differently signed one.
+    val keystorePath = System.getenv("CM_KEYSTORE_PATH")
+    signingConfigs {
+        if (keystorePath != null && file(keystorePath).exists()) {
+            create("release") {
+                storeFile = file(keystorePath)
+                storePassword = System.getenv("CM_KEYSTORE_PASSWORD")
+                keyAlias = System.getenv("CM_KEY_ALIAS") ?: "cardmaster"
+                keyPassword = System.getenv("CM_KEY_PASSWORD")
+                    ?: System.getenv("CM_KEYSTORE_PASSWORD")
+            }
+        }
+    }
+
     buildTypes {
         release {
-            // Debug keys until a real upload key exists (docs/04-BUILD-GUIDE.md §5).
-            signingConfig = signingConfigs.getByName("debug")
+            signingConfig = signingConfigs.findByName("release")
+                ?: signingConfigs.getByName("debug")
             isMinifyEnabled = true
             isShrinkResources = true
         }
@@ -47,4 +65,8 @@ kotlin {
 
 flutter {
     source = "../.."
+}
+
+dependencies {
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.4")
 }
