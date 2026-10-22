@@ -1,0 +1,10 @@
+# Generates the Android launcher icons from the logo mark (design: Brand board).
+# Run: dart run flutter_launcher_icons
+flutter_launcher_icons:
+  android: true
+  ios: false
+  image_path: assets/icon/icon.png
+  adaptive_icon_background: "#6A5AE0"
+  adaptive_icon_foreground: assets/icon/foreground.png
+  adaptive_icon_monochrome: assets/icon/monochrome.png
+  min_sdk_android: 24

@@ -20,7 +20,6 @@ Not done yet (honest list):
 - Benefits data is **sample data** (`assets/catalog/catalog_v1.json`): every rate shows a "Verify" badge until checked against the bank's MITC.
 - No benefits server yet, so updates are switched off (`CatalogConfig.current` in `lib/core/net/catalog_client.dart`).
 - Due-date **notifications** (only shown in Wallet → Needs attention for now) and the **weekly automatic backup** (manual export works).
-- App icon and splash still use Flutter defaults.
 - Adding your own benefits to a custom card.
 - Moved to 1.0.x as decided: budgets, lost-card button.
 
