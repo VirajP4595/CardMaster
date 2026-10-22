@@ -42,7 +42,7 @@ Future<QuickAddPrefill> prefillFrom(
   ParsedSpend p, {
   required String source,
 }) async {
-  final cards = ref.read(cardsProvider).value ?? const <UserCard>[];
+  final cards = await readLoaded(ref, cardsProvider);
   final card = cards.where((c) => c.last4 != null && c.last4 == p.last4);
   final db = ref.read(databaseProvider);
   final category =

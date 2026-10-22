@@ -65,7 +65,11 @@ final routerProvider = Provider<GoRouter>((ref) {
       ),
       GoRoute(
         path: '/import',
-        builder: (_, s) => ImportReviewScreen(text: s.extra as String? ?? ''),
+        builder: (_, s) => ImportReviewScreen(
+          payload: s.extra is ImportPayload
+              ? s.extra! as ImportPayload
+              : ImportPayload.fromText(s.extra as String? ?? ''),
+        ),
       ),
       GoRoute(path: '/trust', builder: (_, _) => const TrustScreen()),
     ],

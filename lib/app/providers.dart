@@ -54,6 +54,18 @@ final customBenefitsProvider = StreamProvider<List<CustomBenefit>>(
 /// Ids of benefits the user created (shown with edit/delete).
 const customBenefitPrefix = 'custom:';
 
+/// Awaits a stream provider's current value from outside build. Riverpod 3
+/// pauses providers nobody listens to, so a bare `read(p.future)` would
+/// never complete; this listens while waiting.
+Future<T> readLoaded<T>(WidgetRef ref, StreamProvider<T> provider) async {
+  final sub = ref.listenManual(provider, (_, _) {});
+  try {
+    return await ref.read(provider.future);
+  } finally {
+    sub.close();
+  }
+}
+
 final cardProvider = Provider.family<UserCard?, String>((ref, id) {
   final cards = ref.watch(cardsProvider).value ?? const [];
   return cards.where((c) => c.id == id).firstOrNull;

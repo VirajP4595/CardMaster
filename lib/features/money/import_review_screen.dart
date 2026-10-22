@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
 import 'package:uuid/uuid.dart';
 
@@ -11,10 +10,30 @@ import '../../domain/money.dart';
 import '../../domain/sms_parser.dart';
 import '../../ui/widgets.dart';
 
+/// What to review: spends parsed from pasted text or an SMS backup file.
+class ImportPayload {
+  const ImportPayload({
+    required this.spends,
+    required this.messagesRead,
+    required this.source,
+  });
+
+  factory ImportPayload.fromText(String text, {String source = 'CLIPBOARD'}) =>
+      ImportPayload(
+        spends: parseMany(text),
+        messagesRead: splitMessages(text).length,
+        source: source,
+      );
+
+  final List<ParsedSpend> spends;
+  final int messagesRead;
+  final String source;
+}
+
 /// Review screen for several bank messages at once (design board 12).
 class ImportReviewScreen extends ConsumerStatefulWidget {
-  const ImportReviewScreen({super.key, required this.text});
-  final String text;
+  const ImportReviewScreen({super.key, required this.payload});
+  final ImportPayload payload;
 
   @override
   ConsumerState<ImportReviewScreen> createState() =>
@@ -43,10 +62,11 @@ class _ImportReviewScreenState extends ConsumerState<ImportReviewScreen> {
   }
 
   Future<void> _prepare() async {
-    final messages = splitMessages(widget.text);
-    final parsed = parseMany(widget.text);
-    final cards = ref.read(cardsProvider).value ?? const <UserCard>[];
-    final existing = ref.read(spendsProvider).value ?? const <Spend>[];
+    final parsed = widget.payload.spends;
+    // Wait for the data: this screen can open straight from a share intent,
+    // before the cards stream has emitted.
+    final cards = await readLoaded(ref, cardsProvider);
+    final existing = await readLoaded(ref, spendsProvider);
     final db = ref.read(databaseProvider);
     final rows = <_Row>[];
     for (final p in parsed) {
@@ -65,8 +85,8 @@ class _ImportReviewScreenState extends ConsumerState<ImportReviewScreen> {
     if (!mounted) return;
     setState(() {
       _rows = rows;
-      _found = messages.length;
-      _ignored = messages.length - parsed.length;
+      _found = widget.payload.messagesRead;
+      _ignored = widget.payload.messagesRead - parsed.length;
     });
   }
 
@@ -87,14 +107,14 @@ class _ImportReviewScreenState extends ConsumerState<ImportReviewScreen> {
           spentOn: r.parsed.date ?? now,
         ),
         merchant: r.parsed.merchant,
-        source: 'CLIPBOARD',
+        source: widget.payload.source,
       );
       if (r.parsed.merchant != null &&
           r.category != SpendCategory.other) {
         await db.remember(r.parsed.merchant!, r.category);
       }
     }
-    if (mounted) context.pop();
+    if (mounted) Navigator.of(context).maybePop();
   }
 
   @override

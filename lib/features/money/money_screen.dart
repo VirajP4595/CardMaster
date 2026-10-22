@@ -1,3 +1,6 @@
+import 'dart:convert';
+
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -7,7 +10,9 @@ import '../../app/providers.dart';
 import '../../app/theme.dart';
 import '../../domain/models.dart';
 import '../../domain/money.dart';
+import '../../domain/sms_backup.dart';
 import '../../ui/widgets.dart';
+import 'import_review_screen.dart';
 import 'money_logic.dart';
 
 /// Money tab (was Activity), card-first: every expense, plus what a card
@@ -204,9 +209,18 @@ class _MoneyScreenState extends ConsumerState<MoneyScreen> {
               ),
             const SizedBox(height: 18),
             SectionTitle('Expenses',
-                trailing: TextButton(
-                  onPressed: () => _pasteMessages(context),
-                  child: const Text('Paste bank messages'),
+                trailing: PopupMenuButton<String>(
+                  tooltip: 'Import',
+                  icon: const Icon(Icons.download_outlined),
+                  onSelected: (v) => v == 'paste'
+                      ? _pasteMessages(context)
+                      : _importBackupFile(context),
+                  itemBuilder: (_) => const [
+                    PopupMenuItem(
+                        value: 'paste', child: Text('Paste bank messages')),
+                    PopupMenuItem(
+                        value: 'file', child: Text('Import SMS backup file')),
+                  ],
                 )),
             if (spends.isEmpty)
               const Caption(
@@ -285,6 +299,51 @@ class _MoneyScreenState extends ConsumerState<MoneyScreen> {
     if (result == null) return;
     await ref.read(databaseProvider).setBudget(
         picked, result == 'remove' ? null : parseRupeesToPaise(amount.text));
+  }
+
+  /// Imports an XML export from an SMS backup app (docs/08 §2b). The file
+  /// is read here and not copied into the app.
+  Future<void> _importBackupFile(BuildContext context) async {
+    final ok = await showDialog<bool>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: const Text('Import an SMS backup'),
+        content: const Text(
+            'Export your messages as an XML file with an SMS backup app (for example "SMS Backup & Restore"), then pick that file. Only messages from bank senders are read, on this phone. The file isn\'t copied into Card Master.'),
+        actions: [
+          TextButton(
+              onPressed: () => Navigator.pop(ctx, false),
+              child: const Text('Cancel')),
+          TextButton(
+              onPressed: () => Navigator.pop(ctx, true),
+              child: const Text('Pick file')),
+        ],
+      ),
+    );
+    if (ok != true) return;
+    final picked = await FilePicker.pickFiles();
+    if (picked.isEmpty || !context.mounted) return;
+    final messenger = ScaffoldMessenger.of(context);
+    try {
+      final text = utf8.decode(await picked.single.readAsBytes(),
+          allowMalformed: true);
+      final result = parseSmsBackupXml(text);
+      if (!context.mounted) return;
+      if (result.messagesRead == 0) {
+        messenger.showSnackBar(const SnackBar(
+            content: Text("That doesn't look like an SMS backup XML file.")));
+        return;
+      }
+      context.push('/import',
+          extra: ImportPayload(
+            spends: result.spends,
+            messagesRead: result.messagesRead,
+            source: 'SMS_FILE',
+          ));
+    } catch (e) {
+      messenger.showSnackBar(
+          SnackBar(content: Text('Could not read that file: $e')));
+    }
   }
 
   Future<void> _pasteMessages(BuildContext context) async {

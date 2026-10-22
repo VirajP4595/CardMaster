@@ -9,6 +9,7 @@ import 'package:card_master/domain/models.dart';
 import 'package:card_master/features/best_card/best_card_screen.dart';
 import 'package:card_master/features/card_detail/card_detail_screen.dart';
 import 'package:card_master/features/card_detail/worth_screen.dart';
+import 'package:card_master/features/money/import_review_screen.dart';
 import 'package:card_master/features/money/money_screen.dart';
 import 'package:card_master/features/money/quick_add_screen.dart';
 import 'package:card_master/features/settings/trust_screen.dart';
@@ -62,10 +63,15 @@ Future<void> _pump(WidgetTester t, AppDatabase db, Widget screen) async {
     ],
     child: MaterialApp(theme: buildTheme(), home: screen),
   ));
-  // Let drift streams emit.
-  for (var i = 0; i < 5; i++) {
+  await _settle(t);
+}
+
+/// Lets drift queries and streams finish: real time for the database work,
+/// fake time so drift's own timers fire.
+Future<void> _settle(WidgetTester t) async {
+  for (var i = 0; i < 10; i++) {
     await t.runAsync(() => Future<void>.delayed(const Duration(milliseconds: 20)));
-    await t.pump();
+    await t.pump(const Duration(milliseconds: 20));
   }
 }
 
@@ -221,6 +227,34 @@ void main() {
     expect(find.text('−₹250'), findsOneWidget);
     expect(find.text('RECONSIDER'), findsOneWidget);
     await _close(t, db2);
+  });
+
+  testWidgets('import review matches cards and imports ticked rows', (t) async {
+    final db = await t.runAsync(_seed);
+    await _pump(
+      t,
+      db!,
+      ImportReviewScreen(
+        payload: ImportPayload.fromText('''
+INR 2,400.00 spent on Credit Card XX7302 at BESCOM on 21-10-26.
+
+Rs.900 spent on card XX5566 at UNKNOWN SHOP on 20-10-26.
+
+123456 is your OTP. Do not share.
+'''),
+      ),
+    );
+    expect(find.text('Import 1 expense'), findsWidgets);
+    expect(find.textContaining('not in wallet'), findsOneWidget);
+    await t.tap(find.widgetWithText(FilledButton, 'Import 1 expense'));
+    for (var i = 0; i < 5; i++) {
+      await t.runAsync(() => Future<void>.delayed(const Duration(milliseconds: 20)));
+      await t.pump();
+    }
+    final spends = await t.runAsync(db.allSpends);
+    expect(spends!.single.userCardId, 'airtel');
+    expect(spends.single.amountPaise, 240000);
+    await _close(t, db);
   });
 
   testWidgets('trust center lists costs and an empty network log', (t) async {
