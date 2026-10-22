@@ -6,6 +6,7 @@ import 'package:card_master/app/theme.dart';
 import 'package:card_master/data/catalog/catalog.dart';
 import 'package:card_master/data/db/database.dart';
 import 'package:card_master/domain/models.dart';
+import 'package:card_master/domain/recurring.dart';
 import 'package:card_master/features/best_card/best_card_screen.dart';
 import 'package:card_master/features/card_detail/card_detail_screen.dart';
 import 'package:card_master/features/card_detail/worth_screen.dart';
@@ -254,6 +255,30 @@ Rs.900 spent on card XX5566 at UNKNOWN SHOP on 20-10-26.
     final spends = await t.runAsync(db.allSpends);
     expect(spends!.single.userCardId, 'airtel');
     expect(spends.single.amountPaise, 240000);
+    await _close(t, db);
+  });
+
+  testWidgets('recurring expense that asks first shows Add / Skip', (t) async {
+    final db = await t.runAsync(_seed);
+    final now = DateTime.now();
+    await t.runAsync(() => db!.saveRecurring(RecurringRule(
+          id: 'netflix',
+          title: 'Netflix',
+          amountPaise: 64900,
+          category: SpendCategory.other,
+          paymentKind: PaymentKind.card,
+          userCardId: 'scapia',
+          dayOfMonth: 1,
+          autoAdd: false,
+          lastAddedMonth: monthKey(now) - 1,
+        )));
+    await _pump(t, db!, const MoneyScreen());
+    expect(find.textContaining('Netflix ₹649 was due on 1/'), findsOneWidget);
+    await t.tap(find.widgetWithText(FilledButton, 'Add'));
+    await _settle(t);
+    expect(find.textContaining('was due on'), findsNothing);
+    final spends = await t.runAsync(db.allSpends);
+    expect(spends!.single.note, 'Netflix');
     await _close(t, db);
   });
 

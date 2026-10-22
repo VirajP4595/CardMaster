@@ -1,6 +1,7 @@
 import 'package:drift/drift.dart';
 
 import '../../domain/models.dart' as m;
+import '../../domain/recurring.dart' as m2;
 
 part 'database.g.dart';
 
@@ -41,6 +42,23 @@ class Budgets extends Table {
 
   @override
   Set<Column> get primaryKey => {category};
+}
+
+/// Recurring expenses: rent, subscriptions, EMIs (added in v4).
+@DataClassName('RecurringRow')
+class Recurrings extends Table {
+  TextColumn get id => text()();
+  TextColumn get title => text()();
+  IntColumn get amountPaise => integer()();
+  TextColumn get category => text()();
+  TextColumn get paymentKind => text()();
+  TextColumn get userCardId => text().nullable()();
+  IntColumn get dayOfMonth => integer()();
+  BoolColumn get autoAdd => boolean().withDefault(const Constant(true))();
+  IntColumn get lastAddedMonth => integer().nullable()();
+
+  @override
+  Set<Column> get primaryKey => {id};
 }
 
 @DataClassName('SpendRow')
@@ -131,6 +149,7 @@ class KeyValues extends Table {
   BenefitOverrides,
   CustomBenefits,
   Budgets,
+  Recurrings,
   MerchantRules,
   NetworkLogs,
   KeyValues,
@@ -139,7 +158,7 @@ class AppDatabase extends _$AppDatabase {
   AppDatabase(super.e);
 
   @override
-  int get schemaVersion => 3;
+  int get schemaVersion => 4;
 
   @override
   MigrationStrategy get migration => MigrationStrategy(
@@ -150,6 +169,7 @@ class AppDatabase extends _$AppDatabase {
             await m.addColumn(userCards, userCards.helpline);
             await m.createTable(budgets);
           }
+          if (from < 4) await m.createTable(recurrings);
         },
       );
 
@@ -298,6 +318,71 @@ class AppDatabase extends _$AppDatabase {
           ? (delete(budgets)..where((t) => t.category.equals(c.code))).go()
           : into(budgets).insertOnConflictUpdate(BudgetsCompanion.insert(
               category: c.code, amountPaise: amountPaise));
+
+  // ---- Recurring ----
+
+  Stream<List<m2.RecurringRule>> watchRecurring() =>
+      select(recurrings).watch().map((rows) => rows.map(_toRule).toList());
+
+  Future<List<m2.RecurringRule>> allRecurring() async =>
+      (await select(recurrings).get()).map(_toRule).toList();
+
+  Future<void> saveRecurring(m2.RecurringRule r) =>
+      into(recurrings).insertOnConflictUpdate(RecurringsCompanion.insert(
+        id: r.id,
+        title: r.title,
+        amountPaise: r.amountPaise,
+        category: r.category.code,
+        paymentKind: r.paymentKind.name,
+        userCardId: Value(r.userCardId),
+        dayOfMonth: r.dayOfMonth,
+        autoAdd: Value(r.autoAdd),
+        lastAddedMonth: Value(r.lastAddedMonth),
+      ));
+
+  Future<void> deleteRecurring(String id) =>
+      (delete(recurrings)..where((t) => t.id.equals(id))).go();
+
+  /// Records an occurrence as an expense and marks the month as done.
+  Future<void> addOccurrence(m2.RecurringRule r, DateTime date) =>
+      transaction(() async {
+        await addSpend(
+          m.Spend(
+            id: '${r.id}-${m2.monthKey(date)}',
+            amountPaise: r.amountPaise,
+            category: r.category,
+            paymentKind: r.paymentKind,
+            userCardId: r.userCardId,
+            viaUpi: r.paymentKind == m.PaymentKind.bankUpi,
+            payee: r.category == m.SpendCategory.rent
+                ? m.PayeeType.person
+                : m.PayeeType.merchant,
+            note: r.title,
+            spentOn: date,
+          ),
+          merchant: r.title.toUpperCase(),
+          source: 'RECURRING',
+        );
+        await (update(recurrings)..where((t) => t.id.equals(r.id))).write(
+            RecurringsCompanion(lastAddedMonth: Value(m2.monthKey(date))));
+      });
+
+  /// Marks a month as handled without adding an expense ("Skip").
+  Future<void> skipOccurrence(m2.RecurringRule r, DateTime date) =>
+      (update(recurrings)..where((t) => t.id.equals(r.id))).write(
+          RecurringsCompanion(lastAddedMonth: Value(m2.monthKey(date))));
+
+  m2.RecurringRule _toRule(RecurringRow r) => m2.RecurringRule(
+        id: r.id,
+        title: r.title,
+        amountPaise: r.amountPaise,
+        category: m.SpendCategory.fromCode(r.category),
+        paymentKind: m.PaymentKind.values.byName(r.paymentKind),
+        userCardId: r.userCardId,
+        dayOfMonth: r.dayOfMonth,
+        autoAdd: r.autoAdd,
+        lastAddedMonth: r.lastAddedMonth,
+      );
 
   // ---- Custom benefits ----
 

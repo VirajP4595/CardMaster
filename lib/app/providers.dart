@@ -5,6 +5,7 @@ import '../data/db/database.dart';
 import '../domain/fee_waiver.dart';
 import '../domain/models.dart';
 import '../domain/recommender.dart';
+import '../domain/recurring.dart';
 
 /// Overridden in main() with the opened encrypted database.
 final databaseProvider = Provider<AppDatabase>(
@@ -37,6 +38,10 @@ final spendsProvider = StreamProvider<List<Spend>>(
 
 final overridesProvider = StreamProvider<List<BenefitOverride>>(
   (ref) => ref.watch(databaseProvider).watchOverrides(),
+);
+
+final recurringProvider = StreamProvider<List<RecurringRule>>(
+  (ref) => ref.watch(databaseProvider).watchRecurring(),
 );
 
 final budgetsProvider = StreamProvider<Map<SpendCategory, int>>(

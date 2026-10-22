@@ -6,6 +6,7 @@ import 'app/auto_backup.dart';
 import 'app/providers.dart';
 import 'app/services.dart';
 import 'data/db/open.dart';
+import 'domain/recurring.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,6 +25,12 @@ Future<void> main() async {
     container: container,
     child: const CardMasterApp(),
   ));
+
+  // Recurring expenses set to add themselves (rent, subscriptions…).
+  final rules = (await db.allRecurring()).where((r) => r.autoAdd).toList();
+  for (final (rule, date) in dueOccurrences(rules, DateTime.now())) {
+    await db.addOccurrence(rule, date);
+  }
 
   // Weekly automatic backup to Downloads/Card Master, if switched on.
   AutoBackup.runIfDue(db).catchError((_) => false);

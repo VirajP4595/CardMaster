@@ -9,10 +9,12 @@ import 'package:intl/intl.dart';
 import '../../app/providers.dart';
 import '../../app/theme.dart';
 import '../../domain/models.dart';
+import '../../domain/csv_export.dart';
 import '../../domain/money.dart';
 import '../../domain/sms_backup.dart';
 import '../../ui/widgets.dart';
 import 'import_review_screen.dart';
+import 'recurring_section.dart';
 import 'money_logic.dart';
 
 /// Money tab (was Activity), card-first: every expense, plus what a card
@@ -207,19 +209,24 @@ class _MoneyScreenState extends ConsumerState<MoneyScreen> {
                     ),
                 ]),
               ),
+            const RecurringSection(),
             const SizedBox(height: 18),
             SectionTitle('Expenses',
                 trailing: PopupMenuButton<String>(
                   tooltip: 'Import',
                   icon: const Icon(Icons.download_outlined),
-                  onSelected: (v) => v == 'paste'
-                      ? _pasteMessages(context)
-                      : _importBackupFile(context),
+                  onSelected: (v) => switch (v) {
+                    'paste' => _pasteMessages(context),
+                    'file' => _importBackupFile(context),
+                    _ => _exportCsv(context, all),
+                  },
                   itemBuilder: (_) => const [
                     PopupMenuItem(
                         value: 'paste', child: Text('Paste bank messages')),
                     PopupMenuItem(
                         value: 'file', child: Text('Import SMS backup file')),
+                    PopupMenuItem(
+                        value: 'csv', child: Text('Export all as CSV')),
                   ],
                 )),
             if (spends.isEmpty)
@@ -299,6 +306,42 @@ class _MoneyScreenState extends ConsumerState<MoneyScreen> {
     if (result == null) return;
     await ref.read(databaseProvider).setBudget(
         picked, result == 'remove' ? null : parseRupeesToPaise(amount.text));
+  }
+
+  /// Saves every expense as a CSV file where the user chooses. Not
+  /// encrypted, so the dialog says so.
+  Future<void> _exportCsv(BuildContext context, List<Spend> all) async {
+    final messenger = ScaffoldMessenger.of(context);
+    final ok = await showDialog<bool>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: const Text('Export as CSV'),
+        content: const Text(
+            'A spreadsheet of all your expenses. Unlike backups, a CSV file isn\'t encrypted: anyone who gets the file can read it.'),
+        actions: [
+          TextButton(
+              onPressed: () => Navigator.pop(ctx, false),
+              child: const Text('Cancel')),
+          TextButton(
+              onPressed: () => Navigator.pop(ctx, true),
+              child: const Text('Export')),
+        ],
+      ),
+    );
+    if (ok != true) return;
+    final cards = ref.read(cardsProvider).value ?? const <UserCard>[];
+    final csv = spendsToCsv(all, {for (final c in cards) c.id: c.displayName});
+    final now = DateTime.now();
+    final saved = await FilePicker.saveFile(
+      dialogTitle: 'Save CSV',
+      fileName:
+          'cardmaster-expenses-${now.year}-${now.month.toString().padLeft(2, '0')}-${now.day.toString().padLeft(2, '0')}.csv',
+      bytes: utf8.encode(csv),
+    );
+    if (saved != null) {
+      messenger.showSnackBar(
+          SnackBar(content: Text('Exported ${all.length} expenses.')));
+    }
   }
 
   /// Imports an XML export from an SMS backup app (docs/08 §2b). The file

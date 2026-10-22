@@ -2967,6 +2967,594 @@ class BudgetsCompanion extends UpdateCompanion<Budget> {
   }
 }
 
+class $RecurringsTable extends Recurrings
+    with TableInfo<$RecurringsTable, RecurringRow> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $RecurringsTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _titleMeta = const VerificationMeta('title');
+  @override
+  late final GeneratedColumn<String> title = GeneratedColumn<String>(
+    'title',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _amountPaiseMeta = const VerificationMeta(
+    'amountPaise',
+  );
+  @override
+  late final GeneratedColumn<int> amountPaise = GeneratedColumn<int>(
+    'amount_paise',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _categoryMeta = const VerificationMeta(
+    'category',
+  );
+  @override
+  late final GeneratedColumn<String> category = GeneratedColumn<String>(
+    'category',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _paymentKindMeta = const VerificationMeta(
+    'paymentKind',
+  );
+  @override
+  late final GeneratedColumn<String> paymentKind = GeneratedColumn<String>(
+    'payment_kind',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _userCardIdMeta = const VerificationMeta(
+    'userCardId',
+  );
+  @override
+  late final GeneratedColumn<String> userCardId = GeneratedColumn<String>(
+    'user_card_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _dayOfMonthMeta = const VerificationMeta(
+    'dayOfMonth',
+  );
+  @override
+  late final GeneratedColumn<int> dayOfMonth = GeneratedColumn<int>(
+    'day_of_month',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _autoAddMeta = const VerificationMeta(
+    'autoAdd',
+  );
+  @override
+  late final GeneratedColumn<bool> autoAdd = GeneratedColumn<bool>(
+    'auto_add',
+    aliasedName,
+    false,
+    type: DriftSqlType.bool,
+    requiredDuringInsert: false,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'CHECK ("auto_add" IN (0, 1))',
+    ),
+    defaultValue: const Constant(true),
+  );
+  static const VerificationMeta _lastAddedMonthMeta = const VerificationMeta(
+    'lastAddedMonth',
+  );
+  @override
+  late final GeneratedColumn<int> lastAddedMonth = GeneratedColumn<int>(
+    'last_added_month',
+    aliasedName,
+    true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    id,
+    title,
+    amountPaise,
+    category,
+    paymentKind,
+    userCardId,
+    dayOfMonth,
+    autoAdd,
+    lastAddedMonth,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'recurrings';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<RecurringRow> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('title')) {
+      context.handle(
+        _titleMeta,
+        title.isAcceptableOrUnknown(data['title']!, _titleMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_titleMeta);
+    }
+    if (data.containsKey('amount_paise')) {
+      context.handle(
+        _amountPaiseMeta,
+        amountPaise.isAcceptableOrUnknown(
+          data['amount_paise']!,
+          _amountPaiseMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_amountPaiseMeta);
+    }
+    if (data.containsKey('category')) {
+      context.handle(
+        _categoryMeta,
+        category.isAcceptableOrUnknown(data['category']!, _categoryMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_categoryMeta);
+    }
+    if (data.containsKey('payment_kind')) {
+      context.handle(
+        _paymentKindMeta,
+        paymentKind.isAcceptableOrUnknown(
+          data['payment_kind']!,
+          _paymentKindMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_paymentKindMeta);
+    }
+    if (data.containsKey('user_card_id')) {
+      context.handle(
+        _userCardIdMeta,
+        userCardId.isAcceptableOrUnknown(
+          data['user_card_id']!,
+          _userCardIdMeta,
+        ),
+      );
+    }
+    if (data.containsKey('day_of_month')) {
+      context.handle(
+        _dayOfMonthMeta,
+        dayOfMonth.isAcceptableOrUnknown(
+          data['day_of_month']!,
+          _dayOfMonthMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_dayOfMonthMeta);
+    }
+    if (data.containsKey('auto_add')) {
+      context.handle(
+        _autoAddMeta,
+        autoAdd.isAcceptableOrUnknown(data['auto_add']!, _autoAddMeta),
+      );
+    }
+    if (data.containsKey('last_added_month')) {
+      context.handle(
+        _lastAddedMonthMeta,
+        lastAddedMonth.isAcceptableOrUnknown(
+          data['last_added_month']!,
+          _lastAddedMonthMeta,
+        ),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  RecurringRow map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return RecurringRow(
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      title: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}title'],
+      )!,
+      amountPaise: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}amount_paise'],
+      )!,
+      category: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}category'],
+      )!,
+      paymentKind: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}payment_kind'],
+      )!,
+      userCardId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}user_card_id'],
+      ),
+      dayOfMonth: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}day_of_month'],
+      )!,
+      autoAdd: attachedDatabase.typeMapping.read(
+        DriftSqlType.bool,
+        data['${effectivePrefix}auto_add'],
+      )!,
+      lastAddedMonth: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}last_added_month'],
+      ),
+    );
+  }
+
+  @override
+  $RecurringsTable createAlias(String alias) {
+    return $RecurringsTable(attachedDatabase, alias);
+  }
+}
+
+class RecurringRow extends DataClass implements Insertable<RecurringRow> {
+  final String id;
+  final String title;
+  final int amountPaise;
+  final String category;
+  final String paymentKind;
+  final String? userCardId;
+  final int dayOfMonth;
+  final bool autoAdd;
+  final int? lastAddedMonth;
+  const RecurringRow({
+    required this.id,
+    required this.title,
+    required this.amountPaise,
+    required this.category,
+    required this.paymentKind,
+    this.userCardId,
+    required this.dayOfMonth,
+    required this.autoAdd,
+    this.lastAddedMonth,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<String>(id);
+    map['title'] = Variable<String>(title);
+    map['amount_paise'] = Variable<int>(amountPaise);
+    map['category'] = Variable<String>(category);
+    map['payment_kind'] = Variable<String>(paymentKind);
+    if (!nullToAbsent || userCardId != null) {
+      map['user_card_id'] = Variable<String>(userCardId);
+    }
+    map['day_of_month'] = Variable<int>(dayOfMonth);
+    map['auto_add'] = Variable<bool>(autoAdd);
+    if (!nullToAbsent || lastAddedMonth != null) {
+      map['last_added_month'] = Variable<int>(lastAddedMonth);
+    }
+    return map;
+  }
+
+  RecurringsCompanion toCompanion(bool nullToAbsent) {
+    return RecurringsCompanion(
+      id: Value(id),
+      title: Value(title),
+      amountPaise: Value(amountPaise),
+      category: Value(category),
+      paymentKind: Value(paymentKind),
+      userCardId: userCardId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(userCardId),
+      dayOfMonth: Value(dayOfMonth),
+      autoAdd: Value(autoAdd),
+      lastAddedMonth: lastAddedMonth == null && nullToAbsent
+          ? const Value.absent()
+          : Value(lastAddedMonth),
+    );
+  }
+
+  factory RecurringRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return RecurringRow(
+      id: serializer.fromJson<String>(json['id']),
+      title: serializer.fromJson<String>(json['title']),
+      amountPaise: serializer.fromJson<int>(json['amountPaise']),
+      category: serializer.fromJson<String>(json['category']),
+      paymentKind: serializer.fromJson<String>(json['paymentKind']),
+      userCardId: serializer.fromJson<String?>(json['userCardId']),
+      dayOfMonth: serializer.fromJson<int>(json['dayOfMonth']),
+      autoAdd: serializer.fromJson<bool>(json['autoAdd']),
+      lastAddedMonth: serializer.fromJson<int?>(json['lastAddedMonth']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<String>(id),
+      'title': serializer.toJson<String>(title),
+      'amountPaise': serializer.toJson<int>(amountPaise),
+      'category': serializer.toJson<String>(category),
+      'paymentKind': serializer.toJson<String>(paymentKind),
+      'userCardId': serializer.toJson<String?>(userCardId),
+      'dayOfMonth': serializer.toJson<int>(dayOfMonth),
+      'autoAdd': serializer.toJson<bool>(autoAdd),
+      'lastAddedMonth': serializer.toJson<int?>(lastAddedMonth),
+    };
+  }
+
+  RecurringRow copyWith({
+    String? id,
+    String? title,
+    int? amountPaise,
+    String? category,
+    String? paymentKind,
+    Value<String?> userCardId = const Value.absent(),
+    int? dayOfMonth,
+    bool? autoAdd,
+    Value<int?> lastAddedMonth = const Value.absent(),
+  }) => RecurringRow(
+    id: id ?? this.id,
+    title: title ?? this.title,
+    amountPaise: amountPaise ?? this.amountPaise,
+    category: category ?? this.category,
+    paymentKind: paymentKind ?? this.paymentKind,
+    userCardId: userCardId.present ? userCardId.value : this.userCardId,
+    dayOfMonth: dayOfMonth ?? this.dayOfMonth,
+    autoAdd: autoAdd ?? this.autoAdd,
+    lastAddedMonth: lastAddedMonth.present
+        ? lastAddedMonth.value
+        : this.lastAddedMonth,
+  );
+  RecurringRow copyWithCompanion(RecurringsCompanion data) {
+    return RecurringRow(
+      id: data.id.present ? data.id.value : this.id,
+      title: data.title.present ? data.title.value : this.title,
+      amountPaise: data.amountPaise.present
+          ? data.amountPaise.value
+          : this.amountPaise,
+      category: data.category.present ? data.category.value : this.category,
+      paymentKind: data.paymentKind.present
+          ? data.paymentKind.value
+          : this.paymentKind,
+      userCardId: data.userCardId.present
+          ? data.userCardId.value
+          : this.userCardId,
+      dayOfMonth: data.dayOfMonth.present
+          ? data.dayOfMonth.value
+          : this.dayOfMonth,
+      autoAdd: data.autoAdd.present ? data.autoAdd.value : this.autoAdd,
+      lastAddedMonth: data.lastAddedMonth.present
+          ? data.lastAddedMonth.value
+          : this.lastAddedMonth,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('RecurringRow(')
+          ..write('id: $id, ')
+          ..write('title: $title, ')
+          ..write('amountPaise: $amountPaise, ')
+          ..write('category: $category, ')
+          ..write('paymentKind: $paymentKind, ')
+          ..write('userCardId: $userCardId, ')
+          ..write('dayOfMonth: $dayOfMonth, ')
+          ..write('autoAdd: $autoAdd, ')
+          ..write('lastAddedMonth: $lastAddedMonth')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+    id,
+    title,
+    amountPaise,
+    category,
+    paymentKind,
+    userCardId,
+    dayOfMonth,
+    autoAdd,
+    lastAddedMonth,
+  );
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is RecurringRow &&
+          other.id == this.id &&
+          other.title == this.title &&
+          other.amountPaise == this.amountPaise &&
+          other.category == this.category &&
+          other.paymentKind == this.paymentKind &&
+          other.userCardId == this.userCardId &&
+          other.dayOfMonth == this.dayOfMonth &&
+          other.autoAdd == this.autoAdd &&
+          other.lastAddedMonth == this.lastAddedMonth);
+}
+
+class RecurringsCompanion extends UpdateCompanion<RecurringRow> {
+  final Value<String> id;
+  final Value<String> title;
+  final Value<int> amountPaise;
+  final Value<String> category;
+  final Value<String> paymentKind;
+  final Value<String?> userCardId;
+  final Value<int> dayOfMonth;
+  final Value<bool> autoAdd;
+  final Value<int?> lastAddedMonth;
+  final Value<int> rowid;
+  const RecurringsCompanion({
+    this.id = const Value.absent(),
+    this.title = const Value.absent(),
+    this.amountPaise = const Value.absent(),
+    this.category = const Value.absent(),
+    this.paymentKind = const Value.absent(),
+    this.userCardId = const Value.absent(),
+    this.dayOfMonth = const Value.absent(),
+    this.autoAdd = const Value.absent(),
+    this.lastAddedMonth = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  RecurringsCompanion.insert({
+    required String id,
+    required String title,
+    required int amountPaise,
+    required String category,
+    required String paymentKind,
+    this.userCardId = const Value.absent(),
+    required int dayOfMonth,
+    this.autoAdd = const Value.absent(),
+    this.lastAddedMonth = const Value.absent(),
+    this.rowid = const Value.absent(),
+  }) : id = Value(id),
+       title = Value(title),
+       amountPaise = Value(amountPaise),
+       category = Value(category),
+       paymentKind = Value(paymentKind),
+       dayOfMonth = Value(dayOfMonth);
+  static Insertable<RecurringRow> custom({
+    Expression<String>? id,
+    Expression<String>? title,
+    Expression<int>? amountPaise,
+    Expression<String>? category,
+    Expression<String>? paymentKind,
+    Expression<String>? userCardId,
+    Expression<int>? dayOfMonth,
+    Expression<bool>? autoAdd,
+    Expression<int>? lastAddedMonth,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (title != null) 'title': title,
+      if (amountPaise != null) 'amount_paise': amountPaise,
+      if (category != null) 'category': category,
+      if (paymentKind != null) 'payment_kind': paymentKind,
+      if (userCardId != null) 'user_card_id': userCardId,
+      if (dayOfMonth != null) 'day_of_month': dayOfMonth,
+      if (autoAdd != null) 'auto_add': autoAdd,
+      if (lastAddedMonth != null) 'last_added_month': lastAddedMonth,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  RecurringsCompanion copyWith({
+    Value<String>? id,
+    Value<String>? title,
+    Value<int>? amountPaise,
+    Value<String>? category,
+    Value<String>? paymentKind,
+    Value<String?>? userCardId,
+    Value<int>? dayOfMonth,
+    Value<bool>? autoAdd,
+    Value<int?>? lastAddedMonth,
+    Value<int>? rowid,
+  }) {
+    return RecurringsCompanion(
+      id: id ?? this.id,
+      title: title ?? this.title,
+      amountPaise: amountPaise ?? this.amountPaise,
+      category: category ?? this.category,
+      paymentKind: paymentKind ?? this.paymentKind,
+      userCardId: userCardId ?? this.userCardId,
+      dayOfMonth: dayOfMonth ?? this.dayOfMonth,
+      autoAdd: autoAdd ?? this.autoAdd,
+      lastAddedMonth: lastAddedMonth ?? this.lastAddedMonth,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (title.present) {
+      map['title'] = Variable<String>(title.value);
+    }
+    if (amountPaise.present) {
+      map['amount_paise'] = Variable<int>(amountPaise.value);
+    }
+    if (category.present) {
+      map['category'] = Variable<String>(category.value);
+    }
+    if (paymentKind.present) {
+      map['payment_kind'] = Variable<String>(paymentKind.value);
+    }
+    if (userCardId.present) {
+      map['user_card_id'] = Variable<String>(userCardId.value);
+    }
+    if (dayOfMonth.present) {
+      map['day_of_month'] = Variable<int>(dayOfMonth.value);
+    }
+    if (autoAdd.present) {
+      map['auto_add'] = Variable<bool>(autoAdd.value);
+    }
+    if (lastAddedMonth.present) {
+      map['last_added_month'] = Variable<int>(lastAddedMonth.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('RecurringsCompanion(')
+          ..write('id: $id, ')
+          ..write('title: $title, ')
+          ..write('amountPaise: $amountPaise, ')
+          ..write('category: $category, ')
+          ..write('paymentKind: $paymentKind, ')
+          ..write('userCardId: $userCardId, ')
+          ..write('dayOfMonth: $dayOfMonth, ')
+          ..write('autoAdd: $autoAdd, ')
+          ..write('lastAddedMonth: $lastAddedMonth, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
 class $MerchantRulesTable extends MerchantRules
     with TableInfo<$MerchantRulesTable, MerchantRule> {
   @override
@@ -3824,6 +4412,7 @@ abstract class _$AppDatabase extends GeneratedDatabase {
   );
   late final $CustomBenefitsTable customBenefits = $CustomBenefitsTable(this);
   late final $BudgetsTable budgets = $BudgetsTable(this);
+  late final $RecurringsTable recurrings = $RecurringsTable(this);
   late final $MerchantRulesTable merchantRules = $MerchantRulesTable(this);
   late final $NetworkLogsTable networkLogs = $NetworkLogsTable(this);
   late final $KeyValuesTable keyValues = $KeyValuesTable(this);
@@ -3837,6 +4426,7 @@ abstract class _$AppDatabase extends GeneratedDatabase {
     benefitOverrides,
     customBenefits,
     budgets,
+    recurrings,
     merchantRules,
     networkLogs,
     keyValues,
@@ -5328,6 +5918,299 @@ typedef $$BudgetsTableProcessedTableManager =
       Budget,
       PrefetchHooks Function()
     >;
+typedef $$RecurringsTableCreateCompanionBuilder = RecurringsCompanion Function({
+  required String id,
+  required String title,
+  required int amountPaise,
+  required String category,
+  required String paymentKind,
+  Value<String?> userCardId,
+  required int dayOfMonth,
+  Value<bool> autoAdd,
+  Value<int?> lastAddedMonth,
+  Value<int> rowid,
+});
+typedef $$RecurringsTableUpdateCompanionBuilder = RecurringsCompanion Function({
+  Value<String> id,
+  Value<String> title,
+  Value<int> amountPaise,
+  Value<String> category,
+  Value<String> paymentKind,
+  Value<String?> userCardId,
+  Value<int> dayOfMonth,
+  Value<bool> autoAdd,
+  Value<int?> lastAddedMonth,
+  Value<int> rowid,
+});
+
+class $$RecurringsTableFilterComposer
+    extends Composer<_$AppDatabase, $RecurringsTable> {
+  $$RecurringsTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get title => $composableBuilder(
+    column: $table.title,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get amountPaise => $composableBuilder(
+    column: $table.amountPaise,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get category => $composableBuilder(
+    column: $table.category,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get paymentKind => $composableBuilder(
+    column: $table.paymentKind,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get userCardId => $composableBuilder(
+    column: $table.userCardId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get dayOfMonth => $composableBuilder(
+    column: $table.dayOfMonth,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<bool> get autoAdd => $composableBuilder(
+    column: $table.autoAdd,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get lastAddedMonth => $composableBuilder(
+    column: $table.lastAddedMonth,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$RecurringsTableOrderingComposer
+    extends Composer<_$AppDatabase, $RecurringsTable> {
+  $$RecurringsTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get title => $composableBuilder(
+    column: $table.title,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get amountPaise => $composableBuilder(
+    column: $table.amountPaise,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get category => $composableBuilder(
+    column: $table.category,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get paymentKind => $composableBuilder(
+    column: $table.paymentKind,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get userCardId => $composableBuilder(
+    column: $table.userCardId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get dayOfMonth => $composableBuilder(
+    column: $table.dayOfMonth,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<bool> get autoAdd => $composableBuilder(
+    column: $table.autoAdd,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get lastAddedMonth => $composableBuilder(
+    column: $table.lastAddedMonth,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$RecurringsTableAnnotationComposer
+    extends Composer<_$AppDatabase, $RecurringsTable> {
+  $$RecurringsTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get title =>
+      $composableBuilder(column: $table.title, builder: (column) => column);
+
+  GeneratedColumn<int> get amountPaise => $composableBuilder(
+    column: $table.amountPaise,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get category =>
+      $composableBuilder(column: $table.category, builder: (column) => column);
+
+  GeneratedColumn<String> get paymentKind => $composableBuilder(
+    column: $table.paymentKind,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get userCardId => $composableBuilder(
+    column: $table.userCardId,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<int> get dayOfMonth => $composableBuilder(
+    column: $table.dayOfMonth,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<bool> get autoAdd =>
+      $composableBuilder(column: $table.autoAdd, builder: (column) => column);
+
+  GeneratedColumn<int> get lastAddedMonth => $composableBuilder(
+    column: $table.lastAddedMonth,
+    builder: (column) => column,
+  );
+}
+
+class $$RecurringsTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $RecurringsTable,
+          RecurringRow,
+          $$RecurringsTableFilterComposer,
+          $$RecurringsTableOrderingComposer,
+          $$RecurringsTableAnnotationComposer,
+          $$RecurringsTableCreateCompanionBuilder,
+          $$RecurringsTableUpdateCompanionBuilder,
+          (
+            RecurringRow,
+            BaseReferences<_$AppDatabase, $RecurringsTable, RecurringRow>,
+          ),
+          RecurringRow,
+          PrefetchHooks Function()
+        > {
+  $$RecurringsTableTableManager(_$AppDatabase db, $RecurringsTable table)
+    : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$RecurringsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$RecurringsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$RecurringsTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<String> id = const Value.absent(),
+                Value<String> title = const Value.absent(),
+                Value<int> amountPaise = const Value.absent(),
+                Value<String> category = const Value.absent(),
+                Value<String> paymentKind = const Value.absent(),
+                Value<String?> userCardId = const Value.absent(),
+                Value<int> dayOfMonth = const Value.absent(),
+                Value<bool> autoAdd = const Value.absent(),
+                Value<int?> lastAddedMonth = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => RecurringsCompanion(
+                id: id,
+                title: title,
+                amountPaise: amountPaise,
+                category: category,
+                paymentKind: paymentKind,
+                userCardId: userCardId,
+                dayOfMonth: dayOfMonth,
+                autoAdd: autoAdd,
+                lastAddedMonth: lastAddedMonth,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String id,
+                required String title,
+                required int amountPaise,
+                required String category,
+                required String paymentKind,
+                Value<String?> userCardId = const Value.absent(),
+                required int dayOfMonth,
+                Value<bool> autoAdd = const Value.absent(),
+                Value<int?> lastAddedMonth = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => RecurringsCompanion.insert(
+                id: id,
+                title: title,
+                amountPaise: amountPaise,
+                category: category,
+                paymentKind: paymentKind,
+                userCardId: userCardId,
+                dayOfMonth: dayOfMonth,
+                autoAdd: autoAdd,
+                lastAddedMonth: lastAddedMonth,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$RecurringsTable, RecurringRow>(table),
+                  BaseReferences<_$AppDatabase, $RecurringsTable, RecurringRow>(
+                    db,
+                    table,
+                    e,
+                  ),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$RecurringsTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $RecurringsTable,
+      RecurringRow,
+      $$RecurringsTableFilterComposer,
+      $$RecurringsTableOrderingComposer,
+      $$RecurringsTableAnnotationComposer,
+      $$RecurringsTableCreateCompanionBuilder,
+      $$RecurringsTableUpdateCompanionBuilder,
+      (
+        RecurringRow,
+        BaseReferences<_$AppDatabase, $RecurringsTable, RecurringRow>,
+      ),
+      RecurringRow,
+      PrefetchHooks Function()
+    >;
 typedef $$MerchantRulesTableCreateCompanionBuilder =
     MerchantRulesCompanion Function({
       required String merchant,
@@ -5869,6 +6752,8 @@ class $AppDatabaseManager {
       $$CustomBenefitsTableTableManager(_db, _db.customBenefits);
   $$BudgetsTableTableManager get budgets =>
       $$BudgetsTableTableManager(_db, _db.budgets);
+  $$RecurringsTableTableManager get recurrings =>
+      $$RecurringsTableTableManager(_db, _db.recurrings);
   $$MerchantRulesTableTableManager get merchantRules =>
       $$MerchantRulesTableTableManager(_db, _db.merchantRules);
   $$NetworkLogsTableTableManager get networkLogs =>
