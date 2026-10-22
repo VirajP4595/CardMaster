@@ -1,0 +1,36 @@
+{
+  "v": 3,
+  "createdOnFiles": {"v": 1, "at": "2026-10-22T04:40:00Z"},
+  "title": "CardMaster Screens",
+  "launch": {"view": "canvas"},
+  "pages": [],
+  "boards": {
+    "Lock.dc.html": {"x": 0, "y": 0, "w": 390, "h": 844, "title": "1 · Unlock", "radius": 36},
+    "Main.dc.html": {"x": 470, "y": 0, "w": 390, "h": 844, "title": "2 · Wallet (home)", "is_interactive": true, "radius": 36},
+    "CardDetail.dc.html": {"x": 940, "y": 0, "w": 390, "h": 1240, "title": "3 · Card detail (scrolls)", "is_interactive": true, "radius": 36},
+    "AddCard.dc.html": {"x": 1410, "y": 0, "w": 390, "h": 844, "title": "4 · Add card — step 2 of 3", "is_interactive": true, "radius": 36},
+    "BestCard.dc.html": {"x": 0, "y": 1600, "w": 390, "h": 844, "title": "5 · Which card should I use?", "is_interactive": true, "radius": 36},
+    "Activity.dc.html": {"x": 470, "y": 1600, "w": 390, "h": 844, "title": "6 · Activity & insights", "is_interactive": true, "radius": 36},
+    "Settings.dc.html": {"x": 940, "y": 1600, "w": 390, "h": 1000, "title": "7 · Settings, privacy & backup", "is_interactive": true, "radius": 36},
+    "Tokens.dc.html": {"x": 1410, "y": 1600, "w": 960, "h": 1000, "title": "Design system — tokens & components"},
+    "Logo.dc.html": {"x": 1960, "y": 0, "w": 1200, "h": 1240, "title": "Brand — logo, wordmark, app icon"},
+    "CardFaces.dc.html": {"x": 0, "y": 2960, "w": 1480, "h": 1060, "title": "Card faces — styled (default) and photo (optional)"},
+    "Pro.dc.html": {"x": 1560, "y": 2960, "w": 390, "h": 1380, "title": "8 · Pro upgrade + buy me a coffee (scrolls)", "is_interactive": true, "radius": 36},
+    "Worth.dc.html": {"x": 2030, "y": 2960, "w": 390, "h": 1180, "title": "9 · Card value report + pay-today", "radius": 36},
+    "LogSpend.dc.html": {"x": 2500, "y": 2960, "w": 390, "h": 844, "title": "10 · Log spend shared from a bank SMS", "radius": 36},
+    "QuickAdd.dc.html": {"x": 2970, "y": 2960, "w": 390, "h": 844, "title": "11 · Quick add expense (any payment method)", "is_interactive": true, "radius": 36},
+    "ImportSms.dc.html": {"x": 3440, "y": 2960, "w": 390, "h": 900, "title": "12 · Bulk import bank messages (review)", "is_interactive": true, "radius": 36},
+    "Welcome.dc.html": {"x": 0, "y": 4740, "w": 390, "h": 844, "title": "0 · First launch: before you start", "is_interactive": true, "radius": 36},
+    "Trust.dc.html": {"x": 470, "y": 4740, "w": 390, "h": 1720, "title": "13 · Trust Center (Settings → Privacy)", "radius": 36}
+  },
+  "order": ["Welcome.dc.html", "Trust.dc.html","ImportSms.dc.html","QuickAdd.dc.html","Main.dc.html", "Logo.dc.html", "CardFaces.dc.html", "Pro.dc.html", "Worth.dc.html", "LogSpend.dc.html", "Lock.dc.html", "CardDetail.dc.html", "AddCard.dc.html", "BestCard.dc.html", "Activity.dc.html", "Settings.dc.html", "Tokens.dc.html"],
+  "notes": {
+    "row1": {"x": 0, "y": -300, "text": "Core flow — unlock, wallet, card detail, add card", "kind": "title1", "maxW": 1800},
+    "faces": {"x": 0, "y": 2690, "text": "Card faces that look like the real thing", "kind": "title1", "maxW": 1480},
+    "money": {"x": 1560, "y": 2690, "text": "Pro, money manager & new features", "kind": "title1", "maxW": 2270},
+    "trust": {"x": 0, "y": 4470, "text": "Trust & honesty", "kind": "title1", "maxW": 860},
+    "brand": {"x": 1960, "y": -300, "text": "Brand", "kind": "title1", "maxW": 1200},
+    "row2": {"x": 0, "y": 1300, "text": "Tools, settings & design system", "kind": "title1", "maxW": 2370}
+  },
+  "designSystems": []
+}

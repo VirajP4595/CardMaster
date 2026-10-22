@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>CardMaster — Settings</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#0E0F13}
+a{color:#B7ACFF}a:hover{color:#D4CCFF}
+</style>
+</helmet>
+<div style="width: 390px; height: 1000px; position: relative; overflow: hidden; background: #0E0F13; color: #F2F3F7; font-family: Manrope, system-ui, sans-serif">
+  <div style="display: flex; flex-direction: column; gap: 16px; padding: 24px 24px 100px 24px">
+    <h1 style="margin: 0; font-size: 24px; font-weight: 800">Settings</h1>
+
+    <div style="padding: 16px; border-radius: 18px; background: #15261E; border: 1px solid #2F7A55; display: flex; gap: 12px; align-items: flex-start">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3DD68C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"></path><path d="M9 12l2 2 4-4"></path></svg>
+      <div style="display: flex; flex-direction: column; gap: 4px">
+        <div style="font-size: 14px; font-weight: 700">Your data never leaves this phone</div>
+        <div style="font-size: 12px; color: #C9CDD9">The app only downloads card-benefit updates and never uploads anything. No account, no tracking, no ads.</div>
+        <a href="Trust.dc.html" style="font-size: 13px; font-weight: 700; color: #3DD68C">Why we built it this way →</a>
+      </div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 8px">
+      <h2 style="margin: 0; font-size: 12px; font-weight: 700; color: #9AA0B4; text-transform: uppercase; letter-spacing: 1px">Security</h2>
+      <div style="border-radius: 18px; background: #171922; display: flex; flex-direction: column">
+        <sc-for list="{{toggles}}" as="t" hint-placeholder-count="5">
+          <div style="display: flex; align-items: center; gap: 12px; padding: 12px 16px; min-height: 52px; box-sizing: border-box">
+            <div style="flex: 1; display: flex; flex-direction: column; gap: 2px">
+              <div style="font-size: 14px; font-weight: 600">{{t.label}}</div>
+              <div style="font-size: 12px; color: #9AA0B4">{{t.hint}}</div>
+            </div>
+            <button type="button" role="switch" aria-checked="{{t.checked}}" aria-label="{{t.label}}" onClick="{{t.flip}}" style="{{t.trackStyle}}">
+              <div style="{{t.knobStyle}}"></div>
+            </button>
+          </div>
+        </sc-for>
+        <div style="display: flex; align-items: center; gap: 12px; padding: 12px 16px; min-height: 52px; box-sizing: border-box">
+          <div style="flex: 1; font-size: 14px; font-weight: 600">Lock again after</div>
+          <div style="font-size: 14px; font-weight: 700; color: #B7ACFF">30 seconds</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 8px">
+      <h2 style="margin: 0; font-size: 12px; font-weight: 700; color: #9AA0B4; text-transform: uppercase; letter-spacing: 1px">Benefits catalog</h2>
+      <div style="padding: 16px; border-radius: 18px; background: #171922; display: flex; flex-direction: column; gap: 12px">
+        <div style="display: flex; justify-content: space-between; align-items: center">
+          <div style="display: flex; flex-direction: column; gap: 2px">
+            <div style="font-size: 14px; font-weight: 600">Catalog v14 · updated 2 days ago</div>
+            <div style="font-size: 12px; color: #9AA0B4">Signed and verified · checks daily</div>
+          </div>
+          <div style="padding: 4px 10px; border-radius: 8px; background: #3A3320; color: #F5B54A; font-size: 12px; font-weight: 700">4 to verify</div>
+        </div>
+        <button type="button" style="height: 44px; border-radius: 12px; border: 1px solid #3A3E52; background: transparent; color: #F2F3F7; font: inherit; font-size: 14px; font-weight: 700; cursor: pointer">See what changed</button>
+      </div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 8px">
+      <h2 style="margin: 0; font-size: 12px; font-weight: 700; color: #9AA0B4; text-transform: uppercase; letter-spacing: 1px">Backup</h2>
+      <div style="padding: 16px; border-radius: 18px; background: #171922; display: flex; flex-direction: column; gap: 12px">
+        <div style="display: flex; flex-direction: column; gap: 2px">
+          <div style="font-size: 14px; font-weight: 600">Last backup: 12 days ago</div>
+          <div style="font-size: 12px; color: #9AA0B4">Weekly encrypted file in Internal storage/Card Master. Backups are the only way to move to a new phone.</div>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">
+          <button type="button" style="height: 44px; border-radius: 12px; border: 0; background: #6A5AE0; color: #FFFFFF; font: inherit; font-size: 14px; font-weight: 700; cursor: pointer">Export</button>
+          <button type="button" style="height: 44px; border-radius: 12px; border: 1px solid #3A3E52; background: transparent; color: #F2F3F7; font: inherit; font-size: 14px; font-weight: 700; cursor: pointer">Restore</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <nav aria-label="Main" style="position: absolute; left: 0; right: 0; bottom: 0; height: 76px; background: #14161D; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); padding-bottom: 8px; box-sizing: border-box">
+    <a href="Main.dc.html" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; color: #9AA0B4; text-decoration: none; font-size: 11px; font-weight: 600">
+      <div style="padding: 4px 18px; display: flex"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h15a3 3 0 0 1 3 3v7a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3z"></path><path d="M3 7V6a2 2 0 0 1 2-2h11"></path><circle cx="16.5" cy="13.5" r="1.2"></circle></svg></div>
+      Wallet
+    </a>
+    <a href="BestCard.dc.html" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; color: #9AA0B4; text-decoration: none; font-size: 11px; font-weight: 600">
+      <div style="padding: 4px 18px; display: flex"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.6 5.6L20 9.5l-4 4 1 5.8L12 16.6 7 19.3l1-5.8-4-4 5.4-.9z"></path></svg></div>
+      Best card
+    </a>
+    <a href="Activity.dc.html" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; color: #9AA0B4; text-decoration: none; font-size: 11px; font-weight: 600">
+      <div style="padding: 4px 18px; display: flex"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l3-8 4 16 3-8h4"></path></svg></div>
+      Money
+    </a>
+    <a href="Settings.dc.html" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; color: #F2F3F7; text-decoration: none; font-size: 11px; font-weight: 700">
+      <div style="padding: 4px 18px; border-radius: 14px; background: #2A2550; display: flex"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12"></path><circle cx="16" cy="6" r="2"></circle><circle cx="10" cy="12" r="2"></circle><circle cx="18" cy="18" r="2"></circle></svg></div>
+      Settings
+    </a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":1000}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { lock: true, hide: true, secure: true, due: true, waiver: true };
+  }
+  renderVals() {
+    const defs = [
+      ['lock', 'App lock', 'Fingerprint or device PIN'],
+      ['hide', 'Hide card digits', 'Show only last 4 after re-auth'],
+      ['secure', 'Block screenshots', 'Also hides app in recent apps'],
+      ['due', 'Bill due reminders', '3 days and 1 day before'],
+      ['waiver', 'Fee waiver alerts', '60 days before anniversary']
+    ];
+    const toggles = defs.map(([key, label, hint]) => {
+      const on = this.state[key];
+      return {
+        label, hint,
+        checked: on ? 'true' : 'false',
+        flip: () => this.setState({ [key]: !this.state[key] }),
+        trackStyle: 'width: 50px; height: 30px; border-radius: 15px; border: 0; padding: 3px; cursor: pointer; display: flex; ' +
+          (on ? 'background: #6A5AE0; justify-content: flex-end' : 'background: #3A3E52; justify-content: flex-start'),
+        knobStyle: 'width: 24px; height: 24px; border-radius: 12px; background: #FFFFFF'
+      };
+    });
+    return { toggles };
+  }
+}
+</script>
+</body>
+</html>

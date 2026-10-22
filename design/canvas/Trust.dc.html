@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Card Master — Trust Center</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#0E0F13}
+a{color:#B7ACFF}a:hover{color:#D4CCFF}
+</style>
+</helmet>
+<div style="width: 390px; height: 1720px; overflow: hidden; background: #0E0F13; color: #F2F3F7; font-family: Manrope, system-ui, sans-serif; display: flex; flex-direction: column; gap: 22px; padding: 20px 24px 32px 24px; box-sizing: border-box">
+
+  <div style="display: flex; align-items: center; gap: 12px">
+    <a href="Settings.dc.html" aria-label="Back" style="width: 44px; height: 44px; border-radius: 14px; background: #171922; color: #F2F3F7; display: flex; align-items: center; justify-content: center">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"></path></svg>
+    </a>
+    <h1 style="margin: 0; font-size: 22px; font-weight: 800">Trust Center</h1>
+  </div>
+
+  <div style="padding: 18px; border-radius: 20px; background: #15261E; border: 1px solid #2F7A55; display: flex; flex-direction: column; gap: 10px">
+    <div style="font-size: 12px; font-weight: 700; color: #3DD68C; text-transform: uppercase; letter-spacing: 1px">Our promise</div>
+    <div style="font-size: 17px; font-weight: 800; line-height: 1.35">Your card and money data never leaves this phone.</div>
+    <div style="font-size: 13px; color: #C9CDD9; line-height: 1.5">No account. No ads. No tracking. We have no server that stores anything about you, so there's nothing of yours for us to sell, lose or hand over.</div>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 10px">
+    <h2 style="margin: 0; font-size: 16px; font-weight: 800">Why we built it this way, and what it costs you</h2>
+    <div style="font-size: 13px; color: #9AA0B4; line-height: 1.5">Every choice below protects you, and each one has a cost. We'd rather tell you upfront.</div>
+
+    <div style="border-radius: 18px; background: #171922; display: flex; flex-direction: column">
+      <sc-for list="{{decisions}}" as="d" hint-placeholder-count="5">
+        <div style="padding: 14px; border-bottom: 1px solid #23263A; display: flex; flex-direction: column; gap: 8px">
+          <div style="font-size: 14px; font-weight: 800">{{d.title}}</div>
+          <div style="display: flex; gap: 8px; align-items: flex-start; font-size: 12px; color: #C9CDD9; line-height: 1.45">
+            <span style="flex-shrink: 0; padding: 1px 6px; border-radius: 6px; background: #1E3328; color: #3DD68C; font-size: 11px; font-weight: 800">WHY</span>{{d.why}}
+          </div>
+          <div style="display: flex; gap: 8px; align-items: flex-start; font-size: 12px; color: #C9CDD9; line-height: 1.45">
+            <span style="flex-shrink: 0; padding: 1px 6px; border-radius: 6px; background: #3A3320; color: #F5B54A; font-size: 11px; font-weight: 800">COST</span>{{d.cost}}
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 10px">
+    <h2 style="margin: 0; font-size: 16px; font-weight: 800">Permissions, and exactly why</h2>
+    <div style="border-radius: 18px; background: #171922; display: flex; flex-direction: column">
+      <sc-for list="{{perms}}" as="p" hint-placeholder-count="6">
+        <div style="padding: 12px 14px; border-bottom: 1px solid #23263A; display: flex; justify-content: space-between; gap: 12px">
+          <div style="display: flex; flex-direction: column; gap: 2px">
+            <div style="font-size: 13px; font-weight: 700">{{p.name}}</div>
+            <div style="font-size: 12px; color: #9AA0B4">{{p.why}}</div>
+          </div>
+          <div style="font-size: 11px; font-weight: 700; color: #9AA0B4; white-space: nowrap">{{p.when}}</div>
+        </div>
+      </sc-for>
+    </div>
+    <div style="padding: 12px 14px; border-radius: 14px; background: #171922; display: flex; flex-direction: column; gap: 4px">
+      <div style="font-size: 13px; font-weight: 700">Never asked for</div>
+      <div style="font-size: 12px; color: #9AA0B4; line-height: 1.5">SMS, contacts, location, call logs, notification access, accessibility, photos/gallery. If an update ever asks for one of these, something is wrong. Please tell us.</div>
+    </div>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 10px">
+    <div style="display: flex; justify-content: space-between; align-items: baseline">
+      <h2 style="margin: 0; font-size: 16px; font-weight: 800">Every connection this app made</h2>
+      <span style="font-size: 12px; color: #9AA0B4">last 90 days</span>
+    </div>
+    <div style="border-radius: 18px; background: #171922; display: flex; flex-direction: column; font-variant-numeric: tabular-nums">
+      <sc-for list="{{log}}" as="l" hint-placeholder-count="4">
+        <div style="padding: 10px 14px; border-bottom: 1px solid #23263A; display: flex; gap: 10px; align-items: center">
+          <div style="width: 8px; height: 8px; border-radius: 4px; background: #3DD68C; flex-shrink: 0"></div>
+          <div style="flex: 1; display: flex; flex-direction: column; gap: 1px">
+            <div style="font-size: 13px; font-weight: 700">{{l.what}}</div>
+            <div style="font-size: 11px; color: #9AA0B4; font-family: monospace">{{l.where}}</div>
+          </div>
+          <div style="font-size: 11px; color: #9AA0B4; text-align: right">{{l.when}}<br>{{l.size}}</div>
+        </div>
+      </sc-for>
+    </div>
+    <div style="font-size: 12px; color: #9AA0B4; line-height: 1.5">Only downloads. Nothing was uploaded. Purchases are handled by the Google Play app, not us.</div>
+  </div>
+
+  <div style="padding: 16px; border-radius: 18px; background: #1F1B3A; display: flex; flex-direction: column; gap: 8px">
+    <div style="font-size: 14px; font-weight: 800">Don't just trust us. Check.</div>
+    <div style="font-size: 12px; color: #D4CCFF; line-height: 1.55">Android Settings → Apps → Card Master → Permissions shows the same list as above. The Play Store's Data safety section says "No data collected". Our privacy policy is one page and in plain language.</div>
+    <a href="#" style="font-size: 13px; font-weight: 700">Read the privacy policy</a>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":1720}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      decisions: [
+        { title: 'No account, no server', why: 'Nothing about you exists on the internet, so it can’t be hacked, leaked or sold.', cost: 'No sync between devices. Your phone is the only copy.' },
+        { title: 'No cloud backup', why: 'Your data never sits on someone else’s computer, ours or Google’s.', cost: 'If you lose your phone without a backup file, your data is gone. Turn on weekly backups.' },
+        { title: 'We don’t read your SMS', why: 'Reading every message would give the app access to OTPs and private chats.', cost: 'You share or copy bank messages yourself. It takes a few taps.' },
+        { title: 'Only the last 4 digits of your card', why: 'Even if someone opened the app, they can’t use your card.', cost: 'You can’t copy your full card number from here.' },
+        { title: 'Benefit updates are downloaded', why: 'Banks change rewards often; stale data would give you wrong advice.', cost: 'The app connects to our server to download them. Like any website visit, it sees your phone’s internet address (IP), but nothing about you or your cards.' }
+      ],
+      perms: [
+        { name: 'Internet', why: 'Download card benefit updates. Nothing is sent.', when: 'Always' },
+        { name: 'Fingerprint / face', why: 'Unlock the app', when: 'If you allow' },
+        { name: 'Notifications', why: 'Due dates, fee waivers, backup reminders', when: 'If you allow' },
+        { name: 'Camera', why: 'Photo of your card face (optional)', when: 'Only when used' },
+        { name: 'Google Play Billing', why: 'Pro and coffee tips, handled by Play', when: 'Only when used' },
+        { name: 'Run after restart', why: 'Re-schedule your reminders', when: 'Always' }
+      ],
+      log: [
+        { what: 'Benefit update v14', where: 'GET cdn.[your-domain]/catalog/v14.json', when: '20 Oct, 9:12', size: '184 KB' },
+        { what: 'Checked for updates', where: 'GET cdn.[your-domain]/catalog/manifest.json', when: '22 Oct, 8:40', size: '1 KB' },
+        { what: 'Checked for updates', where: 'GET cdn.[your-domain]/catalog/manifest.json', when: '21 Oct, 8:55', size: '1 KB' },
+        { what: 'Benefit update v13', where: 'GET cdn.[your-domain]/catalog/v13.json', when: '2 Oct, 19:03', size: '181 KB' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

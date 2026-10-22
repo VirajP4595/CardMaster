@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>CardMaster — Add card</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#0E0F13}
+a{color:#B7ACFF}a:hover{color:#D4CCFF}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; position: relative; overflow: hidden; background: #0E0F13; color: #F2F3F7; font-family: Manrope, system-ui, sans-serif">
+
+  <div style="display: flex; flex-direction: column; gap: 18px; padding: 20px 24px 0 24px">
+    <div style="display: flex; align-items: center; gap: 12px">
+      <a href="Main.dc.html" aria-label="Close" style="width: 44px; height: 44px; border-radius: 14px; background: #171922; color: #F2F3F7; display: flex; align-items: center; justify-content: center">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+      </a>
+      <div style="display: flex; flex-direction: column; gap: 2px">
+        <div style="font-size: 12px; color: #9AA0B4">Step 2 of 3</div>
+        <h1 style="margin: 0; font-size: 20px; font-weight: 800">Choose your Axis card</h1>
+      </div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px" aria-hidden="true">
+      <div style="height: 4px; border-radius: 2px; background: #6A5AE0"></div>
+      <div style="height: 4px; border-radius: 2px; background: #6A5AE0"></div>
+      <div style="height: 4px; border-radius: 2px; background: #262938"></div>
+    </div>
+
+    <div style="display: flex; align-items: center; gap: 10px; padding: 0 14px; height: 48px; border-radius: 14px; background: #171922">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9AA0B4" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path></svg>
+      <label for="variant-search" style="position: absolute; left: -9999px">Search card variants</label>
+      <input id="variant-search" type="text" placeholder="Search Axis cards" style="flex: 1; border: 0; background: transparent; color: #F2F3F7; font: inherit; font-size: 14px; outline: none">
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 8px">
+      <sc-for list="{{variants}}" as="v" hint-placeholder-count="5">
+        <button type="button" onClick="{{v.pick}}" style="{{v.rowStyle}}">
+          <div style="width: 56px; height: 36px; border-radius: 7px; background: {{v.face}}; flex-shrink: 0"></div>
+          <div style="flex: 1; display: flex; flex-direction: column; gap: 2px; text-align: left">
+            <div style="font-size: 14px; font-weight: 700; color: #F2F3F7">{{v.name}}</div>
+            <div style="font-size: 12px; color: #9AA0B4">{{v.tag}}</div>
+          </div>
+          <div style="{{v.radioStyle}}"></div>
+        </button>
+      </sc-for>
+      <button type="button" style="display: flex; align-items: center; gap: 12px; padding: 12px; border-radius: 16px; border: 1px dashed #3A3E52; background: transparent; color: #B7ACFF; font: inherit; font-size: 14px; font-weight: 700; cursor: pointer">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>
+        My card isn't listed — add a custom card
+      </button>
+    </div>
+  </div>
+
+  <div style="position: absolute; left: 0; right: 0; bottom: 0; padding: 18px 24px 28px 24px; background: #14161D; border-radius: 24px 24px 0 0; display: flex; flex-direction: column; gap: 14px">
+    <div style="display: flex; flex-direction: column; gap: 4px">
+      <div style="font-size: 12px; color: #9AA0B4; text-transform: uppercase; letter-spacing: 1px">Preview</div>
+      <div style="font-size: 15px; font-weight: 700">{{selectedName}}</div>
+      <div style="font-size: 13px; color: #C9CDD9">{{selectedPreview}}</div>
+    </div>
+    <button type="button" style="height: 52px; border-radius: 16px; border: 0; background: #6A5AE0; color: #FFFFFF; font: inherit; font-size: 15px; font-weight: 700; cursor: pointer">Next: personalise</button>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { picked: 'airtel' };
+  }
+  renderVals() {
+    const list = [
+      { id: 'airtel', name: 'Airtel Axis Bank', tag: 'Cashback on Airtel, bills, food delivery', face: 'linear-gradient(135deg,#6E0D27,#B3123B)', preview: '25% Airtel bills · 10% utilities · 10% food delivery · 1% everything else' },
+      { id: 'flipkart', name: 'Flipkart Axis Bank', tag: 'Shopping cashback', face: 'linear-gradient(135deg,#123A8C,#2F6BE0)', preview: 'Shopping cashback card — benefits load from your catalog' },
+      { id: 'atlas', name: 'Axis Atlas', tag: 'Travel miles', face: 'linear-gradient(135deg,#1B2A3A,#3D5A73)', preview: 'Travel miles card — benefits load from your catalog' },
+      { id: 'magnus', name: 'Axis Magnus', tag: 'Premium travel rewards', face: 'linear-gradient(135deg,#2B2118,#6B5640)', preview: 'Premium rewards card — benefits load from your catalog' },
+      { id: 'ace', name: 'Axis ACE', tag: 'Bill payment cashback', face: 'linear-gradient(135deg,#1E1E24,#4A4A55)', preview: 'Cashback card — benefits load from your catalog' }
+    ];
+    const picked = this.state.picked;
+    const base = 'display: flex; align-items: center; gap: 12px; padding: 12px; border-radius: 16px; font: inherit; cursor: pointer; ';
+    const variants = list.map((v) => ({
+      ...v,
+      pick: () => this.setState({ picked: v.id }),
+      rowStyle: base + (v.id === picked ? 'background: #1F1B3A; border: 1.5px solid #6A5AE0' : 'background: #171922; border: 1.5px solid #171922'),
+      radioStyle: 'width: 20px; height: 20px; border-radius: 10px; box-sizing: border-box; ' + (v.id === picked ? 'border: 6px solid #8B7CF6' : 'border: 2px solid #4A4E60')
+    }));
+    const sel = list.find((v) => v.id === picked);
+    return { variants, selectedName: sel.name, selectedPreview: sel.preview };
+  }
+}
+</script>
+</body>
+</html>

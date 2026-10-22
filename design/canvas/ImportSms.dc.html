@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Card Master — Import bank messages</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#0E0F13}
+a{color:#B7ACFF}a:hover{color:#D4CCFF}
+</style>
+</helmet>
+<div style="width: 390px; height: 900px; position: relative; overflow: hidden; background: #0E0F13; color: #F2F3F7; font-family: Manrope, system-ui, sans-serif; font-variant-numeric: tabular-nums; display: flex; flex-direction: column; gap: 14px; padding: 20px 24px 24px 24px; box-sizing: border-box">
+
+  <div style="display: flex; align-items: center; gap: 12px">
+    <a href="Activity.dc.html" aria-label="Close" style="width: 44px; height: 44px; border-radius: 14px; background: #171922; color: #F2F3F7; display: flex; align-items: center; justify-content: center">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+    </a>
+    <div style="display: flex; flex-direction: column; gap: 2px">
+      <div style="font-size: 12px; color: #9AA0B4">From copied messages · 41 found</div>
+      <h1 style="margin: 0; font-size: 20px; font-weight: 800">Import {{count}} expenses</h1>
+    </div>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px">
+    <div style="padding: 10px; border-radius: 12px; background: #15261E; display: flex; flex-direction: column; gap: 2px"><div style="font-size: 18px; font-weight: 800; color: #3DD68C">{{count}}</div><div style="font-size: 11px; color: #C9CDD9">card spends</div></div>
+    <div style="padding: 10px; border-radius: 12px; background: #171922; display: flex; flex-direction: column; gap: 2px"><div style="font-size: 18px; font-weight: 800">4</div><div style="font-size: 11px; color: #C9CDD9">duplicates skipped</div></div>
+    <div style="padding: 10px; border-radius: 12px; background: #171922; display: flex; flex-direction: column; gap: 2px"><div style="font-size: 18px; font-weight: 800">31</div><div style="font-size: 11px; color: #C9CDD9">OTPs, credits, ads</div></div>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; align-items: center">
+    <div style="font-size: 12px; color: #9AA0B4; text-transform: uppercase; letter-spacing: 1px">Review</div>
+    <button type="button" onClick="{{toggleAll}}" style="height: 36px; padding: 0 10px; border: 0; background: transparent; color: #B7ACFF; font: inherit; font-size: 13px; font-weight: 700; cursor: pointer">{{allLabel}}</button>
+  </div>
+
+  <div style="border-radius: 18px; background: #171922; display: flex; flex-direction: column">
+    <sc-for list="{{rows}}" as="r" hint-placeholder-count="6">
+      <button type="button" role="checkbox" aria-checked="{{r.checked}}" onClick="{{r.flip}}" style="display: flex; align-items: center; gap: 12px; padding: 11px 14px; border: 0; border-bottom: 1px solid #23263A; background: transparent; color: #F2F3F7; font: inherit; text-align: left; cursor: pointer">
+        <div style="{{r.boxStyle}}">
+          <sc-if value="{{r.on}}" hint-placeholder-val="{{ true }}">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg>
+          </sc-if>
+        </div>
+        <div style="width: 6px; height: 34px; border-radius: 3px; background: {{r.color}}; flex-shrink: 0"></div>
+        <div style="flex: 1; display: flex; flex-direction: column; gap: 2px; min-width: 0">
+          <div style="font-size: 14px; font-weight: 700">{{r.merchant}}</div>
+          <div style="{{r.subStyle}}">{{r.sub}}</div>
+        </div>
+        <div style="font-size: 14px; font-weight: 700">₹{{r.amount}}</div>
+      </button>
+    </sc-for>
+    <div style="padding: 10px 14px; font-size: 12px; color: #9AA0B4">+ 7 more</div>
+  </div>
+
+  <div style="flex: 1"></div>
+
+  <div style="font-size: 11px; color: #9AA0B4; text-align: center">Read on this phone. Message text isn't saved, only amount, merchant, card and date.</div>
+  <button type="button" style="height: 54px; border-radius: 16px; border: 0; background: #6A5AE0; color: #FFFFFF; font: inherit; font-size: 16px; font-weight: 800; cursor: pointer">Import {{count}} expenses</button>
+  <a href="#" style="text-align: center; font-size: 13px; font-weight: 700; padding: 8px">Import from an SMS backup file instead</a>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":900}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { off: {} };
+  }
+  renderVals() {
+    const data = [
+      { id: 1, merchant: 'BESCOM', amount: '2,400', card: 'Airtel Axis ••7302', cat: 'Utilities', date: '21 Oct', color: '#9E1233' },
+      { id: 2, merchant: 'SWIGGY', amount: '486', card: 'Airtel Axis ••7302', cat: 'Food delivery', date: '20 Oct', color: '#9E1233' },
+      { id: 3, merchant: 'AMAZON PAY', amount: '3,299', card: 'Tata Neu ••1190', cat: 'Shopping', date: '19 Oct', color: '#5B2A86' },
+      { id: 4, merchant: 'AGODA BANGKOK', amount: '9,750', card: 'Scapia ••4821', cat: 'Travel · international', date: '18 Oct', color: '#1C6E62' },
+      { id: 5, merchant: 'HPCL PETROL', amount: '2,000', card: 'Tata Neu ••1190', cat: 'Fuel', date: '17 Oct', color: '#5B2A86' },
+      { id: 6, merchant: 'RAZ*UNKNOWN', amount: '1,150', card: 'Card ••5566 not in wallet', cat: 'Pick a card', date: '16 Oct', color: '#4A4E60', warn: true }
+    ];
+    const off = this.state.off;
+    const rows = data.map((d) => {
+      const on = !off[d.id];
+      return {
+        ...d,
+        on,
+        checked: on ? 'true' : 'false',
+        sub: d.card + ' · ' + d.cat + ' · ' + d.date,
+        subStyle: 'font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: ' + (d.warn ? '#F5B54A' : '#9AA0B4'),
+        flip: () => this.setState({ off: { ...this.state.off, [d.id]: on } }),
+        boxStyle: 'width: 22px; height: 22px; border-radius: 6px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; box-sizing: border-box; ' +
+          (on ? 'background: #6A5AE0' : 'border: 2px solid #4A4E60')
+      };
+    });
+    const offCount = Object.values(off).filter(Boolean).length;
+    const anyOff = offCount > 0;
+    return {
+      rows,
+      count: 13 - offCount,
+      allLabel: anyOff ? 'Select all' : 'Clear all',
+      toggleAll: () => this.setState({ off: anyOff ? {} : Object.fromEntries(data.map((d) => [d.id, true])) })
+    };
+  }
+}
+</script>
+</body>
+</html>

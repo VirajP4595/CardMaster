@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Card Master — Quick add expense</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#0E0F13}
+a{color:#B7ACFF}a:hover{color:#D4CCFF}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; position: relative; overflow: hidden; background: #0E0F13; color: #F2F3F7; font-family: Manrope, system-ui, sans-serif; font-variant-numeric: tabular-nums; display: flex; flex-direction: column; gap: 14px; padding: 18px 20px 20px 20px; box-sizing: border-box">
+
+  <div style="display: flex; justify-content: space-between; align-items: center">
+    <a href="Activity.dc.html" aria-label="Close" style="width: 44px; height: 44px; border-radius: 14px; background: #171922; color: #F2F3F7; display: flex; align-items: center; justify-content: center">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+    </a>
+    <div style="font-size: 15px; font-weight: 700">Add expense</div>
+    <div style="height: 32px; padding: 0 12px; border-radius: 10px; background: #171922; font-size: 12px; font-weight: 700; color: #C9CDD9; display: flex; align-items: center">Today</div>
+  </div>
+
+  <div style="display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 4px 0">
+    <div style="font-size: 44px; font-weight: 800; letter-spacing: -1px">₹{{amountText}}</div>
+    <label for="note" style="position: absolute; left: -9999px">Note</label>
+    <input id="note" type="text" placeholder="Add a note (Swiggy, rent…)" style="width: 240px; text-align: center; border: 0; background: transparent; color: #C9CDD9; font: inherit; font-size: 13px; outline: none">
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 8px">
+    <div style="font-size: 11px; color: #9AA0B4; text-transform: uppercase; letter-spacing: 1px">Category</div>
+    <div style="display: flex; flex-wrap: wrap; gap: 6px">
+      <sc-for list="{{cats}}" as="c" hint-placeholder-count="7">
+        <button type="button" onClick="{{c.pick}}" aria-pressed="{{c.pressed}}" style="{{c.style}}">{{c.label}}</button>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 8px">
+    <div style="font-size: 11px; color: #9AA0B4; text-transform: uppercase; letter-spacing: 1px">Paid with</div>
+    <div style="display: flex; gap: 6px; overflow: hidden">
+      <sc-for list="{{methods}}" as="m" hint-placeholder-count="5">
+        <button type="button" onClick="{{m.pick}}" aria-pressed="{{m.pressed}}" style="{{m.style}}">
+          <div style="width: 22px; height: 14px; border-radius: 3px; background: {{m.color}}"></div>
+          {{m.label}}
+        </button>
+      </sc-for>
+    </div>
+    <div style="{{hintStyle}}">{{hint}}</div>
+  </div>
+
+  <div style="flex: 1"></div>
+
+  <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px">
+    <sc-for list="{{keys}}" as="k" hint-placeholder-count="12">
+      <button type="button" onClick="{{k.press}}" aria-label="{{k.aria}}" style="height: 52px; border-radius: 14px; border: 0; background: #171922; color: #F2F3F7; font: inherit; font-size: 22px; font-weight: 700; cursor: pointer">{{k.label}}</button>
+    </sc-for>
+  </div>
+
+  <button type="button" onClick="{{save}}" style="height: 54px; border-radius: 16px; border: 0; background: #6A5AE0; color: #FFFFFF; font: inherit; font-size: 16px; font-weight: 800; cursor: pointer">{{saveLabel}}</button>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { digits: '450', cat: 'food', method: 'airtel', saved: false };
+  }
+  renderVals() {
+    const s = this.state;
+    const amount = parseInt(s.digits || '0', 10);
+    const fmt = (n) => n.toLocaleString('en-IN');
+    const catList = [['food', 'Food delivery'], ['groceries', 'Groceries'], ['utilities', 'Utilities'], ['fuel', 'Fuel'], ['shopping', 'Shopping'], ['rent', 'Rent'], ['travel', 'Travel']];
+    const chip = (on) => 'height: 36px; padding: 0 12px; border-radius: 10px; font: inherit; font-size: 13px; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 6px; flex-shrink: 0; ' +
+      (on ? 'background: #2A2550; color: #FFFFFF; border: 1.5px solid #8B7CF6' : 'background: #171922; color: #C9CDD9; border: 1.5px solid #171922');
+    const cats = catList.map(([id, label]) => ({ label, pressed: id === s.cat ? 'true' : 'false', style: chip(id === s.cat), pick: () => this.setState({ cat: id, saved: false }) }));
+    // Sample reward rates (%) per category per card, null = not a card
+    const methodList = [
+      { id: 'airtel', label: 'Airtel Axis', color: '#9E1233', rates: { food: 10, groceries: 1, utilities: 10, fuel: 0, shopping: 1, rent: 0, travel: 1 } },
+      { id: 'scapia', label: 'Scapia', color: '#0F4A4B', rates: { food: 2, groceries: 2, utilities: 0, fuel: 0, shopping: 2, rent: 0, travel: 2 } },
+      { id: 'tataneu', label: 'Tata Neu', color: '#5B2A86', rates: { food: 1.5, groceries: 1.5, utilities: 1.5, fuel: 1, shopping: 1.5, rent: 0, travel: 1.5 } },
+      { id: 'upi', label: 'UPI · bank', color: '#3A3E52', rates: null },
+      { id: 'cash', label: 'Cash', color: '#2F7A55', rates: null }
+    ];
+    const methods = methodList.map((m) => ({ ...m, pressed: m.id === s.method ? 'true' : 'false', style: chip(m.id === s.method), pick: () => this.setState({ method: m.id, saved: false }) }));
+    const cards = methodList.filter((m) => m.rates);
+    const best = cards.slice().sort((a, b) => b.rates[s.cat] - a.rates[s.cat])[0];
+    const chosen = methodList.find((m) => m.id === s.method);
+    let hint, good;
+    const bestEarn = Math.round(amount * best.rates[s.cat] / 100);
+    if (chosen.rates && chosen.id === best.id) {
+      hint = 'Best choice: earns ₹' + fmt(bestEarn) + ' (' + best.rates[s.cat] + '%)';
+      good = true;
+    } else if (chosen.rates) {
+      const earn = Math.round(amount * chosen.rates[s.cat] / 100);
+      hint = 'Earns ₹' + fmt(earn) + '. ' + best.label + ' would earn ₹' + fmt(bestEarn);
+      good = false;
+    } else {
+      hint = bestEarn > 0 ? 'Paying with ' + best.label + ' would earn ₹' + fmt(bestEarn) : 'No card earns on this category';
+      good = bestEarn === 0;
+    }
+    const press = (d) => () => this.setState({ digits: (s.digits + d).replace(/^0+/, '').slice(0, 7), saved: false });
+    const keys = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '00', '0'].map((d) => ({ label: d, aria: d, press: press(d) }));
+    keys.push({ label: '⌫', aria: 'Delete digit', press: () => this.setState({ digits: s.digits.slice(0, -1), saved: false }) });
+    return {
+      amountText: fmt(amount),
+      cats, methods, keys, hint,
+      hintStyle: 'font-size: 12px; font-weight: 600; padding: 8px 10px; border-radius: 10px; ' + (good ? 'background: #15261E; color: #3DD68C' : 'background: #3A3320; color: #F5B54A'),
+      saveLabel: s.saved ? 'Saved ✓  Add another' : 'Save ₹' + fmt(amount),
+      save: () => this.setState(s.saved ? { digits: '', saved: false } : { saved: true })
+    };
+  }
+}
+</script>
+</body>
+</html>

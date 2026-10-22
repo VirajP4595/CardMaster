@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>CardMaster — Design system</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#0E0F13}
+a{color:#B7ACFF}a:hover{color:#D4CCFF}
+</style>
+</helmet>
+<div style="width: 960px; height: 1000px; box-sizing: border-box; padding: 48px; background: #0E0F13; color: #F2F3F7; font-family: Manrope, system-ui, sans-serif; display: flex; flex-direction: column; gap: 36px">
+
+  <div style="display: flex; flex-direction: column; gap: 6px">
+    <h1 style="margin: 0; font-size: 34px; font-weight: 800; letter-spacing: -0.5px">CardMaster design system</h1>
+    <p style="margin: 0; font-size: 15px; color: #9AA0B4">Dark-first Material 3 · Manrope bundled in the app (no runtime font download) · 4-pt spacing</p>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 12px">
+    <h2 style="margin: 0; font-size: 13px; font-weight: 700; color: #9AA0B4; text-transform: uppercase; letter-spacing: 1px">Colour</h2>
+    <div style="display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 12px">
+      <div style="display: flex; flex-direction: column; gap: 6px"><div style="height: 64px; border-radius: 14px; background: #0E0F13; border: 1px solid #2A2D3A"></div><div style="font-size: 12px; font-weight: 700">Background</div><div style="font-size: 11px; color: #9AA0B4">#0E0F13</div></div>
+      <div style="display: flex; flex-direction: column; gap: 6px"><div style="height: 64px; border-radius: 14px; background: #171922"></div><div style="font-size: 12px; font-weight: 700">Surface</div><div style="font-size: 11px; color: #9AA0B4">#171922</div></div>
+      <div style="display: flex; flex-direction: column; gap: 6px"><div style="height: 64px; border-radius: 14px; background: #262938"></div><div style="font-size: 12px; font-weight: 700">Track</div><div style="font-size: 11px; color: #9AA0B4">#262938</div></div>
+      <div style="display: flex; flex-direction: column; gap: 6px"><div style="height: 64px; border-radius: 14px; background: #6A5AE0"></div><div style="font-size: 12px; font-weight: 700">Primary</div><div style="font-size: 11px; color: #9AA0B4">#6A5AE0</div></div>
+      <div style="display: flex; flex-direction: column; gap: 6px"><div style="height: 64px; border-radius: 14px; background: #B7ACFF"></div><div style="font-size: 12px; font-weight: 700">Primary text</div><div style="font-size: 11px; color: #9AA0B4">#B7ACFF</div></div>
+      <div style="display: flex; flex-direction: column; gap: 6px"><div style="height: 64px; border-radius: 14px; background: #3DD68C"></div><div style="font-size: 12px; font-weight: 700">Earned</div><div style="font-size: 11px; color: #9AA0B4">#3DD68C</div></div>
+      <div style="display: flex; flex-direction: column; gap: 6px"><div style="height: 64px; border-radius: 14px; background: #F5B54A"></div><div style="font-size: 12px; font-weight: 700">Attention</div><div style="font-size: 11px; color: #9AA0B4">#F5B54A</div></div>
+      <div style="display: flex; flex-direction: column; gap: 6px"><div style="height: 64px; border-radius: 14px; background: #FF6B6B"></div><div style="font-size: 12px; font-weight: 700">Danger</div><div style="font-size: 11px; color: #9AA0B4">#FF6B6B</div></div>
+    </div>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 36px">
+    <div style="display: flex; flex-direction: column; gap: 12px">
+      <h2 style="margin: 0; font-size: 13px; font-weight: 700; color: #9AA0B4; text-transform: uppercase; letter-spacing: 1px">Type</h2>
+      <div style="display: flex; flex-direction: column; gap: 10px; padding: 20px; border-radius: 18px; background: #171922">
+        <div style="display: flex; align-items: baseline; gap: 16px"><span style="width: 90px; font-size: 11px; color: #9AA0B4">Display 28/800</span><span style="font-size: 28px; font-weight: 800">₹8,50,000</span></div>
+        <div style="display: flex; align-items: baseline; gap: 16px"><span style="width: 90px; font-size: 11px; color: #9AA0B4">Title 24/800</span><span style="font-size: 24px; font-weight: 800">Your wallet</span></div>
+        <div style="display: flex; align-items: baseline; gap: 16px"><span style="width: 90px; font-size: 11px; color: #9AA0B4">Heading 16/700</span><span style="font-size: 16px; font-weight: 700">Benefits</span></div>
+        <div style="display: flex; align-items: baseline; gap: 16px"><span style="width: 90px; font-size: 11px; color: #9AA0B4">Body 14/600</span><span style="font-size: 14px; font-weight: 600">Electricity, gas, water</span></div>
+        <div style="display: flex; align-items: baseline; gap: 16px"><span style="width: 90px; font-size: 11px; color: #9AA0B4">Caption 12/500</span><span style="font-size: 12px; color: #9AA0B4">Via Airtel Thanks app · cap ₹250/mo</span></div>
+        <div style="font-size: 12px; color: #9AA0B4">All amounts use tabular figures and Indian grouping (1,23,456).</div>
+      </div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 12px">
+      <h2 style="margin: 0; font-size: 13px; font-weight: 700; color: #9AA0B4; text-transform: uppercase; letter-spacing: 1px">Card faces · ratio 1.586</h2>
+      <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px">
+        <div style="height: 128px; border-radius: 14px; background: linear-gradient(135deg, #6E0D27 0%, #B3123B 100%); padding: 14px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between"><div style="font-size: 13px; font-weight: 800">Airtel Axis</div><div style="font-size: 10px; font-weight: 800; align-self: flex-end">MASTERCARD</div></div>
+        <div style="height: 128px; border-radius: 14px; background: linear-gradient(135deg, #0F3D3E 0%, #1C6E62 100%); padding: 14px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between"><div style="font-size: 13px; font-weight: 800">Scapia</div><div style="font-size: 10px; font-weight: 800; font-style: italic; align-self: flex-end">VISA</div></div>
+        <div style="height: 128px; border-radius: 14px; background: linear-gradient(135deg, #2B1055 0%, #5B2A86 100%); padding: 14px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between"><div style="font-size: 13px; font-weight: 800">Tata Neu HDFC</div><div style="font-size: 10px; font-weight: 800; align-self: flex-end">RuPay</div></div>
+        <div style="height: 128px; border-radius: 14px; border: 1.5px dashed #3A3E52; display: flex; align-items: center; justify-content: center; font-size: 13px; color: #9AA0B4">Custom colour</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 12px">
+    <h2 style="margin: 0; font-size: 13px; font-weight: 700; color: #9AA0B4; text-transform: uppercase; letter-spacing: 1px">Components</h2>
+    <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px">
+      <div style="padding: 18px; border-radius: 18px; background: #171922; display: flex; flex-direction: column; gap: 12px">
+        <div style="font-size: 12px; color: #9AA0B4">Buttons · 44px min height</div>
+        <button type="button" style="height: 48px; border-radius: 14px; border: 0; background: #6A5AE0; color: #FFFFFF; font: inherit; font-size: 14px; font-weight: 700">Primary</button>
+        <button type="button" style="height: 48px; border-radius: 14px; border: 1px solid #3A3E52; background: transparent; color: #F2F3F7; font: inherit; font-size: 14px; font-weight: 700">Secondary</button>
+      </div>
+      <div style="padding: 18px; border-radius: 18px; background: #171922; display: flex; flex-direction: column; gap: 12px">
+        <div style="font-size: 12px; color: #9AA0B4">Status chips</div>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px">
+          <span style="padding: 4px 10px; border-radius: 8px; background: #3A3320; color: #F5B54A; font-size: 12px; font-weight: 700">Verify · 7 mo old</span>
+          <span style="padding: 4px 10px; border-radius: 8px; background: #1E3328; color: #3DD68C; font-size: 12px; font-weight: 700">Verified</span>
+          <span style="padding: 4px 10px; border-radius: 8px; background: #3A1F24; color: #FF8A8A; font-size: 12px; font-weight: 700">Cap full</span>
+          <span style="padding: 4px 10px; border-radius: 8px; background: #2A2550; color: #D4CCFF; font-size: 12px; font-weight: 700">RuPay · UPI ok</span>
+        </div>
+        <div style="height: 8px; border-radius: 4px; background: #262938"><div style="width: 62%; height: 8px; border-radius: 4px; background: #3DD68C"></div></div>
+      </div>
+      <div style="padding: 18px; border-radius: 18px; background: #171922; display: flex; gap: 14px; align-items: center">
+        <svg width="76" height="76" viewBox="0 0 76 76" role="img" aria-label="Progress ring example, 71 percent">
+          <circle cx="38" cy="38" r="31" fill="none" stroke="#262938" stroke-width="8"></circle>
+          <circle cx="38" cy="38" r="31" fill="none" stroke="#F5B54A" stroke-width="8" stroke-linecap="round" stroke-dasharray="138.3 195" transform="rotate(-90 38 38)"></circle>
+          <text x="38" y="43" text-anchor="middle" font-size="15" font-weight="800" fill="#F2F3F7" font-family="Manrope, sans-serif">71%</text>
+        </svg>
+        <div style="display: flex; flex-direction: column; gap: 4px">
+          <div style="font-size: 14px; font-weight: 700">Progress ring</div>
+          <div style="font-size: 12px; color: #9AA0B4">Fee waivers, milestones. Amber until done, then green.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; font-size: 13px; color: #C9CDD9">
+    <div style="display: flex; flex-direction: column; gap: 4px"><div style="font-weight: 700; color: #F2F3F7">Radius</div>Cards 20 · sheets 24 · tiles 16 · chips 8–12</div>
+    <div style="display: flex; flex-direction: column; gap: 4px"><div style="font-weight: 700; color: #F2F3F7">Spacing</div>4 · 8 · 12 · 16 · 24 · 32 · screen gutter 24</div>
+    <div style="display: flex; flex-direction: column; gap: 4px"><div style="font-weight: 700; color: #F2F3F7">Motion</div>Hero card → detail · 250 ms ease-out · rings animate once</div>
+    <div style="display: flex; flex-direction: column; gap: 4px"><div style="font-weight: 700; color: #F2F3F7">Accessibility</div>Text ≥ 4.5:1 · 48dp targets · amounts read aloud in words</div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":960,"height":1000}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>
