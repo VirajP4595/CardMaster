@@ -60,6 +60,7 @@ jobs:
           AAPT2=$(ls $ANDROID_HOME/build-tools/*/aapt2 | sort -V | tail -1)
           APK=build/app/outputs/flutter-apk/app-arm64-v8a-release.apk
           "$AAPT2" dump permissions "$APK" | tee permissions.txt
+          echo "::notice title=APK permissions::$(grep 'uses-permission:' permissions.txt | sed "s/uses-permission: name='//; s/'.*//" | paste -sd ' ' -)"
           ALLOWED='INTERNET|USE_BIOMETRIC|USE_FINGERPRINT|DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION'
           if grep "uses-permission:" permissions.txt | grep -vE "$ALLOWED"; then
             echo "::error::Unapproved permission found (see list above)"
