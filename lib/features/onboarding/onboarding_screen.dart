@@ -53,7 +53,7 @@ const _steps = [
     AppColors.primaryContainerLow,
     [
       'If you lose your phone without a backup, your data is gone. We can\'t recover it, because we never had it.',
-      'Settings → Backup saves a passphrase-protected file wherever you choose.',
+      'Turn on weekly backups in Settings: an encrypted file in your Downloads folder. Copy it somewhere safe now and then.',
       'Moving to a new phone? Your backup file is the way.',
     ],
   ),

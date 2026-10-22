@@ -21,7 +21,7 @@ class TrustScreen extends ConsumerWidget {
     (
       'No cloud backup',
       'Your data never sits on someone else\'s computer, ours or Google\'s.',
-      'If you lose your phone without a backup file, your data is gone. Export a backup regularly.',
+      'If you lose your phone without a backup file stored somewhere else, your data is gone. Weekly backups go to Downloads; copy them off the phone now and then.',
     ),
     (
       'We don\'t read your SMS',

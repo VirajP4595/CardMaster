@@ -145,6 +145,7 @@ abstract final class SettingKeys {
   static const catalogJson = 'catalog_json';
   static const lastClipboardHash = 'last_clipboard_hash';
   static const remindersEnabled = 'reminders_enabled';
+  static const autoBackup = 'auto_backup';
 }
 
 final settingProvider = StreamProvider.family<String?, String>(

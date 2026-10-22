@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'app/app.dart';
+import 'app/auto_backup.dart';
 import 'app/providers.dart';
 import 'app/services.dart';
 import 'data/db/open.dart';
@@ -23,6 +24,9 @@ Future<void> main() async {
     container: container,
     child: const CardMasterApp(),
   ));
+
+  // Weekly automatic backup to Downloads/Card Master, if switched on.
+  AutoBackup.runIfDue(db).catchError((_) => false);
 
   // Background, non-blocking: download newer benefits if a host is set up.
   syncCatalog(db, catalog).then((c) {

@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../app/app.dart';
+import '../../app/auto_backup.dart';
 import '../../app/providers.dart';
 import '../../app/services.dart';
 import '../../app/theme.dart';
@@ -158,7 +159,19 @@ class SettingsScreen extends ConsumerWidget {
                   const Caption(
                       'A passphrase-protected file you save wherever you like. It\'s the only way to move to a new phone or recover a lost one. We can\'t recover it for you.',
                       color: AppColors.textTertiary),
-                  const SizedBox(height: 12),
+                  const SizedBox(height: 4),
+                  SwitchListTile(
+                    contentPadding: EdgeInsets.zero,
+                    title: const Text('Weekly automatic backup',
+                        style: TextStyle(fontWeight: FontWeight.w600)),
+                    subtitle: const Text(
+                        'When you open the app, at most once a week. Saved to Downloads/Card Master on this phone (Android 10+); keeps the last 4.',
+                        style: TextStyle(color: AppColors.textSecondary)),
+                    value: settingOn(ref, SettingKeys.autoBackup,
+                        fallback: false),
+                    onChanged: (v) => _toggleAuto(context, ref, v),
+                  ),
+                  const SizedBox(height: 8),
                   Row(children: [
                     Expanded(
                       child: FilledButton(
@@ -249,6 +262,29 @@ class SettingsScreen extends ConsumerWidget {
         },
       ),
     );
+  }
+
+  Future<void> _toggleAuto(
+      BuildContext context, WidgetRef ref, bool on) async {
+    final db = ref.read(databaseProvider);
+    if (!on) {
+      await AutoBackup.disable(db);
+      return;
+    }
+    final pass = await _askPassphrase(context, confirm: true);
+    if (pass == null || !context.mounted) return;
+    final messenger = ScaffoldMessenger.of(context);
+    await AutoBackup.enable(db, pass);
+    try {
+      final saved = await AutoBackup.runIfDue(db, force: true);
+      messenger.showSnackBar(SnackBar(
+          content: Text(saved
+              ? 'Backup saved to Downloads/Card Master. Keep the passphrase safe.'
+              : 'Automatic backups need Android 10 or newer. Use Export instead.')));
+      if (!saved) await AutoBackup.disable(db);
+    } catch (e) {
+      messenger.showSnackBar(SnackBar(content: Text('Backup failed: $e')));
+    }
   }
 
   Future<void> _export(BuildContext context, WidgetRef ref) async {
