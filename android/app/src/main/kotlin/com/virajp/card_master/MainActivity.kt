@@ -1,6 +1,7 @@
 package com.virajp.card_master
 
 import android.content.ContentValues
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.os.Environment
@@ -12,6 +13,24 @@ import io.flutter.plugin.common.MethodChannel
 
 // FlutterFragmentActivity is required by local_auth for the biometric prompt.
 class MainActivity : FlutterFragmentActivity() {
+    companion object {
+        const val EXTRA_ROUTE = "cardmaster.route"
+        private val ALLOWED_ROUTES = setOf("/quick-add", "/best")
+    }
+
+    private var launchChannel: MethodChannel? = null
+    private var pendingRoute: String? = null
+
+    /** Only our own shortcuts' routes are accepted. */
+    private fun routeFrom(intent: Intent?): String? =
+        intent?.getStringExtra(EXTRA_ROUTE)?.takeIf { it in ALLOWED_ROUTES }
+
+    override fun onNewIntent(intent: Intent) {
+        super.onNewIntent(intent)
+        setIntent(intent)
+        routeFrom(intent)?.let { launchChannel?.invokeMethod("open", it) }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // Block screenshots and the recent-apps thumbnail by default (rule R5).
@@ -28,6 +47,18 @@ class MainActivity : FlutterFragmentActivity() {
                         result.success(null)
                     }
                     else -> result.notImplemented()
+                }
+            }
+        pendingRoute = routeFrom(intent)
+        launchChannel = MethodChannel(flutterEngine.dartExecutor.binaryMessenger, "cardmaster/launch")
+            .also { ch ->
+                ch.setMethodCallHandler { call, result ->
+                    if (call.method == "initialRoute") {
+                        result.success(pendingRoute)
+                        pendingRoute = null
+                    } else {
+                        result.notImplemented()
+                    }
                 }
             }
         MethodChannel(flutterEngine.dartExecutor.binaryMessenger, "cardmaster/files")

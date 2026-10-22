@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
@@ -89,8 +90,33 @@ class _ShellState extends ConsumerState<_Shell> {
   void initState() {
     super.initState();
     // Bank SMS shared from the messages app, and clipboard pick-up.
-    WidgetsBinding.instance
-        .addPostFrameCallback((_) => startIntake(context, ref));
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      startIntake(context, ref);
+      _listenForShortcuts();
+    });
+  }
+
+  /// Quick Settings tile and home-screen widget open the app on a route
+  /// (see MainActivity: only /quick-add and /best are accepted).
+  Future<void> _listenForShortcuts() async {
+    const channel = MethodChannel('cardmaster/launch');
+    void open(String? route) {
+      if (!mounted || route == null) return;
+      if (route == '/best') {
+        widget.shell.goBranch(1);
+      } else if (route == '/quick-add') {
+        GoRouter.of(context).push('/quick-add');
+      }
+    }
+
+    channel.setMethodCallHandler((call) async {
+      if (call.method == 'open') open(call.arguments as String?);
+    });
+    try {
+      open(await channel.invokeMethod<String>('initialRoute'));
+    } on MissingPluginException {
+      // Tests and non-Android platforms.
+    }
   }
 
   @override
